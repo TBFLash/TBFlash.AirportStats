@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBFlash.AirportStats", "TBFlash.AirportStats.csproj", "{B28F7A50-E167-4676-93EE-3A3E3AAC3D01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B28F7A50-E167-4676-93EE-3A3E3AAC3D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B28F7A50-E167-4676-93EE-3A3E3AAC3D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B28F7A50-E167-4676-93EE-3A3E3AAC3D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B28F7A50-E167-4676-93EE-3A3E3AAC3D01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3E61242-3FDB-48A9-84C3-06D5BB9129E2}
+	EndGlobalSection
+EndGlobal
