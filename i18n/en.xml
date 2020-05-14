@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TBFlash>
+	<AirportStats>
+		<title>TBFlash AirportStats</title>
+		<name>Airport Stats</name>
+		<description>Statistics about the airport</description>
+		<browser>A webbrowser will open to localhost:2198 when you start this mod.</browser>
+		<FS0>Flight Stats</FS0>
+		<FS1>On Time Flights</FS1>
+		<FS2>Delayed Flights</FS2>
+		<FS3>Cancelled Flights</FS3>
+		<FS4>Reneged Flights</FS4>
+		<FS5>Landings</FS5>
+		<FS6>Takeoffs</FS6>
+		<PS0>Passenger Stats</PS0>
+		<PS1>Boarded Flight</PS1>
+		<PS2>Missed Flight</PS2>
+		<FuS0>Fuel Stats</FuS0>
+		<FuS1>Fuel Requested</FuS1>
+		<FuS2>Fuel Provided</FuS2>
+		<FuS3>Planes Served Fuel</FuS3>
+		<LS0>Luggage Stats</LS0>
+		<LS1>Bags Loaded</LS1>
+		<LS2>Bags Unloaded</LS2>
+		<LS3>Luggage Success</LS3>
+		<LS4>Lost Luggage</LS4>
+		<LS5>Outdoor Baggage Loads</LS5>
+		<Rev0>Revenue</Rev0>
+		<Rev1>Advertising</Rev1>
+		<Rev2>Fuel</Rev2>
+		<Rev3>Loans</Rev3>
+		<Rev4>Retail</Rev4>
+		<Rev5>Runway Usage</Rev5>
+		<Rev6>Terminal Usage</Rev6>
+		<Rev7>Total Revenue</Rev7>
+		<Exp0>Expenses</Exp0>
+		<Exp1>Interest</Exp1>
+		<Exp2>Retail</Exp2>
+		<Exp3>Staff Wages</Exp3>
+		<Exp4>Income Tax</Exp4>
+		<Exp5>Property Tax</Exp5>
+		<Exp6>Total Expenses</Exp6>
+		<SS0>Staff Stats</SS0>
+		<SS1>Hired</SS1>
+		<SS2>Fired</SS2>
+		<SS3>Fired Staff - Total hours hired</SS3>
+		<TS0>Time Stats</TS0>
+		<TS1>Time Paused</TS1>
+		<TS2>Speed 1</TS2>
+		<TS3>Speed 2</TS3>
+		<TS4>Speed 3</TS4>
+		<TS5>Inactive</TS5>
+		<KS0>Keyboard / Mouse Stats</KS0>
+		<KS1>Keyboard Clicks</KS1>
+		<KS2>Left Mouse Clicks</KS2>
+		<KS3>Right Mouse Clicks</KS3>
+	</AirportStats>
+</TBFlash>

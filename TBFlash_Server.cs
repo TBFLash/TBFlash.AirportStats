@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Net;
 using SimAirport.Logging;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Net.Http.Headers;
+using UnityEngine;
 
 namespace TBFlash.AirportStats
 {
@@ -34,6 +37,7 @@ namespace TBFlash.AirportStats
             TBFlashLogger(Log.FromPool("Listener Started").WithCodepoint());
             isStarted = true;
             IAsyncResult result = Listener.BeginGetContext(new AsyncCallback(WebRequestCallback), Listener);
+            Application.OpenURL(URLBase);
         }
 
         protected void WebRequestCallback(IAsyncResult result)
@@ -82,68 +86,257 @@ namespace TBFlash.AirportStats
             outputStream.Close();
         }
 
+        private string[,] LoadArray()
+        {
+            GameLifetimeStats GLS = Game.current.lifetimeStats;
+            int numdays = GameTimer.Day <= 30 ? GameTimer.Day : 30;
+            TBFlashLogger(Log.FromPool($"GameTimer:{GameTimer.Day}, numdays:{numdays}").WithCodepoint());
+
+            string[,] arr = new string[40,numdays+2];
+
+            arr[0,0] = i18n.Get("TBFlash.AirportStats.FS1");
+            arr[1,0] = i18n.Get("TBFlash.AirportStats.FS2");
+            arr[2,0] = i18n.Get("TBFlash.AirportStats.FS3");
+            arr[3,0] = i18n.Get("TBFlash.AirportStats.FS4");
+            arr[4,0] = i18n.Get("TBFlash.AirportStats.FS5");
+            arr[5,0] = i18n.Get("TBFlash.AirportStats.FS6");
+            arr[6,0] = i18n.Get("TBFlash.AirportStats.PS1");
+            arr[7,0] = i18n.Get("TBFlash.AirportStats.PS2");
+            arr[8,0] = i18n.Get("TBFlash.AirportStats.FuS1");
+            arr[9,0] = i18n.Get("TBFlash.AirportStats.FuS2");
+            arr[10,0] = i18n.Get("TBFlash.AirportStats.FuS3");
+            arr[11,0] = i18n.Get("TBFlash.AirportStats.LS1");
+            arr[12,0] = i18n.Get("TBFlash.AirportStats.LS2");
+            arr[13,0] = i18n.Get("TBFlash.AirportStats.LS3");
+            arr[14,0] = i18n.Get("TBFlash.AirportStats.LS4");
+            arr[15,0] = i18n.Get("TBFlash.AirportStats.LS5");
+            arr[16,0] = i18n.Get("TBFlash.AirportStats.Rev1");
+            arr[17,0] = i18n.Get("TBFlash.AirportStats.Rev2");
+            arr[18,0] = i18n.Get("TBFlash.AirportStats.Rev3");
+            arr[19,0] = i18n.Get("TBFlash.AirportStats.Rev4");
+            arr[20,0] = i18n.Get("TBFlash.AirportStats.Rev5");
+            arr[21,0] = i18n.Get("TBFlash.AirportStats.Rev6");
+            arr[22,0] = i18n.Get("TBFlash.AirportStats.Rev7");
+            arr[23,0] = i18n.Get("TBFlash.AirportStats.Exp1");
+            arr[24,0] = i18n.Get("TBFlash.AirportStats.Exp2");
+            arr[25,0] = i18n.Get("TBFlash.AirportStats.Exp3");
+            arr[26,0] = i18n.Get("TBFlash.AirportStats.Exp4");
+            arr[27,0] = i18n.Get("TBFlash.AirportStats.Exp5");
+            arr[28,0] = i18n.Get("TBFlash.AirportStats.Exp6");
+            arr[29,0] = i18n.Get("TBFlash.AirportStats.SS1");
+            arr[30,0] = i18n.Get("TBFlash.AirportStats.SS2");
+            arr[31,0] = i18n.Get("TBFlash.AirportStats.SS3");
+            arr[32,0] = i18n.Get("TBFlash.AirportStats.TS1");
+            arr[33,0] = i18n.Get("TBFlash.AirportStats.TS2");
+            arr[34,0] = i18n.Get("TBFlash.AirportStats.TS3");
+            arr[35,0] = i18n.Get("TBFlash.AirportStats.TS4");
+            arr[36,0] = i18n.Get("TBFlash.AirportStats.TS5");
+            arr[37,0] = i18n.Get("TBFlash.AirportStats.KS1");
+            arr[38,0] = i18n.Get("TBFlash.AirportStats.KS2");
+            arr[39,0] = i18n.Get("TBFlash.AirportStats.KS3");
+
+            arr[0, 1] = GLS.flOnTime.ToString("N0");
+            arr[1, 1] = GLS.flDelays.ToString("N0");
+            arr[2, 1] = GLS.flCancels.ToString("N0");
+            arr[3, 1] = GLS.flReneges.ToString("N0");
+            arr[4, 1] = GLS.Landings.ToString("N0");
+            arr[5, 1] = GLS.Takeoffs.ToString("N0");
+            arr[6, 1] = GLS.pBoarded.ToString("N0");
+            arr[7, 1] = GLS.pMissed.ToString("N0");
+            arr[8, 1] = (GLS.fuelRequested / 1000).ToString("N0");
+            arr[9, 1] = (GLS.fuelfRefueled / 1000).ToString("N0");
+            arr[10, 1] = GLS.planesServedFuel.ToString("N0");
+            arr[11, 1] = GLS.pBagsLoaded.ToString("N0");
+            arr[12, 1] = GLS.pBagsUnloaded.ToString("N0");
+            arr[13, 1] = GLS.pBagSuccess.ToString("N0");
+            arr[14, 1] = GLS.pBagFail.ToString("N0");
+            arr[15, 1] = GLS.outdoorBaggageLoads.ToString("N0");
+            arr[16, 1] = GLS.mAdvertising.ToString("C0");
+            arr[17, 1] = GLS.mFuelRev.ToString("C0");
+            arr[18, 1] = GLS.mLoans.ToString("C0");
+            arr[19, 1] = GLS.mRetailRev.ToString("C0");
+            arr[20, 1] = GLS.mRwyUsageRev.ToString("C0");
+            arr[21, 1] = GLS.mTerminalUsageRev.ToString("C0");
+            arr[22, 1] = GLS.mRev.ToString("C0");
+            arr[23, 1] = GLS.mInterest.ToString("C0");
+            arr[24, 1] = GLS.mRetailExpense.ToString("C0");
+            arr[25, 1] = GLS.mStaffWages.ToString("C0");
+            arr[26, 1] = GLS.mIncomeTax.ToString("C0");
+            arr[27, 1] = GLS.mPropertyTax.ToString("C0");
+            arr[28, 1] = GLS.mExpense.ToString("C0");
+            arr[29, 1] = GLS.sHires.ToString("N0");
+            arr[30, 1] = GLS.sFires.ToString("N0");
+            arr[31, 1] = GLS.sHours_FiredStaff.ToString("N0");
+            arr[32, 1] = FormatTime(GLS.tPaused);
+            arr[33, 1] = FormatTime(GLS.tSpeed1);
+            arr[34, 1] = FormatTime(GLS.tSpeed2);
+            arr[35, 1] = FormatTime(GLS.tSpeed3);
+            arr[36, 1] = FormatTime(GLS.tInactive);
+            arr[37, 1] = GLS.tInteractions.ToString("N0");
+            arr[38, 1] = GLS.tClicks.ToString("N0");
+            arr[39, 1] = GLS.tClicksAlt.ToString("N0");
+
+            int j = 1;
+            int minimumday = GameTimer.Day > 30 ? GameTimer.Day - 29 : 1;
+            for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
+            {
+                j++;
+                TBFlashLogger(Log.FromPool($"i:{i},j:{j}").WithCodepoint());
+
+                if (!Game.current.GameReports.TryGetValue(i, out GamedayReportingData GRD))
+                {
+                    break;
+                }
+                arr[0, j] = GRD.FlightsCount.ToString("N0"); //This is flights scheduled, not flights on time
+                arr[1, j] = GRD.FlightsDelayed.ToString("N0");
+                arr[2, j] = GRD.FlightsCanceled.ToString("N0");
+
+                arr[6, j] = GRD.BoardedFlight.ToString("N0");
+                arr[7, j] = GRD.MissedFlight.ToString("N0");
+
+                arr[13, j] = GRD.LuggageSucceeded.ToString("N0");
+                arr[14, j] = GRD.LuggageLost.ToString("N0");
+
+                arr[16, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Advertising, true);
+                arr[17, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Fuel, true);
+
+                arr[19, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Retail, true);
+                arr[20, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Runway_Fees, true);
+                arr[21, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Terminal_Fees, true);
+
+                arr[25, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Staff, false);
+
+                //  arr[, j] = GRD.FuelFailures.ToString("N0");
+                //  arr[, j] = GRD.NumArrivalPax.ToString("N0");
+                //  arr[, j] = GRD.NumConnectPax.ToString("N0");
+                //  arr[, j] = GRD.AirlineInterestLevels.ToString("N0");
+            }
+            return arr;
+        }
+
+        private string GetDailyMoneyTotal(GamedayReportingData GRD, GamedayReportingData.MoneyCategory category, bool positive)
+        {
+            double num = 0.0;
+            if (!GRD.CategorizedCashChanges.ContainsKey(category))
+            {
+                return string.Empty;
+            }
+            foreach (double num2 in GRD.CategorizedCashChanges[category].Values)
+            {
+                if ((positive && num2 >= 0.0) || (!positive && num2 <= 0.0))
+                {
+                    num += num2;
+                }
+            }
+            return num.ToString("C0");
+        }
+
         private string GetLifetimeStats()
         {
-            string str = string.Empty;
-            GameLifetimeStats GLS = Game.current.lifetimeStats;
-            str += "<h1>Flight Stats</h1>";
-            str += $"On Time Flights: {GLS.flOnTime:N0}<br/>";
-            str += $"Delayed Flights: {GLS.flDelays:N0}<br/>";
-            str += $"Cancelled Flights: {GLS.flCancels:N0}<br/>";
-            str += $"Reneged Flights: {GLS.flReneges:N0}<br/>";
-            str += $"Landings: {GLS.Landings:N0}<br/>";
-            str += $"Takeoffs: {GLS.Takeoffs:N0}<br/>";
+            int counter = 1 + (GameTimer.Day <= 30 ? GameTimer.Day : 30);
+            int minimumday = GameTimer.Day > 30 ? GameTimer.Day - 29 : 1;
+            string[,] arr = LoadArray();
+            TBFlashLogger(Log.FromPool($"counter:{counter}").WithCodepoint());
 
-            str += "<h1>Passenger Stats</h1>";
-            str += $"Boarded Flight: {GLS.pBoarded:N0}<br/>";
-            str += $"Missed Flight: {GLS.pMissed:N0}<br/>";
+            string headerstring = "<td>Lifetime</td>";
+            for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
+            {
+                headerstring += $"<td>Day{i}</td>";
+            }
+            headerstring += "</tr>";
 
-            str += "<h1>Fuel Stats</h1>";
-            str += $"Fuel Requested: {GLS.fuelRequested / 1000:N0}L<br/>";
-            str += $"Fuel Provided: {GLS.fuelfRefueled / 1000:N0}L<br/>";
-            str += $"Planes Served Fuel: {GLS.planesServedFuel:N0}<br/>";
+            string str = $"<table border=\"1\"><tr><th>{i18n.Get("TBFlash.AirportStats.FS0")}</th>{headerstring}";
+            for (int i = 0; i <= 5; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i,j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.PS0")}</th>{headerstring}";
+            for (int i = 6; i <= 7; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.FuS0")}</th>{headerstring}";
+            for (int i = 8; i <= 10; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LS0")}</th>{headerstring}";
+            for (int i = 11; i <= 15; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.Rev0")}</th>{headerstring}";
+            for (int i = 16; i <= 22; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.Exp0")}</th>{headerstring}";
+            for (int i = 23; i <= 28; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.SS0")}</th>{headerstring}";
+            for (int i = 29; i <= 31; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.TS0")}</th>{headerstring}";
+            for (int i = 32; i <= 36; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
+            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.KS0")}</th>{headerstring}";
+            for (int i = 37; i <= 39; i++)
+            {
+                str += "<tr>";
+                for (int j = 0; j <= counter; j++)
+                {
+                    str += $"<td>{arr[i, j]}</td>";
+                }
+                str += "</tr>";
+            }
 
-            str += "<h1>Luggage Stats</h1>";
-            str += $"Bags Loaded: {GLS.pBagsLoaded:N0}<br/>";
-            str += $"Bags Unloaded: {GLS.pBagsUnloaded:N0}<br/>";
-            str += $"Luggage Success: {GLS.pBagSuccess:N0}<br/>";
-            str += $"Lost Luggage: {GLS.pBagFail:N0}<br/>";
-            str += $"Outdoor Baggage Loads: {GLS.outdoorBaggageLoads:N0}<br/>";
-
-            str += "<h1>Revenue</h1>";
-            str += $"Advertising: {GLS.mAdvertising:C0}<br/>";
-            str += $"Fuel: {GLS.mFuelRev:C0}<br/>";
-            str += $"Loans: {GLS.mLoans:C0}<br/>";
-            str += $"Retail: {GLS.mRetailRev:C0}<br/>";
-            str += $"Runway Usage: {GLS.mRwyUsageRev:C0}<br/>";
-            str += $"Terminal Usage: {GLS.mTerminalUsageRev:C0}<br/>";
-            str += $"Total Revenue: {GLS.mRev:C0}<br/>";
-
-            str += "<h1>Expenses</h1>";
-            str += $"Interest: {GLS.mInterest:C0}<br/>";
-            str += $"Retail: {GLS.mRetailExpense:C0}<br/>";
-            str += $"Staff Wages: {GLS.mStaffWages:C0}<br/>";
-            str += $"Income Tax: {GLS.mIncomeTax:C0}<br/>";
-            str += $"Property Tax: {GLS.mPropertyTax:C0}<br/>";
-            str += $"Total Expenses: {GLS.mExpense:C0}<br/>";
-
-            str += "<h1>Staff Stats</h1>";
-            str += $"Hired: {GLS.sHires:N0}<br/>";
-            str += $"Fired: {GLS.sFires:N0}<br/>";
-            str += $"Fired Staff - Total hours hired: {GLS.sHours_FiredStaff:N0}<br/>";
-
-            str += "<h1>Time Stats</h1>";
-            str += $"Time Paused: {FormatTime(GLS.tPaused)}<br/>";
-            str += $"Speed 1: {FormatTime(GLS.tSpeed1)}<br/>";
-            str += $"Speed 2: {FormatTime(GLS.tSpeed2)}<br/>";
-            str += $"Speed 3: {FormatTime(GLS.tSpeed3)}<br/>";
-            str += $"Inactive: {FormatTime(GLS.tInactive)}<br/>";
-
-            str += "<h1>Keyboard / Mouse Stats</h1>";
-            str += $"Keyboard Clicks: {GLS.tInteractions:N0}<br/>";
-            str += $"Left Mouse Clicks: {GLS.tClicks:N0}<br/>";
-            str += $"Right Mouse Clicks: {GLS.tClicksAlt:N0}<br/>";
-
+            str += "</table>";
             return str;
         }
 

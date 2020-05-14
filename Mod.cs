@@ -59,6 +59,11 @@ namespace TBFlash.AirportStats
         public override void OnSettingsLoaded()
         {
             TBFlashLogger(Log.FromPool("").WithCodepoint());
+            LabelSetting description = new LabelSetting
+            {
+                Name = "A webbrowser will open to localhost:2198 when you start this mod.",
+            };
+            SettingManager.AddDefault("Description", description);
         }
 
         private void TBFlashLogger(Log log)
