@@ -5,54 +5,178 @@
 		<name>Airport Stats</name>
 		<description>Statistics about the airport</description>
 		<browser>A webbrowser will open to localhost:2198 when you start this mod.</browser>
-		<FS0>Flight Stats</FS0>
-		<FS1>On Time Flights</FS1>
-		<FS2>Delayed Flights</FS2>
-		<FS3>Cancelled Flights</FS3>
-		<FS4>Reneged Flights</FS4>
-		<FS5>Landings</FS5>
-		<FS6>Takeoffs</FS6>
-		<PS0>Passenger Stats</PS0>
-		<PS1>Boarded Flight</PS1>
-		<PS2>Missed Flight</PS2>
-		<FuS0>Fuel Stats</FuS0>
-		<FuS1>Fuel Requested</FuS1>
-		<FuS2>Fuel Provided</FuS2>
-		<FuS3>Planes Served Fuel</FuS3>
-		<LS0>Luggage Stats</LS0>
-		<LS1>Bags Loaded</LS1>
-		<LS2>Bags Unloaded</LS2>
-		<LS3>Luggage Success</LS3>
-		<LS4>Lost Luggage</LS4>
-		<LS5>Outdoor Baggage Loads</LS5>
-		<Rev0>Revenue</Rev0>
-		<Rev1>Advertising</Rev1>
-		<Rev2>Fuel</Rev2>
-		<Rev3>Loans</Rev3>
-		<Rev4>Retail</Rev4>
-		<Rev5>Runway Usage</Rev5>
-		<Rev6>Terminal Usage</Rev6>
-		<Rev7>Total Revenue</Rev7>
-		<Exp0>Expenses</Exp0>
-		<Exp1>Interest</Exp1>
-		<Exp2>Retail</Exp2>
-		<Exp3>Staff Wages</Exp3>
-		<Exp4>Income Tax</Exp4>
-		<Exp5>Property Tax</Exp5>
-		<Exp6>Total Expenses</Exp6>
-		<SS0>Staff Stats</SS0>
-		<SS1>Hired</SS1>
-		<SS2>Fired</SS2>
-		<SS3>Fired Staff - Total hours hired</SS3>
-		<TS0>Time Stats</TS0>
-		<TS1>Time Paused</TS1>
-		<TS2>Speed 1</TS2>
-		<TS3>Speed 2</TS3>
-		<TS4>Speed 3</TS4>
-		<TS5>Inactive</TS5>
-		<KS0>Keyboard / Mouse Stats</KS0>
-		<KS1>Keyboard Clicks</KS1>
-		<KS2>Left Mouse Clicks</KS2>
-		<KS3>Right Mouse Clicks</KS3>
+		<LifetimeStats>
+			<header0>Flight Stats</header0>
+			<header1>Passenger Stats</header1>
+			<header2>Fuel Stats</header2>
+			<header3>Luggage Stats</header3>
+			<header4>Revenue</header4>
+			<header5>Expenses</header5>
+			<header6>Staff Stats</header6>
+			<header7>Time Stats (Real Time)</header7>
+			<header8>Keyboard / Mouse Stats</header8>
+			<stats0>Departures Scheduled</stats0>
+			<stats1>On Time Departures</stats1>
+			<stats2>Delayed Departures</stats2>
+			<stats3>Cancelled Flights</stats3>
+			<stats4>Reneged Flights</stats4>
+			<stats5>Total Landings</stats5>
+			<stats6>Total Takeoffs</stats6>
+			<stats7>Arriving</stats7>
+			<stats8>Connecting</stats8>			
+			<stats9>Boarded Flight</stats9>
+			<stats10>Missed Flight</stats10>
+			<stats11>Fuel Requested</stats11>
+			<stats12>Fuel Provided</stats12>
+			<stats13>Planes Served Fuel</stats13>
+			<stats14>Fueling Failures</stats14>
+			<stats15>Bags Loaded</stats15>
+			<stats16>Bags Unloaded</stats16>
+			<stats17>Luggage Success</stats17>
+			<stats18>Lost Luggage</stats18>
+			<stats19>Baggage Loaded via Baggage Carts</stats19>
+			<stats20>Advertising</stats20>
+			<stats21>Airline Fees</stats21>
+			<stats22>Bank</stats22>
+			<stats23>Fuel</stats23>
+			<stats24>Grant</stats24>
+			<stats25>Materials</stats25>
+			<stats26>Parking</stats26>
+			<stats27>Research</stats27>
+			<stats28>Retail</stats28>
+			<stats29>Runway Usage</stats29>
+			<stats30>Terminal Usage</stats30>
+			<stats31>Staff</stats31>
+			<stats32>Undefined</stats32>
+			<stats33>Total Revenue</stats33>
+			<stats34>Airline Fees</stats34>
+			<stats35>Bank</stats35>
+			<stats36>Fuel</stats36>
+			<stats37>Grant</stats37>
+			<stats38>Infrastructustats</stats38>
+			<stats39>Land Purchase</stats39>
+			<stats40>Maintenance</stats40>
+			<stats41>Materials</stats41>
+			<stats42>Research</stats42>
+			<stats43>Retail</stats43>
+			<stats44>Staff</stats44>
+			<stats45>Income + Property Taxes</stats45>
+			<stats46>Income Tax</stats46>
+			<stats47>Property Tax</stats47>
+			<stats48>Transportation</stats48>
+			<stats49>Undefined</stats49>
+			<stats50>Total Expenses</stats50>
+			<stats51>Hired</stats51>
+			<stats52>Fired</stats52>
+			<stats53>Time Paused</stats53>
+			<stats54>Speed 1</stats54>
+			<stats55>Speed 2</stats55>
+			<stats56>Speed 3</stats56>
+			<stats57>Inactive</stats57>
+			<stats58>Keyboard Clicks</stats58>
+			<stats59>Left Mouse Clicks</stats59>
+			<stats60>Right Mouse Clicks</stats60>
+		</LifetimeStats>
+		<AllAirlineStats>
+			<stats0>Airline Name</stats0>
+			<stats1>Active</stats1>
+			<stats2>Interest</stats2>
+			<stats3>Communication</stats3>
+			<stats4>Fuel Satisfaction</stats4>
+			<stats5>Pax Satisfaction</stats5>
+			<stats6>Commercial Fees</stats6>
+			<stats7>Service Reliabiltiy</stats7>
+			<stats8>Trust</stats8>
+			<stats9>Facility Quality</stats9>
+			<stats10>Daily Flights</stats10>
+			<stats11>Base Refuel Percentage</stats11>
+			<stats12>First Class Percentage</stats12>
+			<stats13>New Flight Bonus</stats13>
+			<stats14>Peak Flights Count</stats14>
+			<stats15># Reps</stats15>
+			<stats16>Has Deal</stats16>
+			<stats17>Negotiated Runway Fees</stats17>
+			<stats18>Negotiated Terminal Fees</stats18>
+			<stats19>Negotiated Daily Fees</stats19>
+			<stats20>Negotiated Fuel Satisfaction</stats20>
+			<stats21>Negotiated Service Reliability</stats21>
+			<stats22># Offices</stats22>
+			<stats23>Has Conference Room</stats23>
+			<stats24># Stores</stats24>
+			<stats25>Negotiated Store Profit Share</stats25>
+			<stats26># Cafeterias</stats26>
+			<stats27>Negotiated Cafe Profit Share</stats27>
+			<stats28># First Class Lounges</stats28>
+			<stats29># Flight Crew Lounges</stats29>
+			<stats30># Small Gates Assigned</stats30>
+			<stats31># Large Gates Assigned</stats31>
+			<stats32># XL Gates Assigned</stats32>
+			<stats33>Negotiated Min. Load Per Flight</stats33>
+			<stats34>Negotiated Breach Penalty</stats34>
+		</AllAirlineStats>
+		<AirlineCompanyStats>
+			<stats0>Number Flights</stats0>
+			<stats1># Arr. Pax</stats1>
+			<stats2>Total Time Deplaning</stats2>
+			<stats3># Sched. Dep. Pax</stats3>
+			<stats4># Checked In Pax</stats4>
+			<stats5># Boarded Pax</stats5>
+			<stats6>Total Time Boarding</stats6>
+			<stats7># Arr. Bags</stats7>
+			<stats8># Bags Unloaded</stats8>
+			<stats9># Dep. Bags</stats9>
+			<stats10># Bags Loaded</stats10>
+			<stats11>Total Time Loading Bags</stats11>
+			<stats12>Fuel Requested</stats12>
+			<stats13>Fuel Delivered</stats13>
+			<stats14>Total Enroute</stats14>
+			<stats15>Total On Ground</stats15>
+			<stats16>Total Delayed Arrival</stats16>
+			<stats17>Total Departed</stats17>
+			<stats18>Total Delayed Departure</stats18>
+			<stats19>Flights Cancelled</stats19>
+			<stats20>Canx for: Airport Invalid  </stats20>
+			<stats21>Weather  </stats21>
+			<stats22>Runway  </stats22>
+			<stats23>Gate  </stats23>
+			<stats24>Expired  </stats24>
+			<stats25>Reneged  </stats25>
+		</AirlineCompanyStats>
+		<AirlineDailyStats>
+			<stats0>Aircraft Type</stats0>
+			<stats1>Sched. Arr. Time</stats1>
+			<stats2>Actual Arr. Time</stats2>
+			<stats3>Sched. Dep. Time</stats3>
+			<stats4>Actual Dep. Time</stats4>
+			<stats5># Arr. Pax</stats5>
+			<stats6>Time Deplaning</stats6>
+			<stats7># Sched. Dep. Pax</stats7>
+			<stats8># Checked In Pax</stats8>
+			<stats9># Boarded Pax</stats9>
+			<stats10>Total Time Boarding</stats10>
+			<stats11># Arr. Bags</stats11>
+			<stats12># Bags Unloaded</stats12>
+			<stats13>Time Done Unloading Bags</stats13>
+			<stats14># Dep. Bags</stats14>
+			<stats15># Bags Loaded</stats15>
+			<stats16>Total Time Loading Bags</stats16>
+			<stats17>Fuel Requested</stats17>
+			<stats18>Fuel Delivered</stats18>
+			<stats19>Status's</stats19>
+			<stats20>Cancellation Reason</stats20>
+		</AirlineDailyStats>
+		<utils>
+			<url0>/</url0>
+			<url1>/AllAirlines</url1>
+			<url2>/Airlines</url2>
+			<value0>Airport Stats</value0>
+			<value1>All Airlines</value1>
+			<value2>Active Airlines</value2>
+			<day>Day</day>
+			<yes>Yes</yes>
+			<no>No</no>
+			<lifetime>Lifetime</lifetime>
+			<currentDay>Current Day</currentDay>
+		</utils>
 	</AirportStats>
 </TBFlash>

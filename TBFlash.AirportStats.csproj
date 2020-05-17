@@ -52,6 +52,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TBFlash_AirlineDailyStats.cs" />
+    <Compile Include="TBFlash_AirlineStats.cs" />
+    <Compile Include="TBFlash_LifetimeStats.cs" />
+    <Compile Include="TBFlash_Utils.cs" />
+    <Compile Include="TBFlash_AllAirlineStats.cs" />
     <Compile Include="TBFlash_Server.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
