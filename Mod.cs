@@ -41,7 +41,7 @@ namespace TBFlash.AirportStats
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
         }
 
-        public override void OnAirportLoaded(Dictionary<string, object> saveData)
+       public override void OnAirportLoaded(Dictionary<string, object> saveData)
         {
             ScriptHandler sh = (ScriptHandler)ModLoader.ModHandlers.Find(x => x.GetType() == typeof(ScriptHandler));
             sh?.SetModStatus(this, false);
@@ -49,7 +49,6 @@ namespace TBFlash.AirportStats
 
         public override void OnSettingsLoaded()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             LabelSetting description = new LabelSetting
             {
                 Name = "A webbrowser will open to localhost:2198 when you start this mod.",
