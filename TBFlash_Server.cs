@@ -64,6 +64,7 @@ namespace TBFlash.AirportStats
             {
                 str = str.Substring(0, index);
             }
+            str = str.Replace("%20", " ");
             string responseString = string.Empty;
             if (str.Equals("Airlines", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -79,14 +80,25 @@ namespace TBFlash.AirportStats
             }
             else if(str.Equals(string.Empty))
             {
-                responseString += TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AirportStats);
-                TBFlash_LifetimeStats content = new TBFlash_LifetimeStats();
-                responseString += content.GetLifetimeStats();
+                responseString += DefaultResponse();
+            }
+            else if (str.Equals("Daily Stats", StringComparison.InvariantCultureIgnoreCase))
+            {
+                int day = int.TryParse(request.QueryString["day"], out int value) ? value : -1;
+                if (day == -1)
+                {
+                    responseString += DefaultResponse();
+                }
+                else
+                {
+                    responseString += TBFlash_Utils.PageHead(null, day);
+                    TBFlash_AirlineDailyStats content = new TBFlash_AirlineDailyStats();
+                    responseString += content.GetDailyStats(null, day);
+                }
             }
             else
             {
-                string newStr = str.Replace("%20", " ");
-                Airline airline = AirlineManager.FindByName(newStr);
+                Airline airline = AirlineManager.FindByName(str);
                 if (airline != null)
                 {
                     int day = int.TryParse(request.QueryString["day"], out int value) ? value : -1;
@@ -104,9 +116,7 @@ namespace TBFlash.AirportStats
                 }
                 else
                 {
-                    responseString += TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AirportStats);
-                    TBFlash_LifetimeStats content = new TBFlash_LifetimeStats();
-                    responseString += content.GetLifetimeStats();
+                    responseString += DefaultResponse();
                 }
             }
             responseString += TBFlash_Utils.PageFooter();
@@ -117,6 +127,13 @@ namespace TBFlash.AirportStats
             Stream outputStream = response.OutputStream;
             outputStream.Write(buffer, 0, buffer.Length);
             outputStream.Close();
+        }
+
+        private string DefaultResponse()
+        {
+            string str = TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AirportStats);
+            TBFlash_LifetimeStats content = new TBFlash_LifetimeStats();
+            return str += content.GetLifetimeStats();
         }
     }
 }

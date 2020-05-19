@@ -66,13 +66,13 @@ namespace TBFlash.AirportStats
                 arr[7, j] = ((airline.Needs?.AllNeeds.TryGetValue("Reliability", out need) == true) ? 1f - need.AttenuatedScore : 0f).ToString("P1");
                 arr[8, j] = ((airline.Needs?.AllNeeds.TryGetValue("Trust", out need) == true) ? 1f - need.AttenuatedScore : 0f).ToString("P1");
                 arr[9, j] = ((airline.Needs?.AllNeeds.TryGetValue("FacilityQuality", out need) == true) ? 1f - need.AttenuatedScore : 0f).ToString("P1");
-                arr[10, j] = airline.nAcceptedOffers.ToString("N0");
+                arr[10, j] = airline.nAcceptedOffers.ToString("#");
                 arr[11, j] = airline.BaseRefuelPercentage.ToString("P1");
                 arr[12, j] = airline.FirstClassPercentage.ToString("P1");
                 arr[13, j] = airline.Income_NewFlightBonus_PerFlight.ToString("C0");
-                arr[14, j] = airline.PeakFlightsCount.ToString("N0");
-                arr[15, j] = airline.Reps?.Count.ToString("N0") ?? string.Empty;
-                arr[16, j] = (airline.Needs?.HasDeal == true).ToString();
+                arr[14, j] = airline.PeakFlightsCount.ToString("#");
+                arr[15, j] = airline.Reps?.Count.ToString("#") ?? string.Empty;
+                arr[16, j] = airline.Needs?.HasDeal == true ? "Yes" : "No";
                 if (airline.Needs?.HasDeal == true)
                 {
                     arr[17, j] = airline.Needs.NegotiatedRunwayFees.ToString("C0");
@@ -88,9 +88,9 @@ namespace TBFlash.AirportStats
                     arr[27, j] = (((double)airline.Needs.NegotiatedCafeShare)/100f).ToString("P1");
                     arr[28, j] = airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.First_Class_Lounge).ToString("#");
                     arr[29, j] = airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Flight_Crew_Lounge).ToString("#");
-                    arr[30, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Small).ToString();
-                    arr[31, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Large).ToString(); 
-                    arr[32, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Extra_Large).ToString();
+                    arr[30, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Small).ToString("#");
+                    arr[31, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Large).ToString("#"); 
+                    arr[32, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Extra_Large).ToString("#");
                     arr[33, j] = ((double)airline.Needs.NegotiatedPaxPercent / 100).ToString("P0");
                     arr[34, j] = airline.Needs.NegotiatedPenalty.ToString("C0");
                 }

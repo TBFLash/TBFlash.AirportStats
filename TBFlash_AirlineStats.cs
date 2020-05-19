@@ -53,7 +53,7 @@ namespace TBFlash.AirportStats
                 TBFlash_Utils.TBFlashLogger(Log.FromPool($"i:{i}; j:{j}").WithCodepoint());
 
                 IEnumerable<FlightRecord> frs = Game.current.flightRecords.GetForDay(i-1).Where(x => x.airline == airline.name);
-                arr[0, j] = frs.Count().ToString("#,###");
+                arr[0, j] = frs.Any() ? frs.Count().ToString("#,###"):"None";
                 arr[1, j] = frs.Sum(x => x.nArriving).ToString("#,###");
                 arr[2, j] = TBFlash_Utils.FormatTime(frs.Sum(x => x.time_deplaning)*60f);
                 arr[3, j] = frs.Sum(x => x.nDeparting).ToString("#,###");

@@ -16,7 +16,7 @@ namespace TBFlash.AirportStats
             string day = i18n.Get("TBFlash.AirportStats.utils.day");
             for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
             {
-                headerstring += $"<th>{day} {i}</th>";
+                headerstring += $"<th><a href=\"Daily Stats?Day={i}\">{day} {i}</a></th>";
             }
             headerstring += "</tr>";
 
@@ -231,7 +231,7 @@ namespace TBFlash.AirportStats
                     num += num2;
                 }
             }
-            return num.ToString("C0");
+            return num != 0.0 ? num.ToString("C0") : string.Empty;
         }
     }
 }

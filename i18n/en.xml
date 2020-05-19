@@ -143,27 +143,28 @@
 			<stats25>Reneged  </stats25>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
-			<stats0>Aircraft Type</stats0>
-			<stats1>Sched. Arr. Time</stats1>
-			<stats2>Actual Arr. Time</stats2>
-			<stats3>Sched. Dep. Time</stats3>
-			<stats4>Actual Dep. Time</stats4>
-			<stats5># Arr. Pax</stats5>
-			<stats6>Time Deplaning</stats6>
-			<stats7># Sched. Dep. Pax</stats7>
-			<stats8># Checked In Pax</stats8>
-			<stats9># Boarded Pax</stats9>
-			<stats10>Total Time Boarding</stats10>
-			<stats11># Arr. Bags</stats11>
-			<stats12># Bags Unloaded</stats12>
-			<stats13>Time Done Unloading Bags</stats13>
-			<stats14># Dep. Bags</stats14>
-			<stats15># Bags Loaded</stats15>
-			<stats16>Total Time Loading Bags</stats16>
-			<stats17>Fuel Requested</stats17>
-			<stats18>Fuel Delivered</stats18>
-			<stats19>Status's</stats19>
-			<stats20>Cancellation Reason</stats20>
+			<stats0>Airline</stats0>
+			<stats1>Aircraft Type</stats1>
+			<stats2>Sched. Arr. Time</stats2>
+			<stats3>Actual Arr. Time</stats3>
+			<stats4>Sched. Dep. Time</stats4>
+			<stats5>Actual Dep. Time</stats5>
+			<stats6># Arr. Pax</stats6>
+			<stats7>Time Deplaning</stats7>
+			<stats8># Sched. Dep. Pax</stats8>
+			<stats9># Checked In Pax</stats9>
+			<stats10># Boarded Pax</stats10>
+			<stats11>Total Time Boarding</stats11>
+			<stats12># Arr. Bags</stats12>
+			<stats13># Bags Unloaded</stats13>
+			<stats14>Time Done Unloading Bags</stats14>
+			<stats15># Dep. Bags</stats15>
+			<stats16># Bags Loaded</stats16>
+			<stats17>Total Time Loading Bags</stats17>
+			<stats18>Fuel Requested</stats18>
+			<stats19>Fuel Delivered</stats19>
+			<stats20>Status's</stats20>
+			<stats21>Cancellation Reason</stats21>
 		</AirlineDailyStats>
 		<utils>
 			<url0>/</url0>
@@ -177,6 +178,8 @@
 			<no>No</no>
 			<lifetime>Lifetime</lifetime>
 			<currentDay>Current Day</currentDay>
+			<dailyStats>Daily Stats</dailyStats>
+			<go>Go</go>
 		</utils>
 	</AirportStats>
 </TBFlash>
