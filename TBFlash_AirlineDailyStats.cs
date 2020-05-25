@@ -10,23 +10,29 @@ namespace TBFlash.AirportStats
 
         internal string GetDailyStats(Airline airline, int day)
         {
-            string str = "<table>";
+            string htmlCode = TBFlash_Utils.PageHead(airline, day);
+            htmlCode += "<table>";
             string[,] arr = LoadArray(airline, day);
             for (int i = 0; i < (arr.Length / arrayCols); i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
 
                 for (int j = airline == null ? 0 : 1; j < arrayCols; j++)
                 {
-                    str += i == 0 ? $"<th>{arr[i, j]}</th>"
+                    htmlCode += i == 0 ? $"<th>{arr[i, j]}</th>"
                         : j == 0
                             ? $"<td><a href=\"/{arr[i, j]}?Day={day}\">{arr[i, j]}</a></td>"
-                            : $"<td>{arr[i, j]}</td>";
+                            : j == 1
+                            //    ? $"<td><a onclick=\"getAircraft(\'{arr[i, j]}\');\" id=\"manual-ajax\">{arr[i, j]}</a></td>"
+                                ? $"<td><a class=\"ajax-dialog\" href=\"/aircraftstats?aircraft={arr[i,j]}\" rel=\"#dialog\">{arr[i,j]}</a></td>"
+                                : $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += "</table>";
-            return str;
+            htmlCode += "</table>";
+            htmlCode += "<div id=\"dialog\" title=\"Basic dialog\"><p>We're sorry, there has been an error.</p></div>";
+            htmlCode += TBFlash_Utils.PageFooter();
+            return htmlCode;
         }
 
         private string[,] LoadArray(Airline airline, int day)
@@ -45,22 +51,22 @@ namespace TBFlash.AirportStats
                 FlightRecord fr = flightRecords.ElementAt(i - 1);
                 arr[i, 0] = fr.airline;
                 arr[i, 1] = fr.aircraft;
-                arr[i, 2] = TBFlash_Utils.FormatTime(fr.arrivalTime * 60, false, false, true);
-                arr[i, 3] = fr.actual_arrivalTime > 0 ? TBFlash_Utils.FormatTime(fr.actual_arrivalTime * 60, false, false, true) : string.Empty;
-                arr[i, 4] = TBFlash_Utils.FormatTime(fr.departureTime * 60, false, false, true);
-                arr[i, 5] = fr.actual_departureTime > 0 ? TBFlash_Utils.FormatTime(fr.actual_departureTime * 60, false, false, true) : string.Empty;
+                arr[i, 2] = TBFlash_Utils.FormatTime(fr.arrivalTime * 60, true);
+                arr[i, 3] = fr.actual_arrivalTime > 0 ? TBFlash_Utils.FormatTime(fr.actual_arrivalTime * 60, true) : string.Empty;
+                arr[i, 4] = TBFlash_Utils.FormatTime(fr.departureTime * 60, true);
+                arr[i, 5] = fr.actual_departureTime > 0 ? TBFlash_Utils.FormatTime(fr.actual_departureTime * 60, true) : string.Empty;
                 arr[i, 6] = fr.nArriving.ToString("#");
-                arr[i, 7] = fr.actual_arrivalTime > 0 ? TBFlash_Utils.FormatTime(fr.time_deplaning * 60, false, true, false) : string.Empty;
+                arr[i, 7] = fr.actual_arrivalTime > 0 ? TBFlash_Utils.FormatTime(fr.time_deplaning * 60) : string.Empty;
                 arr[i, 8] = fr.nDeparting.ToString("#");
                 arr[i, 9] = fr.nCheckedIn.ToString("#");
                 arr[i, 10] = fr.nBoarded.ToString("#");
-                arr[i, 11] = fr.nBoarded > 0 ? TBFlash_Utils.FormatTime(fr.time_boarding * 60, false, true, false) : string.Empty;
+                arr[i, 11] = fr.nBoarded > 0 ? TBFlash_Utils.FormatTime(fr.time_boarding * 60) : string.Empty;
                 arr[i, 12] = fr.nArrivalBags.ToString("#");
                 arr[i, 13] = fr.nBagsUnloaded.ToString("#");
-                arr[i, 14] = fr.nBagsUnloaded > 0 ? TBFlash_Utils.FormatTime(fr.time_bag_unload * 60, false, false, true) : string.Empty;
+                arr[i, 14] = fr.nBagsUnloaded > 0 ? TBFlash_Utils.FormatTime(fr.time_bag_unload * 60, true) : string.Empty;
                 arr[i, 15] = fr.nDepartingBags.ToString("#");
                 arr[i, 16] = fr.nBagsLoaded.ToString("#");
-                arr[i, 17] = fr.nBagsLoaded > 0 ? TBFlash_Utils.FormatTime(fr.time_bag_load * 60, false, true, false) : string.Empty;
+                arr[i, 17] = fr.nBagsLoaded > 0 ? TBFlash_Utils.FormatTime(fr.time_bag_load * 60) : string.Empty;
                 arr[i, 18] = (fr.nFuelRequested / 1000).ToString("#,###");
                 arr[i, 19] = (fr.nFuelRefueled / 1000).ToString("#,###");
                 string st = string.Empty;

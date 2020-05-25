@@ -12,18 +12,20 @@ namespace TBFlash.AirportStats
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             string[,] arr = LoadArray(activeOnly);
-            string str = "<table>";
+
+            string htmlCode = activeOnly ? TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.ActiveAirlines) : TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AllAirlines);
+            htmlCode += "<table>";
             for (int i = 0; i < arrayRows; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j < (arr.Length / arrayRows); j++)
                 {
-                    str += i == 0 ? $"<th><a href=\"/{arr[i, j]}\">{arr[i, j]}</a></th>" : $"<td>{arr[i, j]}</td>";
+                    htmlCode += i == 0 ? $"<th><a href=\"/{arr[i, j]}\">{arr[i, j]}</a></th>" : $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += "</table>";
-            return str;
+            htmlCode += "</table>" + TBFlash_Utils.PageFooter();
+            return htmlCode;
         }
 
         private string[,] LoadArray(bool activeOnly = false)
@@ -48,17 +50,9 @@ namespace TBFlash.AirportStats
                     break;
                 }
                 arr[0, j] = airline.name;
-                try
-                {
-                    arr[1, j] = airline.IncludeInSatisfication.ToString();
-                }
-                catch
-                {
-                    arr[1, j] = string.Empty;
-                }
+                arr[1, j] = airline.IncludeInSatisfication ? i18n.Get("TBFlash.AirportStats.utils.yes") : i18n.Get("TBFlash.AirportStats.utils.no");
                 arr[2, j] = airline.interest.ToString("P1");
                 AirlineNeed need = null;
-
                 arr[3, j] = ((airline.Needs?.AllNeeds.TryGetValue("Communication", out need) == true) ? 1f - need.AttenuatedScore : 0f).ToString("P1");
                 arr[4, j] = ((airline.Needs?.AllNeeds.TryGetValue("FuelSatisfaction", out need) == true) ? 1f - need.AttenuatedScore : 0f).ToString("P1");
                 arr[5, j] = ((airline.Needs?.AllNeeds.TryGetValue("PaxSatisfaction", out need) == true) ? 1f - need.AttenuatedScore : 0f).ToString("P1");
@@ -73,6 +67,12 @@ namespace TBFlash.AirportStats
                 arr[14, j] = airline.PeakFlightsCount.ToString("#");
                 arr[15, j] = airline.Reps?.Count.ToString("#") ?? string.Empty;
                 arr[16, j] = airline.Needs?.HasDeal == true ? "Yes" : "No";
+                /* string airlineStr = string.Empty;
+                foreach(string aircraft in airline.AircraftInFleet)
+                {
+                    airlineStr += aircraft + "<br/>";
+                }
+                arr[35, j] = airlineStr;*/
                 if (airline.Needs?.HasDeal == true)
                 {
                     arr[17, j] = airline.Needs.NegotiatedRunwayFees.ToString("C0");
@@ -89,7 +89,7 @@ namespace TBFlash.AirportStats
                     arr[28, j] = airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.First_Class_Lounge).ToString("#");
                     arr[29, j] = airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Flight_Crew_Lounge).ToString("#");
                     arr[30, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Small).ToString("#");
-                    arr[31, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Large).ToString("#"); 
+                    arr[31, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Large).ToString("#");
                     arr[32, j] = Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Extra_Large).ToString("#");
                     arr[33, j] = ((double)airline.Needs.NegotiatedPaxPercent / 100).ToString("P0");
                     arr[34, j] = airline.Needs.NegotiatedPenalty.ToString("C0");

@@ -3,6 +3,8 @@ using System.Net;
 using SimAirport.Logging;
 using System.IO;
 using UnityEngine;
+using System.Reflection;
+using System.Resources;
 
 namespace TBFlash.AirportStats
 {
@@ -45,9 +47,7 @@ namespace TBFlash.AirportStats
         {
             if (Listener == null)
                 return;
-            // Get out the context object
             HttpListenerContext context = Listener.EndGetContext(result);
-            // *** Immediately set up the next context
             Listener.BeginGetContext(new AsyncCallback(WebRequestCallback), Listener);
             ReceiveWebRequest?.Invoke(context);
             ProcessRequest(context);
@@ -57,83 +57,90 @@ namespace TBFlash.AirportStats
         {
             HttpListenerRequest request = context.Request;
             HttpListenerResponse response = context.Response;
+            response.ContentType = "text/html";
 
-            string str = request.RawUrl.TrimStart(new char[] { '/', '\\' });
-            int index = str.IndexOf("?");
+            string requestedPage = request.RawUrl.TrimStart(new char[] { '/', '\\' });
+            TBFlash_Utils.TBFlashLogger(Log.FromPool(requestedPage).WithCodepoint());
+
+            int index = requestedPage.IndexOf("?");
             if (index > 0)
             {
-                str = str.Substring(0, index);
+                requestedPage = requestedPage.Substring(0, index);
             }
-            str = str.Replace("%20", " ");
+            requestedPage = requestedPage.Replace("%20", " ");
+            int day = int.TryParse(request.QueryString["day"], out int value) ? value : -1;
+            string aircraft = request.QueryString["aircraft"];
+            string dataset = request.QueryString["dataset"];
             string responseString = string.Empty;
-            if (str.Equals("Airlines", StringComparison.InvariantCultureIgnoreCase))
+            switch (requestedPage.ToUpperInvariant())
             {
-                responseString += TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.ActiveAirlines);
-                TBFlash_AllAirlineStats content = new TBFlash_AllAirlineStats();
-                responseString += content.GetAllAirlineStats(true);
-            }
-            else if (str.Equals("AllAirlines", StringComparison.InvariantCultureIgnoreCase))
-            {
-                responseString += TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AllAirlines);
-                TBFlash_AllAirlineStats content = new TBFlash_AllAirlineStats();
-                responseString += content.GetAllAirlineStats();
-            }
-            else if(str.Equals(string.Empty))
-            {
-                responseString += DefaultResponse();
-            }
-            else if (str.Equals("Daily Stats", StringComparison.InvariantCultureIgnoreCase))
-            {
-                int day = int.TryParse(request.QueryString["day"], out int value) ? value : -1;
-                if (day == -1)
-                {
-                    responseString += DefaultResponse();
-                }
-                else
-                {
-                    responseString += TBFlash_Utils.PageHead(null, day);
-                    TBFlash_AirlineDailyStats content = new TBFlash_AirlineDailyStats();
-                    responseString += content.GetDailyStats(null, day);
-                }
-            }
-            else
-            {
-                Airline airline = AirlineManager.FindByName(str);
-                if (airline != null)
-                {
-                    int day = int.TryParse(request.QueryString["day"], out int value) ? value : -1;
-                    responseString += TBFlash_Utils.PageHead(airline, day);
-                    if (day == -1)
+                case "AIRLINES":
+                    responseString += new TBFlash_AllAirlineStats().GetAllAirlineStats(true);
+                    break;
+                case "AIRCRAFTSTATS":
+                    if (!string.IsNullOrEmpty(aircraft) && AircraftConfigManager.FindByAnyName(aircraft, false) != null)
                     {
-                        TBFlash_AirlineStats content = new TBFlash_AirlineStats();
-                        responseString += content.GetAirlineStats(airline);
+                        responseString += new TBFlash_AircraftStats().GetAircraftStats(AircraftConfigManager.FindByAnyName(aircraft, false));
+                    }
+                    break;
+                case "ALLAIRLINES":
+                    responseString += new TBFlash_AllAirlineStats().GetAllAirlineStats();
+                    break;
+                case "DAILY STATS":
+                    responseString += day == -1
+                        ? new TBFlash_LifetimeStats().GetLifetimeStats()
+                        : new TBFlash_AirlineDailyStats().GetDailyStats(null, day);
+                    break;
+                case "FAVICON.ICO":
+                    break;
+                case "AIRPORTSTATS.JS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("AirportStats");
+                    response.ContentType = "text/javascript";
+                    break;
+                case "JQUERY.MIN.JS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("jquery_min");
+                    response.ContentType = "text/javascript";
+                    break;
+                case "JQUERY-UI.MIN.JS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("jquery_ui_min");
+                    response.ContentType = "text/javascript";
+                    break;
+                case "JQUERY-UI.CSS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("jquery_ui");
+                    response.ContentType = "text/css";
+                    break;
+                case "CHART.MIN.JS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("Chart_min1");
+                    response.ContentType = "text/javascript";
+                    break;
+                case "CHART.MIN.CSS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("Chart_min");
+                    response.ContentType = "text/css";
+                    break;
+                case "CHARTDATA":
+                    responseString += new TBFlash_ChartData().GetChartData(dataset);
+                    response.ContentType = "application/json";
+                    break;
+                default:
+                    Airline airline = AirlineManager.FindByName(requestedPage);
+                    if (airline != null)
+                    {
+                        responseString += day == -1
+                            ? new TBFlash_AirlineStats().GetAirlineStats(airline)
+                            : new TBFlash_AirlineDailyStats().GetDailyStats(airline, day);
                     }
                     else
                     {
-                        TBFlash_AirlineDailyStats content = new TBFlash_AirlineDailyStats();
-                        responseString += content.GetDailyStats(airline, day);
+                        responseString += new TBFlash_LifetimeStats().GetLifetimeStats();
                     }
-                }
-                else
-                {
-                    responseString += DefaultResponse();
-                }
+                    break;
             }
-            responseString += TBFlash_Utils.PageFooter();
 
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
-            response.ContentType = "text/html";
             response.ContentLength64 = buffer.Length;
             Stream outputStream = response.OutputStream;
             outputStream.Write(buffer, 0, buffer.Length);
             outputStream.Close();
-        }
-
-        private string DefaultResponse()
-        {
-            string str = TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AirportStats);
-            TBFlash_LifetimeStats content = new TBFlash_LifetimeStats();
-            return str += content.GetLifetimeStats();
         }
     }
 }

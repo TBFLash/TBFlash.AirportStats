@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TBFlash>
+	<AirportStats>
+		<title>TBFlash AirportStats</title>
+		<name>Statistiques d'aéroport</name>
+		<description>Statistiques sur l'aéroport</description>
+		<browser>A webbrowser will open to localhost:2198 when you start this mod.</browser>
+		<LifetimeStats>
+			<header0>Statistiques de vol</header0>
+			<header1>Statistiques des passagers</header1>
+			<header2>Statistiques de carburant</header2>
+			<header3>Statistiques des bagages</header3>
+			<header4>Revenu</header4>
+			<header5>les dépenses</header5>
+			<header6>Statistiques du personnel</header6>
+			<header7>Statistiques de temps (temps réel)</header7>
+			<header8>Statistiques clavier / souris</header8>
+			<stats0>Départs prévus</stats0>
+			<stats1>Départs à l'heure</stats1>
+			<stats2>Départs retardés</stats2>
+			<stats3>Vols annulés</stats3>
+			<stats4>Vols renouvelés</stats4>
+			<stats5>Total des débarquements</stats5>
+			<stats6>Décollages totaux</stats6>
+			<stats7>En arrivant</stats7>
+			<stats8>De liaison</stats8>			
+			<stats9>Vol à bord</stats9>
+			<stats10>Vol manqué</stats10>
+			<stats11>Carburant demandé</stats11>
+			<stats12>Carburant fourni</stats12>
+			<stats13>Avions desservis en carburant</stats13>
+			<stats14>Échecs de ravitaillement</stats14>
+			<stats15>Sacs chargés</stats15>
+			<stats16>Sacs déchargés</stats16>
+			<stats17>Réussite des bagages</stats17>
+			<stats18>Bagage perdu</stats18>
+			<stats19>Bagages chargés via un fourgon à bagages</stats19>
+			<stats20>La publicité</stats20>
+			<stats21>Frais de compagnie aérienne</stats21>
+			<stats22>Banque</stats22>
+			<stats23>Carburant</stats23>
+			<stats24>Subvention</stats24>
+			<stats25>Matériaux</stats25>
+			<stats26>Parking</stats26>
+			<stats27>Recherche</stats27>
+			<stats28>Vente au détail</stats28>
+			<stats29>Utilisation des pistes</stats29>
+			<stats30>Utilisation du terminal</stats30>
+			<stats31>Personnel</stats31>
+			<stats32>Indéfini</stats32>
+			<stats33>Revenu total</stats33>
+			<stats34>Frais de compagnie aérienne</stats34>
+			<stats35>Banque</stats35>
+			<stats36>Carburant</stats36>
+			<stats37>Subvention</stats37>
+			<stats38>Infrastructure</stats38>
+			<stats39>L'achat de terres</stats39>
+			<stats40>Entretien</stats40>
+			<stats41>Matériaux</stats41>
+			<stats42>Recherche</stats42>
+			<stats43>Vente au détail</stats43>
+			<stats44>Personnel</stats44>
+			<stats45>Impôts sur le revenu et les taxes foncières</stats45>
+			<stats46>Impôt sur le revenu</stats46>
+			<stats47>Taxe de propriété</stats47>
+			<stats48>Transport</stats48>
+			<stats49>Indéfini</stats49>
+			<stats50>Dépenses totales</stats50>
+			<stats51>Embauché</stats51>
+			<stats52>Mis à la porte</stats52>
+			<stats53>Temps suspendu</stats53>
+			<stats54>Vitesse 1</stats54>
+			<stats55>Vitesse 2</stats55>
+			<stats56>Vitesse 3</stats56>
+			<stats57>Inactif</stats57>
+			<stats58>Clics sur le clavier</stats58>
+			<stats59>Clics gauche de la souris</stats59>
+			<stats60>Clics droit de la souris</stats60>
+		</LifetimeStats>
+		<AllAirlineStats>
+			<stats0>Nom de la compagnie aérienne</stats0>
+			<stats1>Actif</stats1>
+			<stats2>L'intérêt</stats2>
+			<stats3>la communication</stats3>
+			<stats4>Satisfaction du carburant</stats4>
+			<stats5>Satisfaction des passagers</stats5>
+			<stats6>Frais commerciaux</stats6>
+			<stats7>Fiabilité du service</stats7>
+			<stats8>Confiance</stats8>
+			<stats9>Qualité des installations</stats9>
+			<stats10>Vols quotidiens</stats10>
+			<stats11>Pourcentage de ravitaillement de base</stats11>
+			<stats12>Pourcentage de première classe</stats12>
+			<stats13>Nouveau bonus de vol</stats13>
+			<stats14>Nombre de vols de pointe</stats14>
+			<stats15># Représentants</stats15>
+			<stats16>A Deal</stats16>
+			<stats17>Frais de piste négociés</stats17>
+			<stats18>Frais terminaux négociés</stats18>
+			<stats19>Frais journaliers négociés</stats19>
+			<stats20>Satisfaction du carburant négociée</stats20>
+			<stats21>Fiabilité du service négocié</stats21>
+			<stats22># Des bureaux</stats22>
+			<stats23>Dispose d'une salle de conférence</stats23>
+			<stats24># Magasins</stats24>
+			<stats25>Part des bénéfices du magasin négocié</stats25>
+			<stats26># Cafétérias</stats26>
+			<stats27>Part des bénéfices du café négocié</stats27>
+			<stats28># Salons de première classe</stats28>
+			<stats29># Salons d'équipage de conduite</stats29>
+			<stats30># Petites portes attribuées</stats30>
+			<stats31># Grandes portes attribuées</stats31>
+			<stats32># Portes XL attribuées</stats32>
+			<stats33>Négocié Min. Charge par vol</stats33>
+			<stats34>Pénalité de violation négociée</stats34>
+		</AllAirlineStats>
+		<AirlineCompanyStats>
+			<stats0># Vols</stats0>
+			<stats1># Passagers arrivant</stats1>
+			<stats2>Déplanage du temps total</stats2>
+			<stats3># Passagers au départ programmé</stats3>
+			<stats4># Passagers enregistrés</stats4>
+			<stats5># Passagers embarqués</stats5><stats6>Durée totale d'embarquement</stats6>
+			<stats7># Sacs d'arrivée</stats7>
+			<stats8># Sacs déchargés</stats8>
+			<stats9># Sacs de départ</stats9>
+			<stats10># Sacs chargés</stats10>
+			<stats11>Sacs de chargement de temps total</stats11>
+			<stats12>Carburant demandé</stats12>
+			<stats13>Carburant livré</stats13>
+			<stats14>Total en route</stats14>
+			<stats15>Total au sol</stats15>
+			<stats16>Arrivée retardée totale</stats16>
+			<stats17>Total est parti</stats17>
+			<stats18>Départ retardé total</stats18>
+			<stats19>Vols annulés</stats19>
+			<stats20>Annulé pour: Aéroport non valide  </stats20>
+			<stats21>Conditions météorologiques</stats21>
+			<stats22>Piste  </stats22>
+			<stats23>Porte  </stats23>
+			<stats24>Expiré  </stats24>
+			<stats25>Reneged  </stats25>
+		</AirlineCompanyStats>
+		<AirlineDailyStats>
+			<stats0>Compagnie aérienne</stats0>
+			<stats1>Type d'aéronef</stats1>
+			<stats2>Heure d'arrivée prévue</stats2>
+			<stats3>Heure d'arrivée réelle</stats3>
+			<stats4>Heure de départ prévue</stats4>
+			<stats5>Heure de départ réelle</stats5>
+			<stats6># Passagers arrivant</stats6>
+			<stats7>Déplanage du temps</stats7>
+			<stats8># Passagers au départ programmé</stats8>
+			<stats9># Passagers enregistrés</stats9>
+			<stats10># Passagers embarqués</stats10>
+			<stats11>Durée totale d'embarquement</stats11>
+			<stats12># Sacs d'arrivée</stats12>
+			<stats13># Sacs déchargés</stats13>
+			<stats14>Sacs de déchargement terminés</stats14>
+			<stats15># Sacs de départ</stats15>
+			<stats16># Sacs chargés</stats16>
+			<stats17>Sacs de chargement de temps total</stats17>
+			<stats18>Carburant demandé</stats18>
+			<stats19>Carburant livré</stats19>
+			<stats20>Statuts</stats20>
+			<stats21>Motif d'annulation</stats21>
+		</AirlineDailyStats>
+		<AircraftStats>
+			<stats0>Afficher un nom</stats0>
+			<stats1>Nombre total de vols sur le Gameday actuel</stats1>
+			<stats2>Est la modification?</stats2>
+			<stats3>Capacité passagers</stats3>
+			<stats4># Hôtesses de l'air</stats4>
+			<stats5># Pilotes</stats5>
+			<stats6>Modificateur Chance Changement d'équipage</stats6>
+			<stats7>Capacité de carburant</stats7>
+			<stats8>Taille minimale de piste</stats8>
+			<stats9>Taille minimale de la porte</stats9>
+			<stats10>Compagnies aériennes utilisant</stats10>
+			<stats11>Nom court</stats11>
+		</AircraftStats>
+		<utils>
+			<url0>/</url0>
+			<url1>/AllAirlines</url1>
+			<url2>/Airlines</url2>
+			<value0>Statistiques d'aéroport</value0>
+			<value1>Toutes les compagnies aériennes</value1>
+			<value2>Compagnie aérienne active</value2>
+			<day>journée</day>
+			<yes>Oui</yes>
+			<no>Non</no>
+			<lifetime>Durée de vie</lifetime>
+			<currentDay>Jour actuel</currentDay>
+			<dailyStats>Statistiques quotidiennes</dailyStats>
+			<go>Aller</go>
+			<version>Version</version>
+			<broughtBy>Présenté par TBFlash</broughtBy>
+		</utils>
+	</AirportStats>
+</TBFlash>

@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TBFlash_ChartData.cs" />
+    <Compile Include="TBFlash_AircraftStats.cs" />
     <Compile Include="TBFlash_AirlineDailyStats.cs" />
     <Compile Include="TBFlash_AirlineStats.cs" />
     <Compile Include="TBFlash_LifetimeStats.cs" />
@@ -62,7 +70,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="i18n\fr.xml" />
     <Content Include="i18n\en.xml" />
+    <EmbeddedResource Include="Resources\AirportStats.js" />
+    <EmbeddedResource Include="Resources\Chart.min.js" />
+    <EmbeddedResource Include="Resources\Chart.min.css" />
+    <EmbeddedResource Include="Resources\jquery-ui.css" />
+    <EmbeddedResource Include="Resources\jquery-ui.min.js" />
+    <EmbeddedResource Include="Resources\jquery.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

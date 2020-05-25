@@ -1,4 +1,6 @@
 ﻿using SimAirport.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TBFlash.AirportStats
 {
@@ -20,111 +22,113 @@ namespace TBFlash.AirportStats
             }
             headerstring += "</tr>";
 
-            string str = $"<table><tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header0")}</th>{headerstring}";
+            string htmlCode = TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AirportStats, true);
+            htmlCode += $"<table><tr><th><a class=\"loadChart\" href=\"/chartdata?dataset=flightstats\" rel=\"#dialog\">{i18n.Get("TBFlash.AirportStats.LifetimeStats.header0")}</a></th>{headerstring}";
             for (int i = 0; i <= 6; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= counter; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header1")}</th>{headerstring}";
+           htmlCode += $"<tr><th><a class=\"loadChart\" href=\"/chartdata?dataset=paxstats\" rel=\"#dialog\">{i18n.Get("TBFlash.AirportStats.LifetimeStats.header1")}</a></th>{headerstring}";
             for (int i = 7; i <= 10; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= counter; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header2")}</th>{headerstring}";
+            htmlCode += $"<tr><th><a class=\"loadChart\" href=\"/chartdata?dataset=fuelstats\" rel=\"#dialog\">{i18n.Get("TBFlash.AirportStats.LifetimeStats.header2")}</a></th>{headerstring}";
             for (int i = 11; i <= 14; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= counter; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header3")}</th>{headerstring}";
+            htmlCode += $"<tr><th><a class=\"loadChart\" href=\"/chartdata?dataset=luggagestats\" rel=\"#dialog\">{i18n.Get("TBFlash.AirportStats.LifetimeStats.header3")}</a></th>{headerstring}";
             for (int i = 15; i <= 19; i++)
             {
-                str += "<tr>";
-                for (int j = 0; j <= counter; j++)
-                {
-                    str += $"<td>{arr[i, j]}</td>";
+                if (i != 17 && i != 19) {
+                    htmlCode += "<tr>";
+                    for (int j = 0; j <= counter; j++)
+                    {
+                        htmlCode += $"<td>{arr[i, j]}</td>";
+                    }
+                    htmlCode += "</tr>";
                 }
-                str += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header4")}</th>{headerstring}";
+            htmlCode += $"<tr><th><a class=\"loadChart\" href=\"/chartdata?dataset=profits\" rel=\"#dialog\">{i18n.Get("TBFlash.AirportStats.LifetimeStats.header4")}</a></th>{headerstring}";
             for (int i = 20; i <= 33; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= counter; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header5")}</th>{headerstring}";
+            htmlCode += $"<tr><th><a class=\"loadChart\" href=\"/chartdata?dataset=profits\" rel=\"#dialog\">{i18n.Get("TBFlash.AirportStats.LifetimeStats.header5")}</a></th>{headerstring}";
             for (int i = 34; i <= 50; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= counter; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header6")}</th>{lifetimeString}";
+            htmlCode += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header6")}</th>{lifetimeString}";
             for (int i = 51; i <= 52; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= 1; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header7")}</th>{lifetimeString}";
+            htmlCode += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header7")}</th>{lifetimeString}";
             for (int i = 53; i <= 57; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= 1; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header8")}</th>{lifetimeString}";
+            htmlCode += $"<tr><th>{i18n.Get("TBFlash.AirportStats.LifetimeStats.header8")}</th>{lifetimeString}";
             for (int i = 58; i <= 60; i++)
             {
-                str += "<tr>";
+                htmlCode += "<tr>";
                 for (int j = 0; j <= 1; j++)
                 {
-                    str += $"<td>{arr[i, j]}</td>";
+                    htmlCode += $"<td>{arr[i, j]}</td>";
                 }
-                str += "</tr>";
+                htmlCode += "</tr>";
             }
-            str += "</table>";
-            return str;
+            htmlCode += "</table><div id=\"dialog\"></div>";
+            htmlCode += TBFlash_Utils.PageFooter();
+            return htmlCode;
         }
 
         private string[,] LoadLifetimeArray()
         {
             int numdays = GameTimer.Day <= 30 ? GameTimer.Day : 30;
-            TBFlash_Utils.TBFlashLogger(Log.FromPool($"GameTimer:{GameTimer.Day}, numdays:{numdays}").WithCodepoint());
             GameLifetimeStats GLS = Game.current.lifetimeStats;
             string[,] arr = new string[arrayRows, numdays + 2];
             for(int i = 0; i<arrayRows; i++)
             {
                 arr[i, 0] = i18n.Get($"TBFlash.AirportStats.LifetimeStats.stats{i}");
             }
-
             arr[1, 1] = GLS.flOnTime.ToString("#,###");
             arr[2, 1] = GLS.flDelays.ToString("#,###");
             arr[3, 1] = GLS.flCancels.ToString("#,###");
@@ -169,12 +173,12 @@ namespace TBFlash.AirportStats
             for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
             {
                 j++;
-                TBFlash_Utils.TBFlashLogger(Log.FromPool($"i:{i},j:{j}").WithCodepoint());
-
                 if (!Game.current.GameReports.TryGetValue(i, out GamedayReportingData GRD))
                 {
                     break;
                 }
+                IEnumerable<FlightRecord> FlightRecords = Game.current.flightRecords.GetForDay(i - 1);
+
                 arr[0, j] = GRD.FlightsCount.ToString("#,###");
                 arr[1, j] = i != GameTimer.Day ? (GRD.FlightsCount - GRD.FlightsDelayed - GRD.FlightsCanceled).ToString("#,###") : string.Empty;
                 arr[2, j] = GRD.FlightsDelayed.ToString("#,###");
@@ -183,9 +187,13 @@ namespace TBFlash.AirportStats
                 arr[8, j] = GRD.NumConnectPax.ToString("#,###");
                 arr[9, j] = GRD.BoardedFlight.ToString("#,###");
                 arr[10, j] = GRD.MissedFlight.ToString("#,###");
+                arr[11, j] = (FlightRecords.Sum(x => x.nFuelRequested) / 1000).ToString("#,###");
+                arr[12, j] = (FlightRecords.Sum(x => x.nFuelRefueled) / 1000).ToString("#,###");
+                arr[13, j] = (FlightRecords.Count(x => x.nFuelRefueled > 0)).ToString("#,###");
                 arr[14, j] = GRD.FuelFailures.ToString("#,###");
-                arr[17, j] = GRD.LuggageSucceeded.ToString("#,###");
-                arr[18, j] = GRD.LuggageLost.ToString("#,###");
+                arr[15, j] = FlightRecords.Sum(x=>x.nBagsLoaded).ToString("#,###");
+                arr[16, j] = FlightRecords.Sum(x => x.nBagsUnloaded).ToString("#,###");
+                arr[18, j] = i != GameTimer.Day ? (FlightRecords.Sum(x => x.nDepartingBags) - FlightRecords.Sum(x => x.nBagsLoaded)).ToString("#,###") : string.Empty;
                 arr[20, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Advertising, true);
                 arr[21, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Airline_Fees, true);
                 arr[22, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Bank, true);

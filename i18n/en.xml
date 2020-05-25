@@ -34,7 +34,7 @@
 			<stats16>Bags Unloaded</stats16>
 			<stats17>Luggage Success</stats17>
 			<stats18>Lost Luggage</stats18>
-			<stats19>Baggage Loaded via Baggage Carts</stats19>
+			<stats19>Baggage Loaded via Baggage Car</stats19>
 			<stats20>Advertising</stats20>
 			<stats21>Airline Fees</stats21>
 			<stats22>Bank</stats22>
@@ -53,7 +53,7 @@
 			<stats35>Bank</stats35>
 			<stats36>Fuel</stats36>
 			<stats37>Grant</stats37>
-			<stats38>Infrastructustats</stats38>
+			<stats38>Infrastructure</stats38>
 			<stats39>Land Purchase</stats39>
 			<stats40>Maintenance</stats40>
 			<stats41>Materials</stats41>
@@ -115,7 +115,7 @@
 			<stats34>Negotiated Breach Penalty</stats34>
 		</AllAirlineStats>
 		<AirlineCompanyStats>
-			<stats0>Number Flights</stats0>
+			<stats0># Flights</stats0>
 			<stats1># Arr. Pax</stats1>
 			<stats2>Total Time Deplaning</stats2>
 			<stats3># Sched. Dep. Pax</stats3>
@@ -163,9 +163,23 @@
 			<stats17>Total Time Loading Bags</stats17>
 			<stats18>Fuel Requested</stats18>
 			<stats19>Fuel Delivered</stats19>
-			<stats20>Status's</stats20>
+			<stats20>Statuses</stats20>
 			<stats21>Cancellation Reason</stats21>
 		</AirlineDailyStats>
+		<AircraftStats>
+			<stats0>Display Name</stats0>
+			<stats1>Total # flights on current Gameday</stats1>
+			<stats2>Is Mod?</stats2>
+			<stats3>Pax Capacity</stats3>
+			<stats4># Flight Attendants</stats4>
+			<stats5># Pilots</stats5>
+			<stats6>Crew Change Chance Modifier</stats6>
+			<stats7>Fuel Capacity</stats7>
+			<stats8>Min Runway Size</stats8>
+			<stats9>Min Gate Size</stats9>
+			<stats10>Airlines Using</stats10>
+			<stats11>Short Name</stats11>
+		</AircraftStats>
 		<utils>
 			<url0>/</url0>
 			<url1>/AllAirlines</url1>
@@ -180,6 +194,8 @@
 			<currentDay>Current Day</currentDay>
 			<dailyStats>Daily Stats</dailyStats>
 			<go>Go</go>
+			<version>Version</version>
+			<broughtBy>Brought to you by TBFlash</broughtBy>
 		</utils>
 	</AirportStats>
 </TBFlash>
