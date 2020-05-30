@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TBFlash>
+	<AirportStats>
+		<title>TBFlash AirportStats</title>
+		<name>Статистика аэропорта</name>
+		<description>Статистика об аэропорте</description>
+		<browser>Веб-браузер откроется для localhost: 2198, когда вы запустите этот мод.</browser>
+		<LifetimeStats>
+			<header0>Статистика полетов</header0>
+			<header1>Статистика пассажиров</header1>
+			<header2>Топливная статистика</header2>
+			<header3>На время отправления</header3>
+			<header4>Задержка отправления</header4>
+			<header5>Расходы</header5>
+			<header6>Статистика персонала</header6>
+			<header7>Time Stats (Реальное время)</header7>
+			<header8>Статистика клавиатуры / мыши</header8>
+			<stats0>Отправление по расписанию</stats0>
+			<stats1>На время отправления</stats1>
+			<stats2>Задержки отправления</stats2>
+			<stats3>Отмененные рейсы</stats3>
+			<stats4>Рейнджи Рейс</stats4>
+			<stats5>Всего посадок</stats5>
+			<stats6>Всего взлетов</stats6>
+			<stats7>прибывающий</stats7>
+			<stats8>соединительный</stats8>
+			<stats9>Сели на борт</stats9>
+			<stats10>Пропущенный рейс</stats10>
+			<stats11>Запрошенное топливо</stats11>
+			<stats12>Предоставленное топливо</stats12>
+			<stats13>Самолеты подали топливо</stats13>
+			<stats14>Заправка топливом</stats14>
+			<stats15>Сумки загружены</stats15>
+			<stats16>Сумки без груза</stats16>
+			<stats17>Камера Успех</stats17>
+			<stats18>Потерянный багаж</stats18>
+			<stats19>Багаж, загруженный через багажный вагон</stats19>
+			<stats20>реклама</stats20>
+			<stats21>Сборы авиакомпании</stats21>
+			<stats22>Банка</stats22>
+			<stats23>топливо</stats23>
+			<stats24>Грант</stats24>
+			<stats25>материалы</stats25>
+			<stats26>Стоянка</stats26>
+			<stats27>Исследование</stats27>
+			<stats28>Розничная торговля</stats28>
+			<stats29>Использование ВПП</stats29>
+			<stats30>Терминал использования</stats30>
+			<stats31>Сотрудники</stats31>
+			<stats32>Неопределенный</stats32>
+			<stats33>Общий доход</stats33>
+			<stats34>Сборы авиакомпании</stats34>
+			<stats35>Банка</stats35>
+			<stats36>топливо</stats36>
+			<stats37>Грант</stats37>
+			<stats38>инфраструктура</stats38>
+			<stats39>Покупка земли</stats39>
+			<stats40>техническое обслуживание</stats40>
+			<stats41>материалы</stats41>
+			<stats42>Исследование</stats42>
+			<stats43>Розничная торговля</stats43>
+			<stats44>Сотрудники</stats44>
+			<stats45>Налог на прибыль и имущество</stats45>
+			<stats46>Подоходный налог</stats46>
+			<stats47>Налог на имущество</stats47>
+			<stats48>Транспорт</stats48>
+			<stats49>Неопределенный</stats49>
+			<stats50>Суммарные расходы</stats50>
+			<stats51>Принят на работу</stats51>
+			<stats52>Уволен</stats52>
+			<stats53>Время остановлено</stats53>
+			<stats54>Скорость 1</stats54>
+			<stats55>Скорость 2</stats55>
+			<stats56>Скорость 3</stats56>
+			<stats57>Неактивный</stats57>
+			<stats58>Щелчки клавиатуры</stats58>
+			<stats59>Щелчки левой мыши</stats59>
+			<stats60>Щелчки правой кнопкой мыши</stats60>
+		</LifetimeStats>
+		<AllAirlineStats>
+			<stats0>Название авиакомпании</stats0>
+			<stats1>активный</stats1>
+			<stats2>Интерес</stats2>
+			<stats3>связь</stats3>
+			<stats4>Удовлетворенность топливом</stats4>
+			<stats5>Удовлетворенность пассажиров</stats5>
+			<stats6>Коммерческие сборы</stats6>
+			<stats7>Надежность сервиса</stats7>
+			<stats8>Доверять</stats8>
+			<stats9>Качество объекта</stats9>
+			<stats10>Ежедневные рейсы</stats10>
+			<stats11>Процент базового заправки</stats11>
+			<stats12>Процент первого класса</stats12>
+			<stats13>Бонус за новый рейс</stats13>
+			<stats14>Пик Количество рейсов</stats14>
+			<stats15># Репс</stats15>
+			<stats16>Имеет дело</stats16>
+			<stats17>Договорная плата за взлетно-посадочную полосу</stats17>
+			<stats18>Договорная плата за терминал</stats18>
+			<stats19>Договорная ежедневная плата</stats19>
+			<stats20>Договорная Удовлетворенность топливом</stats20>
+			<stats21>Договорная надежность обслуживания</stats21>
+			<stats22># Офисы</stats22>
+			<stats23>Имеет конференц-зал</stats23>
+			<stats24># Магазины</stats24>
+			<stats25>Договорная Магазин Прибыль Поделиться</stats25>
+			<stats26># Кафетерии</stats26>
+			<stats27>Договорная Кафе Прибыль Поделиться</stats27>
+			<stats28># Залы первого класса</stats28>
+			<stats29># Залы полета экипажа</stats29>
+			<stats30># Малые ворота назначены</stats30>
+			<stats31># Назначены большие ворота</stats31>
+			<stats32># Назначены очень большие ворота</stats32>
+			<stats33>Договорная Мин. Нагрузка на рейс</stats33>
+			<stats34>Договорная штраф за нарушение</stats34>
+		</AllAirlineStats>
+		<AirlineCompanyStats>
+			<stats0># Полеты</stats0>
+			<stats1>Общее задержанное прибытие</stats1>
+			<stats2>Всего требующий экипаж</stats2>
+			<stats3>Всего отправлено</stats3>
+			<stats4>Всего отсроченный выезд</stats4>
+			<stats5>Авиабилеты отменены</stats5>
+			<stats6>Отменено за: Аэропорт неверен</stats6>
+			<stats7>--Погода</stats7>
+			<stats8>--Посадочная полоса</stats8>
+			<stats9>--Ворота</stats9>
+			<stats10>--Истекший</stats10>
+			<stats11>--отказался</stats11>
+			<stats12># Прибывающие пассажиры</stats12>
+			<stats13># Запланированные вылетающие пассажиры</stats13>
+			<stats14># Проверено в пассажирах</stats14>
+			<stats15># Сели пассажиры</stats15>
+			<stats16># Пассажиры пропустили рейс</stats16>
+			<stats17>Общее время планирования</stats17>			
+			<stats18>Общее время посадки</stats18>
+			<stats19>Запрошенное топливо</stats19>
+			<stats20>Топливо доставлено</stats20>			
+			<stats21># Сумки выгружены</stats21>
+			<stats22># Сумки загружены</stats22>
+			<stats23># Потерянные сумки</stats23>
+			<stats24>Сумки с общим временем загрузки</stats24>
+			<stats25>Всего на земле</stats25>
+			<stats26># Прибывающие сумки</stats26>			
+		</AirlineCompanyStats>
+		<AirlineDailyStats>
+			<stats0>авиакомпания</stats0>
+			<stats1>Тип самолета</stats1>
+			<stats2>Время прибытия по расписанию</stats2>
+			<stats3>Фактическое время прибытия</stats3>
+			<stats4>Время отправления по расписанию</stats4>
+			<stats5>Фактическое время отправления</stats5>
+			<stats6># Прибывающие пассажиры</stats6>
+			<stats7>Планирование времени</stats7>
+			<stats8># Пассажиры по расписанию</stats8>
+			<stats9># Проверено в пассажирах</stats9>
+			<stats10># Сели пассажиры</stats10>
+			<stats11>Общее время посадки</stats11>
+			<stats12># Прибывающие сумки</stats12>
+			<stats13># Сумки выгружены</stats13>
+			<stats14>Время закончено, разгрузка мешков</stats14>
+			<stats15># Исходящие сумки</stats15>
+			<stats16># Сумки загружены</stats16>
+			<stats17>Сумки с общим временем загрузки</stats17>
+			<stats18>Запрошенное топливо</stats18>
+			<stats19>Топливо доставлено</stats19>
+			<stats20>Статусы</stats20>
+			<stats21>Причина отмены</stats21>
+		</AirlineDailyStats>
+		<AircraftStats>
+			<stats0>Показать имя</stats0>
+			<stats1>Общее количество рейсов за текущий игровой день</stats1>
+			<stats2>Мод?</stats2>
+			<stats3>Пассажировместимость</stats3>
+			<stats4># Стюардессы</stats4>
+			<stats5># Пилоты</stats5>
+			<stats6>Модификатор Шанса Изменения Экипажа</stats6>
+			<stats7>Вместимость топливных баков</stats7>
+			<stats8>Минимальный размер взлетно-посадочной полосы</stats8>
+			<stats9>Минимальный размер ворот</stats9>
+			<stats10>Использование авиакомпаний</stats10>
+			<stats11>Короткое имя</stats11>
+		</AircraftStats>
+		<utils>
+			<value0>Статистика аэропорта</value0>
+			<value1>Все Авиалинии</value1>
+			<value2>Активные Авиалинии</value2>
+			<day>День</day>
+			<yes>да</yes>
+			<no>нет</no>
+			<lifetime>Продолжительность жизни</lifetime>
+			<currentDay>Текущий день</currentDay>
+			<dailyStats>Ежедневная статистика</dailyStats>
+			<go>Идти</go>
+			<version>Версия</version>
+			<broughtBy>Принесено вам TBFlash</broughtBy>
+			<invalidEntry>Неверный ввод</invalidEntry>
+			<invalidAircraft>Введен неверный тип самолета.</invalidAircraft>
+		</utils>
+		<infoPage>
+			<information>Информация</information>
+			<modName>AirportStats</modName>
+			<intro>предоставляет данные из запущенного в настоящее время аэропорта SimAirport на страницы, посвященные:</intro>
+			<bullet1>Статистика аэропорта: срок службы и последние 30 дней работы аэропорта. Нажмите на статистическую категорию (например, Статистика полетов), чтобы увидеть график данных в этой категории.</bullet1>
+			<bullet2a>Статистика Airlne: параллельное сравнение интересов, удовлетворенности, сделок и т. Д. Каждой авиакомпании. Доступны для</bullet2a>
+			<bullet2b>Все Авиалинии</bullet2b>
+			<bullet2c>или только сейчас</bullet2c>
+			<bullet2d>Активные Авиалинии.</bullet2d>
+			<bullet3a>Ежедневные операции: нажмите на</bullet3a>
+			<bullet3b>День</bullet3b>
+			<bullet3c>ссылка, чтобы увидеть все рейсы в этот день, либо для всего аэропорта, либо только для одной авиакомпании. Нажмите на тип самолета, чтобы увидеть больше информации о самолете.</bullet3c>
+			<techNotes>Технические примечания:</techNotes>
+			<tnbullet0>Время отображается в днях: часы: минуты: секунды.</tnbullet0>			
+			<tnbullet1>Чтобы удалить ряд данных в диаграмме, нажмите на имя в легенде.</tnbullet1>
+			<tnbullet2>На диаграмме «Расходы и доходы» показаны только серии, которые имеют хотя бы одно значение.</tnbullet2>
+			<tnbullet3>Некоторые статистические данные за текущий день могут быть отложены, так как окончательная отчетность происходит в разные моменты дня.</tnbullet3>
+			<tnbullet4a>AirportStats</tnbullet4a>
+			<tnbullet4b>зависит от нескольких параметров компьютера и приложения для отображения данных. Я пытался обеспечить перевод на конкретные страницы на всех страницах, но могут быть некоторые проблемы. Пожалуйста, сообщайте о любых проблемах, и я постараюсь их исправить.</tnbullet4b>
+			<tnbullet5>SimAirport хранит данные только за последние 30 дней вашего аэропорта, поэтому более старые данные могут быть недоступны.</tnbullet5>
+		</infoPage>
+		<json>
+			<jsonConfigError>Ошибка конфигурации. Нет данных для представления.</jsonConfigError>
+			<flightStats>Статистика полетов</flightStats>
+			<numberFlights>Количество рейсов</numberFlights>
+			<scheduledDepartures>Запланированные отправления</scheduledDepartures>
+			<ontimeDepartures>На время отправления</ontimeDepartures>
+			<delayedDepartures>Задержки отправления</delayedDepartures>
+			<canceled>отменен</canceled>
+			<luggageStats>Статистика багажа</luggageStats>
+			<numberOfBags>Количество сумок</numberOfBags>
+			<bagsUnloaded>Сумки без груза</bagsUnloaded>
+			<bagsLoaded>Сумки загружены</bagsLoaded>
+			<lostBags>Потерянные сумки</lostBags>
+			<fuelStats>Топливная статистика</fuelStats>
+			<litersOfFuel>Литров топлива</litersOfFuel>
+			<planesServed>Количество обслуживаемых самолетов</planesServed>
+			<fuelRequested>Запрошенное топливо</fuelRequested>
+			<fuelProvided>Предоставленное топливо</fuelProvided>
+			<servedFuel>Самолеты подали топливо</servedFuel>
+			<fuelingFailures>Заправка топливом</fuelingFailures>
+			<paxStats>Статистика пассажиров</paxStats>
+			<numPax>Количество пассажиров</numPax>
+			<arriving>прибывающий</arriving>
+			<connecting>соединительный</connecting>
+			<boarded>сели</boarded>
+			<missedFlight>Пропущенный рейс</missedFlight>
+			<revandexp>Доход / Расходы</revandexp>
+			<totalrevandexp>Общий доход и расходы</totalrevandexp>
+			<adRev>Рекламный доход</adRev>
+			<airlineRev>Доход от авиакомпании</airlineRev>
+			<bankRev>Банковский доход</bankRev>
+			<fuelRev>Топливный доход</fuelRev>
+			<grantRev>Грант Доход</grantRev>
+			<matRev>Материальный доход</matRev>
+			<parkRev>Доход от парковки</parkRev>
+			<resRev>Доход от исследований</resRev>
+			<retRev>Розничный доход</retRev>
+			<rwyRev>Взлетно-посадочная полоса</rwyRev>
+			<termRev>Терминальный комиссионный доход</termRev>
+			<staffRev>Доход от персонала</staffRev>
+			<undefRev>Неопределенный доход</undefRev>
+			<airlineExp>Расходы Авиакомпании</airlineExp>
+			<bankExp>Банковские расходы</bankExp>
+			<fuelExp>Расходы на топливо</fuelExp>
+			<grantExp>Грант Расходы</grantExp>
+			<infraExp>Расходы на инфраструктуру</infraExp>
+			<landExp>Затраты на покупку земли</landExp>
+			<maintExp>Расходы на техническое обслуживание</maintExp>
+			<matExp>Расходы на материалы</matExp>
+			<resExp>Расходы на исследования</resExp>
+			<retExp>Розничные расходы</retExp>
+			<staffExp>Расходы на персонал</staffExp>
+			<taxes>налоги</taxes>
+			<transExp>Расходы на перевозку</transExp>
+			<undefExp>Неопределенные расходы</undefExp>
+		</json>
+		<flightstatus>
+			<ArrivalCrewPickedUp>Экипаж прибытия подобрали</ArrivalCrewPickedUp>
+			<Canceled>отменен</Canceled>
+			<CrewSpawned>Экипаж породил</CrewSpawned>
+			<DelayedArrival>Задержка прибытия</DelayedArrival>
+			<DelayedDeparture>Задержка отправления</DelayedDeparture>
+			<Departed>Отступники</Departed>
+			<Despawned>Despawned</Despawned>
+			<Docked>Docked</Docked>
+			<Enroute>По пути</Enroute>
+			<GateChanged>Ворота изменены</GateChanged>
+			<ManualBaggageInbound>Ручной багаж</ManualBaggageInbound>
+			<OnGround>На земле</OnGround>
+			<RequiresCrew>Требуется экипаж</RequiresCrew>
+			<Scheduled>Запланированное</Scheduled>
+			<Spawned>Spawned</Spawned>
+		</flightstatus>
+	</AirportStats>
+</TBFlash>

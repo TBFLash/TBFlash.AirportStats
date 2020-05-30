@@ -1,6 +1,7 @@
 ﻿using SimAirport.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 
 namespace TBFlash.AirportStats
 {
@@ -115,7 +116,7 @@ namespace TBFlash.AirportStats
                 }
                 htmlCode += "</tr>";
             }
-            htmlCode += "</table><div id=\"dialog\"></div>";
+            htmlCode += "</table>";
             htmlCode += TBFlash_Utils.PageFooter();
             return htmlCode;
         }
@@ -180,8 +181,8 @@ namespace TBFlash.AirportStats
                 IEnumerable<FlightRecord> FlightRecords = Game.current.flightRecords.GetForDay(i - 1);
 
                 arr[0, j] = GRD.FlightsCount.ToString("#,###");
-                arr[1, j] = i != GameTimer.Day ? (GRD.FlightsCount - GRD.FlightsDelayed - GRD.FlightsCanceled).ToString("#,###") : string.Empty;
-                arr[2, j] = GRD.FlightsDelayed.ToString("#,###");
+                arr[1, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) && !TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("#,###");
+                arr[2, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("#,###");
                 arr[3, j] = GRD.FlightsCanceled.ToString("#,###");
                 arr[7, j] = GRD.NumArrivalPax.ToString("#,###");
                 arr[8, j] = GRD.NumConnectPax.ToString("#,###");
@@ -193,7 +194,7 @@ namespace TBFlash.AirportStats
                 arr[14, j] = GRD.FuelFailures.ToString("#,###");
                 arr[15, j] = FlightRecords.Sum(x=>x.nBagsLoaded).ToString("#,###");
                 arr[16, j] = FlightRecords.Sum(x => x.nBagsUnloaded).ToString("#,###");
-                arr[18, j] = i != GameTimer.Day ? (FlightRecords.Sum(x => x.nDepartingBags) - FlightRecords.Sum(x => x.nBagsLoaded)).ToString("#,###") : string.Empty;
+                arr[18, j] = FlightRecords.Sum(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) ? x.nDepartingBags - x.nBagsLoaded : 0).ToString("#,###");
                 arr[20, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Advertising, true);
                 arr[21, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Airline_Fees, true);
                 arr[22, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Bank, true);

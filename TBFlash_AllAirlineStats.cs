@@ -13,7 +13,7 @@ namespace TBFlash.AirportStats
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             string[,] arr = LoadArray(activeOnly);
 
-            string htmlCode = activeOnly ? TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.ActiveAirlines) : TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AllAirlines);
+            string htmlCode = activeOnly ? TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.ActiveAirlines, true) : TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AllAirlines, true);
             htmlCode += "<table>";
             for (int i = 0; i < arrayRows; i++)
             {
@@ -66,13 +66,7 @@ namespace TBFlash.AirportStats
                 arr[13, j] = airline.Income_NewFlightBonus_PerFlight.ToString("C0");
                 arr[14, j] = airline.PeakFlightsCount.ToString("#");
                 arr[15, j] = airline.Reps?.Count.ToString("#") ?? string.Empty;
-                arr[16, j] = airline.Needs?.HasDeal == true ? "Yes" : "No";
-                /* string airlineStr = string.Empty;
-                foreach(string aircraft in airline.AircraftInFleet)
-                {
-                    airlineStr += aircraft + "<br/>";
-                }
-                arr[35, j] = airlineStr;*/
+                arr[16, j] = airline.Needs?.HasDeal == true ? i18n.Get("TBFlash.AirportStats.utils.yes") : i18n.Get("TBFlash.AirportStats.utils.no");
                 if (airline.Needs?.HasDeal == true)
                 {
                     arr[17, j] = airline.Needs.NegotiatedRunwayFees.ToString("C0");

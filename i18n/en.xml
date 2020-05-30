@@ -18,7 +18,7 @@
 			<stats0>Departures Scheduled</stats0>
 			<stats1>On Time Departures</stats1>
 			<stats2>Delayed Departures</stats2>
-			<stats3>Cancelled Flights</stats3>
+			<stats3>Canceled Flights</stats3>
 			<stats4>Reneged Flights</stats4>
 			<stats5>Total Landings</stats5>
 			<stats6>Total Takeoffs</stats6>
@@ -116,31 +116,32 @@
 		</AllAirlineStats>
 		<AirlineCompanyStats>
 			<stats0># Flights</stats0>
-			<stats1># Arr. Pax</stats1>
-			<stats2>Total Time Deplaning</stats2>
-			<stats3># Sched. Dep. Pax</stats3>
-			<stats4># Checked In Pax</stats4>
-			<stats5># Boarded Pax</stats5>
-			<stats6>Total Time Boarding</stats6>
-			<stats7># Arr. Bags</stats7>
-			<stats8># Bags Unloaded</stats8>
-			<stats9># Dep. Bags</stats9>
-			<stats10># Bags Loaded</stats10>
-			<stats11>Total Time Loading Bags</stats11>
-			<stats12>Fuel Requested</stats12>
-			<stats13>Fuel Delivered</stats13>
-			<stats14>Total Enroute</stats14>
-			<stats15>Total On Ground</stats15>
-			<stats16>Total Delayed Arrival</stats16>
-			<stats17>Total Departed</stats17>
-			<stats18>Total Delayed Departure</stats18>
-			<stats19>Flights Cancelled</stats19>
-			<stats20>Canx for: Airport Invalid  </stats20>
-			<stats21>Weather  </stats21>
-			<stats22>Runway  </stats22>
-			<stats23>Gate  </stats23>
-			<stats24>Expired  </stats24>
-			<stats25>Reneged  </stats25>
+			<stats1>Total Delayed Arrival</stats1>
+			<stats2>Total Requiring Crew</stats2>
+			<stats3>On Time Departures</stats3>
+			<stats4>Delayed Departure</stats4>
+			<stats5>Flights Canceled</stats5>
+			<stats6>Canceled for: Airport Invalid</stats6>
+			<stats7>--Weather</stats7>
+			<stats8>--Runway</stats8>
+			<stats9>--Gate</stats9>
+			<stats10>--Expired</stats10>
+			<stats11>--Reneged</stats11>
+			<stats12># Arr. Pax</stats12>
+			<stats13># Sched. Dep. Pax</stats13>
+			<stats14># Checked In Pax</stats14>
+			<stats15># Boarded Pax</stats15>
+			<stats16># Pax Missed Flight</stats16>
+			<stats17>Total Time Deplaning</stats17>
+			<stats18>Total Time Boarding</stats18>
+			<stats19>Fuel Requested</stats19>
+			<stats20>Fuel Delivered</stats20>
+			<stats21># Bags Unloaded</stats21>
+			<stats22># Bags Loaded</stats22>
+			<stats23># Lost Bags</stats23>
+			<stats24>Total Time Loading Bags</stats24>
+			<stats25>Total On Ground</stats25>
+			<stats26># Arr. Bags</stats26>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Airline</stats0>
@@ -181,9 +182,6 @@
 			<stats11>Short Name</stats11>
 		</AircraftStats>
 		<utils>
-			<url0>/</url0>
-			<url1>/AllAirlines</url1>
-			<url2>/Airlines</url2>
 			<value0>Airport Stats</value0>
 			<value1>All Airlines</value1>
 			<value2>Active Airlines</value2>
@@ -196,6 +194,102 @@
 			<go>Go</go>
 			<version>Version</version>
 			<broughtBy>Brought to you by TBFlash</broughtBy>
+			<invalidEntry>Invalid Entry</invalidEntry>
+			<invalidAircraft>Invalid Aircraft Type Entered.</invalidAircraft>
 		</utils>
+		<infoPage>
+			<information>Information</information>
+			<modName>AirportStats</modName>
+			<intro>provides data from the currently running SimAirport Airport into pages focused on:</intro>
+			<bullet1>Airport Statistics: Lifetime and up to the last 30 days of airport-wide operations. Click on a statistic category (such as Flight Stats) to see a graph of data in that category.</bullet1>
+			<bullet2a>Airlne Statistics: Side-by-side comparisons of each Airlines interest, satisfaction, deals, and more. Available for </bullet2a>
+			<bullet2b>All Airlines</bullet2b>
+			<bullet2c>, or just currently</bullet2c>
+			<bullet2d>Active Airlines.</bullet2d>
+			<bullet3a>Daily operations: Click on a</bullet3a>
+			<bullet3b>Day</bullet3b>
+			<bullet3c>link to see all of the flights on that day, either for the whole airport, or just a single airline. Click on an Aircraft Type to see more information about the Aircraft.</bullet3c>
+			<techNotes>Technical notes:</techNotes>
+			<tnbullet0>Time is displayed in Days: Hours: Minutes: Seconds.</tnbullet0>			
+			<tnbullet1>To remove a data series in a chart, click on the name in the legend.</tnbullet1>
+			<tnbullet2>The Expense and Revenue chart only shows series that have at least one value.</tnbullet2>
+			<tnbullet3>Some current day statistics may be delayed, as final reporting takes place at different points in the day.</tnbullet3>
+			<tnbullet4a>AirportStats</tnbullet4a>
+			<tnbullet4b>depends on multiple computer and application settings to display data. I've tried to provide language specific translations throughout the pages, but there may be some issues. Please report any problems and I'll try to rectify them.</tnbullet4b>
+			<tnbullet5>SimAirport only maintains data for the last 30 days of your airport, so older data may not be available.</tnbullet5>
+		</infoPage>
+		<json>
+			<jsonConfigError>Configuration error. No data to present.</jsonConfigError>
+			<flightStats>Flight Stats</flightStats>
+			<numberFlights>Number Flights</numberFlights>
+			<scheduledDepartures>Scheduled Departures</scheduledDepartures>
+			<ontimeDepartures>OnTime Departures</ontimeDepartures>
+			<delayedDepartures>Delayed Departures</delayedDepartures>
+			<canceled>Canceled</canceled>
+			<luggageStats>Luggage Stats</luggageStats>
+			<numberOfBags>Number of Bags</numberOfBags>
+			<bagsUnloaded>Bags Unloaded</bagsUnloaded>
+			<bagsLoaded>Bags Loaded</bagsLoaded>
+			<lostBags>Lost Bags</lostBags>
+			<fuelStats>Fuel Stats</fuelStats>
+			<litersOfFuel>Liters of Fuel</litersOfFuel>
+			<planesServed>Number of Planes Served</planesServed>
+			<fuelRequested>Fuel Requested</fuelRequested>
+			<fuelProvided>Fuel Provided</fuelProvided>
+			<servedFuel>Planes Served Fuel</servedFuel>
+			<fuelingFailures>Fueling Failures</fuelingFailures>
+			<paxStats>Passenger Stats</paxStats>
+			<numPax>Number of Passengers</numPax>
+			<arriving>Arriving</arriving>
+			<connecting>Connecting</connecting>
+			<boarded>Boarded</boarded>
+			<missedFlight>Missed Flight</missedFlight>
+			<revandexp>Revenue / Expenses</revandexp>
+			<totalrevandexp>Total Revenue and Expenses</totalrevandexp>
+			<adRev>Advertising Revenue</adRev>
+			<airlineRev>Airline Fee Revenue</airlineRev>
+			<bankRev>Bank Revenue</bankRev>
+			<fuelRev>Fuel Revenue</fuelRev>
+			<grantRev>Grant Revenue</grantRev>
+			<matRev>Materials Revenue</matRev>
+			<parkRev>Parking Revenue</parkRev>
+			<resRev>Research Revenue</resRev>
+			<retRev>Retail Revenue</retRev>
+			<rwyRev>Runway Fee Revenue</rwyRev>
+			<termRev>Terminal Fee Revenue</termRev>
+			<staffRev>Staff Revenue</staffRev>
+			<undefRev>Undefined Revenue</undefRev>
+			<airlineExp>Airline Fee Expenses</airlineExp>
+			<bankExp>Bank Expenses</bankExp>
+			<fuelExp>Fuel Expenses</fuelExp>
+			<grantExp>Grant Expenses</grantExp>
+			<infraExp>Infrastructure Expenses</infraExp>
+			<landExp>Land Purchase Expenses</landExp>
+			<maintExp>Maintenance Expenses</maintExp>
+			<matExp>Materials Expenses</matExp>
+			<resExp>Research Expenses</resExp>
+			<retExp>Retail Expenses</retExp>
+			<staffExp>Staff Expenses</staffExp>
+			<taxes>Taxes</taxes>
+			<transExp>Transportation Expenses</transExp>
+			<undefExp>Undefined Expenses</undefExp>
+		</json>
+		<flightstatus>
+			<ArrivalCrewPickedUp>Arrival Crew Picked Up</ArrivalCrewPickedUp>
+			<Canceled>Canceled</Canceled>
+			<CrewSpawned>Crew Spawned</CrewSpawned>
+			<DelayedArrival>Delayed Arrival</DelayedArrival>
+			<DelayedDeparture>Delayed Departure</DelayedDeparture>
+			<Departed>Departed</Departed>
+			<Despawned>Despawned</Despawned>
+			<Docked>Docked</Docked>
+			<Enroute>Enroute</Enroute>
+			<GateChanged>Gate Changed</GateChanged>
+			<ManualBaggageInbound>Manual Baggage Inbound</ManualBaggageInbound>
+			<OnGround>On Ground</OnGround>
+			<RequiresCrew>Requires Crew</RequiresCrew>
+			<Scheduled>Scheduled</Scheduled>
+			<Spawned>Spawned</Spawned>
+		</flightstatus>
 	</AirportStats>
 </TBFlash>

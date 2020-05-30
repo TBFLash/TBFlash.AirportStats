@@ -2,12 +2,32 @@ $(function() {
 	$("#dialog").dialog({ 
 		autoOpen: false, 
 		modal: false, 
-		position: { my: "left top", at: "left+20 top+40"}, resizable: false 
+		position: { my: "left top", at: "left+150 top+40"}, 
+		resizable: false 
+	});
+	$("#infodialog").dialog({ 
+		autoOpen: false, 
+		modal: false, 
+		position: { my: "left top", at: "left+150 top+40"}, resizable: false 
+	});
+	$(".info-dialog").on("click", function(e) { 
+		e.preventDefault(); 
+		$("#infodialog").html(""); 
+		$("#infodialog").dialog("option", "title", "Loading...").dialog("open"); 
+		$("#infodialog").dialog("option", "width", 500 ); 
+		$("#infodialog").dialog("option", "height", "auto" );
+		$("#infodialog").load(this.href, function() { 
+			$(this).dialog("option", "title", $(this).find("h1").text()); 
+			$(this).find("h1").remove(); 
+		}); 
 	}); 
 	$(".ajax-dialog").on("click", function(e) { 
 		e.preventDefault(); 
 		$("#dialog").html(""); 
 		$("#dialog").dialog("option", "title", "Loading...").dialog("open"); 
+		$("#dialog").dialog("option", "maxWidth", 350 ); 
+		$("#dialog").dialog("option", "width", "auto" );
+		$("#dialog").dialog("option", "height", "auto" );
 		$("#dialog").load(this.href, function() { 
 			$(this).dialog("option", "title", $(this).find("h1").text()); 
 			$(this).find("h1").remove(); 
@@ -28,6 +48,7 @@ $(function() {
 			const labels = Object.keys(rawChartData); 
 			const seriesData = Object.values(rawChartData);
 			var canvas = document.createElement('canvas'); 
+			var multiAxis = false;
 			canvas.id = "myCanvas"; 
 			Chart.defaults.global.legend.position = "right"; 
 			Chart.defaults.global.defaultColor = "#CCC"; 
@@ -57,13 +78,14 @@ $(function() {
 						label: rawSeriesConfig.seriesLabels[i], 
 						data: seriesData.map(o => o[rawSeriesConfig.seriesKeys[i]]), 
 						borderColor: rawSeriesConfig.seriesColors[i], 
-						backgroundColor: rawSeriesConfig.seriesColors[i], 
+						pointHoverBackgroundColor: rawSeriesConfig.seriesColors[i], 
 						order: rawSeriesConfig.seriesOrders[i], 
 						yAxisID: rawSeriesConfig.seriesYAxis[i],
 						pointHitRadius: 10,
 						fill: false 
 					});
 				} 
+				multiAxis = true;
 				rawChartOptions.type = "line"
 			} else {
 				for(var i=0; i<rawSeriesConfig.seriesLabels.length; i++) {
@@ -71,7 +93,7 @@ $(function() {
 						label: rawSeriesConfig.seriesLabels[i], 
 						data: seriesData.map(o => o[rawSeriesConfig.seriesKeys[i]]), 
 						borderColor: rawSeriesConfig.seriesColors[i], 
-						backgroundColor: rawSeriesConfig.seriesColors[i], 
+						pointHoverBackgroundColor: rawSeriesConfig.seriesColors[i], 
 						order: rawSeriesConfig.seriesOrders[i], 
 						pointHitRadius: 10,
 						fill: false 
@@ -91,13 +113,27 @@ $(function() {
 			if(rawChartOptions.money != false) { 
 				myChart.options.scales.yAxes[0].ticks.callback = function(value, index, values) {return rawChartOptions.money + value.toLocaleString();}; 
 				myChart.options.tooltips.callbacks.label = function (tooltipItem, data) { var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || ''; return datasetLabel + ": " + rawChartOptions.money + tooltipItem.yLabel.toLocaleString();}; 
-				myChart.options.tooltips.callbacks.title = function (tooltipItem, data) {return 'Day ' + tooltipItem[0].xLabel;};
+				myChart.options.tooltips.callbacks.title = function (tooltipItem, data) {return rawChartOptions.day + " " + tooltipItem[0].xLabel;};
 				myChart.update(); 
 			} else { 
 				myChart.options.scales.yAxes[0].ticks.callback = function(value, index, values) {return value.toLocaleString();}; 
 				myChart.options.tooltips.callbacks.label = function (tooltipItem, data) { var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || ''; return datasetLabel + ": " + tooltipItem.yLabel.toLocaleString();};
-				myChart.options.tooltips.callbacks.title = function (tooltipItem, data) {return 'Day ' + tooltipItem[0].xLabel;};
+				myChart.options.tooltips.callbacks.title = function (tooltipItem, data) {return rawChartOptions.day + " " + tooltipItem[0].xLabel;};
 				myChart.update(); 
+			}
+			if(multiAxis == true){
+				myChart.options.scales.yAxes[1].beforeUpdate = function(scale) {
+					var nLeftTickCount = scale.chart.scales['yAxisLeft'].ticks.length - 1;
+					var rightMaxValue = Math.max.apply(Math, scale.chart.config.data.datasets[2].data);
+					var rightIncValue = Math.ceil(rightMaxValue / nLeftTickCount);
+					scale.chart.options.scales.yAxes[1].ticks.stepSize = rightIncValue;
+					if(rightMaxValue != 0){
+						scale.chart.options.scales.yAxes[1].ticks.max = rightIncValue * Math.abs(nLeftTickCount);
+					} else {
+					scale.chart.options.scales.yAxes[1].ticks.max = 1;
+					}
+					return;
+				}
 			}
 		})
 		.fail(function(jqxhr, textStatus, errorThrown) {

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TBFlash>
+	<AirportStats>
+		<title>TBFlash AirportStats</title>
+		<name>Estadísticas aeroportuarias</name>
+		<description>Estadísticas sobre el aeropuerto</description>
+		<browser>Se abrirá un navegador web para localhost: 2198 cuando inicies este mod.</browser>
+		<LifetimeStats>
+			<header0>Estadísticas de vuelo</header0>
+			<header1>Estadísticas de pasajeros</header1>
+			<header2>Estadísticas de combustible</header2>
+			<header3>Estadísticas de equipaje</header3>
+			<header4>Ingresos</header4>
+			<header5>Gastos</header5>
+			<header6>Estadísticas del personal</header6>
+			<header7>Estadísticas de tiempo (tiempo real)</header7>
+			<header8>Estadísticas del teclado / mouse</header8>
+			<stats0>Salidas programadas</stats0>
+			<stats1>Salidas a tiempo</stats1>
+			<stats2>Salidas retrasadas</stats2>
+			<stats3>Vuelos cancelados</stats3>
+			<stats4>Vuelos renegados</stats4>
+			<stats5>Desembarques totales</stats5>
+			<stats6>Despegues totales</stats6>
+			<stats7>Llegando</stats7>
+			<stats8>Conectando</stats8>
+			<stats9>Vuelo abordado</stats9>
+			<stats10>Vuelo perdido</stats10>
+			<stats11>Combustible solicitado</stats11>
+			<stats12>Combustible proporcionado</stats12>
+			<stats13>Aviones Servidos Combustible</stats13>
+			<stats14>Fallas de combustible</stats14>
+			<stats15>Bolsas cargadas</stats15>
+			<stats16>Bolsas descargadas</stats16>
+			<stats17>Éxito de equipaje</stats17>
+			<stats18>Equipaje perdido</stats18>
+			<stats19>Equipaje cargado a través del carro de equipaje</stats19>
+			<stats20>Publicidad</stats20>
+			<stats21>Tarifas de aerolínea</stats21>
+			<stats22>Banco</stats22>
+			<stats23>Combustible</stats23>
+			<stats24>Conceder</stats24>
+			<stats25>Materiales</stats25>
+			<stats26>Estacionamiento</stats26>
+			<stats27>Investigación</stats27>
+			<stats28>Al por menor</stats28>
+			<stats29>Uso de pista</stats29>
+			<stats30>Uso de terminal</stats30>
+			<stats31>Personal</stats31>
+			<stats32>Indefinido</stats32>
+			<stats33>Los ingresos totales</stats33>
+			<stats34>Tarifas de aerolínea</stats34>
+			<stats35>Banco</stats35>
+			<stats36>Combustible</stats36>
+			<stats37>Conceder</stats37>
+			<stats38>Infraestructura</stats38>
+			<stats39>Compra de terrenos</stats39>
+			<stats40>Mantenimiento</stats40>
+			<stats41>Materiales</stats41>
+			<stats42>Investigación</stats42>
+			<stats43>Al por menor</stats43>
+			<stats44>Personal</stats44>
+			<stats45>Impuestos a la renta y a la propiedad</stats45>
+			<stats46>Impuesto sobre la renta</stats46>
+			<stats47>Impuesto a la propiedad</stats47>
+			<stats48>Transporte</stats48>
+			<stats49>Indefinido</stats49>
+			<stats50>Gastos totales</stats50>
+			<stats51>Contratado</stats51>
+			<stats52>Despedido</stats52>
+			<stats53>Tiempo de pausa</stats53>
+			<stats54>Velocidad 1</stats54>
+			<stats55>Velocidad 2</stats55>
+			<stats56>Velocidad 3</stats56>
+			<stats57>Inactivo</stats57>
+			<stats58>Clics del teclado</stats58>
+			<stats59>Clic izquierdo del mouse</stats59>
+			<stats60>Clics del mouse derecho</stats60>
+		</LifetimeStats>
+		<AllAirlineStats>
+			<stats0>Nombre de la aerolínea</stats0>
+			<stats1>Activo</stats1>
+			<stats2>Interesar</stats2>
+			<stats3>Comunicación</stats3>
+			<stats4>Satisfacción de combustible</stats4>
+			<stats5>Satisfacción del pasajero</stats5>
+			<stats6>Tarifas comerciales</stats6>
+			<stats7>Fiabilidad de servicio</stats7>
+			<stats8>Confiar</stats8>
+			<stats9>Calidad de la instalación</stats9>
+			<stats10>Vuelos diarios</stats10>
+			<stats11>Porcentaje de repostaje base</stats11>
+			<stats12>Porcentaje de primera clase</stats12>
+			<stats13>Nuevo bono de vuelo</stats13>
+			<stats14>Cuenta de vuelos pico</stats14>
+			<stats15># Representantes</stats15>
+			<stats16>Tiene trato</stats16>
+			<stats17>Tasas de pista negociadas</stats17>
+			<stats18>Tasas negociadas de terminal</stats18>
+			<stats19>Tarifas diarias negociadas</stats19>
+			<stats20>Satisfacción negociada de combustible</stats20>
+			<stats21>Fiabilidad del servicio negociado</stats21>
+			<stats22># Oficinas</stats22>
+			<stats23>Tiene sala de conferencias</stats23>
+			<stats24># Historias</stats24>
+			<stats25>Participación negociada en ganancias de la tienda</stats25>
+			<stats26># Cafeterías</stats26>
+			<stats27>Cuota negociada de beneficios del café</stats27>
+			<stats28># Salones de primera clase</stats28>
+			<stats29># Salones de la tripulación de vuelo</stats29>
+			<stats30># Puertas pequeñas asignadas</stats30>
+			<stats31># Grandes puertas asignadas</stats31>
+			<stats32># Puertas extra grandes asignadas</stats32>
+			<stats33>Min. Negociado Carga por vuelo</stats33>
+			<stats34>Penalización por incumplimiento negociado</stats34>
+		</AllAirlineStats>
+		<AirlineCompanyStats>
+			<stats0># Vuelos</stats0>
+			<stats1>Llegada retrasada total</stats1>
+			<stats2>Tripulación que requiere total</stats2>
+			<stats3>Salidas a tiempo</stats3>
+			<stats4>Salida retrasada</stats4>
+			<stats5>Vuelos cancelados</stats5>
+			<stats6>Cancelado para: Aeropuerto inválido</stats6>
+			<stats7>--Clima</stats7>
+			<stats8>--Pista</stats8>
+			<stats9>--Portón</stats9>
+			<stats10>--Caducado</stats10>
+			<stats11>--Renegado</stats11>
+			<stats12># Pasajeros que llegan</stats12>
+			<stats13># Pasajeros programados que salen</stats13>
+			<stats14># Pasajeros facturados</stats14>
+			<stats15># Pasajeros abordados</stats15>
+			<stats16># Pasajeros perdieron vuelo</stats16>
+			<stats17>Despliegue de tiempo total</stats17>
+			<stats18>Tiempo total de embarque</stats18>
+			<stats19>Combustible solicitado</stats19>
+			<stats20>Combustible entregado</stats20>
+			<stats21># Bolsas descargadas</stats21>
+			<stats22># Bolsas cargadas</stats22>
+			<stats23># Bolsas perdidas</stats23>
+			<stats24>Tiempo total cargando bolsas</stats24>
+			<stats25>Total en tierra</stats25>
+			<stats26># Bolsas de llegada</stats26>
+		</AirlineCompanyStats>
+		<AirlineDailyStats>
+			<stats0>Aerolínea</stats0>
+			<stats1>Tipo de aeronave</stats1>
+			<stats2>Hora de llegada programada</stats2>
+			<stats3>Hora de llegada real</stats3>
+			<stats4>Hora de salida programada</stats4>
+			<stats5>Hora de salida real</stats5>
+			<stats6># Pasajeros que llegan</stats6>
+			<stats7>Desplazamiento de tiempo</stats7>
+			<stats8># Pasajeros de salida programados</stats8>
+			<stats9># Pasajeros facturados</stats9>
+			<stats10># Pasajeros abordados</stats10>
+			<stats11>Tiempo total de embarque</stats11>
+			<stats12># Bolsas de llegada</stats12>
+			<stats13># Bolsas descargadas</stats13>
+			<stats14>Tiempo terminado Descargando bolsas</stats14>
+			<stats15># Bolsas de salida</stats15>
+			<stats16># Bolsas cargadas</stats16>
+			<stats17>Tiempo total cargando bolsas</stats17>
+			<stats18>Combustible solicitado</stats18>
+			<stats19>Combustible entregado</stats19>
+			<stats20>Estados</stats20>
+			<stats21>Razon de cancelacion</stats21>
+		</AirlineDailyStats>
+		<AircraftStats>
+			<stats0>Nombre para mostrar</stats0>
+			<stats1>Número total de vuelos en el día de juego actual</stats1>
+			<stats2>Es mod?</stats2>
+			<stats3>Capacidad de pasajeros</stats3>
+			<stats4># Auxiliares de vuelo</stats4>
+			<stats5># Pilotos</stats5>
+			<stats6>Modificador de probabilidad de cambio de tripulación</stats6>
+			<stats7>Capacidad de combustible</stats7>
+			<stats8>Tamaño de pista mínimo</stats8>
+			<stats9>Tamaño de puerta mínimo</stats9>
+			<stats10>Aerolíneas que usan</stats10>
+			<stats11>Nombre corto</stats11>
+		</AircraftStats>
+		<utils>
+			<value0>Estadísticas aeroportuarias</value0>
+			<value1>Todas las aerolíneas</value1>
+			<value2>Aerolíneas activas</value2>
+			<day>Día</day>
+			<yes>si</yes>
+			<no>No</no>
+			<lifetime>Toda la vida</lifetime>
+			<currentDay>Día actual</currentDay>
+			<dailyStats>Estadísticas diarias</dailyStats>
+			<go>Vamos</go>
+			<version>Versión</version>
+			<broughtBy>Traído a usted por TBFlash</broughtBy>
+			<invalidEntry>Entrada invalida</invalidEntry>
+			<invalidAircraft>Tipo de avión no válido ingresado.</invalidAircraft>
+		</utils>
+		<infoPage>
+			<information>Información</information>
+			<modName>AirportStats</modName>
+			<intro>proporciona datos del Aeropuerto SimAirport actualmente en funcionamiento en páginas centradas en:</intro>
+			<bullet1>Estadísticas del aeropuerto: de por vida y hasta los últimos 30 días de operaciones en todo el aeropuerto. Haga clic en una categoría estadística (como Estadísticas de vuelo) para ver un gráfico de datos en esa categoría.</bullet1>
+			<bullet2a>Estadísticas de Airlne: comparaciones paralelas de cada interés, satisfacción, ofertas y más de cada aerolínea. Disponible para</bullet2a>
+			<bullet2b>Todas las aerolíneas</bullet2b>
+			<bullet2c>o solo actualmente</bullet2c>
+			<bullet2d>Aerolíneas activas.</bullet2d>
+			<bullet3a>Operaciones diarias: haga clic en un</bullet3a>
+			<bullet3b>Día</bullet3b>
+			<bullet3c>enlace para ver todos los vuelos de ese día, ya sea para todo el aeropuerto o solo para una sola aerolínea. Haga clic en un tipo de aeronave para ver más información sobre la aeronave.</bullet3c>
+			<techNotes>Notas técnicas:</techNotes>
+			<tnbullet0>El tiempo se muestra en días: horas: minutos: segundos.</tnbullet0>
+			<tnbullet1>Para eliminar una serie de datos en un gráfico, haga clic en el nombre en la leyenda.</tnbullet1>
+			<tnbullet2>El gráfico de gastos e ingresos solo muestra series que tienen al menos un valor.</tnbullet2>
+			<tnbullet3>Algunas estadísticas del día actual pueden retrasarse, ya que los informes finales se realizan en diferentes momentos del día.</tnbullet3>
+			<tnbullet4a>AirportStats</tnbullet4a>
+			<tnbullet4b>depende de múltiples configuraciones de computadora y aplicación para mostrar datos. Traté de proporcionar traducciones específicas del idioma en todas las páginas, pero puede haber algunos problemas. Informe cualquier problema e intentaré corregirlo.</tnbullet4b>
+			<tnbullet5>SimAirport solo mantiene datos de los últimos 30 días de su aeropuerto, por lo que es posible que los datos más antiguos no estén disponibles.</tnbullet5>
+		</infoPage>
+		<json>
+			<jsonConfigError>Error de configuración. No hay datos para presentar.</jsonConfigError>
+			<flightStats>Estadísticas de vuelo</flightStats>
+			<numberFlights>Número de vuelos</numberFlights>
+			<scheduledDepartures>Salidas programadas</scheduledDepartures>
+			<ontimeDepartures>Salidas a tiempo</ontimeDepartures>
+			<delayedDepartures>Salidas retrasadas</delayedDepartures>
+			<canceled>Cancelado</canceled>
+			<luggageStats>Estadísticas de equipaje</luggageStats>
+			<numberOfBags>Numero de bolsas</numberOfBags>
+			<bagsUnloaded>Bolsas descargadas</bagsUnloaded>
+			<bagsLoaded>Bolsas cargadas</bagsLoaded>
+			<lostBags>Bolsas Perdidas</lostBags>
+			<fuelStats>Estadísticas de combustible</fuelStats>
+			<litersOfFuel>Litros de combustible</litersOfFuel>
+			<planesServed>Cantidad de aviones servidos</planesServed>
+			<fuelRequested>Combustible solicitado</fuelRequested>
+			<fuelProvided>Combustible proporcionado</fuelProvided>
+			<servedFuel>Aviones Servidos Combustible</servedFuel>
+			<fuelingFailures>Fallas de combustible</fuelingFailures>
+			<paxStats>Estadísticas de pasajeros</paxStats>
+			<numPax>Número de pasajeros</numPax>
+			<arriving>Llegando</arriving>
+			<connecting>Conectando</connecting>
+			<boarded>Abordó</boarded>
+			<missedFlight>Vuelo perdido</missedFlight>
+			<revandexp>Los gastos de ingresos</revandexp>
+			<totalrevandexp>Ingresos y gastos totales</totalrevandexp>
+			<adRev>Ingresos por publicidad</adRev>
+			<airlineRev>Ingresos de tarifas aéreas</airlineRev>
+			<bankRev>Ingresos bancarios</bankRev>
+			<fuelRev>Ingresos de combustible</fuelRev>
+			<grantRev>Ingresos de subvención</grantRev>
+			<matRev>Ingresos de materiales</matRev>
+			<parkRev>Ingresos de estacionamiento</parkRev>
+			<resRev>Ingresos de investigación</resRev>
+			<retRev>Ingresos minoristas</retRev>
+			<rwyRev>Ingresos de tarifas de pista</rwyRev>
+			<termRev>Ingresos de tarifa terminal</termRev>
+			<staffRev>Ingresos del personal</staffRev>
+			<undefRev>Ingresos indefinidos</undefRev>
+			<airlineExp>Gastos de tarifa aérea</airlineExp>
+			<bankExp>Gastos bancarios</bankExp>
+			<fuelExp>Gastos de combustible</fuelExp>
+			<grantExp>Gastos de subvención</grantExp>
+			<infraExp>Gastos de infraestructura</infraExp>
+			<landExp>Gastos de compra de tierras</landExp>
+			<maintExp>Gastos de mantenimiento</maintExp>
+			<matExp>Gastos de materiales</matExp>
+			<resExp>Gastos de investigación</resExp>
+			<retExp>Gastos minoristas</retExp>
+			<staffExp>Gastos de personal</staffExp>
+			<taxes>Impuestos</taxes>
+			<transExp>Gastos de transporte</transExp>
+			<undefExp>Gastos indefinidos</undefExp>
+		</json>
+		<flightstatus>
+			<ArrivalCrewPickedUp>Equipo de llegada recogido</ArrivalCrewPickedUp>
+			<Canceled>Cancelado</Canceled>
+			<CrewSpawned>Tripulación engendrada</CrewSpawned>
+			<DelayedArrival>Llegada retrasada</DelayedArrival>
+			<DelayedDeparture>Salida retrasada</DelayedDeparture>
+			<Departed>Salido</Departed>
+			<Despawned>Despawned</Despawned>
+			<Docked>Atracado</Docked>
+			<Enroute>En camino</Enroute>
+			<GateChanged>Puerta cambiada</GateChanged>
+			<ManualBaggageInbound>Entrada de equipaje manual</ManualBaggageInbound>
+			<OnGround>En el suelo</OnGround>
+			<RequiresCrew>Requiere tripulación</RequiresCrew>
+			<Scheduled>Programado</Scheduled>
+			<Spawned>Generado</Spawned>
+		</flightstatus>
+	</AirportStats>
+</TBFlash>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TBFlash>
+	<AirportStats>
+		<title>TBFlash AirportStats</title>
+		<name>Statistiky letiště</name>
+		<description>Statistiky o letišti</description>
+		<browser>Když spustíte tento režim, otevře se webový prohlížeč pro localhost: 2198.</browser>
+		<LifetimeStats>
+			<header0>Statistiky letu</header0>
+			<header1>Statistiky cestujících</header1>
+			<header2>Statistiky paliv</header2>
+			<header3>Statistika zavazadel</header3>
+			<header4>Příjmy</header4>
+			<header5>Výdaje</header5>
+			<header6>Statistiky zaměstnanců</header6>
+			<header7>Statistiky času (v reálném čase)</header7>
+			<header8>Statistiky klávesnice / myši</header8>
+			<stats0>Odjezdy jsou naplánovány</stats0>
+			<stats1>Časové odjezdy</stats1>
+			<stats2>Zpožděné odjezdy</stats2>
+			<stats3>Zrušené lety</stats3>
+			<stats4>Zrušit lety</stats4>
+			<stats5>Celkový počet přistání</stats5>
+			<stats6>Celkový vzlet</stats6>
+			<stats7>Přijíždí</stats7>
+			<stats8>Spojovací</stats8>
+			<stats9>Nastoupil na palubu</stats9>
+			<stats10>Zmeškaný let</stats10>
+			<stats11>Požadované palivo</stats11>
+			<stats12>Poskytnuté palivo</stats12>
+			<stats13>Letadlo podává palivo</stats13>
+			<stats14>Poruchy paliva</stats14>
+			<stats15>Naložené tašky</stats15>
+			<stats16>Tašky vyložené</stats16>
+			<stats17>Úspěch v zavazadlech</stats17>
+			<stats18>Ztracená zavazadla</stats18>
+			<stats19>Zavazadla naložená prostřednictvím zavazadlového automobilu</stats19>
+			<stats20>Reklamní</stats20>
+			<stats21>Letecké poplatky</stats21>
+			<stats22>banka</stats22>
+			<stats23>Palivo</stats23>
+			<stats24>Grant</stats24>
+			<stats25>Materiály</stats25>
+			<stats26>Parkoviště</stats26>
+			<stats27>Výzkum</stats27>
+			<stats28>Maloobchodní</stats28>
+			<stats29>Použití dráhy</stats29>
+			<stats30>Použití terminálu</stats30>
+			<stats31>Personál</stats31>
+			<stats32>Nedefinováno</stats32>
+			<stats33>Celkové příjmy</stats33>
+			<stats34>Letecké poplatky</stats34>
+			<stats35>banka</stats35>
+			<stats36>Palivo</stats36>
+			<stats37>Grant</stats37>
+			<stats38>Infrastruktura</stats38>
+			<stats39>Nákup pozemků</stats39>
+			<stats40>Údržba</stats40>
+			<stats41>Materiály</stats41>
+			<stats42>Výzkum</stats42>
+			<stats43>Maloobchodní</stats43>
+			<stats44>Personál</stats44>
+			<stats45>Daň z příjmu a vlastnictví</stats45>
+			<stats46>Daň z příjmu</stats46>
+			<stats47>Daň z nemovitosti</stats47>
+			<stats48>Přeprava</stats48>
+			<stats49>Nedefinováno</stats49>
+			<stats50>Celkové výdaje</stats50>
+			<stats51>Najal</stats51>
+			<stats52>Vypálil</stats52>
+			<stats53>Čas pozastaven</stats53>
+			<stats54>Rychlost 1</stats54>
+			<stats55>Rychlost 2</stats55>
+			<stats56>Rychlost 3</stats56>
+			<stats57>Neaktivní</stats57>
+			<stats58>Kliknutí na klávesnici</stats58>
+			<stats59>Kliknutí levým tlačítkem myši</stats59>
+			<stats60>Kliknutí pravým tlačítkem myši</stats60>
+		</LifetimeStats>
+		<AllAirlineStats>
+			<stats0>Název letecké společnosti</stats0>
+			<stats1>Aktivní</stats1>
+			<stats2>Zájem</stats2>
+			<stats3>Sdělení</stats3>
+			<stats4>Spokojenost s palivem</stats4>
+			<stats5>Spokojenost cestujících</stats5>
+			<stats6>Obchodní poplatky</stats6>
+			<stats7>Spolehlivost služeb</stats7>
+			<stats8>Důvěra</stats8>
+			<stats9>Kvalita zařízení</stats9>
+			<stats10>Denní lety</stats10>
+			<stats11>Procento základního paliva</stats11>
+			<stats12>Procenta první třídy</stats12>
+			<stats13>Nový letový bonus</stats13>
+			<stats14>Počet vrcholů letů</stats14>
+			<stats15># Reps</stats15>
+			<stats16>Má dohodu</stats16>
+			<stats17>Sjednané poplatky za přistávací a přistávací dráhu</stats17>
+			<stats18>Sjednané poplatky za terminál</stats18>
+			<stats19>Sjednané denní poplatky</stats19>
+			<stats20>Spokojenost s dohodnutým palivem</stats20>
+			<stats21>Spolehlivost dohodnuté služby</stats21>
+			<stats22># Kanceláře</stats22>
+			<stats23>Má konferenční místnost</stats23>
+			<stats24># Obchody</stats24>
+			<stats25>Sjednaný podíl na zisku z obchodu</stats25>
+			<stats26># Jídelny</stats26>
+			<stats27>Sjednaný podíl na zisku Cafe</stats27>
+			<stats28># Prvotřídní salonky</stats28>
+			<stats29># Letové posádky</stats29>
+			<stats30># Malé brány přiřazeny</stats30>
+			<stats31># Velké brány přiřazeny</stats31>
+			<stats32># Přiřazeny extra velké brány</stats32>
+			<stats33>Vyjednané Min. Načíst za let</stats33>
+			<stats34>Trest za porušení smlouvy</stats34>
+		</AllAirlineStats>
+		<AirlineCompanyStats>
+			<stats0># Lety</stats0>
+			<stats1>Celkový zpožděný příjezd</stats1>
+			<stats2>Celkový počet posádky</stats2>
+			<stats3>Časové odjezdy</stats3>
+			<stats4>Opožděné odjezd</stats4>
+			<stats5>Lety zrušeny</stats5>
+			<stats6>Zrušeno pro: Letiště Neplatné</stats6>
+			<stats7>--Počasí</stats7>
+			<stats8>--Přistávací dráha</stats8>
+			<stats9>--Brána</stats9>
+			<stats10>--Platnost vypršela</stats10>
+			<stats11>--Odmítnout</stats11>
+			<stats12># Příchozí cestující</stats12>
+			<stats13># Plánovaný odlet cestujících</stats13>
+			<stats14># Odbavení cestujících</stats14>
+			<stats15># Palubní cestující</stats15>
+			<stats16># Zmeškaný let cestujících</stats16>
+			<stats17>Celkový čas Deplaning</stats17>
+			<stats18>Celkový čas strávený nastupováním</stats18>
+			<stats19>Požadované palivo</stats19>
+			<stats20>Palivo dodáno</stats20>
+			<stats21># Tašky vyloženy</stats21>
+			<stats22># Tašky jsou načteny</stats22>
+			<stats23># Ztracené tašky</stats23>
+			<stats24>Načítání tašky celkem</stats24>
+			<stats25># Příchozí tašky</stats25>
+			<stats26>Celkem na zemi</stats26>
+		</AirlineCompanyStats>
+		<AirlineDailyStats>
+			<stats0>Letecká linka</stats0>
+			<stats1>Typ letadla</stats1>
+			<stats2>Plánovaný čas příjezdu</stats2>
+			<stats3>Skutečný čas příjezdu</stats3>
+			<stats4>Plánovaný čas odjezdu</stats4>
+			<stats5>Skutečný čas odjezdu</stats5>
+			<stats6># Příchozí cestující</stats6>
+			<stats7>Time Deplaning</stats7>
+			<stats8># Plánovaný odlet cestujících</stats8>
+			<stats9># Odbavení cestujících</stats9>
+			<stats10># Palubní cestující</stats10>
+			<stats11>Celkový čas strávený nastupováním</stats11>
+			<stats12># Příchozí tašky</stats12>
+			<stats13># Tašky vyloženy</stats13>
+			<stats14>Vykládání pytlů je hotovo</stats14>
+			<stats15># Odletové tašky</stats15>
+			<stats16># Tašky jsou načteny</stats16>
+			<stats17>Načítání tašky celkem</stats17>
+			<stats18>Požadované palivo</stats18>
+			<stats19>Palivo dodáno</stats19>
+			<stats20>Stavy</stats20>
+			<stats21>Důvod zrušení</stats21>
+		</AirlineDailyStats>
+		<AircraftStats>
+			<stats0>Zobrazovaný název</stats0>
+			<stats1>Celkem # letů na aktuální Gameday</stats1>
+			<stats2>Je Mod?</stats2>
+			<stats3>Kapacita cestujících</stats3>
+			<stats4># Letušky</stats4>
+			<stats5># Piloti</stats5>
+			<stats6>Crew Change Chance Modifier</stats6>
+			<stats7>Plná kapacita</stats7>
+			<stats8>Minimální velikost dráhy</stats8>
+			<stats9>Min. Velikost brány</stats9>
+			<stats10>Letecké společnosti používající</stats10>
+			<stats11>Krátké jméno</stats11>
+		</AircraftStats>
+		<utils>
+			<value0>Statistiky letiště</value0>
+			<value1>Všechny letecké společnosti</value1>
+			<value2>Aktivní letecké společnosti</value2>
+			<day>Den</day>
+			<yes>Ano</yes>
+			<no>Ne</no>
+			<lifetime>Život</lifetime>
+			<currentDay>Aktuální den</currentDay>
+			<dailyStats>Denní statistika</dailyStats>
+			<go>Jít</go>
+			<version>Verze</version>
+			<broughtBy>Přinesl vám TBFlash</broughtBy>
+			<invalidEntry>Neplatné zadání</invalidEntry>
+			<invalidAircraft>Zadán neplatný typ letadla.</invalidAircraft>
+		</utils>
+		<infoPage>
+			<information>Informace</information>
+			<modName>LetištěStats</modName>
+			<intro>poskytuje data z aktuálně provozovaného letiště SimAirport na stránky zaměřené na:</intro>
+			<bullet1>Statistiky letišť: Životnost až do posledních 30 dnů provozu na celém letišti. Kliknutím na statistickou kategorii (například Statistické údaje o letu) zobrazíte graf dat v této kategorii.</bullet1>
+			<bullet2a>Statistiky Airlne: Porovnání zájmů, spokojenosti, nabídek a další nabídky jednotlivých leteckých společností. Dostupné pro</bullet2a>
+			<bullet2b>Všechny letecké společnosti</bullet2b>
+			<bullet2c>, nebo právě teď</bullet2c>
+			<bullet2d>Aktivní letecké společnosti.</bullet2d>
+			<bullet3a>Denní operace: Klikněte na a</bullet3a>
+			<bullet3b>Den</bullet3b>
+			<bullet3c>odkaz pro zobrazení všech letů v daný den, buď pro celé letiště, nebo pouze pro jednu leteckou společnost. Kliknutím na typ letadla zobrazíte další informace o letadle.</bullet3c>
+			<techNotes>Technické poznámky:</techNotes>
+			<tnbullet0>Čas se zobrazuje ve dnech: Hodiny: Minuty: Sekundy.</tnbullet0>
+			<tnbullet1>Chcete-li odstranit datovou řadu v grafu, klikněte na název v legendě.</tnbullet1>
+			<tnbullet2>Graf Výdaje a výnosy zobrazuje pouze řady, které mají alespoň jednu hodnotu.</tnbullet2>
+			<tnbullet3>Některé statistiky aktuálního dne mohou být zpožděny, protože závěrečné hlášení probíhá v různých bodech dne.</tnbullet3>
+			<tnbullet4a>LetištěStats</tnbullet4a>
+			<tnbullet4b>zobrazení dat závisí na nastavení více počítačů a aplikací. Snažil jsem se poskytnout překlady specifické pro jednotlivé jazyky na stránkách, ale mohou nastat problémy. Nahlaste prosím všechny problémy a pokusím se je napravit.</tnbullet4b>
+			<tnbullet5>SimAirport uchovává data pouze za posledních 30 dní vašeho letiště, takže starší data nemusí být k dispozici.</tnbullet5>
+		</infoPage>
+		<json>
+			<jsonConfigError>Chyba konfigurace. Nejsou k dispozici žádné údaje.</jsonConfigError>
+			<flightStats>Statistiky letu</flightStats>
+			<numberFlights>Počet letů</numberFlights>
+			<scheduledDepartures>Plánované odjezdy</scheduledDepartures>
+			<ontimeDepartures>Časové odjezdy</ontimeDepartures>
+			<delayedDepartures>Zpožděné odjezdy</delayedDepartures>
+			<canceled>Zrušeno</canceled>
+			<luggageStats>Statistika zavazadel</luggageStats>
+			<numberOfBags>Počet tašek</numberOfBags>
+			<bagsUnloaded>Tašky vyložené</bagsUnloaded>
+			<bagsLoaded>Naložené tašky</bagsLoaded>
+			<lostBags>Ztracené tašky</lostBags>
+			<fuelStats>Statistiky paliv</fuelStats>
+			<litersOfFuel>Litry paliva</litersOfFuel>
+			<planesServed>Počet obsluhovaných letadel</planesServed>
+			<fuelRequested>Požadované palivo</fuelRequested>
+			<fuelProvided>Poskytnuté palivo</fuelProvided>
+			<servedFuel>Letadlo podává palivo</servedFuel>
+			<fuelingFailures>Poruchy paliva</fuelingFailures>
+			<paxStats>Statistiky cestujících</paxStats>
+			<numPax>Počet cestujících</numPax>
+			<arriving>Přijíždí</arriving>
+			<connecting>Spojovací</connecting>
+			<boarded>Nastoupil</boarded>
+			<missedFlight>Zmeškaný let</missedFlight>
+			<revandexp>Příjmy / výdaje</revandexp>
+			<totalrevandexp>Celkové příjmy a výdaje</totalrevandexp>
+			<adRev>Příjmy z reklamy</adRev>
+			<airlineRev>Výnosy z leteckých poplatků</airlineRev>
+			<bankRev>Příjmy z bank</bankRev>
+			<fuelRev>Příjmy z paliva</fuelRev>
+			<grantRev>Příjmy z grantu</grantRev>
+			<matRev>Příjmy z materiálů</matRev>
+			<parkRev>Příjmy z parkování</parkRev>
+			<resRev>Výnosy z výzkumu</resRev>
+			<retRev>Maloobchodní příjmy</retRev>
+			<rwyRev>Výnosy z poplatků za přistávací a přistávací dráhu</rwyRev>
+			<termRev>Výnos z poplatků za terminál</termRev>
+			<staffRev>Příjmy zaměstnanců</staffRev>
+			<undefRev>Nedefinované příjmy</undefRev>
+			<airlineExp>Náklady na letecký poplatek</airlineExp>
+			<bankExp>Bankovní výdaje</bankExp>
+			<fuelExp>Náklady na palivo</fuelExp>
+			<grantExp>Grantové výdaje</grantExp>
+			<infraExp>Náklady na infrastrukturu</infraExp>
+			<landExp>Výdaje na nákup pozemků</landExp>
+			<maintExp>Náklady na údržbu</maintExp>
+			<matExp>Náklady na materiál</matExp>
+			<resExp>Výdaje na výzkum</resExp>
+			<retExp>Maloobchodní náklady</retExp>
+			<staffExp>Náklady na zaměstnance</staffExp>
+			<taxes>Daně</taxes>
+			<transExp>Náklady na dopravu</transExp>
+			<undefExp>Nedefinované výdaje</undefExp>
+		</json>
+		<flightstatus>
+			<ArrivalCrewPickedUp>Příjezdová posádka vyzvednuta</ArrivalCrewPickedUp>
+			<Canceled>Zrušeno</Canceled>
+			<CrewSpawned>Posádka Spawned</CrewSpawned>
+			<DelayedArrival>Zpožděný příjezd</DelayedArrival>
+			<DelayedDeparture>Opožděné odjezd</DelayedDeparture>
+			<Departed>Odlet</Departed>
+			<Despawned>Despawned</Despawned>
+			<Docked>Ukotvil</Docked>
+			<Enroute>Na cestě</Enroute>
+			<GateChanged>Brána se změnila</GateChanged>
+			<ManualBaggageInbound>Ruční příchozí zavazadla</ManualBaggageInbound>
+			<OnGround>Na zemi</OnGround>
+			<RequiresCrew>Vyžaduje posádku</RequiresCrew>
+			<Scheduled>Naplánováno</Scheduled>
+			<Spawned>Tvořil</Spawned>
+		</flightstatus>
+	</AirportStats>
+</TBFlash>

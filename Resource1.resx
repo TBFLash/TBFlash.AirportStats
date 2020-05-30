@@ -121,6 +121,9 @@
   <data name="AirportStats" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\airportstats.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="AirportStats1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\airportstats.css;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="Chart_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Chart.min.css;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -130,10 +133,10 @@
   <data name="jquery_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\jquery.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="jquery_ui" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>resources\jquery-ui.css;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="jquery_ui_min" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\jquery-ui.min.css;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="jquery_ui_min1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\jquery-ui.min.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

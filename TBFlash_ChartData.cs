@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using SimAirport.Logging;
 
 namespace TBFlash.AirportStats
@@ -36,10 +35,10 @@ namespace TBFlash.AirportStats
         private string YAxisLabel2 = "Total";
         private string MoneySetting = "false";
 
-        internal string GetChartData(string dataSet)
+        internal string GetChartData(string dataSet, string airline)
         {
             string jsonCode;
-            if (LoadArray(dataSet))
+            if (LoadArray(dataSet, airline))
             {
                 TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
                 SetOptions();
@@ -66,23 +65,31 @@ namespace TBFlash.AirportStats
             }
             else
             {
-                jsonCode = "Configuration problem. No data to present.";
+                jsonCode = i18n.Get("TBFlash.AirportStats.json.jsonConfigError");
             }
             return jsonCode;
         }
 
-        private bool LoadArray(string dataSet)
+        private bool LoadArray(string dataSet, string airline)
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             switch (dataSet.ToUpperInvariant())
             {
                 case "FLIGHTSTATS":
+                    if (!string.IsNullOrWhiteSpace(airline))
+                        return LoadFlightStats(airline);
                     return LoadFlightStats();
                 case "FUELSTATS":
+                    if (!string.IsNullOrWhiteSpace(airline))
+                        return LoadFuelStats(airline);
                     return LoadFuelStats();
                 case "LUGGAGESTATS":
+                    if (!string.IsNullOrWhiteSpace(airline))
+                        return LoadLuggageStats(airline);
                     return LoadLuggageStats();
                 case "PAXSTATS":
+                    if (!string.IsNullOrWhiteSpace(airline))
+                        return LoadPaxStats(airline);
                     return LoadPaxStats();
                 case "PROFITS":
                     return LoadProfits();
@@ -94,10 +101,10 @@ namespace TBFlash.AirportStats
         private bool LoadFlightStats()
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
-            Title = "Flight Stats";
+            Title = i18n.Get("TBFlash.AirportStats.json.flightStats");
             Type = Types.line;
             NumSeries = 4;
-            YAxisLabel = "Number Flights";
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.numberFlights");
             dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
             int j = additionalColumns - 1;
             for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
@@ -107,16 +114,18 @@ namespace TBFlash.AirportStats
                 {
                     break;
                 }
+                IEnumerable<FlightRecord> FlightRecords = Game.current.flightRecords.GetForDay(i - 1);
+
                 dataArray[0, j] = i.ToString();
                 dataArray[1, j] = GRD.FlightsCount.ToString("F0");
-                dataArray[2, j] = (i != GameTimer.Day ? GRD.FlightsCount - GRD.FlightsDelayed - GRD.FlightsCanceled : 0).ToString("F0");
-                dataArray[3, j] = GRD.FlightsDelayed.ToString("F0");
+                dataArray[2, j] = (FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed)) - FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture))).ToString("F0");
+                dataArray[3, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("F0");
                 dataArray[4, j] = GRD.FlightsCanceled.ToString("F0");
             }
-            dataArray[1, 0] = "Scheduled Departures";
-            dataArray[2, 0] = "OnTime Departures";
-            dataArray[3, 0] = "Delayed Departures";
-            dataArray[4, 0] = "Cancelled";
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.scheduledDepartures");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.ontimeDepartures");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.delayedDepartures");
+            dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.canceled");
             dataArray[1, 1] = "schedDepart";
             dataArray[2, 1] = "ontimeDepart";
             dataArray[3, 1] = "delayDepart";
@@ -125,11 +134,54 @@ namespace TBFlash.AirportStats
             dataArray[2, 2] = "green";
             dataArray[3, 2] = "cyan";
             dataArray[4, 2] = "red";
-            dataArray[1, 3] = "2";
+            dataArray[1, 3] = "4";
             dataArray[2, 3] = "1";
-            dataArray[3, 3] = "3";
-            dataArray[4, 3] = "4";
-            for(int i=1; i<=NumSeries; i++)
+            dataArray[3, 3] = "2";
+            dataArray[4, 3] = "3";
+            for (int i = 1; i <= NumSeries; i++)
+            {
+                dataArray[i, 5] = "visible";
+            }
+            return true;
+        }
+
+        private bool LoadFlightStats(string airline)
+        {
+            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            Title = i18n.Get("TBFlash.AirportStats.json.flightStats") + $": {airline}";
+            Type = Types.line;
+            NumSeries = 4;
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.numberFlights");
+            dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
+            int j = additionalColumns - 1;
+            for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
+            {
+                j++;
+                IEnumerable<FlightRecord> FlightRecords = Game.current.flightRecords.GetForDay(i - 1).Where(x => x.airline == airline);
+
+                dataArray[0, j] = i.ToString();
+                dataArray[1, j] = FlightRecords.Count().ToString("F0");
+                dataArray[2, j] = (FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed)) - FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture))).ToString("F0");
+                dataArray[3, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("F0");
+                dataArray[4, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Canceled)).ToString("F0");
+            }
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.scheduledDepartures");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.ontimeDepartures");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.delayedDepartures");
+            dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.canceled");
+            dataArray[1, 1] = "schedDepart";
+            dataArray[2, 1] = "ontimeDepart";
+            dataArray[3, 1] = "delayDepart";
+            dataArray[4, 1] = "canx";
+            dataArray[1, 2] = "white";
+            dataArray[2, 2] = "green";
+            dataArray[3, 2] = "cyan";
+            dataArray[4, 2] = "red";
+            dataArray[1, 3] = "4";
+            dataArray[2, 3] = "1";
+            dataArray[3, 3] = "2";
+            dataArray[4, 3] = "3";
+            for (int i = 1; i <= NumSeries; i++)
             {
                 dataArray[i, 5] = "visible";
             }
@@ -139,10 +191,10 @@ namespace TBFlash.AirportStats
         private bool LoadLuggageStats()
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
-            Title = "Luggage Stats";
+            Title = i18n.Get("TBFlash.AirportStats.json.luggageStats");
             Type = Types.line;
             NumSeries = 3;
-            YAxisLabel = "Number of Bags";
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.numberOfBags");
             dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
             int j = additionalColumns - 1;
             for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
@@ -154,32 +206,70 @@ namespace TBFlash.AirportStats
                 dataArray[2, j] = FlightRecords.Sum(x => x.nBagsLoaded).ToString("F0");
                 dataArray[3, j] = (i != GameTimer.Day ? (FlightRecords.Sum(x => x.nDepartingBags) - FlightRecords.Sum(x => x.nBagsLoaded)) : 0).ToString("F0");
             }
-            dataArray[1, 0] = "Bags Unloaded";
-            dataArray[2, 0] = "Bags Loaded";
-            dataArray[3, 0] = "Lost Luggage";
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.bagsUnloaded");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.bagsLoaded");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.lostBags");
             dataArray[1, 1] = "unload";
             dataArray[2, 1] = "load";
             dataArray[3, 1] = "lost";
             dataArray[1, 2] = "ivory";
             dataArray[2, 2] = "green";
             dataArray[3, 2] = "red";
-            dataArray[1, 3] = "2";
+            dataArray[1, 3] = "3";
             dataArray[2, 3] = "1";
-            dataArray[3, 3] = "3";
+            dataArray[3, 3] = "2";
             for (int i = 1; i <= NumSeries; i++)
             {
                 dataArray[i, 5] = "visible";
             }
             return true;
         }
+
+        private bool LoadLuggageStats(string airline)
+        {
+            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            Title = i18n.Get("TBFlash.AirportStats.json.luggageStats") + $": {airline}";
+            Type = Types.line;
+            NumSeries = 3;
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.numberOfBags");
+            dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
+            int j = additionalColumns - 1;
+            for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
+            {
+                j++;
+                IEnumerable<FlightRecord> flightRecords = Game.current.flightRecords.GetForDay(i - 1).Where(x => x.airline == airline);
+                dataArray[0, j] = i.ToString();
+                dataArray[1, j] = flightRecords.Sum(x => x.nBagsUnloaded).ToString("F0");
+                dataArray[2, j] = flightRecords.Sum(x => x.nBagsLoaded).ToString("F0");
+                dataArray[3, j] = flightRecords.Sum(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) ? x.nDepartingBags - x.nBagsLoaded : 0).ToString("F0");
+            }
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.bagsUnloaded");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.bagsLoaded");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.lostBags");
+            dataArray[1, 1] = "unload";
+            dataArray[2, 1] = "load";
+            dataArray[3, 1] = "lost";
+            dataArray[1, 2] = "ivory";
+            dataArray[2, 2] = "green";
+            dataArray[3, 2] = "red";
+            dataArray[1, 3] = "3";
+            dataArray[2, 3] = "1";
+            dataArray[3, 3] = "2";
+            for (int i = 1; i <= NumSeries; i++)
+            {
+                dataArray[i, 5] = "visible";
+            }
+            return true;
+        }
+
         private bool LoadFuelStats()
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
-            Title = "Fuel Stats";
+            Title = i18n.Get("TBFlash.AirportStats.json.fuelStats");
             Type = Types.multiAxisLine;
             NumSeries = 4;
-            YAxisLabel = "Liters of Fuel";
-            YAxisLabel2 = "Number of Planes Served";
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.litersOfFuel");
+            YAxisLabel2 = i18n.Get("TBFlash.AirportStats.json.planesServed");
             dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
             int j = additionalColumns - 1;
             for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
@@ -194,13 +284,61 @@ namespace TBFlash.AirportStats
                 dataArray[0, j] = i.ToString();
                 dataArray[1, j] = (FlightRecords.Sum(x => x.nFuelRequested) / 1000).ToString("F0");
                 dataArray[2, j] = (FlightRecords.Sum(x => x.nFuelRefueled) / 1000).ToString("F0");
-                dataArray[3, j] = (FlightRecords.Count(x => x.nFuelRefueled > 0)).ToString("F0");
+                dataArray[3, j] = FlightRecords.Count(x => x.nFuelRefueled > 0).ToString("F0");
                 dataArray[4, j] = GRD.FuelFailures.ToString("F0");
             }
-            dataArray[1, 0] = "Fuel Requested";
-            dataArray[2, 0] = "Fuel Provided";
-            dataArray[3, 0] = "Planes Served Fuel";
-            dataArray[4, 0] = "Fueling Failures";
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.fuelRequested");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.fuelProvided");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.servedFuel");
+            dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.fuelingFailures");
+            dataArray[1, 1] = "fuelReq";
+            dataArray[2, 1] = "fuelProv";
+            dataArray[3, 1] = "served";
+            dataArray[4, 1] = "failed";
+            dataArray[1, 2] = "ivory";
+            dataArray[2, 2] = "green";
+            dataArray[3, 2] = "cyan";
+            dataArray[4, 2] = "red";
+            dataArray[1, 3] = "2";
+            dataArray[2, 3] = "1";
+            dataArray[3, 3] = "3";
+            dataArray[4, 3] = "4";
+            dataArray[1, 6] = nameof(YAxisTypes.yAxisLeft);
+            dataArray[2, 6] = nameof(YAxisTypes.yAxisLeft);
+            dataArray[3, 6] = nameof(YAxisTypes.yAxisRight);
+            dataArray[4, 6] = nameof(YAxisTypes.yAxisRight);
+            for (int i = 1; i <= NumSeries; i++)
+            {
+                dataArray[i, 5] = "visible";
+            }
+            return true;
+        }
+
+        private bool LoadFuelStats(string airline)
+        {
+            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            Title = i18n.Get("TBFlash.AirportStats.json.fuelStats") + $": {airline}";
+            Type = Types.multiAxisLine;
+            NumSeries = 4;
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.litersOfFuel");
+            YAxisLabel2 = i18n.Get("TBFlash.AirportStats.json.planesServed");
+            dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
+            int j = additionalColumns - 1;
+            for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
+            {
+                j++;
+                IEnumerable<FlightRecord> flightRecords = Game.current.flightRecords.GetForDay(i - 1).Where(x => x.airline == airline);
+
+                dataArray[0, j] = i.ToString();
+                dataArray[1, j] = (flightRecords.Sum(x => x.nFuelRequested) / 1000).ToString("F0");
+                dataArray[2, j] = (flightRecords.Sum(x => x.nFuelRefueled) / 1000).ToString("F0");
+                dataArray[3, j] = (flightRecords.Count(x => x.nFuelRefueled > 0)).ToString("F0");
+                dataArray[4, j] = flightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) && x.nFuelRefueled == 0 && x.nFuelRequested > 0).ToString("F0");
+            }
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.fuelRequested");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.fuelProvided");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.servedFuel");
+            dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.fuelingFailures");
             dataArray[1, 1] = "fuelReq";
             dataArray[2, 1] = "fuelProv";
             dataArray[3, 1] = "served";
@@ -227,10 +365,10 @@ namespace TBFlash.AirportStats
         private bool LoadPaxStats()
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
-            Title = "Passenger Stats";
+            Title = i18n.Get("TBFlash.AirportStats.json.paxStats");
             Type = Types.line;
             NumSeries = 4;
-            YAxisLabel = "Number of Passengers";
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.numPax");
             dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
             int j = additionalColumns - 1;
             for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
@@ -246,22 +384,60 @@ namespace TBFlash.AirportStats
                 dataArray[3, j] = GRD.BoardedFlight.ToString("F0");
                 dataArray[4, j] = GRD.MissedFlight.ToString("F0");
             }
-            dataArray[1, 0] = "Arriving";
-            dataArray[2, 0] = "Connecting";
-            dataArray[3, 0] = "Boarded";
-            dataArray[4, 0] = "Missed Flight";
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.arriving");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.connecting");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.boarded");
+            dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.missedFlight");
             dataArray[1, 1] = "arrive";
             dataArray[2, 1] = "connect";
             dataArray[3, 1] = "board";
             dataArray[4, 1] = "missed";
             dataArray[1, 2] = "ivory";
-            dataArray[2, 2] = "gray";
+            dataArray[2, 2] = "cyan";
             dataArray[3, 2] = "green";
             dataArray[4, 2] = "red";
-            dataArray[1, 3] = "2";
+            dataArray[1, 3] = "4";
+            dataArray[2, 3] = "3";
+            dataArray[3, 3] = "1";
+            dataArray[4, 3] = "2";
+            for (int i = 1; i <= NumSeries; i++)
+            {
+                dataArray[i, 5] = "visible";
+            }
+            return true;
+        }
+
+        private bool LoadPaxStats(string airline)
+        {
+            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            Title = i18n.Get("TBFlash.AirportStats.json.paxStats") + $": {airline}";
+            Type = Types.line;
+            NumSeries = 3;
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.numPax");
+            dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
+            int j = additionalColumns - 1;
+            for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
+            {
+                j++;
+                IEnumerable<FlightRecord> flightRecords = Game.current.flightRecords.GetForDay(i - 1).Where(x => x.airline == airline);
+
+                dataArray[0, j] = i.ToString();
+                dataArray[1, j] = flightRecords.Sum(x => x.nArriving).ToString("F0");
+                dataArray[2, j] = flightRecords.Sum(x => x.nBoarded).ToString("F0");
+                dataArray[3, j] = flightRecords.Sum(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) ? x.nDeparting - x.nBoarded : 0).ToString("F0");
+            }
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.arriving");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.boarded");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.missedFlight");
+            dataArray[1, 1] = "arrive";
+            dataArray[2, 1] = "board";
+            dataArray[3, 1] = "missed";
+            dataArray[1, 2] = "ivory";
+            dataArray[2, 2] = "green";
+            dataArray[3, 2] = "red";
+            dataArray[1, 3] = "3";
             dataArray[2, 3] = "1";
-            dataArray[3, 3] = "3";
-            dataArray[4, 3] = "4";
+            dataArray[3, 3] = "2";
             for (int i = 1; i <= NumSeries; i++)
             {
                 dataArray[i, 5] = "visible";
@@ -272,13 +448,13 @@ namespace TBFlash.AirportStats
         private bool LoadProfits()
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
-            Title = "Revenue / Expenses";
+            Title = i18n.Get("TBFlash.AirportStats.json.revandexp");
             Type = Types.stackedBar;
             NumSeries = 27;
-            YAxisLabel = "Total Revenue and Expenses";
+            YAxisLabel = i18n.Get("TBFlash.AirportStats.json.totalrevandexp");
             MoneySetting = "\"" + i18n.Get("UI.currency") + "\"";
             dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
-            int j = additionalColumns -1;
+            int j = additionalColumns - 1;
             for (int i = GameTimer.Day; i >= (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i--)
             {
                 j++;
@@ -315,94 +491,94 @@ namespace TBFlash.AirportStats
                 dataArray[26, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Transportation, false);
                 dataArray[27, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Undefined, false);
             }
-            dataArray[1, 0] ="Advertising Revenue";
-            dataArray[2, 0] ="Airline Fee Revenue";
-            dataArray[3, 0] ="Bank Revenue";
-            dataArray[4, 0] ="Fuel Revenue";
-            dataArray[5, 0] ="Grant Revenue";
-            dataArray[6, 0] ="Materials Revenue";
-            dataArray[7, 0] ="Parking Revenue";
-            dataArray[8, 0] ="Research Revenue";
-            dataArray[9, 0] ="Retail Revenue";
-            dataArray[10, 0] ="Runway Fee Revenue";
-            dataArray[11, 0] ="Terminal Fee Revenue";
-            dataArray[12, 0] ="Staff Revenue";
-            dataArray[13, 0] ="Undefined Revenue";
-            dataArray[14, 0] ="Airline Fee Expenses";
-            dataArray[15, 0] ="Bank Expenses";
-            dataArray[16, 0] ="Fuel Expenses";
-            dataArray[17, 0] ="Grant Expenses";
-            dataArray[18, 0] ="Infrastructure Expenses";
-            dataArray[19, 0] ="Land Purchase Expenses";
-            dataArray[20, 0] ="Maintenance Expenses";
-            dataArray[21, 0] ="Materials Expenses";
-            dataArray[22, 0] ="Research Expenses";
-            dataArray[23, 0] ="Retail Expenses";
-            dataArray[24, 0] ="Staff Expenses";
-            dataArray[25, 0] ="Taxes";
-            dataArray[26, 0] ="Transportation Expenses";
-            dataArray[27, 0] ="Undefined Expenses";
-            dataArray[1, 1] ="revAds";
-            dataArray[2, 1] ="revAirline";
-            dataArray[3, 1] ="revBank";
-            dataArray[4, 1] ="revFuel";
-            dataArray[5, 1] ="revGrant";
-            dataArray[6, 1] ="revMat";
-            dataArray[7, 1] ="revPark";
-            dataArray[8, 1] ="revRes";
-            dataArray[9, 1] ="revRet";
-            dataArray[10, 1] ="revRun";
-            dataArray[11, 1] ="revTerm";
-            dataArray[12, 1] ="revStaff";
-            dataArray[13, 1] ="refUndef";
-            dataArray[14, 1] ="expAirline";
-            dataArray[15, 1] ="expBank";
-            dataArray[16, 1] ="expFuel";
-            dataArray[17, 1] ="expGrant";
-            dataArray[18, 1] ="expInfra";
-            dataArray[19, 1] ="expLand";
-            dataArray[20, 1] ="expMain";
-            dataArray[21, 1] ="expMat";
-            dataArray[22, 1] ="expRes";
-            dataArray[23, 1] ="expRet";
-            dataArray[24, 1] ="expStaff";
-            dataArray[25, 1] ="expTax";
-            dataArray[26, 1] ="expTrans";
-            dataArray[27, 1] ="expUndef";
-            dataArray[1, 2] ="lightseagreen";
-            dataArray[2, 2] ="lightgreen";
-            dataArray[3, 2] ="lawngreen";
-            dataArray[4, 2] ="greenyellow";
-            dataArray[5, 2] ="mediumseagreen";
-            dataArray[6, 2] ="darkseagreen";
-            dataArray[7, 2] ="limegreen";
-            dataArray[8, 2] ="yellowgreen";
-            dataArray[9, 2] ="seagreen";
-            dataArray[10, 2] ="mediumspringgreen";
-            dataArray[11, 2] ="darkolivegreen";
-            dataArray[12, 2] ="springgreen";
-            dataArray[13, 2] ="green";
-            dataArray[14, 2] ="burlywood";
-            dataArray[15, 2] ="goldenrod";
-            dataArray[16, 2] ="orange";
-            dataArray[17, 2] ="lightsalmon";
-            dataArray[18, 2] ="darksalmon";
-            dataArray[19, 2] ="darkorange";
-            dataArray[20, 2] ="sandybrown";
-            dataArray[21, 2] ="indianred";
-            dataArray[22, 2] ="palevioletred";
-            dataArray[23, 2] ="orangered";
-            dataArray[24, 2] ="coral";
-            dataArray[25, 2] ="crimson";
-            dataArray[26, 2] ="tomato";
-            dataArray[27, 2] ="red";
+            dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.adRev");
+            dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.airlineRev");
+            dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.bankRev");
+            dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.fuelRev");
+            dataArray[5, 0] = i18n.Get("TBFlash.AirportStats.json.grantRev");
+            dataArray[6, 0] = i18n.Get("TBFlash.AirportStats.json.matRev");
+            dataArray[7, 0] = i18n.Get("TBFlash.AirportStats.json.parkRev");
+            dataArray[8, 0] = i18n.Get("TBFlash.AirportStats.json.resRev");
+            dataArray[9, 0] = i18n.Get("TBFlash.AirportStats.json.retRev");
+            dataArray[10, 0] = i18n.Get("TBFlash.AirportStats.json.rwyRev");
+            dataArray[11, 0] = i18n.Get("TBFlash.AirportStats.json.termRev");
+            dataArray[12, 0] = i18n.Get("TBFlash.AirportStats.json.staffRev");
+            dataArray[13, 0] = i18n.Get("TBFlash.AirportStats.json.undefRev");
+            dataArray[14, 0] = i18n.Get("TBFlash.AirportStats.json.airlineExp");
+            dataArray[15, 0] = i18n.Get("TBFlash.AirportStats.json.bankExp");
+            dataArray[16, 0] = i18n.Get("TBFlash.AirportStats.json.fuelExp");
+            dataArray[17, 0] = i18n.Get("TBFlash.AirportStats.json.grantExp");
+            dataArray[18, 0] = i18n.Get("TBFlash.AirportStats.json.infraExp");
+            dataArray[19, 0] = i18n.Get("TBFlash.AirportStats.json.landExp");
+            dataArray[20, 0] = i18n.Get("TBFlash.AirportStats.json.maintExp");
+            dataArray[21, 0] = i18n.Get("TBFlash.AirportStats.json.matExp");
+            dataArray[22, 0] = i18n.Get("TBFlash.AirportStats.json.resExp");
+            dataArray[23, 0] = i18n.Get("TBFlash.AirportStats.json.retExp");
+            dataArray[24, 0] = i18n.Get("TBFlash.AirportStats.json.staffExp");
+            dataArray[25, 0] = i18n.Get("TBFlash.AirportStats.json.taxes");
+            dataArray[26, 0] = i18n.Get("TBFlash.AirportStats.json.transExp");
+            dataArray[27, 0] = i18n.Get("TBFlash.AirportStats.json.undefExp");
+            dataArray[1, 1] = "revAds";
+            dataArray[2, 1] = "revAirline";
+            dataArray[3, 1] = "revBank";
+            dataArray[4, 1] = "revFuel";
+            dataArray[5, 1] = "revGrant";
+            dataArray[6, 1] = "revMat";
+            dataArray[7, 1] = "revPark";
+            dataArray[8, 1] = "revRes";
+            dataArray[9, 1] = "revRet";
+            dataArray[10, 1] = "revRun";
+            dataArray[11, 1] = "revTerm";
+            dataArray[12, 1] = "revStaff";
+            dataArray[13, 1] = "refUndef";
+            dataArray[14, 1] = "expAirline";
+            dataArray[15, 1] = "expBank";
+            dataArray[16, 1] = "expFuel";
+            dataArray[17, 1] = "expGrant";
+            dataArray[18, 1] = "expInfra";
+            dataArray[19, 1] = "expLand";
+            dataArray[20, 1] = "expMain";
+            dataArray[21, 1] = "expMat";
+            dataArray[22, 1] = "expRes";
+            dataArray[23, 1] = "expRet";
+            dataArray[24, 1] = "expStaff";
+            dataArray[25, 1] = "expTax";
+            dataArray[26, 1] = "expTrans";
+            dataArray[27, 1] = "expUndef";
+            dataArray[1, 2] = "lightseagreen";
+            dataArray[2, 2] = "lightgreen";
+            dataArray[3, 2] = "lawngreen";
+            dataArray[4, 2] = "greenyellow";
+            dataArray[5, 2] = "mediumseagreen";
+            dataArray[6, 2] = "darkseagreen";
+            dataArray[7, 2] = "limegreen";
+            dataArray[8, 2] = "yellowgreen";
+            dataArray[9, 2] = "seagreen";
+            dataArray[10, 2] = "mediumspringgreen";
+            dataArray[11, 2] = "darkolivegreen";
+            dataArray[12, 2] = "springgreen";
+            dataArray[13, 2] = "green";
+            dataArray[14, 2] = "burlywood";
+            dataArray[15, 2] = "goldenrod";
+            dataArray[16, 2] = "orange";
+            dataArray[17, 2] = "lightsalmon";
+            dataArray[18, 2] = "darksalmon";
+            dataArray[19, 2] = "darkorange";
+            dataArray[20, 2] = "sandybrown";
+            dataArray[21, 2] = "indianred";
+            dataArray[22, 2] = "palevioletred";
+            dataArray[23, 2] = "orangered";
+            dataArray[24, 2] = "coral";
+            dataArray[25, 2] = "crimson";
+            dataArray[26, 2] = "tomato";
+            dataArray[27, 2] = "red";
             for (int i = 1; i <= NumSeries; i++)
             {
-                dataArray[i,3] = "0";
+                dataArray[i, 3] = "0";
             }
             for (int i = 1; i <= 13; i++)
             {
-                dataArray[i,4] = "1";
+                dataArray[i, 4] = "1";
             }
             for (int i = 14; i <= 27; i++)
             {
@@ -467,10 +643,10 @@ namespace TBFlash.AirportStats
                         "\"scaleLabel\":{" +
                             "\"display\": true, " +
                             $"\"labelString\":\"{YAxisLabel}\", " +
-                            "\"fontsize\": 12 " +
+                            "\"fontSize\": 12 " +
                         "}";
             Options += Type == Types.stackedBar ? ", \"stacked\": true" : string.Empty;
-            if(Type == Types.multiAxisLine)
+            if (Type == Types.multiAxisLine)
             {
                 Options += $", \"id\": \"{nameof(YAxisTypes.yAxisLeft)}\", \"type\": \"linear\", \"position\": \"left\"}}"; //end of the first yAxis
                 Options += ", {" +
@@ -493,14 +669,14 @@ namespace TBFlash.AirportStats
             Options += "}, " + //end tooltips
                 "\"legend\": {";
             Options += Type == Types.stackedBar ? "\"reverse\": true" : string.Empty;
-            Options += "}"+ //end legend
+            Options += "}" + //end legend
             "}"; //end options
         }
 
         internal string ChartOptions()
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
-            return $"\"chartOptions\":[{{\"title\":\"{Title}\",\"type\":\"{Type}\",\"money\":{MoneySetting},\"options\":{Options}}}]";
+            return $"\"chartOptions\":[{{\"title\":\"{Title}\",\"type\":\"{Type}\",\"money\":{MoneySetting},\"options\":{Options}, \"day\": \"{i18n.Get("TBFlash.AirportStats.utils.day")}\"}}]";
         }
 
         internal string SeriesConfig()
@@ -517,15 +693,14 @@ namespace TBFlash.AirportStats
             {
                 if (dataArray[i, 5] == "visible")
                 {
-                    seriesLabels += (!string.IsNullOrEmpty(seriesLabels) ? "," : "\"seriesConfig\":[{\"seriesLabels\":[") + $"\"{dataArray[i, 0]}\"";
-                    seriesKeys += (!string.IsNullOrEmpty(seriesKeys) ? "," : "],\"seriesKeys\":[") + $"\"{dataArray[i, 1]}\"";
-                    seriesColors += (!string.IsNullOrEmpty(seriesColors) ? "," : "],\"seriesColors\":[") + $"\"{dataArray[i, 2]}\"";
-                    seriesOrders += (!string.IsNullOrEmpty(seriesOrders) ? "," : "],\"seriesOrders\":[") + $"\"{dataArray[i, 3]}\"";
-                    seriesStacks += Type == Types.stackedBar ? ((!string.IsNullOrEmpty(seriesStacks) ? "," : "],\"seriesStacks\":[") + $"\"{dataArray[i, 4]}\"") : string.Empty;
-                    seriesYAxis += Type == Types.multiAxisLine ? ((!string.IsNullOrEmpty(seriesYAxis) ? "," : "],\"seriesYAxis\":[") + $"\"{dataArray[i, 6]}\"") : string.Empty;
+                    seriesLabels += (!string.IsNullOrWhiteSpace(seriesLabels) ? "," : "\"seriesConfig\":[{\"seriesLabels\":[") + $"\"{dataArray[i, 0]}\"";
+                    seriesKeys += (!string.IsNullOrWhiteSpace(seriesKeys) ? "," : "],\"seriesKeys\":[") + $"\"{dataArray[i, 1]}\"";
+                    seriesColors += (!string.IsNullOrWhiteSpace(seriesColors) ? "," : "],\"seriesColors\":[") + $"\"{dataArray[i, 2]}\"";
+                    seriesOrders += (!string.IsNullOrWhiteSpace(seriesOrders) ? "," : "],\"seriesOrders\":[") + $"\"{dataArray[i, 3]}\"";
+                    seriesStacks += Type == Types.stackedBar ? ((!string.IsNullOrWhiteSpace(seriesStacks) ? "," : "],\"seriesStacks\":[") + $"\"{dataArray[i, 4]}\"") : string.Empty;
+                    seriesYAxis += Type == Types.multiAxisLine ? ((!string.IsNullOrWhiteSpace(seriesYAxis) ? "," : "],\"seriesYAxis\":[") + $"\"{dataArray[i, 6]}\"") : string.Empty;
                 }
             }
- //           return $"{seriesLabels}{seriesKeys}{seriesColors}{seriesOrders}{(Type == Types.stackedBar ? seriesStacks : string.Empty)}{seriesYAxis}]}}]";
             return $"{seriesLabels}{seriesKeys}{seriesColors}{seriesOrders}{seriesStacks}{seriesYAxis}]}}]";
         }
     }

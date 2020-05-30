@@ -66,21 +66,41 @@ namespace TBFlash.AirportStats {
         ///		autoOpen: false, 
         ///		modal: false, 
         ///		position: { my: &quot;left top&quot;, at: &quot;left+20 top+40&quot;}, resizable: false 
-        ///	}); 
-        ///	$(&quot;.ajax-dialog&quot;).on(&quot;click&quot;, function(e) { 
+        ///	});
+        ///	$(&quot;#infodialog&quot;).dialog({ 
+        ///		autoOpen: false, 
+        ///		modal: false, 
+        ///		position: { my: &quot;left top&quot;, at: &quot;left+20 top+40&quot;}, resizable: false 
+        ///	});
+        ///	$(&quot;.info-dialog&quot;).on(&quot;click&quot;, function(e) { 
         ///		e.preventDefault(); 
-        ///		$(&quot;#dialog&quot;).html(&quot;&quot;); 
-        ///		$(&quot;#dialog&quot;).dialog(&quot;option&quot;, &quot;title&quot;, &quot;Loading...&quot;).dialog(&quot;open&quot;); 
-        ///		$(&quot;#dialog&quot;).load(this.href, function() { 
-        ///			$(this).dialog(&quot;option&quot;, &quot;title&quot;, $(this).find(&quot;h1&quot;).text()); 
-        ///			$(this).find(&quot;h1&quot;).remove(); 
-        ///		}); 
-        ///	}); 
-        ///	$(&quot;.loadChart&quot;).on(&quot;click&quot;, funct [rest of string was truncated]&quot;;.
+        ///		$(&quot;#infodialog&quot;).html(&quot;&quot;); 
+        ///		$(&quot;#infodialog&quot;).dialog(&quot;option&quot;, &quot;title&quot;, &quot;Loading...&quot;).dialog(&quot;open&quot;); 
+        ///		$(&quot;#infodialog&quot;).dialog(&quot;o [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AirportStats {
             get {
                 return ResourceManager.GetString("AirportStats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .button {
+        ///	background-image: linear-gradient(#22495F, #223747); 
+        ///	color: white;
+        ///	border-radius: 2px;
+        ///	vertical-align: middle;
+        ///}
+        ///.footer {
+        ///	font-size: .5625em;
+        ///	color: lightgray;
+        ///}
+        ///.infoIcon {
+        ///	background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABDCAYAAADHyrhzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAX/SURBVHhe7ZxpqFRlGIDVzC2tQKXQLC1bpDAoJSohs6LNFkOiQsuoH9JuC2FGGS20QBQE/Qik1QrMNqPVTFoh21ejSCPN0sgWLSu155kz5/bdmTNzrzZnmds88DBnzj2Xe+e93/m28763++bNm7t [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string AirportStats1 {
+            get {
+                return ResourceManager.GetString("AirportStats1", resourceCulture);
             }
         }
         
@@ -119,25 +139,27 @@ namespace TBFlash.AirportStats {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /*! jQuery UI - v1.12.1 - 2016-09-14
+        ///   Looks up a localized string similar to /*! jQuery UI - v1.12.1 - 2020-05-25
         ///* http://jqueryui.com
-        ///* Includes: core.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, draggable.css, resizable.css, progressbar.css, selectable.css, selectmenu.css, slider.css, sortable.css, spinner.css, tabs.css, tooltip.css, theme.css
-        ///* To view and modify this theme, visit http://jqueryui.com/themeroller/?bgShadowXPos=&amp;bgOverlayXPos=&amp;bgErrorXPos=&amp;bgHighlightXPos=&amp;bgContentXPos=&amp;bgHeaderXPos=&amp; [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string jquery_ui {
-            get {
-                return ResourceManager.GetString("jquery_ui", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to /*! jQuery UI - v1.12.1 - 2016-09-14
-        ///* http://jqueryui.com
-        ///* Includes: widget.js, position.js, data.js, disable-selection.js, effect.js, effects/effect-blind.js, effects/effect-bounce.js, effects/effect-clip.js, effects/effect-drop.js, effects/effect-explode.js, effects/effect-fade.js, effects/effect-fold.js, effects/effect-highlight.js, effects/effect-puff.js, effects/effect-pulsate.js, effects/effect-scale.js, effects/effect-shake.js, effects/effect-size.js, effects/effect-slide.js, effects/effect-transfe [rest of string was truncated]&quot;;.
+        ///* Includes: draggable.css, core.css, resizable.css, button.css, controlgroup.css, checkboxradio.css, dialog.css, tooltip.css
+        ///* Copyright jQuery Foundation and other contributors; Licensed MIT */
+        ///
+        ///.ui-draggable-handle{-ms-touch-action:none;touch-action:none}.ui-helper-hidden{display:none}.ui-helper-hidden-accessible{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.ui-helper-reset{margin:0;paddi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string jquery_ui_min {
             get {
                 return ResourceManager.GetString("jquery_ui_min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /*! jQuery UI - v1.12.1 - 2020-05-25
+        ///* http://jqueryui.com
+        ///* Includes: widget.js, position.js, data.js, disable-selection.js, focusable.js, form-reset-mixin.js, jquery-1-7.js, keycode.js, labels.js, scroll-parent.js, tabbable.js, unique-id.js, widgets/draggable.js, widgets/resizable.js, widgets/button.js, widgets/checkboxradio.js, widgets/controlgroup.js, widgets/dialog.js, widgets/mouse.js, widgets/tooltip.js, effect.js, effects/effect-fade.js, effects/effect-highlight.js, effects/effect-scale.js, effects/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string jquery_ui_min1 {
+            get {
+                return ResourceManager.GetString("jquery_ui_min1", resourceCulture);
             }
         }
     }

@@ -4,7 +4,7 @@
 		<title>TBFlash AirportStats</title>
 		<name>Statistiques d'aéroport</name>
 		<description>Statistiques sur l'aéroport</description>
-		<browser>A webbrowser will open to localhost:2198 when you start this mod.</browser>
+		<browser>Un navigateur Web s'ouvrira sur localhost:2198 lorsque vous démarrez ce mod.</browser>
 		<LifetimeStats>
 			<header0>Statistiques de vol</header0>
 			<header1>Statistiques des passagers</header1>
@@ -23,7 +23,7 @@
 			<stats5>Total des débarquements</stats5>
 			<stats6>Décollages totaux</stats6>
 			<stats7>En arrivant</stats7>
-			<stats8>De liaison</stats8>			
+			<stats8>De liaison</stats8>
 			<stats9>Vol à bord</stats9>
 			<stats10>Vol manqué</stats10>
 			<stats11>Carburant demandé</stats11>
@@ -116,30 +116,32 @@
 		</AllAirlineStats>
 		<AirlineCompanyStats>
 			<stats0># Vols</stats0>
-			<stats1># Passagers arrivant</stats1>
-			<stats2>Déplanage du temps total</stats2>
-			<stats3># Passagers au départ programmé</stats3>
-			<stats4># Passagers enregistrés</stats4>
-			<stats5># Passagers embarqués</stats5><stats6>Durée totale d'embarquement</stats6>
-			<stats7># Sacs d'arrivée</stats7>
-			<stats8># Sacs déchargés</stats8>
-			<stats9># Sacs de départ</stats9>
-			<stats10># Sacs chargés</stats10>
-			<stats11>Sacs de chargement de temps total</stats11>
-			<stats12>Carburant demandé</stats12>
-			<stats13>Carburant livré</stats13>
-			<stats14>Total en route</stats14>
-			<stats15>Total au sol</stats15>
-			<stats16>Arrivée retardée totale</stats16>
-			<stats17>Total est parti</stats17>
-			<stats18>Départ retardé total</stats18>
-			<stats19>Vols annulés</stats19>
-			<stats20>Annulé pour: Aéroport non valide  </stats20>
-			<stats21>Conditions météorologiques</stats21>
-			<stats22>Piste  </stats22>
-			<stats23>Porte  </stats23>
-			<stats24>Expiré  </stats24>
-			<stats25>Reneged  </stats25>
+			<stats1>Arrivée retardée totale</stats1>
+			<stats2>Équipage total requis</stats2>
+			<stats3>Départs à l'heure</stats3>
+			<stats4>Départ retardé</stats4>
+			<stats5>Vols annulés</stats5>
+			<stats6>Annulé pour: Aéroport non valide</stats6>
+			<stats7>--Conditions météorologiques</stats7>
+			<stats8>--Piste</stats8>
+			<stats9>--Porte</stats9>
+			<stats10>--Expiré</stats10>
+			<stats11>--Reneged</stats11>
+			<stats12># Passagers arrivant</stats12>
+			<stats13># Passagers au départ programmé</stats13>
+			<stats14># Passagers enregistrés</stats14>
+			<stats15># Passagers embarqués</stats15>
+			<stats16># Passagers manqués de vol</stats16>
+			<stats17>Déplanage du temps total</stats17>
+			<stats18>Durée totale d'embarquement</stats18>
+			<stats19>Carburant demandé</stats19>
+			<stats20>Carburant livré</stats20>
+			<stats21># Sacs déchargés</stats21>
+			<stats22># Sacs chargés</stats22>
+			<stats23># Sacs perdus</stats23>
+			<stats24>Sacs de chargement de temps total</stats24>
+			<stats25>Total au sol</stats25>
+			<stats26># Sacs d'arrivée</stats26>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Compagnie aérienne</stats0>
@@ -180,9 +182,6 @@
 			<stats11>Nom court</stats11>
 		</AircraftStats>
 		<utils>
-			<url0>/</url0>
-			<url1>/AllAirlines</url1>
-			<url2>/Airlines</url2>
 			<value0>Statistiques d'aéroport</value0>
 			<value1>Toutes les compagnies aériennes</value1>
 			<value2>Compagnie aérienne active</value2>
@@ -195,6 +194,102 @@
 			<go>Aller</go>
 			<version>Version</version>
 			<broughtBy>Présenté par TBFlash</broughtBy>
+			<invalidEntry>Entrée invalide</invalidEntry>
+			<invalidAircraft>Type d'aéronef non valide saisi.</invalidAircraft>
 		</utils>
+		<infoPage>
+			<information>Information</information>
+			<modName>AirportStats</modName>
+			<intro>fournit des données de l'aéroport SimAirport en cours d'exécution dans des pages axées sur:</intro>
+			<bullet1>Airport Statistics: Lifetime and up to the last 30 days of airport-wide operations. Cliquez sur une catégorie statistique (comme les statistiques de vol) pour afficher un graphique des données de cette catégorie.</bullet1>
+			<bullet2a>Statistiques des compagnies aériennes: comparaisons côte à côte des intérêts, de la satisfaction, des offres et bien plus de chaque compagnie aérienne. Disponible pour</bullet2a>
+			<bullet2b>toutes les compagnies aériennes</bullet2b>
+			<bullet2c>, ou seulement pour </bullet2c>
+			<bullet2d>les compagnies aériennes actuellement actives.</bullet2d>
+			<bullet3a>Activités quotidiennes: Cliquez sur un</bullet3a>
+			<bullet3b>lien Jour</bullet3b>
+			<bullet3c>pour voir tous les vols de cette journée, soit pour l'ensemble de l'aéroport, soit pour une seule compagnie aérienne. Cliquez sur un type d'avion pour voir plus d'informations sur l'avion.</bullet3c>
+			<techNotes>Notes techniques:</techNotes>
+			<tnbullet0>L'heure est affichée en jours: heures: minutes: secondes.</tnbullet0>			
+			<tnbullet1>Pour supprimer une série de données dans un graphique, cliquez sur le nom dans la légende.</tnbullet1>
+			<tnbullet2>Le graphique Dépenses et revenus affiche uniquement les séries qui ont au moins une valeur.</tnbullet2>
+			<tnbullet3>Certaines statistiques de la journée en cours peuvent être retardées, car le rapport final a lieu à différents moments de la journée.</tnbullet3>
+			<tnbullet4a>AirportStats</tnbullet4a>
+			<tnbullet4b>dépend de plusieurs paramètres d'ordinateur et d'application pour afficher les données. J'ai essayé de fournir des traductions spécifiques aux langues à travers les pages, mais il peut y avoir des problèmes. Veuillez signaler tout problème et j'essaierai de les corriger.</tnbullet4b>
+			<tnbullet5>SimAirport ne conserve que les données des 30 derniers jours de votre aéroport, il se peut donc que les anciennes données ne soient pas disponibles.</tnbullet5>
+		</infoPage>
+		<json>
+			<jsonConfigError>Erreur de configuration. Aucune donnée à présenter.</jsonConfigError>
+			<flightStats>Statistiques de vol</flightStats>
+			<numberFlights>Nombre de vols</numberFlights>
+			<scheduledDepartures>Départs prévus</scheduledDepartures>
+			<ontimeDepartures>Départs à l'heure</ontimeDepartures>
+			<delayedDepartures>Départs retardés</delayedDepartures>
+			<canceled>Annulé</canceled>
+			<luggageStats>Statistiques des bagages</luggageStats>
+			<numberOfBags>Nombre de sacs</numberOfBags>
+			<bagsUnloaded>Sacs déchargés</bagsUnloaded>
+			<bagsLoaded>Sacs chargés</bagsLoaded>
+			<lostBags>Sacs perdus</lostBags>
+			<fuelStats>Statistiques de carburant</fuelStats>
+			<litersOfFuel>Litres de carburant</litersOfFuel>
+			<planesServed>Nombre d'avions desservis</planesServed>
+			<fuelRequested>Carburant demandé</fuelRequested>
+			<fuelProvided>Carburant fourni</fuelProvided>
+			<servedFuel>Avions desservis en carburant</servedFuel>
+			<fuelingFailures>Échecs de ravitaillement</fuelingFailures>
+			<paxStats>Statistiques passagers</paxStats>
+			<numPax>Nombre de passagers</numPax>
+			<arriving>En arrivant</arriving>
+			<connecting>De liaison</connecting>
+			<boarded>Embarqué</boarded>
+			<missedFlight>Vol manqué</missedFlight>
+			<revandexp>Recettes / dépenses</revandexp>
+			<totalrevandexp>Total Revenue and Expenses</totalrevandexp>
+			<adRev>Recettes et dépenses totales</adRev>
+			<airlineRev>Recettes des compagnies aériennes</airlineRev>
+			<bankRev>Recettes bancaires</bankRev>
+			<fuelRev>Recettes de carburant</fuelRev>
+			<grantRev>Revenus de subvention</grantRev>
+			<matRev>Revenus des matériaux</matRev>
+			<parkRev>Recettes de stationnement</parkRev>
+			<resRev>Revenus de recherche</resRev>
+			<retRev>Revenus de détail</retRev>
+			<rwyRev>Revenus de piste</rwyRev>
+			<termRev>Revenu terminal</termRev>
+			<staffRev>Recettes du personnel</staffRev>
+			<undefRev>Revenus indéfinis</undefRev>
+			<airlineExp>Dépenses aériennes</airlineExp>
+			<bankExp>Frais bancaires</bankExp>
+			<fuelExp>Dépenses de carburant</fuelExp>
+			<grantExp>Dépenses de subvention</grantExp>
+			<infraExp>Dépenses d'infrastructure</infraExp>
+			<landExp>Frais d'achat de terrain</landExp>
+			<maintExp>Les frais d'entretien</maintExp>
+			<matExp>Dépenses de matériaux</matExp>
+			<resExp>Frais de recherche</resExp>
+			<retExp>Dépenses de détail</retExp>
+			<staffExp>Dépenses de personnel</staffExp>
+			<taxes>Les taxes</taxes>
+			<transExp>Frais de transport</transExp>
+			<undefExp>Dépenses non définies</undefExp>
+		</json>
+		<flightstatus>
+			<ArrivalCrewPickedUp>Équipage d'arrivée ramassé</ArrivalCrewPickedUp>
+			<Canceled>Annulé</Canceled>
+			<CrewSpawned>Équipage engendré</CrewSpawned>
+			<DelayedArrival>Arrivée retardée</DelayedArrival>
+			<DelayedDeparture>Départ retardé</DelayedDeparture>
+			<Departed>Défunt</Departed>
+			<Despawned>Disparu</Despawned>
+			<Docked>Ancré</Docked>
+			<Enroute>En route</Enroute>
+			<GateChanged>Porte modifiée</GateChanged>
+			<ManualBaggageInbound>Bagages manuels entrants</ManualBaggageInbound>
+			<OnGround>A atterri</OnGround>
+			<RequiresCrew>Requiert un équipage</RequiresCrew>
+			<Scheduled>Programmé</Scheduled>
+			<Spawned>Généré</Spawned>
+		</flightstatus>
 	</AirportStats>
 </TBFlash>

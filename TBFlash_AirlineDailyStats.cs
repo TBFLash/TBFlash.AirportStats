@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace TBFlash.AirportStats
@@ -23,14 +22,12 @@ namespace TBFlash.AirportStats
                         : j == 0
                             ? $"<td><a href=\"/{arr[i, j]}?Day={day}\">{arr[i, j]}</a></td>"
                             : j == 1
-                            //    ? $"<td><a onclick=\"getAircraft(\'{arr[i, j]}\');\" id=\"manual-ajax\">{arr[i, j]}</a></td>"
-                                ? $"<td><a class=\"ajax-dialog\" href=\"/aircraftstats?aircraft={arr[i,j]}\" rel=\"#dialog\">{arr[i,j]}</a></td>"
+                                ? $"<td><a class=\"ajax-dialog\" href=\"/aircraftstats?aircraft={arr[i, j]}\" rel=\"#dialog\">{arr[i, j]}</a></td>"
                                 : $"<td>{arr[i, j]}</td>";
                 }
                 htmlCode += "</tr>";
             }
             htmlCode += "</table>";
-            htmlCode += "<div id=\"dialog\" title=\"Basic dialog\"><p>We're sorry, there has been an error.</p></div>";
             htmlCode += TBFlash_Utils.PageFooter();
             return htmlCode;
         }
@@ -70,23 +67,17 @@ namespace TBFlash.AirportStats
                 arr[i, 18] = (fr.nFuelRequested / 1000).ToString("#,###");
                 arr[i, 19] = (fr.nFuelRefueled / 1000).ToString("#,###");
                 string st = string.Empty;
-                foreach (int stat in Enum.GetValues(typeof(Flight.Status)))
+                foreach (Flight.Status stat in Enum.GetValues(typeof(Flight.Status)))
                 {
-                    if (HasStatus(fr.status, stat))
+                    if (TBFlash_Utils.HasStatus(fr.status, stat))
                     {
-                        st += Enum.GetName(typeof(Flight.Status), stat) + "<br/>";
+                        st += i18n.Get("TBFlash.AirportStats.flightstatus." + Enum.GetName(typeof(Flight.Status), stat)) + "<br/>";
                     }
                 }
                 arr[i, 20] = st;
-                arr[i, 21] = fr.reason.ToString();
+                arr[i, 21] = i18n.Get("UI.strings.flightstatusreason.") + fr.reason.ToString();
             }
-
             return arr;
-        }
-
-        private bool HasStatus(int totalStatus, int status)
-        {
-            return (totalStatus & (int)status) == (int)status;
         }
     }
 }

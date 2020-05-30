@@ -1,0 +1,85 @@
+.button {
+	background-image: linear-gradient(#22495F, #223747); 
+	color: white;
+	border-radius: 2px;
+	vertical-align: middle;
+}
+.footer {
+	font-size: .5625em;
+	color: lightgray;
+}
+.infoIcon {
+	background-image: url('data:image/png;base64,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');
+	float: left;
+	background-size: 20px;
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	text-indent: 24px;
+	font-size: .6em;
+}
+.select {
+	background-color: #223747;
+	color: lightgray;
+	border-radius: 2px;
+	vertical-align: middle;
+	padding: 1px;
+}
+.ui-dialog {
+	border-radius: 8px !important;
+}
+.ui-widget-content {
+	background: #223747 !important;
+}
+.ui-widget-header {
+	background: #b8b8b8 !important;
+	border: #888888 !important;
+}
+.ui-button .ui-icon {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACOSURBVChTjY3RDYMwEENDJ4B92lH6AUtkm1bqKnSfdgPwu8Qh4gtLlnO552TIOaerutUc5U1+xXSImXv2Df7VnGUXSGYUe8PvmsgFgyj2hhf5XLC4Z99gdC6gBqIe/sj9i4h5LccDBnyWY6j/4S5HwXAPfmW+Ji0KDZ5qAjzKMdKF2Bv+y4Ns0GLmXvuUdkw7G3tVAShfAAAAAElFTkSuQmCC') !important;
+}
+.ui-icon-closethick {
+	background-position: 0px 0px !important;
+}
+.ui-icon {
+	width: 11px !important;
+	height: 11px !important;
+	margin-top: -6px !important;
+	margin-left: -6px !important;
+}
+a {
+	color: ivory;
+	text-decoration: underline;
+}
+body {
+	background-color: #384953;
+}
+h1 {
+	font-size: 1.75em;
+	text-align: center;
+	color: lightgray;
+	margin-block-end: 0em;
+	margin-block-start: 0em;
+}
+h2 {
+	font-size: 1.25em;
+	text-align: center;
+	color: lightgray;
+	margin-block-end: 0em;
+	margin-block-start: 0em;
+}
+p, li {
+	font-size: .75em;
+	color: lightgray;
+}
+table, td, th {
+	border: 1px solid #6D7778;
+	color: lightgray;
+} 
+td {
+	text-align: right;
+	font-size: .6875em;
+	white-space: nowrap;
+}
+th {
+	font-size: .8125em;
+}

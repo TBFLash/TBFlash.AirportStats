@@ -70,14 +70,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="i18n\cs.xml" />
+    <Content Include="i18n\de.xml" />
+    <Content Include="i18n\es.xml" />
     <Content Include="i18n\fr.xml" />
     <Content Include="i18n\en.xml" />
-    <EmbeddedResource Include="Resources\AirportStats.js" />
-    <EmbeddedResource Include="Resources\Chart.min.js" />
-    <EmbeddedResource Include="Resources\Chart.min.css" />
-    <EmbeddedResource Include="Resources\jquery-ui.css" />
-    <EmbeddedResource Include="Resources\jquery-ui.min.js" />
-    <EmbeddedResource Include="Resources\jquery.min.js" />
+    <Content Include="i18n\it.xml" />
+    <Content Include="i18n\jp.xml" />
+    <Content Include="i18n\nl.xml" />
+    <Content Include="i18n\ru.xml" />
+    <Content Include="i18n\zh.xml" />
+    <Content Include="Resources\jquery-ui.min.css" />
+    <Content Include="Resources\jquery-ui.min.js" />
+    <Content Include="Resources\AirportStats.css" />
+    <Content Include="Resources\AirportStats.js" />
+    <Content Include="Resources\Chart.min.js" />
+    <Content Include="Resources\Chart.min.css" />
+    <Content Include="Resources\jquery.min.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource1.resx">

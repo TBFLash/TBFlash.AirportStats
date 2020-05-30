@@ -71,20 +71,45 @@ namespace TBFlash.AirportStats
             int day = int.TryParse(request.QueryString["day"], out int value) ? value : -1;
             string aircraft = request.QueryString["aircraft"];
             string dataset = request.QueryString["dataset"];
+            string airlineName = request.QueryString["airline"];
             string responseString = string.Empty;
             switch (requestedPage.ToUpperInvariant())
             {
-                case "AIRLINES":
-                    responseString += new TBFlash_AllAirlineStats().GetAllAirlineStats(true);
-                    break;
                 case "AIRCRAFTSTATS":
-                    if (!string.IsNullOrEmpty(aircraft) && AircraftConfigManager.FindByAnyName(aircraft, false) != null)
+                    if (!string.IsNullOrWhiteSpace(aircraft) && AircraftConfigManager.FindByAnyName(aircraft, false) != null)
                     {
                         responseString += new TBFlash_AircraftStats().GetAircraftStats(AircraftConfigManager.FindByAnyName(aircraft, false));
                     }
+                    else
+                    {
+                        responseString += TBFlash_Utils.InvalidAircraftType();
+                    }
+                    break;
+                case "AIRLINES":
+                    responseString += new TBFlash_AllAirlineStats().GetAllAirlineStats(true);
+                    break;
+                case "AIRPORTSTATS.CSS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("AirportStats1");
+                    response.ContentType = "text/css";
+                    break;
+                case "AIRPORTSTATS.JS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("AirportStats");
+                    response.ContentType = "text/javascript";
                     break;
                 case "ALLAIRLINES":
                     responseString += new TBFlash_AllAirlineStats().GetAllAirlineStats();
+                    break;
+                case "CHART.MIN.CSS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("Chart_min");
+                    response.ContentType = "text/css";
+                    break;
+                case "CHART.MIN.JS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("Chart_min1");
+                    response.ContentType = "text/javascript";
+                    break;
+                case "CHARTDATA":
+                    responseString += new TBFlash_ChartData().GetChartData(dataset, airlineName);
+                    response.ContentType = "application/json";
                     break;
                 case "DAILY STATS":
                     responseString += day == -1
@@ -93,33 +118,20 @@ namespace TBFlash.AirportStats
                     break;
                 case "FAVICON.ICO":
                     break;
-                case "AIRPORTSTATS.JS":
-                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("AirportStats");
-                    response.ContentType = "text/javascript";
+                case "INFORMATION":
+                    responseString += TBFlash_Utils.InformationDialog();
                     break;
                 case "JQUERY.MIN.JS":
                     responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("jquery_min");
                     response.ContentType = "text/javascript";
                     break;
                 case "JQUERY-UI.MIN.JS":
+                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("jquery_ui_min1");
+                    response.ContentType = "text/javascript";
+                    break;
+                case "JQUERY-UI.MIN.CSS":
                     responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("jquery_ui_min");
-                    response.ContentType = "text/javascript";
-                    break;
-                case "JQUERY-UI.CSS":
-                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("jquery_ui");
                     response.ContentType = "text/css";
-                    break;
-                case "CHART.MIN.JS":
-                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("Chart_min1");
-                    response.ContentType = "text/javascript";
-                    break;
-                case "CHART.MIN.CSS":
-                    responseString += new ResourceManager("TBFlash.AirportStats.Resource1", Assembly.GetExecutingAssembly()).GetString("Chart_min");
-                    response.ContentType = "text/css";
-                    break;
-                case "CHARTDATA":
-                    responseString += new TBFlash_ChartData().GetChartData(dataset);
-                    response.ContentType = "application/json";
                     break;
                 default:
                     Airline airline = AirlineManager.FindByName(requestedPage);
