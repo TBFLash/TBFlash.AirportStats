@@ -26,56 +26,57 @@
 			<stats8>Conectando</stats8>
 			<stats9>Vuelo abordado</stats9>
 			<stats10>Vuelo perdido</stats10>
-			<stats11>Combustible solicitado</stats11>
-			<stats12>Combustible proporcionado</stats12>
-			<stats13>Aviones Servidos Combustible</stats13>
-			<stats14>Fallas de combustible</stats14>
-			<stats15>Bolsas cargadas</stats15>
-			<stats16>Bolsas descargadas</stats16>
-			<stats17>Éxito de equipaje</stats17>
-			<stats18>Equipaje perdido</stats18>
-			<stats19>Equipaje cargado a través del carro de equipaje</stats19>
-			<stats20>Publicidad</stats20>
-			<stats21>Tarifas de aerolínea</stats21>
-			<stats22>Banco</stats22>
-			<stats23>Combustible</stats23>
-			<stats24>Conceder</stats24>
-			<stats25>Materiales</stats25>
-			<stats26>Estacionamiento</stats26>
-			<stats27>Investigación</stats27>
-			<stats28>Al por menor</stats28>
-			<stats29>Uso de pista</stats29>
-			<stats30>Uso de terminal</stats30>
-			<stats31>Personal</stats31>
-			<stats32>Indefinido</stats32>
-			<stats33>Los ingresos totales</stats33>
-			<stats34>Tarifas de aerolínea</stats34>
-			<stats35>Banco</stats35>
-			<stats36>Combustible</stats36>
-			<stats37>Conceder</stats37>
-			<stats38>Infraestructura</stats38>
-			<stats39>Compra de terrenos</stats39>
-			<stats40>Mantenimiento</stats40>
-			<stats41>Materiales</stats41>
-			<stats42>Investigación</stats42>
-			<stats43>Al por menor</stats43>
-			<stats44>Personal</stats44>
-			<stats45>Impuestos a la renta y a la propiedad</stats45>
-			<stats46>Impuesto sobre la renta</stats46>
-			<stats47>Impuesto a la propiedad</stats47>
-			<stats48>Transporte</stats48>
-			<stats49>Indefinido</stats49>
-			<stats50>Gastos totales</stats50>
-			<stats51>Contratado</stats51>
-			<stats52>Despedido</stats52>
-			<stats53>Tiempo de pausa</stats53>
-			<stats54>Velocidad 1</stats54>
-			<stats55>Velocidad 2</stats55>
-			<stats56>Velocidad 3</stats56>
-			<stats57>Inactivo</stats57>
-			<stats58>Clics del teclado</stats58>
-			<stats59>Clic izquierdo del mouse</stats59>
-			<stats60>Clics del mouse derecho</stats60>
+			<stats11>Precio promedio de combustible</stats11>
+			<stats12>Combustible solicitado</stats12>
+			<stats13>Combustible proporcionado</stats13>
+			<stats14>Aviones Servidos Combustible</stats14>
+			<stats15>Fallas de combustible</stats15>
+			<stats16>Bolsas cargadas</stats16>
+			<stats17>Bolsas descargadas</stats17>
+			<stats18>Éxito de equipaje</stats18>
+			<stats19>Equipaje perdido</stats19>
+			<stats20>Equipaje cargado a través del carro de equipaje</stats20>
+			<stats21>Publicidad</stats21>
+			<stats22>Tarifas de aerolínea</stats22>
+			<stats23>Banco</stats23>
+			<stats24>Combustible</stats24>
+			<stats25>Conceder</stats25>
+			<stats26>Materiales</stats26>
+			<stats27>Estacionamiento</stats27>
+			<stats28>Investigación</stats28>
+			<stats29>Al por menor</stats29>
+			<stats30>Uso de pista</stats30>
+			<stats31>Uso de terminal</stats31>
+			<stats32>Personal</stats32>
+			<stats33>Indefinido</stats33>
+			<stats34>Los ingresos totales</stats34>
+			<stats35>Tarifas de aerolínea</stats35>
+			<stats36>Banco</stats36>
+			<stats37>Combustible</stats37>
+			<stats38>Conceder</stats38>
+			<stats39>Infraestructura</stats39>
+			<stats40>Compra de terrenos</stats40>
+			<stats41>Mantenimiento</stats41>
+			<stats42>Materiales</stats42>
+			<stats43>Investigación</stats43>
+			<stats44>Al por menor</stats44>
+			<stats45>Personal</stats45>
+			<stats46>Impuestos a la renta y a la propiedad</stats46>
+			<stats47>Impuesto sobre la renta</stats47>
+			<stats48>Impuesto a la propiedad</stats48>
+			<stats49>Transporte</stats49>
+			<stats50>Indefinido</stats50>
+			<stats51>Gastos totales</stats51>
+			<stats52>Contratado</stats52>
+			<stats53>Despedido</stats53>
+			<stats54>Tiempo de pausa</stats54>
+			<stats55>Velocidad 1</stats55>
+			<stats56>Velocidad 2</stats56>
+			<stats57>Velocidad 3</stats57>
+			<stats58>Inactivo</stats58>
+			<stats59>Clics del teclado</stats59>
+			<stats60>Clic izquierdo del mouse</stats60>
+			<stats61>Clics del mouse derecho</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Nombre de la aerolínea</stats0>
@@ -238,6 +239,7 @@
 			<fuelProvided>Combustible proporcionado</fuelProvided>
 			<servedFuel>Aviones Servidos Combustible</servedFuel>
 			<fuelingFailures>Fallas de combustible</fuelingFailures>
+			<fuelPrice>Precio del combustible</fuelPrice>
 			<paxStats>Estadísticas de pasajeros</paxStats>
 			<numPax>Número de pasajeros</numPax>
 			<arriving>Llegando</arriving>

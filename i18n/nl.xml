@@ -26,56 +26,57 @@
 			<stats8>Verbinden</stats8>
 			<stats9>Aan boord van de vlucht</stats9>
 			<stats10>Gemiste vlucht</stats10>
-			<stats11>Brandstof aangevraagd</stats11>
-			<stats12>Geleverde brandstof</stats12>
-			<stats13>Vliegtuigen geserveerd brandstof</stats13>
-			<stats14>Brandstofstoringen</stats14>
-			<stats15>Zakken geladen</stats15>
-			<stats16>Zakken gelost</stats16>
-			<stats17>Bagage succes</stats17>
-			<stats18>Verloren bagage</stats18>
-			<stats19>Bagage geladen via bagagewagen</stats19>
-			<stats20>Adverteren</stats20>
-			<stats21>Luchtvaartkosten</stats21>
-			<stats22>Bank</stats22>
-			<stats23>Brandstof</stats23>
-			<stats24>Verlenen</stats24>
-			<stats25>Materialen</stats25>
-			<stats26>Parkeren</stats26>
-			<stats27>Onderzoek</stats27>
-			<stats28>Kleinhandel</stats28>
-			<stats29>Baangebruik</stats29>
-			<stats30>Terminalgebruik</stats30>
-			<stats31>Personeel</stats31>
-			<stats32>Ongedefinieerd</stats32>
-			<stats33>De totale omzet</stats33>
-			<stats34>Luchtvaartkosten</stats34>
-			<stats35>Bank</stats35>
-			<stats36>Brandstof</stats36>
-			<stats37>Verlenen</stats37>
-			<stats38>Infrastructuur</stats38>
-			<stats39>Aankoop van grond</stats39>
-			<stats40>Onderhoud</stats40>
-			<stats41>Materialen</stats41>
-			<stats42>Onderzoek</stats42>
-			<stats43>Kleinhandel</stats43>
-			<stats44>Personeel</stats44>
-			<stats45>Inkomsten- en onroerendgoedbelasting</stats45>
-			<stats46>Inkomstenbelasting</stats46>
-			<stats47>Onroerend goed belasting</stats47>
-			<stats48>Vervoer</stats48>
-			<stats49>Ongedefinieerd</stats49>
-			<stats50>Totale uitgaven</stats50>
-			<stats51>Gehuurd</stats51>
-			<stats52>Ontslagen</stats52>
-			<stats53>Tijd onderbroken</stats53>
-			<stats54>Snelheid 1</stats54>
-			<stats55>Snelheid 2</stats55>
-			<stats56>Snelheid 3</stats56>
-			<stats57>Inactief</stats57>
-			<stats58>Toetsenbordklikken</stats58>
-			<stats59>Klikken met de linkermuisknop</stats59>
-			<stats60>Klikken met de rechtermuisknop</stats60>
+			<stats11>Gemiddelde brandstofprijs</stats11>
+			<stats12>Brandstof aangevraagd</stats12>
+			<stats13>Geleverde brandstof</stats13>
+			<stats14>Vliegtuigen geserveerd brandstof</stats14>
+			<stats15>Brandstofstoringen</stats15>
+			<stats16>Zakken geladen</stats16>
+			<stats17>Zakken gelost</stats17>
+			<stats18>Bagage succes</stats18>
+			<stats19>Verloren bagage</stats19>
+			<stats20>Bagage geladen via bagagewagen</stats20>
+			<stats21>Adverteren</stats21>
+			<stats22>Luchtvaartkosten</stats22>
+			<stats23>Bank</stats23>
+			<stats24>Brandstof</stats24>
+			<stats25>Verlenen</stats25>
+			<stats26>Materialen</stats26>
+			<stats27>Parkeren</stats27>
+			<stats28>Onderzoek</stats28>
+			<stats29>Kleinhandel</stats29>
+			<stats30>Baangebruik</stats30>
+			<stats31>Terminalgebruik</stats31>
+			<stats32>Personeel</stats32>
+			<stats33>Ongedefinieerd</stats33>
+			<stats34>De totale omzet</stats34>
+			<stats35>Luchtvaartkosten</stats35>
+			<stats36>Bank</stats36>
+			<stats37>Brandstof</stats37>
+			<stats38>Verlenen</stats38>
+			<stats39>Infrastructuur</stats39>
+			<stats40>Aankoop van grond</stats40>
+			<stats41>Onderhoud</stats41>
+			<stats42>Materialen</stats42>
+			<stats43>Onderzoek</stats43>
+			<stats44>Kleinhandel</stats44>
+			<stats45>Personeel</stats45>
+			<stats46>Inkomsten- en onroerendgoedbelasting</stats46>
+			<stats47>Inkomstenbelasting</stats47>
+			<stats48>Onroerend goed belasting</stats48>
+			<stats49>Vervoer</stats49>
+			<stats50>Ongedefinieerd</stats50>
+			<stats51>Totale uitgaven</stats51>
+			<stats52>Gehuurd</stats52>
+			<stats53>Ontslagen</stats53>
+			<stats54>Tijd onderbroken</stats54>
+			<stats55>Snelheid 1</stats55>
+			<stats56>Snelheid 2</stats56>
+			<stats57>Snelheid 3</stats57>
+			<stats58>Inactief</stats58>
+			<stats59>Toetsenbordklikken</stats59>
+			<stats60>Klikken met de linkermuisknop</stats60>
+			<stats61>Klikken met de rechtermuisknop</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Naam luchtvaartmaatschappij</stats0>
@@ -238,6 +239,7 @@
 			<fuelProvided>Geleverde brandstof</fuelProvided>
 			<servedFuel>Vliegtuigen geserveerd brandstof</servedFuel>
 			<fuelingFailures>Brandstofstoringen</fuelingFailures>
+			<fuelPrice>Brandstof prijs</fuelPrice>
 			<paxStats>Passagiersstatistieken</paxStats>
 			<numPax>Aantal passagiers</numPax>
 			<arriving>Aankomst</arriving>

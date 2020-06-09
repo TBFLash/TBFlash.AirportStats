@@ -26,56 +26,58 @@
 			<stats8>Connecting</stats8>			
 			<stats9>Boarded Flight</stats9>
 			<stats10>Missed Flight</stats10>
-			<stats11>Fuel Requested</stats11>
-			<stats12>Fuel Provided</stats12>
-			<stats13>Planes Served Fuel</stats13>
-			<stats14>Fueling Failures</stats14>
-			<stats15>Bags Loaded</stats15>
-			<stats16>Bags Unloaded</stats16>
-			<stats17>Luggage Success</stats17>
-			<stats18>Lost Luggage</stats18>
-			<stats19>Baggage Loaded via Baggage Car</stats19>
-			<stats20>Advertising</stats20>
-			<stats21>Airline Fees</stats21>
-			<stats22>Bank</stats22>
-			<stats23>Fuel</stats23>
-			<stats24>Grant</stats24>
-			<stats25>Materials</stats25>
-			<stats26>Parking</stats26>
-			<stats27>Research</stats27>
-			<stats28>Retail</stats28>
-			<stats29>Runway Usage</stats29>
-			<stats30>Terminal Usage</stats30>
-			<stats31>Staff</stats31>
-			<stats32>Undefined</stats32>
-			<stats33>Total Revenue</stats33>
-			<stats34>Airline Fees</stats34>
-			<stats35>Bank</stats35>
-			<stats36>Fuel</stats36>
-			<stats37>Grant</stats37>
-			<stats38>Infrastructure</stats38>
-			<stats39>Land Purchase</stats39>
-			<stats40>Maintenance</stats40>
-			<stats41>Materials</stats41>
-			<stats42>Research</stats42>
-			<stats43>Retail</stats43>
-			<stats44>Staff</stats44>
-			<stats45>Income + Property Taxes</stats45>
-			<stats46>Income Tax</stats46>
-			<stats47>Property Tax</stats47>
-			<stats48>Transportation</stats48>
-			<stats49>Undefined</stats49>
-			<stats50>Total Expenses</stats50>
-			<stats51>Hired</stats51>
-			<stats52>Fired</stats52>
-			<stats53>Time Paused</stats53>
-			<stats54>Speed 1</stats54>
-			<stats55>Speed 2</stats55>
-			<stats56>Speed 3</stats56>
-			<stats57>Inactive</stats57>
-			<stats58>Keyboard Clicks</stats58>
-			<stats59>Left Mouse Clicks</stats59>
-			<stats60>Right Mouse Clicks</stats60>
+			<stats11>Average Fuel Price</stats11>
+			
+			<stats12>Fuel Requested</stats12>
+			<stats13>Fuel Provided</stats13>
+			<stats14>Planes Served Fuel</stats14>
+			<stats15>Fueling Failures</stats15>
+			<stats16>Bags Loaded</stats16>
+			<stats17>Bags Unloaded</stats17>
+			<stats18>Luggage Success</stats18>
+			<stats19>Lost Luggage</stats19>
+			<stats20>Baggage Loaded via Baggage Car</stats20>
+			<stats21>Advertising</stats21>
+			<stats22>Airline Fees</stats22>
+			<stats23>Bank</stats23>
+			<stats24>Fuel</stats24>
+			<stats25>Grant</stats25>
+			<stats26>Materials</stats26>
+			<stats27>Parking</stats27>
+			<stats28>Research</stats28>
+			<stats29>Retail</stats29>
+			<stats30>Runway Usage</stats30>
+			<stats31>Terminal Usage</stats31>
+			<stats32>Staff</stats32>
+			<stats33>Undefined</stats33>
+			<stats34>Total Revenue</stats34>
+			<stats35>Airline Fees</stats35>
+			<stats36>Bank</stats36>
+			<stats37>Fuel</stats37>
+			<stats38>Grant</stats38>
+			<stats39>Infrastructure</stats39>
+			<stats40>Land Purchase</stats40>
+			<stats41>Maintenance</stats41>
+			<stats42>Materials</stats42>
+			<stats43>Research</stats43>
+			<stats44>Retail</stats44>
+			<stats45>Staff</stats45>
+			<stats46>Income + Property Taxes</stats46>
+			<stats47>Income Tax</stats47>
+			<stats48>Property Tax</stats48>
+			<stats49>Transportation</stats49>
+			<stats50>Undefined</stats50>
+			<stats51>Total Expenses</stats51>
+			<stats52>Hired</stats52>
+			<stats53>Fired</stats53>
+			<stats54>Time Paused</stats54>
+			<stats55>Speed 1</stats55>
+			<stats56>Speed 2</stats56>
+			<stats57>Speed 3</stats57>
+			<stats58>Inactive</stats58>
+			<stats59>Keyboard Clicks</stats59>
+			<stats60>Left Mouse Clicks</stats60>
+			<stats61>Right Mouse Clicks</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Airline Name</stats0>
@@ -238,6 +240,9 @@
 			<fuelProvided>Fuel Provided</fuelProvided>
 			<servedFuel>Planes Served Fuel</servedFuel>
 			<fuelingFailures>Fueling Failures</fuelingFailures>
+
+			<fuelPrice>Fuel Price</fuelPrice>
+			
 			<paxStats>Passenger Stats</paxStats>
 			<numPax>Number of Passengers</numPax>
 			<arriving>Arriving</arriving>

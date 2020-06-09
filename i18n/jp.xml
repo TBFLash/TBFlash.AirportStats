@@ -26,56 +26,57 @@
 			<stats8>接続中</stats8>
 			<stats9>搭乗便</stats9>
 			<stats10>逃したフライト</stats10>
-			<stats11>要求された燃料</stats11>
-			<stats12>提供される燃料</stats12>
-			<stats13>飛行機が燃料を提供</stats13>
-			<stats14>燃料補給の失敗</stats14>
-			<stats15>ロードされたバッグ</stats15>
-			<stats16>アンロードされたバッグ</stats16>
-			<stats17>荷物の成功</stats17>
-			<stats18>失われた荷物</stats18>
-			<stats19>手荷物車を介して読み込まれた手荷物</stats19>
-			<stats20>広告</stats20>
-			<stats21>航空会社の料金</stats21>
-			<stats22>バンク</stats22>
-			<stats23>燃料</stats23>
-			<stats24>付与</stats24>
-			<stats25>材料</stats25>
-			<stats26>パーキング</stats26>
-			<stats27>研究</stats27>
-			<stats28>小売り</stats28>
-			<stats29>滑走路の使用法</stats29>
-			<stats30>端末の使用</stats30>
-			<stats31>スタッフ</stats31>
-			<stats32>未定義</stats32>
-			<stats33>総収入</stats33>
-			<stats34>航空会社の料金</stats34>
-			<stats35>バンク</stats35>
-			<stats36>燃料</stats36>
-			<stats37>付与</stats37>
-			<stats38>インフラ</stats38>
-			<stats39>土地購入</stats39>
-			<stats40>メンテナンス</stats40>
-			<stats41>材料</stats41>
-			<stats42>研究</stats42>
-			<stats43>小売り</stats43>
-			<stats44>スタッフ</stats44>
-			<stats45>所得税と固定資産税</stats45>
-			<stats46>所得税</stats46>
-			<stats47>固定資産税</stats47>
-			<stats48>交通手段</stats48>
-			<stats49>未定義</stats49>
-			<stats50>総費用</stats50>
-			<stats51>採用</stats51>
-			<stats52>解雇</stats52>
-			<stats53>一時停止時間</stats53>
-			<stats54>スピード1</stats54>
-			<stats55>スピード2</stats55>
-			<stats56>スピード3</stats56>
-			<stats57>非活性</stats57>
-			<stats58>キーボードのクリック</stats58>
-			<stats59>左マウスクリック</stats59>
-			<stats60>マウスの右クリック</stats60>
+			<stats11>平均燃料価格</stats11>
+			<stats12>要求された燃料</stats12>
+			<stats13>提供される燃料</stats13>
+			<stats14>飛行機が燃料を提供</stats14>
+			<stats15>燃料補給の失敗</stats15>
+			<stats16>ロードされたバッグ</stats16>
+			<stats17>アンロードされたバッグ</stats17>
+			<stats18>荷物の成功</stats18>
+			<stats19>失われた荷物</stats19>
+			<stats20>手荷物車を介して読み込まれた手荷物</stats20>
+			<stats21>広告</stats21>
+			<stats22>航空会社の料金</stats22>
+			<stats23>バンク</stats23>
+			<stats24>燃料</stats24>
+			<stats25>付与</stats25>
+			<stats26>材料</stats26>
+			<stats27>パーキング</stats27>
+			<stats28>研究</stats28>
+			<stats29>小売り</stats29>
+			<stats30>滑走路の使用法</stats30>
+			<stats31>端末の使用</stats31>
+			<stats32>スタッフ</stats32>
+			<stats33>未定義</stats33>
+			<stats34>総収入</stats34>
+			<stats35>航空会社の料金</stats35>
+			<stats36>バンク</stats36>
+			<stats37>燃料</stats37>
+			<stats38>付与</stats38>
+			<stats39>インフラ</stats39>
+			<stats40>土地購入</stats40>
+			<stats41>メンテナンス</stats41>
+			<stats42>材料</stats42>
+			<stats43>研究</stats43>
+			<stats44>小売り</stats44>
+			<stats45>スタッフ</stats45>
+			<stats46>所得税と固定資産税</stats46>
+			<stats47>所得税</stats47>
+			<stats48>固定資産税</stats48>
+			<stats49>交通手段</stats49>
+			<stats50>未定義</stats50>
+			<stats51>総費用</stats51>
+			<stats52>採用</stats52>
+			<stats53>解雇</stats53>
+			<stats54>一時停止時間</stats54>
+			<stats55>スピード1</stats55>
+			<stats56>スピード2</stats56>
+			<stats57>スピード3</stats57>
+			<stats58>非活性</stats58>
+			<stats59>キーボードのクリック</stats59>
+			<stats60>左マウスクリック</stats60>
+			<stats61>マウスの右クリック</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>航空会社名</stats0>
@@ -238,6 +239,7 @@
 			<fuelProvided>提供される燃料</fuelProvided>
 			<servedFuel>飛行機が燃料を提供</servedFuel>
 			<fuelingFailures>燃料補給の失敗</fuelingFailures>
+			<fuelPrice>燃料価格</fuelPrice>
 			<paxStats>乗客統計</paxStats>
 			<numPax>乗客数</numPax>
 			<arriving>到着</arriving>

@@ -26,56 +26,57 @@
 			<stats8>Spojovací</stats8>
 			<stats9>Nastoupil na palubu</stats9>
 			<stats10>Zmeškaný let</stats10>
-			<stats11>Požadované palivo</stats11>
-			<stats12>Poskytnuté palivo</stats12>
-			<stats13>Letadlo podává palivo</stats13>
-			<stats14>Poruchy paliva</stats14>
-			<stats15>Naložené tašky</stats15>
-			<stats16>Tašky vyložené</stats16>
-			<stats17>Úspěch v zavazadlech</stats17>
-			<stats18>Ztracená zavazadla</stats18>
-			<stats19>Zavazadla naložená prostřednictvím zavazadlového automobilu</stats19>
-			<stats20>Reklamní</stats20>
-			<stats21>Letecké poplatky</stats21>
-			<stats22>banka</stats22>
-			<stats23>Palivo</stats23>
-			<stats24>Grant</stats24>
-			<stats25>Materiály</stats25>
-			<stats26>Parkoviště</stats26>
-			<stats27>Výzkum</stats27>
-			<stats28>Maloobchodní</stats28>
-			<stats29>Použití dráhy</stats29>
-			<stats30>Použití terminálu</stats30>
-			<stats31>Personál</stats31>
-			<stats32>Nedefinováno</stats32>
-			<stats33>Celkové příjmy</stats33>
-			<stats34>Letecké poplatky</stats34>
-			<stats35>banka</stats35>
-			<stats36>Palivo</stats36>
-			<stats37>Grant</stats37>
-			<stats38>Infrastruktura</stats38>
-			<stats39>Nákup pozemků</stats39>
-			<stats40>Údržba</stats40>
-			<stats41>Materiály</stats41>
-			<stats42>Výzkum</stats42>
-			<stats43>Maloobchodní</stats43>
-			<stats44>Personál</stats44>
-			<stats45>Daň z příjmu a vlastnictví</stats45>
-			<stats46>Daň z příjmu</stats46>
-			<stats47>Daň z nemovitosti</stats47>
-			<stats48>Přeprava</stats48>
-			<stats49>Nedefinováno</stats49>
-			<stats50>Celkové výdaje</stats50>
-			<stats51>Najal</stats51>
-			<stats52>Vypálil</stats52>
-			<stats53>Čas pozastaven</stats53>
-			<stats54>Rychlost 1</stats54>
-			<stats55>Rychlost 2</stats55>
-			<stats56>Rychlost 3</stats56>
-			<stats57>Neaktivní</stats57>
-			<stats58>Kliknutí na klávesnici</stats58>
-			<stats59>Kliknutí levým tlačítkem myši</stats59>
-			<stats60>Kliknutí pravým tlačítkem myši</stats60>
+			<stats11>Průměrná cena paliva</stats11>
+			<stats12>Požadované palivo</stats12>
+			<stats13>Poskytnuté palivo</stats13>
+			<stats14>Letadlo podává palivo</stats14>
+			<stats15>Poruchy paliva</stats15>
+			<stats16>Naložené tašky</stats16>
+			<stats17>Tašky vyložené</stats17>
+			<stats18>Úspěch v zavazadlech</stats18>
+			<stats19>Ztracená zavazadla</stats19>
+			<stats20>Zavazadla naložená prostřednictvím zavazadlového automobilu</stats20>
+			<stats21>Reklamní</stats21>
+			<stats22>Letecké poplatky</stats22>
+			<stats23>banka</stats23>
+			<stats24>Palivo</stats24>
+			<stats25>Grant</stats25>
+			<stats26>Materiály</stats26>
+			<stats27>Parkoviště</stats27>
+			<stats28>Výzkum</stats28>
+			<stats29>Maloobchodní</stats29>
+			<stats30>Použití dráhy</stats30>
+			<stats31>Použití terminálu</stats31>
+			<stats32>Personál</stats32>
+			<stats33>Nedefinováno</stats33>
+			<stats34>Celkové příjmy</stats34>
+			<stats35>Letecké poplatky</stats35>
+			<stats36>banka</stats36>
+			<stats37>Palivo</stats37>
+			<stats38>Grant</stats38>
+			<stats39>Infrastruktura</stats39>
+			<stats40>Nákup pozemků</stats40>
+			<stats41>Údržba</stats41>
+			<stats42>Materiály</stats42>
+			<stats43>Výzkum</stats43>
+			<stats44>Maloobchodní</stats44>
+			<stats45>Personál</stats45>
+			<stats46>Daň z příjmu a vlastnictví</stats46>
+			<stats47>Daň z příjmu</stats47>
+			<stats48>Daň z nemovitosti</stats48>
+			<stats49>Přeprava</stats49>
+			<stats50>Nedefinováno</stats50>
+			<stats51>Celkové výdaje</stats51>
+			<stats52>Najal</stats52>
+			<stats53>Vypálil</stats53>
+			<stats54>Čas pozastaven</stats54>
+			<stats55>Rychlost 1</stats55>
+			<stats56>Rychlost 2</stats56>
+			<stats57>Rychlost 3</stats57>
+			<stats58>Neaktivní</stats58>
+			<stats59>Kliknutí na klávesnici</stats59>
+			<stats60>Kliknutí levým tlačítkem myši</stats60>
+			<stats61>Kliknutí pravým tlačítkem myši</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Název letecké společnosti</stats0>
@@ -238,6 +239,7 @@
 			<fuelProvided>Poskytnuté palivo</fuelProvided>
 			<servedFuel>Letadlo podává palivo</servedFuel>
 			<fuelingFailures>Poruchy paliva</fuelingFailures>
+			<fuelPrice>Cena paliva</fuelPrice>
 			<paxStats>Statistiky cestujících</paxStats>
 			<numPax>Počet cestujících</numPax>
 			<arriving>Přijíždí</arriving>

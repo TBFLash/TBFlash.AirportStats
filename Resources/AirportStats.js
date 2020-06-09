@@ -134,6 +134,18 @@ $(function() {
 					}
 					return;
 				}
+				myChart.options.scales.yAxes[2].beforeUpdate = function(scale) {
+					var nLeftTickCount = scale.chart.scales['yAxisLeft'].ticks.length - 1;
+					var rightMaxValue = Math.max.apply(Math, scale.chart.config.data.datasets[4].data);
+					var rightIncValue = Math.ceil(rightMaxValue * 5 / nLeftTickCount) / 5;
+					scale.chart.options.scales.yAxes[2].ticks.stepSize = rightIncValue;
+					if(rightMaxValue != 0){
+						scale.chart.options.scales.yAxes[2].ticks.max = rightIncValue * Math.abs(nLeftTickCount);
+					} else {
+					scale.chart.options.scales.yAxes[2].ticks.max = 1;
+					}
+					return;
+				}
 			}
 		})
 		.fail(function(jqxhr, textStatus, errorThrown) {

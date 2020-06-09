@@ -26,56 +26,57 @@
 			<stats8>Anschließen</stats8>			
 			<stats9>Flug an Bord</stats9>
 			<stats10>Verpasster Flug</stats10>
-			<stats11>Kraftstoff angefordert</stats11>
-			<stats12>Kraftstoff zur Verfügung gestellt</stats12>
-			<stats13>Flugzeuge serviert Kraftstoff</stats13>
-			<stats14>Tankfehler</stats14>
-			<stats15>Taschen geladen</stats15>
-			<stats16>Taschen entladen</stats16>
-			<stats17>Gepäck Erfolg</stats17>
-			<stats18>Verlorenes Gepäck</stats18>
-			<stats19>Gepäck über Gepäckwagen geladen</stats19>
-			<stats20>Werbung</stats20>
-			<stats21>Fluggebühren</stats21>
-			<stats22>Bank</stats22>
-			<stats23>Treibstoff</stats23>
-			<stats24>Gewähren</stats24>
-			<stats25>Materialien</stats25>
-			<stats26>Parkplatz</stats26>
-			<stats27>Forschung</stats27>
-			<stats28>Verkauf</stats28>
-			<stats29>Landebahnnutzung</stats29>
-			<stats30>Terminal-Nutzung</stats30>
-			<stats31>Personal</stats31>
-			<stats32>Nicht definiert</stats32>
-			<stats33>Total Revenue</stats33>
-			<stats34>Fluggebühren</stats34>
-			<stats35>Bank</stats35>
-			<stats36>Treibstoff</stats36>
-			<stats37>Gewähren</stats37>
-			<stats38>Infrastruktur</stats38>
-			<stats39>Landkauf</stats39>
-			<stats40>Instandhaltung</stats40>
-			<stats41>Materialien</stats41>
-			<stats42>Forschung</stats42>
-			<stats43>Verkauf</stats43>
-			<stats44>Personal</stats44>
-			<stats45>Einkommens- und Grundsteuern</stats45>
-			<stats46>Einkommenssteuer</stats46>
-			<stats47>Vermögenssteuer</stats47>
-			<stats48>Transport</stats48>
-			<stats49>Nicht definiert</stats49>
-			<stats50>Gesamtausgaben</stats50>
-			<stats51>Gemietet</stats51>
-			<stats52>Entlassen</stats52>
-			<stats53>Zeit angehalten</stats53>
-			<stats54>Geschwindigkeit 1</stats54>
-			<stats55>Geschwindigkeit 2</stats55>
-			<stats56>Geschwindigkeit 3</stats56>
-			<stats57>Inaktiv</stats57>
-			<stats58>Tastaturklicks</stats58>
-			<stats59>Linke Mausklicks</stats59>
-			<stats60>Rechte Mausklicks</stats60>
+			<stats11>Durchschnittlicher Kraftstoffpreis</stats11>
+			<stats12>Kraftstoff angefordert</stats12>
+			<stats13>Kraftstoff zur Verfügung gestellt</stats13>
+			<stats14>Flugzeuge serviert Kraftstoff</stats14>
+			<stats15>Tankfehler</stats15>
+			<stats16>Taschen geladen</stats16>
+			<stats17>Taschen entladen</stats17>
+			<stats18>Gepäck Erfolg</stats18>
+			<stats19>Verlorenes Gepäck</stats19>
+			<stats20>Gepäck über Gepäckwagen geladen</stats20>
+			<stats21>Werbung</stats21>
+			<stats22>Fluggebühren</stats22>
+			<stats23>Bank</stats23>
+			<stats24>Treibstoff</stats24>
+			<stats25>Gewähren</stats25>
+			<stats26>Materialien</stats26>
+			<stats27>Parkplatz</stats27>
+			<stats28>Forschung</stats28>
+			<stats29>Verkauf</stats29>
+			<stats30>Landebahnnutzung</stats30>
+			<stats31>Terminal-Nutzung</stats31>
+			<stats32>Personal</stats32>
+			<stats33>Nicht definiert</stats33>
+			<stats34>Total Revenue</stats34>
+			<stats35>Fluggebühren</stats35>
+			<stats36>Bank</stats36>
+			<stats37>Treibstoff</stats37>
+			<stats38>Gewähren</stats38>
+			<stats39>Infrastruktur</stats39>
+			<stats40>Landkauf</stats40>
+			<stats41>Instandhaltung</stats41>
+			<stats42>Materialien</stats42>
+			<stats43>Forschung</stats43>
+			<stats44>Verkauf</stats44>
+			<stats45>Personal</stats45>
+			<stats46>Einkommens- und Grundsteuern</stats46>
+			<stats47>Einkommenssteuer</stats47>
+			<stats48>Vermögenssteuer</stats48>
+			<stats49>Transport</stats49>
+			<stats50>Nicht definiert</stats50>
+			<stats51>Gesamtausgaben</stats51>
+			<stats52>Gemietet</stats52>
+			<stats53>Entlassen</stats53>
+			<stats54>Zeit angehalten</stats54>
+			<stats55>Geschwindigkeit 1</stats55>
+			<stats56>Geschwindigkeit 2</stats56>
+			<stats57>Geschwindigkeit 3</stats57>
+			<stats58>Inaktiv</stats58>
+			<stats59>Tastaturklicks</stats59>
+			<stats60>Linke Mausklicks</stats60>
+			<stats61>Rechte Mausklicks</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Name der Fluggesellschaft</stats0>
@@ -237,6 +238,7 @@
 			<fuelProvided>Kraftstoff zur Verfügung gestellt</fuelProvided>
 			<servedFuel>Flugzeuge serviert Kraftstoff</servedFuel>
 			<fuelingFailures>Tankfehler</fuelingFailures>
+			<fuelPrice>Benzinpreis</fuelPrice>
 			<paxStats>Passagierstatistik</paxStats>
 			<numPax>Anzahl der Passagiere</numPax>
 			<arriving>ankommen</arriving>

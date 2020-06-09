@@ -26,56 +26,57 @@
 			<stats8>Collegamento</stats8>
 			<stats9>Volo a bordo</stats9>
 			<stats10>Volo mancato</stats10>
-			<stats11>Carburante Richiesto</stats11>
-			<stats12>Carburante fornito</stats12>
-			<stats13>Aerei serviti a combustibile</stats13>
-			<stats14>Guasti al rifornimento</stats14>
-			<stats15>Borse caricate</stats15>
-			<stats16>Borse scariche</stats16>
-			<stats17>Successo bagagli</stats17>
-			<stats18>Bagaglio perso</stats18>
-			<stats19>Bagaglio caricato tramite vagone bagagli</stats19>
-			<stats20>Pubblicità</stats20>
-			<stats21>Tariffe aeree</stats21>
-			<stats22>Banca</stats22>
-			<stats23>Carburante</stats23>
-			<stats24>Concedere</stats24>
-			<stats25>materiale</stats25>
-			<stats26>Parcheggio</stats26>
-			<stats27>Ricerca</stats27>
-			<stats28>Al dettaglio</stats28>
-			<stats29>Utilizzo della pista</stats29>
-			<stats30>Utilizzo terminale</stats30>
-			<stats31>Personale</stats31>
-			<stats32>Non definito</stats32>
-			<stats33>Entrate totali</stats33>
-			<stats34>Tariffe aeree</stats34>
-			<stats35>Banca</stats35>
-			<stats36>Carburante</stats36>
-			<stats37>Concedere</stats37>
-			<stats38>Infrastruttura</stats38>
-			<stats39>Acquisto di terreni</stats39>
-			<stats40>Manutenzione</stats40>
-			<stats41>materiale</stats41>
-			<stats42>Ricerca</stats42>
-			<stats43>Al dettaglio</stats43>
-			<stats44>Personale</stats44>
-			<stats45>Imposte sul reddito e sulla proprietà</stats45>
-			<stats46>Tassa sul reddito</stats46>
-			<stats47>Imposta patrimoniale</stats47>
-			<stats48>Trasporti</stats48>
-			<stats49>Non definito</stats49>
-			<stats50>Spese totali</stats50>
-			<stats51>Assunto</stats51>
-			<stats52>Fired</stats52>
-			<stats53>Tempo in pausa</stats53>
-			<stats54>Velocità 1</stats54>
-			<stats55>Velocità 2</stats55>
-			<stats56>Velocità 3</stats56>
-			<stats57>Non attivo</stats57>
-			<stats58>Clic sulla tastiera</stats58>
-			<stats59>Clic sinistro del mouse</stats59>
-			<stats60>Clic con il tasto destro del mouse</stats60>
+			<stats11>Prezzo medio del carburante</stats11>
+			<stats12>Carburante Richiesto</stats12>
+			<stats13>Carburante fornito</stats13>
+			<stats14>Aerei serviti a combustibile</stats14>
+			<stats15>Guasti al rifornimento</stats15>
+			<stats16>Borse caricate</stats16>
+			<stats17>Borse scariche</stats17>
+			<stats18>Successo bagagli</stats18>
+			<stats19>Bagaglio perso</stats19>
+			<stats20>Bagaglio caricato tramite vagone bagagli</stats20>
+			<stats21>Pubblicità</stats21>
+			<stats22>Tariffe aeree</stats22>
+			<stats23>Banca</stats23>
+			<stats24>Carburante</stats24>
+			<stats25>Concedere</stats25>
+			<stats26>materiale</stats26>
+			<stats27>Parcheggio</stats27>
+			<stats28>Ricerca</stats28>
+			<stats29>Al dettaglio</stats29>
+			<stats30>Utilizzo della pista</stats30>
+			<stats31>Utilizzo terminale</stats31>
+			<stats32>Personale</stats32>
+			<stats33>Non definito</stats33>
+			<stats34>Entrate totali</stats34>
+			<stats35>Tariffe aeree</stats35>
+			<stats36>Banca</stats36>
+			<stats37>Carburante</stats37>
+			<stats38>Concedere</stats38>
+			<stats39>Infrastruttura</stats39>
+			<stats40>Acquisto di terreni</stats40>
+			<stats41>Manutenzione</stats41>
+			<stats42>materiale</stats42>
+			<stats43>Ricerca</stats43>
+			<stats44>Al dettaglio</stats44>
+			<stats45>Personale</stats45>
+			<stats46>Imposte sul reddito e sulla proprietà</stats46>
+			<stats47>Tassa sul reddito</stats47>
+			<stats48>Imposta patrimoniale</stats48>
+			<stats49>Trasporti</stats49>
+			<stats50>Non definito</stats50>
+			<stats51>Spese totali</stats51>
+			<stats52>Assunto</stats52>
+			<stats53>Fired</stats53>
+			<stats54>Tempo in pausa</stats54>
+			<stats55>Velocità 1</stats55>
+			<stats56>Velocità 2</stats56>
+			<stats57>Velocità 3</stats57>
+			<stats58>Non attivo</stats58>
+			<stats59>Clic sulla tastiera</stats59>
+			<stats60>Clic sinistro del mouse</stats60>
+			<stats61>Clic con il tasto destro del mouse</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Nome della compagnia aerea</stats0>
@@ -238,6 +239,7 @@
 			<fuelProvided>Carburante fornito</fuelProvided>
 			<servedFuel>Aerei serviti a combustibile</servedFuel>
 			<fuelingFailures>Guasti al rifornimento</fuelingFailures>
+			<fuelPrice>Prezzo del carburante</fuelPrice>
 			<paxStats>Statistica dei passeggeri</paxStats>
 			<numPax>Numero di passeggeri</numPax>
 			<arriving>In arrivo</arriving>

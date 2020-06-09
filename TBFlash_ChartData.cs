@@ -23,7 +23,8 @@ namespace TBFlash.AirportStats
         private enum YAxisTypes
         {
             yAxisLeft,
-            yAxisRight
+            yAxisRight,
+            yAxisRight2
         }
         private string Title;
         private Types Type;
@@ -33,6 +34,7 @@ namespace TBFlash.AirportStats
         private readonly int additionalColumns = 7;
         private string YAxisLabel = "Total Number";
         private string YAxisLabel2 = "Total";
+        private string YAxisLabel3 = "Average Fuel Price";
         private string MoneySetting = "false";
 
         internal string GetChartData(string dataSet, string airline)
@@ -267,7 +269,7 @@ namespace TBFlash.AirportStats
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.fuelStats");
             Type = Types.multiAxisLine;
-            NumSeries = 4;
+            NumSeries = 5;
             YAxisLabel = i18n.Get("TBFlash.AirportStats.json.litersOfFuel");
             YAxisLabel2 = i18n.Get("TBFlash.AirportStats.json.planesServed");
             dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
@@ -286,27 +288,33 @@ namespace TBFlash.AirportStats
                 dataArray[2, j] = (FlightRecords.Sum(x => x.nFuelRefueled) / 1000).ToString("F0");
                 dataArray[3, j] = FlightRecords.Count(x => x.nFuelRefueled > 0).ToString("F0");
                 dataArray[4, j] = GRD.FuelFailures.ToString("F0");
+                dataArray[5, j] = CalculateAverageFuelCost(i).ToString("F2");
             }
             dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.fuelRequested");
             dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.fuelProvided");
             dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.servedFuel");
             dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.fuelingFailures");
+            dataArray[5, 0] = i18n.Get("TBFlash.AirportStats.json.fuelPrice");
             dataArray[1, 1] = "fuelReq";
             dataArray[2, 1] = "fuelProv";
             dataArray[3, 1] = "served";
             dataArray[4, 1] = "failed";
+            dataArray[5, 1] = "price";
             dataArray[1, 2] = "ivory";
             dataArray[2, 2] = "green";
             dataArray[3, 2] = "cyan";
             dataArray[4, 2] = "red";
+            dataArray[5, 2] = "purple";
             dataArray[1, 3] = "2";
             dataArray[2, 3] = "1";
-            dataArray[3, 3] = "3";
-            dataArray[4, 3] = "4";
+            dataArray[3, 3] = "4";
+            dataArray[4, 3] = "5";
+            dataArray[5, 3] = "3";
             dataArray[1, 6] = nameof(YAxisTypes.yAxisLeft);
             dataArray[2, 6] = nameof(YAxisTypes.yAxisLeft);
             dataArray[3, 6] = nameof(YAxisTypes.yAxisRight);
             dataArray[4, 6] = nameof(YAxisTypes.yAxisRight);
+            dataArray[5, 6] = nameof(YAxisTypes.yAxisRight2);
             for (int i = 1; i <= NumSeries; i++)
             {
                 dataArray[i, 5] = "visible";
@@ -319,7 +327,7 @@ namespace TBFlash.AirportStats
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.fuelStats") + $": {airline}";
             Type = Types.multiAxisLine;
-            NumSeries = 4;
+            NumSeries = 5;
             YAxisLabel = i18n.Get("TBFlash.AirportStats.json.litersOfFuel");
             YAxisLabel2 = i18n.Get("TBFlash.AirportStats.json.planesServed");
             dataArray = new string[NumSeries + 1, (GameTimer.Day <= 30 ? GameTimer.Day : 30) + additionalColumns];
@@ -334,27 +342,32 @@ namespace TBFlash.AirportStats
                 dataArray[2, j] = (flightRecords.Sum(x => x.nFuelRefueled) / 1000).ToString("F0");
                 dataArray[3, j] = (flightRecords.Count(x => x.nFuelRefueled > 0)).ToString("F0");
                 dataArray[4, j] = flightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) && x.nFuelRefueled == 0 && x.nFuelRequested > 0).ToString("F0");
+                dataArray[5, j] = CalculateAverageFuelCost(i).ToString("F2");
             }
             dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.fuelRequested");
             dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.fuelProvided");
             dataArray[3, 0] = i18n.Get("TBFlash.AirportStats.json.servedFuel");
             dataArray[4, 0] = i18n.Get("TBFlash.AirportStats.json.fuelingFailures");
+            dataArray[5, 0] = i18n.Get("TBFlash.AirportStats.json.fuelPrice");
             dataArray[1, 1] = "fuelReq";
             dataArray[2, 1] = "fuelProv";
             dataArray[3, 1] = "served";
             dataArray[4, 1] = "failed";
+            dataArray[5, 1] = "price";
             dataArray[1, 2] = "ivory";
             dataArray[2, 2] = "green";
             dataArray[3, 2] = "cyan";
             dataArray[4, 2] = "red";
+            dataArray[5, 2] = "purple";
             dataArray[1, 3] = "2";
             dataArray[2, 3] = "1";
-            dataArray[3, 3] = "3";
-            dataArray[4, 3] = "4";
+            dataArray[3, 3] = "4";
+            dataArray[4, 3] = "5";
+            dataArray[5, 3] = "3";
             dataArray[1, 6] = nameof(YAxisTypes.yAxisLeft);
             dataArray[2, 6] = nameof(YAxisTypes.yAxisLeft);
             dataArray[3, 6] = nameof(YAxisTypes.yAxisRight);
-            dataArray[4, 6] = nameof(YAxisTypes.yAxisRight);
+            dataArray[5, 6] = nameof(YAxisTypes.yAxisRight2);
             for (int i = 1; i <= NumSeries; i++)
             {
                 dataArray[i, 5] = "visible";
@@ -660,7 +673,19 @@ namespace TBFlash.AirportStats
                             $"\"labelString\":\"{YAxisLabel2}\", " +
                             "\"fontSize\": 12 " +
                         "}";
-                Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight)}\", \"type\": \"linear\", \"position\": \"right\""; //end of the second yAxis
+                Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight)}\", \"type\": \"linear\", \"position\": \"right\"}}"; //end of the second yAxis
+                Options += ", {" +
+                        "\"ticks\": {" +
+                            $"\"beginAtZero\": true" +
+                        "}, " +
+                        "\"gridLines\":{" +
+                        "}, " +
+                        "\"scaleLabel\":{" +
+                            "\"display\": true, " +
+                            $"\"labelString\":\"{YAxisLabel3}\", " +
+                            "\"fontSize\": 12 " +
+                        "}";
+                Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight2)}\", \"type\": \"linear\", \"position\": \"right\""; //end of the third yAxis
             }
             Options += "}]" + //end yAxes
                 "}, " + //end scales
@@ -677,6 +702,20 @@ namespace TBFlash.AirportStats
         {
             TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             return $"\"chartOptions\":[{{\"title\":\"{Title}\",\"type\":\"{Type}\",\"money\":{MoneySetting},\"options\":{Options}, \"day\": \"{i18n.Get("TBFlash.AirportStats.utils.day")}\"}}]";
+        }
+
+        private double CalculateAverageFuelCost(int day)
+        {
+            FuelController fuelController = Game.current.fuelController;
+            int endOfDay = (1440 * (day == 0 ? GameTimer.Day : day)) - 480;
+            int startOfDay = day == 0 ? 0 : endOfDay - (day == 1 ? 960 : 1440);
+            float totalCost = 0;
+            for (int i = startOfDay; i < endOfDay; i += 60)
+            {
+                totalCost += fuelController.GetMarketPriceAtTime(i);
+                TBFlash_Utils.TBFlashLogger(Log.FromPool($"min: {i}| cost = {fuelController.GetMarketPriceAtTime(i)} | total = {totalCost}"));
+            }
+            return totalCost / ((endOfDay - startOfDay) / 60);
         }
 
         internal string SeriesConfig()

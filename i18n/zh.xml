@@ -26,56 +26,57 @@
 			<stats8>连接中</stats8>
 			<stats9>登机航班</stats9>
 			<stats10>错过的航班</stats10>
-			<stats11>要求燃料</stats11>
-			<stats12>提供燃料</stats12>
-			<stats13>飞机供油</stats13>
-			<stats14>助长失败</stats14>
-			<stats15>袋装</stats15>
-			<stats16>袋装卸</stats16>
-			<stats17>行李成功</stats17>
-			<stats18>遗失行李</stats18>
-			<stats19>通过行李车装载的行李</stats19>
-			<stats20>广告</stats20>
-			<stats21>航空公司费用</stats21>
-			<stats22>银行</stats22>
-			<stats23>汽油</stats23>
-			<stats24>格兰特</stats24>
-			<stats25>用料</stats25>
-			<stats26>停车处</stats26>
-			<stats27>研究</stats27>
-			<stats28>零售</stats28>
-			<stats29>跑道使用</stats29>
-			<stats30>终端使用</stats30>
-			<stats31>员工</stats31>
-			<stats32>未定义</stats32>
-			<stats33>总收入</stats33>
-			<stats34>航空公司费用</stats34>
-			<stats35>银行</stats35>
-			<stats36>汽油</stats36>
-			<stats37>格兰特</stats37>
-			<stats38>基础设施</stats38>
-			<stats39>土地购买</stats39>
-			<stats40>保养</stats40>
-			<stats41>用料</stats41>
-			<stats42>研究</stats42>
-			<stats43>零售</stats43>
-			<stats44>员工</stats44>
-			<stats45>所得税和财产税</stats45>
-			<stats46>所得税</stats46>
-			<stats47>财产税</stats47>
-			<stats48>运输</stats48>
-			<stats49>未定义</stats49>
-			<stats50>总费用</stats50>
-			<stats51>雇用</stats51>
-			<stats52>被解雇</stats52>
-			<stats53>暂停时间</stats53>
-			<stats54>速度1</stats54>
-			<stats55>速度2</stats55>
-			<stats56>速度3</stats56>
-			<stats57>不活跃</stats57>
-			<stats58>键盘点击</stats58>
-			<stats59>鼠标左键单击</stats59>
-			<stats60>鼠标右键</stats60>
+			<stats11>平均燃油价格</stats11>
+			<stats12>要求燃料</stats12>
+			<stats13>提供燃料</stats13>
+			<stats14>飞机供油</stats14>
+			<stats15>助长失败</stats15>
+			<stats16>袋装</stats16>
+			<stats17>袋装卸</stats17>
+			<stats18>行李成功</stats18>
+			<stats19>遗失行李</stats19>
+			<stats20>通过行李车装载的行李</stats20>
+			<stats21>广告</stats21>
+			<stats22>航空公司费用</stats22>
+			<stats23>银行</stats23>
+			<stats24>汽油</stats24>
+			<stats25>格兰特</stats25>
+			<stats26>用料</stats26>
+			<stats27>停车处</stats27>
+			<stats28>研究</stats28>
+			<stats29>零售</stats29>
+			<stats30>跑道使用</stats30>
+			<stats31>终端使用</stats31>
+			<stats32>员工</stats32>
+			<stats33>未定义</stats33>
+			<stats34>总收入</stats34>
+			<stats35>航空公司费用</stats35>
+			<stats36>银行</stats36>
+			<stats37>汽油</stats37>
+			<stats38>格兰特</stats38>
+			<stats39>基础设施</stats39>
+			<stats40>土地购买</stats40>
+			<stats41>保养</stats41>
+			<stats42>用料</stats42>
+			<stats43>研究</stats43>
+			<stats44>零售</stats44>
+			<stats45>员工</stats45>
+			<stats46>所得税和财产税</stats46>
+			<stats47>所得税</stats47>
+			<stats48>财产税</stats48>
+			<stats49>运输</stats49>
+			<stats50>未定义</stats50>
+			<stats51>总费用</stats51>
+			<stats52>雇用</stats52>
+			<stats53>被解雇</stats53>
+			<stats54>暂停时间</stats54>
+			<stats55>速度1</stats55>
+			<stats56>速度2</stats56>
+			<stats57>速度3</stats57>
+			<stats58>不活跃</stats58>
+			<stats59>键盘点击</stats59>
+			<stats60>鼠标左键单击</stats60>
+			<stats61>鼠标右键</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>航空公司名称</stats0>
@@ -238,6 +239,7 @@
 			<fuelProvided>提供燃料</fuelProvided>
 			<servedFuel>飞机供油</servedFuel>
 			<fuelingFailures>助长失败</fuelingFailures>
+			<fuelPrice>燃油价格</fuelPrice>
 			<paxStats>旅客统计</paxStats>
 			<numPax>乘客人数</numPax>
 			<arriving>到达</arriving>

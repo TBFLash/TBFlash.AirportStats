@@ -26,56 +26,57 @@
 			<stats8>соединительный</stats8>
 			<stats9>Сели на борт</stats9>
 			<stats10>Пропущенный рейс</stats10>
-			<stats11>Запрошенное топливо</stats11>
-			<stats12>Предоставленное топливо</stats12>
-			<stats13>Самолеты подали топливо</stats13>
-			<stats14>Заправка топливом</stats14>
-			<stats15>Сумки загружены</stats15>
-			<stats16>Сумки без груза</stats16>
-			<stats17>Камера Успех</stats17>
-			<stats18>Потерянный багаж</stats18>
-			<stats19>Багаж, загруженный через багажный вагон</stats19>
-			<stats20>реклама</stats20>
-			<stats21>Сборы авиакомпании</stats21>
-			<stats22>Банка</stats22>
-			<stats23>топливо</stats23>
-			<stats24>Грант</stats24>
-			<stats25>материалы</stats25>
-			<stats26>Стоянка</stats26>
-			<stats27>Исследование</stats27>
-			<stats28>Розничная торговля</stats28>
-			<stats29>Использование ВПП</stats29>
-			<stats30>Терминал использования</stats30>
-			<stats31>Сотрудники</stats31>
-			<stats32>Неопределенный</stats32>
-			<stats33>Общий доход</stats33>
-			<stats34>Сборы авиакомпании</stats34>
-			<stats35>Банка</stats35>
-			<stats36>топливо</stats36>
-			<stats37>Грант</stats37>
-			<stats38>инфраструктура</stats38>
-			<stats39>Покупка земли</stats39>
-			<stats40>техническое обслуживание</stats40>
-			<stats41>материалы</stats41>
-			<stats42>Исследование</stats42>
-			<stats43>Розничная торговля</stats43>
-			<stats44>Сотрудники</stats44>
-			<stats45>Налог на прибыль и имущество</stats45>
-			<stats46>Подоходный налог</stats46>
-			<stats47>Налог на имущество</stats47>
-			<stats48>Транспорт</stats48>
-			<stats49>Неопределенный</stats49>
-			<stats50>Суммарные расходы</stats50>
-			<stats51>Принят на работу</stats51>
-			<stats52>Уволен</stats52>
-			<stats53>Время остановлено</stats53>
-			<stats54>Скорость 1</stats54>
-			<stats55>Скорость 2</stats55>
-			<stats56>Скорость 3</stats56>
-			<stats57>Неактивный</stats57>
-			<stats58>Щелчки клавиатуры</stats58>
-			<stats59>Щелчки левой мыши</stats59>
-			<stats60>Щелчки правой кнопкой мыши</stats60>
+			<stats11>Средняя цена топлива</stats11>
+			<stats12>Запрошенное топливо</stats12>
+			<stats13>Предоставленное топливо</stats13>
+			<stats14>Самолеты подали топливо</stats14>
+			<stats15>Заправка топливом</stats15>
+			<stats16>Сумки загружены</stats16>
+			<stats17>Сумки без груза</stats17>
+			<stats18>Камера Успех</stats18>
+			<stats19>Потерянный багаж</stats19>
+			<stats20>Багаж, загруженный через багажный вагон</stats20>
+			<stats21>реклама</stats21>
+			<stats22>Сборы авиакомпании</stats22>
+			<stats23>Банка</stats23>
+			<stats24>топливо</stats24>
+			<stats25>Грант</stats25>
+			<stats26>материалы</stats26>
+			<stats27>Стоянка</stats27>
+			<stats28>Исследование</stats28>
+			<stats29>Розничная торговля</stats29>
+			<stats30>Использование ВПП</stats30>
+			<stats31>Терминал использования</stats31>
+			<stats32>Сотрудники</stats32>
+			<stats33>Неопределенный</stats33>
+			<stats34>Общий доход</stats34>
+			<stats35>Сборы авиакомпании</stats35>
+			<stats36>Банка</stats36>
+			<stats37>топливо</stats37>
+			<stats38>Грант</stats38>
+			<stats39>инфраструктура</stats39>
+			<stats40>Покупка земли</stats40>
+			<stats41>техническое обслуживание</stats41>
+			<stats42>материалы</stats42>
+			<stats43>Исследование</stats43>
+			<stats44>Розничная торговля</stats44>
+			<stats45>Сотрудники</stats45>
+			<stats46>Налог на прибыль и имущество</stats46>
+			<stats47>Подоходный налог</stats47>
+			<stats48>Налог на имущество</stats48>
+			<stats49>Транспорт</stats49>
+			<stats50>Неопределенный</stats50>
+			<stats51>Суммарные расходы</stats51>
+			<stats52>Принят на работу</stats52>
+			<stats53>Уволен</stats53>
+			<stats54>Время остановлено</stats54>
+			<stats55>Скорость 1</stats55>
+			<stats56>Скорость 2</stats56>
+			<stats57>Скорость 3</stats57>
+			<stats58>Неактивный</stats58>
+			<stats59>Щелчки клавиатуры</stats59>
+			<stats60>Щелчки левой мыши</stats60>
+			<stats61>Щелчки правой кнопкой мыши</stats61>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Название авиакомпании</stats0>
@@ -238,6 +239,7 @@
 			<fuelProvided>Предоставленное топливо</fuelProvided>
 			<servedFuel>Самолеты подали топливо</servedFuel>
 			<fuelingFailures>Заправка топливом</fuelingFailures>
+			<fuelPrice>Цена топлива</fuelPrice>
 			<paxStats>Статистика пассажиров</paxStats>
 			<numPax>Количество пассажиров</numPax>
 			<arriving>прибывающий</arriving>
