@@ -65,18 +65,19 @@ namespace TBFlash.AirportStats {
         ///	$(&quot;#dialog&quot;).dialog({ 
         ///		autoOpen: false, 
         ///		modal: false, 
-        ///		position: { my: &quot;left top&quot;, at: &quot;left+20 top+40&quot;}, resizable: false 
+        ///		position: { my: &quot;left top&quot;, at: &quot;left+150 top+40&quot;}, 
+        ///		resizable: false 
         ///	});
         ///	$(&quot;#infodialog&quot;).dialog({ 
         ///		autoOpen: false, 
         ///		modal: false, 
-        ///		position: { my: &quot;left top&quot;, at: &quot;left+20 top+40&quot;}, resizable: false 
+        ///		position: { my: &quot;left top&quot;, at: &quot;left+150 top+40&quot;}, resizable: false 
         ///	});
         ///	$(&quot;.info-dialog&quot;).on(&quot;click&quot;, function(e) { 
         ///		e.preventDefault(); 
         ///		$(&quot;#infodialog&quot;).html(&quot;&quot;); 
         ///		$(&quot;#infodialog&quot;).dialog(&quot;option&quot;, &quot;title&quot;, &quot;Loading...&quot;).dialog(&quot;open&quot;); 
-        ///		$(&quot;#infodialog&quot;).dialog(&quot;o [rest of string was truncated]&quot;;.
+        ///		$(&quot;#infodialog&quot;).dia [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AirportStats {
             get {
@@ -141,10 +142,8 @@ namespace TBFlash.AirportStats {
         /// <summary>
         ///   Looks up a localized string similar to /*! jQuery UI - v1.12.1 - 2020-05-25
         ///* http://jqueryui.com
-        ///* Includes: draggable.css, core.css, resizable.css, button.css, controlgroup.css, checkboxradio.css, dialog.css, tooltip.css
-        ///* Copyright jQuery Foundation and other contributors; Licensed MIT */
-        ///
-        ///.ui-draggable-handle{-ms-touch-action:none;touch-action:none}.ui-helper-hidden{display:none}.ui-helper-hidden-accessible{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.ui-helper-reset{margin:0;paddi [rest of string was truncated]&quot;;.
+        ///* Includes: draggable.css, core.css, resizable.css, button.css, controlgroup.css, checkboxradio.css, dialog.css, tooltip.css, theme.css
+        ///* To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&amp;folderName=base&amp;cornerRadiusShadow=8px&amp;offsetLeftShadow=0px&amp;offsetTopShadow=0px&amp;thicknessShadow=5px&amp;opacityShadow=30&amp;bgImgOpacityShadow=0&amp;bgTextureShadow=flat&amp;bgColorShadow=666666&amp;opacityOverlay=30&amp;bgImgOpacityOverlay=0&amp;bgTextureOverlay=f [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string jquery_ui_min {
             get {

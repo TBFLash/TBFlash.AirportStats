@@ -10,10 +10,10 @@ namespace TBFlash.AirportStats
 
         internal string GetAllAirlineStats(bool activeOnly = false)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             string[,] arr = LoadArray(activeOnly);
 
-            string htmlCode = activeOnly ? TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.ActiveAirlines, true) : TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AllAirlines, true);
+            string htmlCode = activeOnly ? AirportStatUtils.PageHead(AirportStatUtils.PageTitles.ActiveAirlines, true) : AirportStatUtils.PageHead(AirportStatUtils.PageTitles.AllAirlines, true);
             htmlCode += "<table>";
             for (int i = 0; i < arrayRows; i++)
             {
@@ -24,13 +24,13 @@ namespace TBFlash.AirportStats
                 }
                 htmlCode += "</tr>";
             }
-            htmlCode += "</table>" + TBFlash_Utils.PageFooter();
+            htmlCode += "</table>" + AirportStatUtils.PageFooter();
             return htmlCode;
         }
 
         private string[,] LoadArray(bool activeOnly = false)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
 
             IEnumerable<Airline> airlines = activeOnly ? AirlineManager.AllAirlines().Where(x => x.IncludeInSatisfication) : AirlineManager.AllAirlines();
 
@@ -44,7 +44,7 @@ namespace TBFlash.AirportStats
             foreach (Airline airline in airlines.OrderBy(y => y.name))
             {
                 j++;
-                TBFlash_Utils.TBFlashLogger(Log.FromPool($"j:{j}; Num Airlines:{airlines.Count()}; name: {airline.name}").WithCodepoint());
+                AirportStatUtils.AirportStatsLogger(Log.FromPool($"j:{j}; Num Airlines:{airlines.Count()}; name: {airline.name}").WithCodepoint());
                 if (airline == null)
                 {
                     break;

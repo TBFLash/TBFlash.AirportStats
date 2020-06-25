@@ -27,7 +27,6 @@
 			<stats9>Boarded Flight</stats9>
 			<stats10>Missed Flight</stats10>
 			<stats11>Average Fuel Price</stats11>
-			
 			<stats12>Fuel Requested</stats12>
 			<stats13>Fuel Provided</stats13>
 			<stats14>Planes Served Fuel</stats14>
@@ -211,6 +210,7 @@
 			<bullet3a>Daily operations: Click on a</bullet3a>
 			<bullet3b>Day</bullet3b>
 			<bullet3c>link to see all of the flights on that day, either for the whole airport, or just a single airline. Click on an Aircraft Type to see more information about the Aircraft.</bullet3c>
+<bullet4>Icons indicate values that impact the Perfect Ops Bonus or are other values of interest.</bullet4>
 			<techNotes>Technical notes:</techNotes>
 			<tnbullet0>Time is displayed in Days: Hours: Minutes: Seconds.</tnbullet0>			
 			<tnbullet1>To remove a data series in a chart, click on the name in the legend.</tnbullet1>
@@ -240,9 +240,7 @@
 			<fuelProvided>Fuel Provided</fuelProvided>
 			<servedFuel>Planes Served Fuel</servedFuel>
 			<fuelingFailures>Fueling Failures</fuelingFailures>
-
 			<fuelPrice>Fuel Price</fuelPrice>
-			
 			<paxStats>Passenger Stats</paxStats>
 			<numPax>Number of Passengers</numPax>
 			<arriving>Arriving</arriving>
@@ -278,6 +276,12 @@
 			<taxes>Taxes</taxes>
 			<transExp>Transportation Expenses</transExp>
 			<undefExp>Undefined Expenses</undefExp>
+			<fuelFutures>Fuel Futures</fuelFutures>
+			<cost>Cost</cost>
+			<lowestCost>Lowest Fuel Cost</lowestCost>
+			<highestCost>Highest Fuel Cost</highestCost>
+			<time>Time</time>
+			<chart>Display Chart</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Arrival Crew Picked Up</ArrivalCrewPickedUp>

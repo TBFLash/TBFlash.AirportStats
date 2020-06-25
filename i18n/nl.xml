@@ -210,6 +210,7 @@
 			<bullet3a>Dagelijkse bediening: Klik op a</bullet3a>
 			<bullet3b>Dag</bullet3b>
 			<bullet3c>link om alle vluchten op die dag te zien, voor de hele luchthaven of voor slechts één luchtvaartmaatschappij. Klik op een vliegtuigtype om meer informatie over het vliegtuig te zien.</bullet3c>
+			<bullet4>Pictogrammen geven waarden aan die van invloed zijn op de perfecte bonus voor operaties of die andere interessante waarden zijn.</bullet4>
 			<techNotes>Technische opmerkingen:</techNotes>
 			<tnbullet0>Tijd wordt weergegeven in dagen: uren: minuten: seconden.</tnbullet0>			
 			<tnbullet1>Om een ​​gegevensreeks in een diagram te verwijderen, klikt u op de naam in de legenda.</tnbullet1>
@@ -275,6 +276,12 @@
 			<taxes>Belastingen</taxes>
 			<transExp>Vervoerskosten</transExp>
 			<undefExp>Ongedefinieerde kosten</undefExp>
+			<fuelFutures>Fuel Futures</fuelFutures>
+			<cost>Kosten</cost>
+			<lowestCost>Laagste brandstofkosten</lowestCost>
+			<highestCost>Hoogste brandstofkosten</highestCost>
+			<time>Tijd</time>
+			<chart>Diagram weergeven</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Aankomst bemanning opgehaald</ArrivalCrewPickedUp>

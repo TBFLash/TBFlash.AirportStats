@@ -34,7 +34,7 @@ namespace TBFlash.AirportStats
         private readonly int additionalColumns = 7;
         private string YAxisLabel = "Total Number";
         private string YAxisLabel2 = "Total";
-        private string YAxisLabel3 = "Average Fuel Price";
+        private readonly string YAxisLabel3 = "Average Fuel Price";
         private string MoneySetting = "false";
 
         internal string GetChartData(string dataSet, string airline)
@@ -42,7 +42,7 @@ namespace TBFlash.AirportStats
             string jsonCode;
             if (LoadArray(dataSet, airline))
             {
-                TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+                AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
                 SetOptions();
                 jsonCode = $"{{\n\t{ChartOptions()},\n\t{SeriesConfig()},\n\t";
                 jsonCode += "\"chartData\":[{";
@@ -63,7 +63,7 @@ namespace TBFlash.AirportStats
                     jsonCode += "}";
                 }
                 jsonCode += "}]}";
-                TBFlash_Utils.TBFlashLogger(Log.FromPool(jsonCode).WithCodepoint());
+                AirportStatUtils.AirportStatsLogger(Log.FromPool(jsonCode).WithCodepoint());
             }
             else
             {
@@ -74,7 +74,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadArray(string dataSet, string airline)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             switch (dataSet.ToUpperInvariant())
             {
                 case "FLIGHTSTATS":
@@ -102,7 +102,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadFlightStats()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.flightStats");
             Type = Types.line;
             NumSeries = 4;
@@ -120,8 +120,8 @@ namespace TBFlash.AirportStats
 
                 dataArray[0, j] = i.ToString();
                 dataArray[1, j] = GRD.FlightsCount.ToString("F0");
-                dataArray[2, j] = (FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed)) - FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture))).ToString("F0");
-                dataArray[3, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("F0");
+                dataArray[2, j] = (FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Departed)) - FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.DelayedDeparture))).ToString("F0");
+                dataArray[3, j] = FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.DelayedDeparture)).ToString("F0");
                 dataArray[4, j] = GRD.FlightsCanceled.ToString("F0");
             }
             dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.scheduledDepartures");
@@ -149,7 +149,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadFlightStats(string airline)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.flightStats") + $": {airline}";
             Type = Types.line;
             NumSeries = 4;
@@ -163,9 +163,9 @@ namespace TBFlash.AirportStats
 
                 dataArray[0, j] = i.ToString();
                 dataArray[1, j] = FlightRecords.Count().ToString("F0");
-                dataArray[2, j] = (FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed)) - FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture))).ToString("F0");
-                dataArray[3, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("F0");
-                dataArray[4, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Canceled)).ToString("F0");
+                dataArray[2, j] = (FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Departed)) - FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.DelayedDeparture))).ToString("F0");
+                dataArray[3, j] = FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.DelayedDeparture)).ToString("F0");
+                dataArray[4, j] = FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Canceled)).ToString("F0");
             }
             dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.scheduledDepartures");
             dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.ontimeDepartures");
@@ -192,7 +192,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadLuggageStats()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.luggageStats");
             Type = Types.line;
             NumSeries = 3;
@@ -229,7 +229,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadLuggageStats(string airline)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.luggageStats") + $": {airline}";
             Type = Types.line;
             NumSeries = 3;
@@ -243,7 +243,7 @@ namespace TBFlash.AirportStats
                 dataArray[0, j] = i.ToString();
                 dataArray[1, j] = flightRecords.Sum(x => x.nBagsUnloaded).ToString("F0");
                 dataArray[2, j] = flightRecords.Sum(x => x.nBagsLoaded).ToString("F0");
-                dataArray[3, j] = flightRecords.Sum(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) ? x.nDepartingBags - x.nBagsLoaded : 0).ToString("F0");
+                dataArray[3, j] = flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Departed) ? x.nDepartingBags - x.nBagsLoaded : 0).ToString("F0");
             }
             dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.bagsUnloaded");
             dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.bagsLoaded");
@@ -266,7 +266,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadFuelStats()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.fuelStats");
             Type = Types.multiAxisLine;
             NumSeries = 5;
@@ -324,7 +324,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadFuelStats(string airline)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.fuelStats") + $": {airline}";
             Type = Types.multiAxisLine;
             NumSeries = 5;
@@ -341,7 +341,7 @@ namespace TBFlash.AirportStats
                 dataArray[1, j] = (flightRecords.Sum(x => x.nFuelRequested) / 1000).ToString("F0");
                 dataArray[2, j] = (flightRecords.Sum(x => x.nFuelRefueled) / 1000).ToString("F0");
                 dataArray[3, j] = (flightRecords.Count(x => x.nFuelRefueled > 0)).ToString("F0");
-                dataArray[4, j] = flightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) && x.nFuelRefueled == 0 && x.nFuelRequested > 0).ToString("F0");
+                dataArray[4, j] = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Departed) && x.nFuelRefueled == 0 && x.nFuelRequested > 0).ToString("F0");
                 dataArray[5, j] = CalculateAverageFuelCost(i).ToString("F2");
             }
             dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.fuelRequested");
@@ -377,7 +377,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadPaxStats()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.paxStats");
             Type = Types.line;
             NumSeries = 4;
@@ -422,7 +422,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadPaxStats(string airline)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.paxStats") + $": {airline}";
             Type = Types.line;
             NumSeries = 3;
@@ -437,7 +437,7 @@ namespace TBFlash.AirportStats
                 dataArray[0, j] = i.ToString();
                 dataArray[1, j] = flightRecords.Sum(x => x.nArriving).ToString("F0");
                 dataArray[2, j] = flightRecords.Sum(x => x.nBoarded).ToString("F0");
-                dataArray[3, j] = flightRecords.Sum(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) ? x.nDeparting - x.nBoarded : 0).ToString("F0");
+                dataArray[3, j] = flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Departed) ? x.nDeparting - x.nBoarded : 0).ToString("F0");
             }
             dataArray[1, 0] = i18n.Get("TBFlash.AirportStats.json.arriving");
             dataArray[2, 0] = i18n.Get("TBFlash.AirportStats.json.boarded");
@@ -460,7 +460,7 @@ namespace TBFlash.AirportStats
 
         private bool LoadProfits()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Title = i18n.Get("TBFlash.AirportStats.json.revandexp");
             Type = Types.stackedBar;
             NumSeries = 27;
@@ -631,7 +631,7 @@ namespace TBFlash.AirportStats
 
         private void SetOptions()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             Options = "{" +
                 "\"scales\": {" +
                     "\"xAxes\": [{" +
@@ -649,7 +649,7 @@ namespace TBFlash.AirportStats
             Options += "}], " + //end xAxes
                     "\"yAxes\": [{" +
                         "\"ticks\": {" +
-                            $"\"beginAtZero\": true";
+                            "\"beginAtZero\": true";
             Options += "}, " +
                         "\"gridLines\":{" +
                         "}, " +
@@ -664,7 +664,7 @@ namespace TBFlash.AirportStats
                 Options += $", \"id\": \"{nameof(YAxisTypes.yAxisLeft)}\", \"type\": \"linear\", \"position\": \"left\"}}"; //end of the first yAxis
                 Options += ", {" +
                         "\"ticks\": {" +
-                            $"\"beginAtZero\": true" +
+                            "\"beginAtZero\": true" +
                         "}, " +
                         "\"gridLines\":{" +
                         "}, " +
@@ -676,7 +676,7 @@ namespace TBFlash.AirportStats
                 Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight)}\", \"type\": \"linear\", \"position\": \"right\"}}"; //end of the second yAxis
                 Options += ", {" +
                         "\"ticks\": {" +
-                            $"\"beginAtZero\": true" +
+                            "\"beginAtZero\": true" +
                         "}, " +
                         "\"gridLines\":{" +
                         "}, " +
@@ -700,7 +700,7 @@ namespace TBFlash.AirportStats
 
         internal string ChartOptions()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             return $"\"chartOptions\":[{{\"title\":\"{Title}\",\"type\":\"{Type}\",\"money\":{MoneySetting},\"options\":{Options}, \"day\": \"{i18n.Get("TBFlash.AirportStats.utils.day")}\"}}]";
         }
 
@@ -713,14 +713,14 @@ namespace TBFlash.AirportStats
             for (int i = startOfDay; i < endOfDay; i += 60)
             {
                 totalCost += fuelController.GetMarketPriceAtTime(i);
-                TBFlash_Utils.TBFlashLogger(Log.FromPool($"min: {i}| cost = {fuelController.GetMarketPriceAtTime(i)} | total = {totalCost}"));
+                AirportStatUtils.AirportStatsLogger(Log.FromPool($"min: {i}| cost = {fuelController.GetMarketPriceAtTime(i)} | total = {totalCost}"));
             }
             return totalCost / ((endOfDay - startOfDay) / 60);
         }
 
         internal string SeriesConfig()
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             string seriesLabels = string.Empty;
             string seriesKeys = string.Empty;
             string seriesColors = string.Empty;

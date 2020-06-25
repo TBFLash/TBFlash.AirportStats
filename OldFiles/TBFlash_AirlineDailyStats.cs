@@ -9,7 +9,7 @@ namespace TBFlash.AirportStats
 
         internal string GetDailyStats(Airline airline, int day)
         {
-            string htmlCode = TBFlash_Utils.PageHead(airline, day);
+            string htmlCode = AirportStatUtils.PageHead(airline, day);
             htmlCode += "<table>";
             string[,] arr = LoadArray(airline, day);
             for (int i = 0; i < (arr.Length / arrayCols); i++)
@@ -28,7 +28,7 @@ namespace TBFlash.AirportStats
                 htmlCode += "</tr>";
             }
             htmlCode += "</table>";
-            htmlCode += TBFlash_Utils.PageFooter();
+            htmlCode += AirportStatUtils.PageFooter();
             return htmlCode;
         }
 
@@ -48,28 +48,28 @@ namespace TBFlash.AirportStats
                 FlightRecord fr = flightRecords.ElementAt(i - 1);
                 arr[i, 0] = fr.airline;
                 arr[i, 1] = fr.aircraft;
-                arr[i, 2] = TBFlash_Utils.FormatTime(fr.arrivalTime * 60, true);
-                arr[i, 3] = fr.actual_arrivalTime > 0 ? TBFlash_Utils.FormatTime(fr.actual_arrivalTime * 60, true) : string.Empty;
-                arr[i, 4] = TBFlash_Utils.FormatTime(fr.departureTime * 60, true);
-                arr[i, 5] = fr.actual_departureTime > 0 ? TBFlash_Utils.FormatTime(fr.actual_departureTime * 60, true) : string.Empty;
+                arr[i, 2] = AirportStatUtils.FormatTime(fr.arrivalTime * 60, true);
+                arr[i, 3] = fr.actual_arrivalTime > 0 ? AirportStatUtils.FormatTime(fr.actual_arrivalTime * 60, true) : string.Empty;
+                arr[i, 4] = AirportStatUtils.FormatTime(fr.departureTime * 60, true);
+                arr[i, 5] = fr.actual_departureTime > 0 ? AirportStatUtils.FormatTime(fr.actual_departureTime * 60, true) : string.Empty;
                 arr[i, 6] = fr.nArriving.ToString("#");
-                arr[i, 7] = fr.actual_arrivalTime > 0 ? TBFlash_Utils.FormatTime(fr.time_deplaning * 60) : string.Empty;
+                arr[i, 7] = fr.actual_arrivalTime > 0 ? AirportStatUtils.FormatTime(fr.time_deplaning * 60) : string.Empty;
                 arr[i, 8] = fr.nDeparting.ToString("#");
                 arr[i, 9] = fr.nCheckedIn.ToString("#");
                 arr[i, 10] = fr.nBoarded.ToString("#");
-                arr[i, 11] = fr.nBoarded > 0 ? TBFlash_Utils.FormatTime(fr.time_boarding * 60) : string.Empty;
+                arr[i, 11] = fr.nBoarded > 0 ? AirportStatUtils.FormatTime(fr.time_boarding * 60) : string.Empty;
                 arr[i, 12] = fr.nArrivalBags.ToString("#");
                 arr[i, 13] = fr.nBagsUnloaded.ToString("#");
-                arr[i, 14] = fr.nBagsUnloaded > 0 ? TBFlash_Utils.FormatTime(fr.time_bag_unload * 60, true) : string.Empty;
+                arr[i, 14] = fr.nBagsUnloaded > 0 ? AirportStatUtils.FormatTime(fr.time_bag_unload * 60, true) : string.Empty;
                 arr[i, 15] = fr.nDepartingBags.ToString("#");
                 arr[i, 16] = fr.nBagsLoaded.ToString("#");
-                arr[i, 17] = fr.nBagsLoaded > 0 ? TBFlash_Utils.FormatTime(fr.time_bag_load * 60) : string.Empty;
+                arr[i, 17] = fr.nBagsLoaded > 0 ? AirportStatUtils.FormatTime(fr.time_bag_load * 60) : string.Empty;
                 arr[i, 18] = (fr.nFuelRequested / 1000).ToString("#,###");
                 arr[i, 19] = (fr.nFuelRefueled / 1000).ToString("#,###");
                 string st = string.Empty;
                 foreach (Flight.Status stat in Enum.GetValues(typeof(Flight.Status)))
                 {
-                    if (TBFlash_Utils.HasStatus(fr.status, stat))
+                    if (AirportStatUtils.HasStatus(fr.status, stat))
                     {
                         st += i18n.Get("TBFlash.AirportStats.flightstatus." + Enum.GetName(typeof(Flight.Status), stat)) + "<br/>";
                     }

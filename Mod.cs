@@ -30,7 +30,6 @@ namespace TBFlash.AirportStats
             {
                 server = new TBFlash_Server();
                 server.Start();
-                TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
             }
         }
 
@@ -38,7 +37,6 @@ namespace TBFlash.AirportStats
         {
             server?.Stop();
             server = null;
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
         }
 
        public override void OnAirportLoaded(Dictionary<string, object> saveData)

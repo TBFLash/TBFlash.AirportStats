@@ -5,35 +5,45 @@ using SimAirport.Logging;
 
 namespace TBFlash.AirportStats
 {
-    internal static class TBFlash_Utils
+    internal static class AirportStatUtils
     {
-        private const bool isTBFlashDebug = false;
-        private const string version = "1.1";
+        private const bool airportStatsDebug = false;
+        private const string version = "2.0";
 
         internal enum PageTitles
         {
             AirportStats = 0,
             AllAirlines = 1,
-            ActiveAirlines = 2
+            ActiveAirlines = 2,
+            FuelFutures = 3
+        }
+
+        internal enum  InfoLevels
+        {
+            None = 0,
+            Info = 1,
+            Warning = 2
         }
 
         internal static List<string> Urls = new List<string>
         {
             "/",
             "/AllAirlines",
-            "/Airlines"
+            "/Airlines",
+            "/FuelFutures"
         };
 
         internal static List<string> Values = new List<string>
         {
             i18n.Get("TBFlash.AirportStats.utils.value0"),
             i18n.Get("TBFlash.AirportStats.utils.value1"),
-            i18n.Get("TBFlash.AirportStats.utils.value2")
+            i18n.Get("TBFlash.AirportStats.utils.value2"),
+            i18n.Get("TBFlash.AirportStats.json.fuelFutures")
         };
 
-        internal static void TBFlashLogger(Log log)
+        internal static void AirportStatsLogger(Log log)
         {
-            if (isTBFlashDebug)
+            if (airportStatsDebug)
             {
                 Game.Logger.Write(log);
             }
@@ -55,12 +65,12 @@ namespace TBFlash.AirportStats
             }
         }
 
-        internal static string PageHead(TBFlash_Utils.PageTitles PageTitle, bool includeJQuery = false)
+        internal static string PageHead(PageTitles PageTitle, bool includeJQuery = false)
         {
             string str = includeJQuery ? HeadTag(true, true) : HeadTag();
 
             str += $"<body><form><h1><span class=\"infoIcon\"><a class=\"info-dialog\" href=\"/Information\" rel=\"#infodialog\">{i18n.Get("TBFlash.AirportStats.infoPage.information")}</a></span>{Values[(int)PageTitle]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            foreach (int i in Enum.GetValues(typeof(PageTitles)).Cast<PageTitles>().Where(x => x != PageTitle).ToList())
+            foreach (int i in Enum.GetValues(typeof(PageTitles)).Cast<PageTitles>().Where(x => x != PageTitle && x != PageTitles.FuelFutures).ToList())
             {
                 str += $"<input type=\"button\" class=\"button\" onclick=\"location.href=\'{Urls[i]}\';\" value=\"{Values[i]}\"> ";
             }
@@ -81,13 +91,13 @@ namespace TBFlash.AirportStats
             {
                 str += "\n<script type=\"text/javascript\">function goToNewPage() { var url =\'/" + airlineName + "\' + \'?Day=\' + document.getElementById(\'daySelector\').value; if (url != \'none\') {window.location = url;}}</script>";
                 str += "<select id=\"daySelector\" class=\"select\">";
-                for (int i = (GameTimer.Day > 30 ? GameTimer.Day - 29 : 1); i <= GameTimer.Day; i++)
+                for (int i = StatLoader.FirstDay; i <= StatLoader.LastDay; i++)
                 {
                     str += $"<option {(i == day ? selected : string.Empty)} value=\'{i}\'>{i18n.Get("TBFlash.AirportStats.utils.day")} {i}</option>";
                 }
                 str += $"</select><input type=\"button\" class=\"button\" value=\"{goText}\" onclick=\"goToNewPage();\">&nbsp;&nbsp;";
             }
-            foreach (int i in Enum.GetValues(typeof(PageTitles)))
+            foreach (int i in Enum.GetValues(typeof(PageTitles)).Cast<PageTitles>().Where(x => x != PageTitles.FuelFutures).ToList())
             {
                 str += $"<input type=\"button\" class=\"button\" onclick=\"location.href=\'{Urls[i]}\';\" value=\"{Values[i]}\"> ";
             }
@@ -98,7 +108,7 @@ namespace TBFlash.AirportStats
 
         internal static string PageFooter()
         {
-            return $"<div id=\"dialog\"></div><div id=\"infodialog\"></div><p class=\"footer\">{i18n.Get("TBFlash.AirportStats.utils.version")}: {version}</br>{i18n.Get("TBFlash.AirportStats.utils.broughtBy")}</p></body></html>";
+            return $"<div id=\"dialog\"></div><div id=\"infodialog\"></div><p class=\"footer\">{i18n.Get("TBFlash.AirportStats.utils.version")}<a href=\"/fuelfutures\" style=\"color: lightgray; text-decoration: none;\">:</a> {version}</br>{i18n.Get("TBFlash.AirportStats.utils.broughtBy")}</p></body></html>";
         }
 
         internal static string HeadTag(bool includeStyles = true, bool includeScripts = false)
@@ -143,6 +153,7 @@ namespace TBFlash.AirportStats
                 "</ul></p>" +
                 $"<p>{i18n.Get("TBFlash.AirportStats.infoPage.techNotes")}" +
                 $"<ul><li>{i18n.Get("TBFlash.AirportStats.infoPage.tnbullet0")}</li>" +
+                    $"<li>{i18n.Get("TBFlash.AirportStats.infoPage.bullet4")}</li>" +
                     $"<li>{i18n.Get("TBFlash.AirportStats.infoPage.tnbullet1")}</li>" +
                     $"<li>{i18n.Get("TBFlash.AirportStats.infoPage.tnbullet2")}</li>" +
                     $"<li>{i18n.Get("TBFlash.AirportStats.infoPage.tnbullet3")}</li>" +
@@ -153,7 +164,7 @@ namespace TBFlash.AirportStats
             return htmlCode;
         }
 
-        internal static bool HasStatus(int totalStatus, Flight.Status status)
+        internal static bool HasStatus(int totalStatus, global::Flight.Status status)
         {
             return (totalStatus & (int)status) == (int)status;
         }

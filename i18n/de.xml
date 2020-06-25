@@ -145,6 +145,7 @@
 			<stats26># Taschen ankommen</stats26>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
+			<stats0>Fluggesellschaft</stats0>
 			<stats1>Flugzeugtyp</stats1>
 			<stats2>Geplante Ankunftszeit</stats2>
 			<stats3>Tatsächliche Ankunftszeit</stats3>
@@ -209,6 +210,7 @@
 			<bullet3a>Täglicher Betrieb: Klicken Sie auf a</bullet3a>
 			<bullet3b>Tag</bullet3b>
 			<bullet3c>Link, um alle Flüge an diesem Tag anzuzeigen, entweder für den gesamten Flughafen oder nur für eine einzelne Fluggesellschaft. Klicken Sie auf einen Flugzeugtyp, um weitere Informationen zum Flugzeug anzuzeigen.</bullet3c>
+			<bullet4>Symbole zeigen Werte an, die sich auf den perfekten Betriebsbonus auswirken oder andere interessante Werte sind.</bullet4>
 			<techNotes>Technische Hinweise:</techNotes>
 			<tnbullet0>Die Zeit wird in Tagen: Stunden: Minuten: Sekunden angezeigt.</tnbullet0>			
 			<tnbullet1>Um eine Datenreihe in einem Diagramm zu entfernen, klicken Sie auf den Namen in der Legende.</tnbullet1>
@@ -274,6 +276,12 @@
 			<taxes>Steuern</taxes>
 			<transExp>Transportkosten</transExp>
 			<undefExp>Undefinierte Ausgaben</undefExp>
+			<fuelFutures>Kraftstoff-Futures</fuelFutures>
+			<cost>Kosten</cost>
+			<lowestCost>Niedrigste Kraftstoffkosten</lowestCost>
+			<highestCost>Höchste Kraftstoffkosten</highestCost>
+			<time>Zeit</time>
+			<chart>Diagramm anzeigen</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Ankunftsmannschaft abgeholt</ArrivalCrewPickedUp>

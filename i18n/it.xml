@@ -210,6 +210,7 @@
 			<bullet3a>Operazioni giornaliere: fare clic su a</bullet3a>
 			<bullet3b>Giorno</bullet3b>
 			<bullet3c>link per vedere tutti i voli in quel giorno, sia per l'intero aeroporto, sia per una sola compagnia aerea. Fare clic su un tipo di aeromobile per visualizzare ulteriori informazioni sull'aeromobile.</bullet3c>
+			<bullet4>Le icone indicano i valori che incidono sul bonus delle operazioni perfette o sono altri valori di interesse.</bullet4>
 			<techNotes>Note tecniche:</techNotes>
 			<tnbullet0>L'ora è visualizzata in Giorni: Ore: Minuti: Secondi.</tnbullet0>
 			<tnbullet1>Per rimuovere una serie di dati in un grafico, fare clic sul nome nella legenda.</tnbullet1>
@@ -275,6 +276,12 @@
 			<taxes>Le tasse</taxes>
 			<transExp>Spese di trasporto</transExp>
 			<undefExp>Spese indefinite</undefExp>
+			<fuelFutures>Future sul carburante</fuelFutures>
+			<cost>Costo</cost>
+			<lowestCost>Costo del carburante più basso</lowestCost>
+			<highestCost>Il più alto costo del carburante</highestCost>
+			<time>Tempo</time>
+			<chart>Visualizza grafico</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Equipaggio di arrivo raccolto</ArrivalCrewPickedUp>

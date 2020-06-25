@@ -210,6 +210,7 @@
 			<bullet3a>日常操作：点击</bullet3a>
 			<bullet3b>天</bullet3b>
 			<bullet3c>链接以查看当天的所有航班，包括整个机场或仅一家航空公司。单击飞机类型以查看有关飞机的更多信息。</bullet3c>
+			<bullet4>图标表示影响完美运营奖金的值或其他感兴趣的值。</bullet4>
 			<techNotes>技术说明：</techNotes>
 			<tnbullet0>时间以天：小时：分钟：秒显示。</tnbullet0>
 			<tnbullet1>要删除图表中的数据系列，请单击图例中的名称。</tnbullet1>
@@ -275,6 +276,12 @@
 			<taxes>税收</taxes>
 			<transExp>运输费用</transExp>
 			<undefExp>未定义费用</undefExp>
+			<fuelFutures>燃料期货</fuelFutures>
+			<cost>成本</cost>
+			<lowestCost>最低燃油成本</lowestCost>
+			<highestCost>最高燃油成本</highestCost>
+			<time>时间</time>
+			<chart>显示图表</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>到达人员接起</ArrivalCrewPickedUp>

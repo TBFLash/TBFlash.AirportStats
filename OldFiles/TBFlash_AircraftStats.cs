@@ -9,7 +9,7 @@ namespace TBFlash.AirportStats
 
         internal string GetAircraftStats(AircraftConfig aircraftConfig)
         {
-            TBFlash_Utils.TBFlashLogger(Log.FromPool("").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
 
             string[,] arr = LoadArray(aircraftConfig);
             string htmlCode = $"<div class=\"modal\"><h1>{arr[0, 1]}</h1><table>";

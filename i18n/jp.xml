@@ -210,6 +210,7 @@
 			<bullet3a>日常業務：をクリックします</bullet3a>
 			<bullet3b>日</bullet3b>
 			<bullet3c>リンクをクリックすると、空港全体または単一の航空会社を対象とした、その日のすべてのフライトが表示されます。航空機の種類をクリックすると、航空機の詳細が表示されます。</bullet3c>
+			<bullet4>アイコンは、完全な操作ボーナスに影響を与える値、または他の重要な値を示します。</bullet4>
 			<techNotes>テクニカルノート：</techNotes>
 			<tnbullet0>時間は、日：時間：分：秒で表示されます。</tnbullet0>			
 			<tnbullet1>グラフのデータ系列を削除するには、凡例の名前をクリックします。</tnbullet1>
@@ -275,6 +276,12 @@
 			<taxes>税金</taxes>
 			<transExp>交通費</transExp>
 			<undefExp>未定義の費用</undefExp>
+			<fuelFutures>燃料先物</fuelFutures>
+			<cost>費用</cost>
+			<lowestCost>最低の燃料費</lowestCost>
+			<highestCost>最高の燃料費</highestCost>
+			<time>時間</time>
+			<chart>グラフを表示</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>ピックアップした到着クルー</ArrivalCrewPickedUp>

@@ -14,7 +14,7 @@ namespace TBFlash.AirportStats
         {
             int counter = 1 + (GameTimer.Day <= 30 ? GameTimer.Day : 30);
             string[,] arr = LoadLifetimeArray();
-            TBFlash_Utils.TBFlashLogger(Log.FromPool($"counter:{counter}").WithCodepoint());
+            AirportStatUtils.AirportStatsLogger(Log.FromPool($"counter:{counter}").WithCodepoint());
             string lifetimeString = "<th>" + i18n.Get("TBFlash.AirportStats.utils.lifetime") + "</th>";
             string headerstring = lifetimeString;
             string day = i18n.Get("TBFlash.AirportStats.utils.day");
@@ -24,7 +24,7 @@ namespace TBFlash.AirportStats
             }
             headerstring += "</tr>";
 
-            string htmlCode = TBFlash_Utils.PageHead(TBFlash_Utils.PageTitles.AirportStats, true);
+            string htmlCode = AirportStatUtils.PageHead(AirportStatUtils.PageTitles.AirportStats, true);
             htmlCode += $"<table><tr><th><a class=\"loadChart\" href=\"/chartdata?dataset=flightstats\" rel=\"#dialog\">{i18n.Get("TBFlash.AirportStats.LifetimeStats.header0")}</a></th>{headerstring}";
             for (int i = 0; i <= 6; i++)
             {
@@ -118,7 +118,7 @@ namespace TBFlash.AirportStats
                 htmlCode += "</tr>";
             }
             htmlCode += "</table>";
-            htmlCode += TBFlash_Utils.PageFooter();
+            htmlCode += AirportStatUtils.PageFooter();
             return htmlCode;
         }
 
@@ -163,11 +163,11 @@ namespace TBFlash.AirportStats
             arr[51, 1] = GLS.mExpense.ToString("C0");
             arr[52, 1] = GLS.sHires.ToString("#,###");
             arr[53, 1] = GLS.sFires.ToString("#,###");
-            arr[54, 1] = TBFlash_Utils.FormatTime(GLS.tPaused);
-            arr[55, 1] = TBFlash_Utils.FormatTime(GLS.tSpeed1);
-            arr[56, 1] = TBFlash_Utils.FormatTime(GLS.tSpeed2);
-            arr[57, 1] = TBFlash_Utils.FormatTime(GLS.tSpeed3);
-            arr[58, 1] = TBFlash_Utils.FormatTime(GLS.tInactive);
+            arr[54, 1] = AirportStatUtils.FormatTime(GLS.tPaused);
+            arr[55, 1] = AirportStatUtils.FormatTime(GLS.tSpeed1);
+            arr[56, 1] = AirportStatUtils.FormatTime(GLS.tSpeed2);
+            arr[57, 1] = AirportStatUtils.FormatTime(GLS.tSpeed3);
+            arr[58, 1] = AirportStatUtils.FormatTime(GLS.tInactive);
             arr[59, 1] = GLS.tInteractions.ToString("#,###");
             arr[60, 1] = GLS.tClicks.ToString("#,###");
             arr[61, 1] = GLS.tClicksAlt.ToString("#,###");
@@ -183,8 +183,8 @@ namespace TBFlash.AirportStats
                 IEnumerable<FlightRecord> FlightRecords = Game.current.flightRecords.GetForDay(i - 1);
 
                 arr[0, j] = GRD.FlightsCount.ToString("#,###");
-                arr[1, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) && !TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("#,###");
-                arr[2, j] = FlightRecords.Count(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.DelayedDeparture)).ToString("#,###");
+                arr[1, j] = FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Departed) && !AirportStatUtils.HasStatus(x.status, global::Flight.Status.DelayedDeparture)).ToString("#,###");
+                arr[2, j] = FlightRecords.Count(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.DelayedDeparture)).ToString("#,###");
                 arr[3, j] = GRD.FlightsCanceled.ToString("#,###");
                 arr[7, j] = GRD.NumArrivalPax.ToString("#,###");
                 arr[8, j] = GRD.NumConnectPax.ToString("#,###");
@@ -197,7 +197,7 @@ namespace TBFlash.AirportStats
                 arr[15, j] = GRD.FuelFailures.ToString("#,###");
                 arr[16, j] = FlightRecords.Sum(x=>x.nBagsLoaded).ToString("#,###");
                 arr[17, j] = FlightRecords.Sum(x => x.nBagsUnloaded).ToString("#,###");
-                arr[19, j] = FlightRecords.Sum(x => TBFlash_Utils.HasStatus(x.status, Flight.Status.Departed) ? x.nDepartingBags - x.nBagsLoaded : 0).ToString("#,###");
+                arr[19, j] = FlightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, global::Flight.Status.Departed) ? x.nDepartingBags - x.nBagsLoaded : 0).ToString("#,###");
                 arr[21, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Advertising, true);
                 arr[22, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Airline_Fees, true);
                 arr[23, j] = GetDailyMoneyTotal(GRD, GamedayReportingData.MoneyCategory.Bank, true);
@@ -260,7 +260,7 @@ namespace TBFlash.AirportStats
             for (int i = startOfDay; i < endOfDay; i += 60)
             {
                 totalCost += fuelController.GetMarketPriceAtTime(i);
-                TBFlash_Utils.TBFlashLogger(Log.FromPool($"min: {i}| cost = {fuelController.GetMarketPriceAtTime(i)} | total = {totalCost}"));
+                AirportStatUtils.AirportStatsLogger(Log.FromPool($"min: {i}| cost = {fuelController.GetMarketPriceAtTime(i)} | total = {totalCost}"));
             }
             return totalCost / ((endOfDay - startOfDay) / 60);
         }

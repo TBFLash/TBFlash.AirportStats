@@ -210,6 +210,7 @@
 			<bullet3a>Activités quotidiennes: Cliquez sur un</bullet3a>
 			<bullet3b>lien Jour</bullet3b>
 			<bullet3c>pour voir tous les vols de cette journée, soit pour l'ensemble de l'aéroport, soit pour une seule compagnie aérienne. Cliquez sur un type d'avion pour voir plus d'informations sur l'avion.</bullet3c>
+			<bullet4>Les icônes indiquent des valeurs qui ont un impact sur le bonus d'exploitation parfait ou qui sont d'autres valeurs intéressantes.</bullet4>
 			<techNotes>Notes techniques:</techNotes>
 			<tnbullet0>L'heure est affichée en jours: heures: minutes: secondes.</tnbullet0>			
 			<tnbullet1>Pour supprimer une série de données dans un graphique, cliquez sur le nom dans la légende.</tnbullet1>
@@ -275,6 +276,12 @@
 			<taxes>Les taxes</taxes>
 			<transExp>Frais de transport</transExp>
 			<undefExp>Dépenses non définies</undefExp>
+			<fuelFutures>Futures de carburant</fuelFutures>
+			<cost>Coût</cost>
+			<lowestCost>Coût de carburant le plus bas</lowestCost>
+			<highestCost>Coût de carburant le plus élevé</highestCost>
+			<time>Temps</time>
+			<chart>Afficher le graphique</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Équipage d'arrivée ramassé</ArrivalCrewPickedUp>

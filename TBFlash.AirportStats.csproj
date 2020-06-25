@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,18 +54,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirlineDailyData.cs" />
+    <Compile Include="AirlineData.cs" />
+    <Compile Include="AirportData.cs" />
+    <Compile Include="AirlineStatGroup.cs" />
+    <Compile Include="BoolStat.cs" />
+    <Compile Include="AircraftData.cs" />
+    <Compile Include="ChartOptions.cs" />
+    <Compile Include="FuelFutures.cs" />
+    <Compile Include="RevenueStatGroup.cs" />
+    <Compile Include="ExpenseStatGroup.cs" />
+    <Compile Include="SeriesData.cs" />
+    <Compile Include="RevAndExpStatGroup.cs" />
+    <Compile Include="PrintOptions.cs" />
+    <Compile Include="Page.cs" />
+    <Compile Include="LifetimeOnlyStats.cs" />
+    <Compile Include="InteractionsStatGroup.cs" />
+    <Compile Include="TimeStatGroup.cs" />
+    <Compile Include="StaffStatGroup.cs" />
+    <Compile Include="AirlineStats.cs" />
+    <Compile Include="FlightData.cs" />
+    <Compile Include="StatLoader.cs" />
+    <Compile Include="FlightStatGroup.cs" />
+    <Compile Include="PassengerStatGroup.cs" />
+    <Compile Include="FuelStatGroup.cs" />
+    <Compile Include="LuggageStatGroup.cs" />
+    <Compile Include="StatGroup.cs" />
+    <Compile Include="DailyStats.cs" />
+    <Compile Include="PercentageStat.cs" />
+    <Compile Include="StringStat.cs" />
+    <Compile Include="TimeStat.cs" />
+    <Compile Include="NumberStat.cs" />
+    <Compile Include="MoneyStat.cs" />
+    <Compile Include="Stat.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="TBFlash_ChartData.cs" />
-    <Compile Include="TBFlash_AircraftStats.cs" />
-    <Compile Include="TBFlash_AirlineDailyStats.cs" />
-    <Compile Include="TBFlash_AirlineStats.cs" />
-    <Compile Include="TBFlash_LifetimeStats.cs" />
-    <Compile Include="TBFlash_Utils.cs" />
-    <Compile Include="TBFlash_AllAirlineStats.cs" />
+    <Compile Include="AirportStatUtils.cs" />
     <Compile Include="TBFlash_Server.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

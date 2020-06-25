@@ -210,6 +210,7 @@
 			<bullet3a>Denní operace: Klikněte na a</bullet3a>
 			<bullet3b>Den</bullet3b>
 			<bullet3c>odkaz pro zobrazení všech letů v daný den, buď pro celé letiště, nebo pouze pro jednu leteckou společnost. Kliknutím na typ letadla zobrazíte další informace o letadle.</bullet3c>
+			<bullet4>Ikony označují hodnoty, které mají vliv na bonus za perfektní provoz nebo jsou jiné zajímavé hodnoty.</bullet4>
 			<techNotes>Technické poznámky:</techNotes>
 			<tnbullet0>Čas se zobrazuje ve dnech: Hodiny: Minuty: Sekundy.</tnbullet0>
 			<tnbullet1>Chcete-li odstranit datovou řadu v grafu, klikněte na název v legendě.</tnbullet1>
@@ -275,6 +276,12 @@
 			<taxes>Daně</taxes>
 			<transExp>Náklady na dopravu</transExp>
 			<undefExp>Nedefinované výdaje</undefExp>
+			<fuelFutures>Palivo budoucnosti</fuelFutures>
+			<cost>Náklady</cost>
+			<lowestCost>Nejnižší náklady na palivo</lowestCost>
+			<highestCost>Nejvyšší náklady na palivo</highestCost>
+			<time>Čas</time>
+			<chart>Zobrazit graf</chart>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Příjezdová posádka vyzvednuta</ArrivalCrewPickedUp>
