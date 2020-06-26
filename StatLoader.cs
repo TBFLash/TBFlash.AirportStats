@@ -84,14 +84,14 @@ namespace TBFlash.AirportStats
                     airportData.passengerStats.timeDeplaning.AddToValue(i, new TimeStat(flightRecords.Sum(x => x.time_deplaning) * 60f));
 
                     int fuelDel = Convert.ToInt32(flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) ? x.nFuelRefueled : 0) / 1000);
-                    int fuelReq = Convert.ToInt32(flightRecords.Sum(x => x.nFuelRequested) / 1000);
-                    thisAirline.fuelStats.fuelDelivered.AddStat(i, new NumberStat(fuelDel, fuelDel > 0 && fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    int fuelReq = Convert.ToInt32(flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) ? x.nFuelRequested : 0) / 1000);
+                    thisAirline.fuelStats.fuelDelivered.AddStat(i, new NumberStat(fuelDel, fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
                     thisAirline.fuelStats.fuelRequested.AddStat(i, new NumberStat(fuelReq));
                     int fuelFailures = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) && x.nFuelRequested > 0 && x.nFuelRefueled == 0);
                     thisAirline.fuelStats.fuelingFailures.AddStat(i, new NumberStat(fuelFailures, fuelFailures > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
                     thisAirline.fuelStats.planesRefueled.AddStat(i, new NumberStat(flightRecords.Count(x => x.nFuelRefueled > 0)));
 
-                    airportData.fuelStats.fuelDelivered.AddToValue(i, new NumberStat(fuelDel, fuelDel > 0 && fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    airportData.fuelStats.fuelDelivered.AddToValue(i, new NumberStat(fuelDel, fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
                     airportData.fuelStats.fuelRequested.AddToValue(i, new NumberStat(fuelReq));
                     airportData.fuelStats.fuelingFailures.AddToValue(i, new NumberStat(fuelFailures, fuelFailures > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
                     airportData.fuelStats.planesRefueled.AddToValue(i, new NumberStat(flightRecords.Count(x => x.nFuelRefueled > 0)));
