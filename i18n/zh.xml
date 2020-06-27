@@ -197,6 +197,8 @@
 			<broughtBy>TBFlash带给您</broughtBy>
 			<invalidEntry>输入无效</invalidEntry>
 			<invalidAircraft>输入了无效的飞机类型。</invalidAircraft>
+			<hideAll>隐藏所有数据</hideAll>
+			<showAll>显示所有数据</showAll>
 		</utils>
 		<infoPage>
 			<information>信息</information>
@@ -255,7 +257,7 @@
 			<fuelRev>燃油收入</fuelRev>
 			<grantRev>补助金收入</grantRev>
 			<matRev>材料收入</matRev>
-			<parkRev>停车收入</parkRev>
+			<parkRev>运输收入</parkRev>
 			<resRev>研究收入</resRev>
 			<retRev>零售收入</retRev>
 			<rwyRev>跑道费收入</rwyRev>

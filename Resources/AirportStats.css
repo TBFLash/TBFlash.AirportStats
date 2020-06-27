@@ -1,9 +1,17 @@
 .button {
 	background-image: linear-gradient(#22495F, #223747); 
-	color: white;
+	color: ivory;
 	border-radius: 2px;
 	vertical-align: middle;
 }
+
+.button2{
+	float: right;
+	top: -25px;
+    position: relative;
+	font-size: 13.333px !important;
+}
+
 .footer {
 	font-size: .5625em;
 	color: lightgray;

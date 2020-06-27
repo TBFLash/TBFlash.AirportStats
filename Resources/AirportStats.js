@@ -49,6 +49,7 @@ $(function() {
 			const seriesData = Object.values(rawChartData);
 			var canvas = document.createElement('canvas'); 
 			var multiAxis = false;
+			var stackedBar = false;
 			canvas.id = "myCanvas"; 
 			Chart.defaults.global.legend.position = "right"; 
 			Chart.defaults.global.defaultColor = "#CCC"; 
@@ -71,6 +72,7 @@ $(function() {
 						fill: false 
 					});
 				} 
+				stackedBar = true;
 				rawChartOptions.type = "bar" 
 			}else if(rawChartOptions.type == "multiAxisLine"){
 				for(var i=0; i<rawSeriesConfig.seriesLabels.length; i++) {
@@ -110,6 +112,36 @@ $(function() {
 			}); 
 			div = document.getElementById('dialog');
 			div.appendChild(canvas); 
+			if(stackedBar == true){
+				var button = document.createElement("button");
+				button.innerHTML = rawChartOptions.hideAll;
+				button.className = "button button2";
+				div.appendChild(button);
+				button.addEventListener ("click", function() {
+					var hidden = true;
+					if(button.innerHTML == rawChartOptions.hideAll) {
+						hidden = false;
+					}
+					myChart.data.datasets.forEach(function(e, i){
+						var meta = myChart.getDatasetMeta(i);
+						//meta.hidden = meta.hidden === null ? true : null;
+						if(hidden){
+							meta.hidden = false;
+						}
+						else{
+							meta.hidden = true;
+						}
+					});
+					if(hidden){
+						button.innerHTML = rawChartOptions.hideAll;
+					}
+					else
+					{
+						button.innerHTML = rawChartOptions.showAll;
+					}
+					myChart.update();
+				});
+			}
 			if(rawChartOptions.money != false) { 
 				myChart.options.scales.yAxes[0].ticks.callback = function(value, index, values) {return rawChartOptions.money + value.toLocaleString();}; 
 				myChart.options.tooltips.callbacks.label = function (tooltipItem, data) { var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || ''; return datasetLabel + ": " + rawChartOptions.money + tooltipItem.yLabel.toLocaleString();}; 

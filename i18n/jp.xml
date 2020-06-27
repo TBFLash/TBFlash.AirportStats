@@ -197,6 +197,8 @@
 			<broughtBy>TBFlashが持ってきました</broughtBy>
 			<invalidEntry>無効なエントリ</invalidEntry>
 			<invalidAircraft>無効な航空機タイプが入力されました。</invalidAircraft>
+			<hideAll>すべてのデータを非表示</hideAll>
+			<showAll>すべてのデータを表示</showAll>
 		</utils>
 		<infoPage>
 			<information>情報</information>
@@ -255,7 +257,7 @@
 			<fuelRev>燃料収入</fuelRev>
 			<grantRev>助成金</grantRev>
 			<matRev>材料収入</matRev>
-			<parkRev>駐車場収入</parkRev>
+			<parkRev>輸送収入</parkRev>
 			<resRev>研究収益</resRev>
 			<retRev>小売収益</retRev>
 			<rwyRev>滑走路の収入</rwyRev>

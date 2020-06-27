@@ -197,6 +197,8 @@
 			<broughtBy>Traído a usted por TBFlash</broughtBy>
 			<invalidEntry>Entrada invalida</invalidEntry>
 			<invalidAircraft>Tipo de avión no válido ingresado.</invalidAircraft>
+			<hideAll>Ocultar todos los datos</hideAll>
+			<showAll>Mostrar todos los datos</showAll>
 		</utils>
 		<infoPage>
 			<information>Información</information>
@@ -255,7 +257,7 @@
 			<fuelRev>Ingresos de combustible</fuelRev>
 			<grantRev>Ingresos de subvención</grantRev>
 			<matRev>Ingresos de materiales</matRev>
-			<parkRev>Ingresos de estacionamiento</parkRev>
+			<parkRev>Ingresos de transporte</parkRev>
 			<resRev>Ingresos de investigación</resRev>
 			<retRev>Ingresos minoristas</retRev>
 			<rwyRev>Ingresos de tarifas de pista</rwyRev>

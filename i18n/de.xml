@@ -197,6 +197,8 @@
 			<broughtBy>Mit freundlicher Unterstützung von TBFlash</broughtBy>
 			<invalidEntry>Ungültiger Eintrag</invalidEntry>
 			<invalidAircraft>Ungültiger Flugzeugtyp eingegeben.</invalidAircraft>
+			<hideAll>Alle Daten ausblenden</hideAll>
+			<showAll>Alle Daten anzeigen</showAll>
 		</utils>
 		<infoPage>
 			<information>Information</information>
@@ -255,7 +257,7 @@
 			<fuelRev>Kraftstoffeinnahmen</fuelRev>
 			<grantRev>Einnahmen gewähren</grantRev>
 			<matRev>Materialeinnahmen</matRev>
-			<parkRev>Parkeinnahmen</parkRev>
+			<parkRev>Transporteinnahmen</parkRev>
 			<resRev>Forschungseinnahmen</resRev>
 			<retRev>Einzelhandelsumsätze</retRev>
 			<rwyRev>Einnahmen aus der Landebahngebühr</rwyRev>

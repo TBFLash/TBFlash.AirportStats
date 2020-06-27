@@ -197,6 +197,8 @@
 			<broughtBy>Přinesl vám TBFlash</broughtBy>
 			<invalidEntry>Neplatné zadání</invalidEntry>
 			<invalidAircraft>Zadán neplatný typ letadla.</invalidAircraft>
+			<hideAll>Skrýt všechna data</hideAll>
+			<showAll>Zobrazit všechna data</showAll>
 		</utils>
 		<infoPage>
 			<information>Informace</information>
@@ -255,7 +257,7 @@
 			<fuelRev>Příjmy z paliva</fuelRev>
 			<grantRev>Příjmy z grantu</grantRev>
 			<matRev>Příjmy z materiálů</matRev>
-			<parkRev>Příjmy z parkování</parkRev>
+			<parkRev>Příjmy z dopravy</parkRev>
 			<resRev>Výnosy z výzkumu</resRev>
 			<retRev>Maloobchodní příjmy</retRev>
 			<rwyRev>Výnosy z poplatků za přistávací a přistávací dráhu</rwyRev>

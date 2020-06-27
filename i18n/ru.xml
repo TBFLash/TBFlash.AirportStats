@@ -197,6 +197,8 @@
 			<broughtBy>Принесено вам TBFlash</broughtBy>
 			<invalidEntry>Неверный ввод</invalidEntry>
 			<invalidAircraft>Введен неверный тип самолета.</invalidAircraft>
+			<hideAll>Скрыть все данные</hideAll>
+			<showAll>Показать все данные</showAll>
 		</utils>
 		<infoPage>
 			<information>Информация</information>
@@ -255,7 +257,7 @@
 			<fuelRev>Топливный доход</fuelRev>
 			<grantRev>Грант Доход</grantRev>
 			<matRev>Материальный доход</matRev>
-			<parkRev>Доход от парковки</parkRev>
+			<parkRev>Транспортный доход</parkRev>
 			<resRev>Доход от исследований</resRev>
 			<retRev>Розничный доход</retRev>
 			<rwyRev>Взлетно-посадочная полоса</rwyRev>

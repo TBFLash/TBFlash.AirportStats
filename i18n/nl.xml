@@ -197,6 +197,8 @@
 			<broughtBy>Aangeboden door TBFlash</broughtBy>
 			<invalidEntry>Ongeldige invoer</invalidEntry>
 			<invalidAircraft>Ongeldig vliegtuigtype ingevoerd.</invalidAircraft>
+			<hideAll>Verberg alle gegevens</hideAll>
+			<showAll>Toon alle gegevens</showAll>
 		</utils>
 		<infoPage>
 			<information>Informatie</information>
@@ -255,7 +257,7 @@
 			<fuelRev>Brandstofopbrengst</fuelRev>
 			<grantRev>Grant Revenue</grantRev>
 			<matRev>Inkomsten uit materialen</matRev>
-			<parkRev>Parkeerinkomsten</parkRev>
+			<parkRev>Transportopbrengsten</parkRev>
 			<resRev>Onderzoeksinkomsten</resRev>
 			<retRev>Inkomsten uit detailhandel</retRev>
 			<rwyRev>Runway Fee Revenue</rwyRev>

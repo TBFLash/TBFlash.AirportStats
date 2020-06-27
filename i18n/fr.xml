@@ -197,6 +197,8 @@
 			<broughtBy>Présenté par TBFlash</broughtBy>
 			<invalidEntry>Entrée invalide</invalidEntry>
 			<invalidAircraft>Type d'aéronef non valide saisi.</invalidAircraft>
+			<hideAll>Masquer toutes les données</hideAll>
+			<showAll>Afficher toutes les données</showAll>
 		</utils>
 		<infoPage>
 			<information>Information</information>
@@ -255,7 +257,7 @@
 			<fuelRev>Recettes de carburant</fuelRev>
 			<grantRev>Revenus de subvention</grantRev>
 			<matRev>Revenus des matériaux</matRev>
-			<parkRev>Recettes de stationnement</parkRev>
+			<parkRev>Recettes de transport</parkRev>
 			<resRev>Revenus de recherche</resRev>
 			<retRev>Revenus de détail</retRev>
 			<rwyRev>Revenus de piste</rwyRev>

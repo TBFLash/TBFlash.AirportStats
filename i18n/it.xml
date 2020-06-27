@@ -197,6 +197,8 @@
 			<broughtBy>Offerto da TBFlash</broughtBy>
 			<invalidEntry>Inserimento non valido</invalidEntry>
 			<invalidAircraft>Tipo di aeromobile non valido inserito.</invalidAircraft>
+			<hideAll>Nascondi tutti i dati</hideAll>
+			<showAll>Mostra tutti i dati</showAll>
 		</utils>
 		<infoPage>
 			<information>Informazione</information>
@@ -255,7 +257,7 @@
 			<fuelRev>Entrate del carburante</fuelRev>
 			<grantRev>Concedere entrate</grantRev>
 			<matRev>Entrate materiali</matRev>
-			<parkRev>Entrate di parcheggio</parkRev>
+			<parkRev>Entrate di trasporto</parkRev>
 			<resRev>Entrate di ricerca</resRev>
 			<retRev>Entrate al dettaglio</retRev>
 			<rwyRev>Entrate della tassa di pista</rwyRev>

@@ -46,7 +46,7 @@ namespace TBFlash.AirportStats
         internal string GetChartOptions()
         {
             AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
-            return $"\"chartOptions\":[{{\"title\":\"{title}\",\"type\":\"{chartType}\",\"money\":{moneySetting},\"options\":{GetOptions(chartType, reverse, yAxisLabel, yAxisLabel2, yAxisLabel3)}, \"day\": \"{i18n.Get("TBFlash.AirportStats.utils.day")}\"}}]";
+            return $"\"chartOptions\":[{{\"title\":\"{title}\",\"type\":\"{chartType}\",\"money\":{moneySetting},\"hideAll\":\"{i18n.Get("TBFlash.AirportStats.utils.hideAll")}\",\"showAll\":\"{i18n.Get("TBFlash.AirportStats.utils.showAll")}\",\"options\":{GetOptions(chartType, reverse, yAxisLabel, yAxisLabel2, yAxisLabel3)}, \"day\": \"{i18n.Get("TBFlash.AirportStats.utils.day")}\"}}]";
         }
 
         internal ChartTypes GetChartType()

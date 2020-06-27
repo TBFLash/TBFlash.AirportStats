@@ -197,6 +197,8 @@
 			<broughtBy>Brought to you by TBFlash</broughtBy>
 			<invalidEntry>Invalid Entry</invalidEntry>
 			<invalidAircraft>Invalid Aircraft Type Entered.</invalidAircraft>
+			<hideAll>Hide All Data</hideAll>
+			<showAll>Show All Data</showAll>
 		</utils>
 		<infoPage>
 			<information>Information</information>
@@ -210,7 +212,7 @@
 			<bullet3a>Daily operations: Click on a</bullet3a>
 			<bullet3b>Day</bullet3b>
 			<bullet3c>link to see all of the flights on that day, either for the whole airport, or just a single airline. Click on an Aircraft Type to see more information about the Aircraft.</bullet3c>
-<bullet4>Icons indicate values that impact the Perfect Ops Bonus or are other values of interest.</bullet4>
+			<bullet4>Icons indicate values that impact the Perfect Ops Bonus or are other values of interest.</bullet4>
 			<techNotes>Technical notes:</techNotes>
 			<tnbullet0>Time is displayed in Days: Hours: Minutes: Seconds.</tnbullet0>			
 			<tnbullet1>To remove a data series in a chart, click on the name in the legend.</tnbullet1>
@@ -255,7 +257,7 @@
 			<fuelRev>Fuel Revenue</fuelRev>
 			<grantRev>Grant Revenue</grantRev>
 			<matRev>Materials Revenue</matRev>
-			<parkRev>Parking Revenue</parkRev>
+			<parkRev>Transportation Revenue</parkRev>
 			<resRev>Research Revenue</resRev>
 			<retRev>Retail Revenue</retRev>
 			<rwyRev>Runway Fee Revenue</rwyRev>
