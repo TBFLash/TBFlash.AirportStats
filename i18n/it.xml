@@ -143,6 +143,9 @@
 			<stats24>Tempo totale caricamento sacchi</stats24>
 			<stats25>Totale a terra</stats25>
 			<stats26># Borse in arrivo</stats26>
+			<smallFlights># Piccoli voli</smallFlights>
+			<largeFlights># Voli di grandi dimensioni</largeFlights>
+			<XLFlights># Voli Enorme</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>linea aerea</stats0>

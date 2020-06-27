@@ -143,6 +143,9 @@
 			<stats24>Načítání tašky celkem</stats24>
 			<stats25># Příchozí tašky</stats25>
 			<stats26>Celkem na zemi</stats26>
+			<smallFlights># Malé lety</smallFlights>
+			<largeFlights># Velké lety</largeFlights>
+			<XLFlights># Extra velké lety</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Letecká linka</stats0>

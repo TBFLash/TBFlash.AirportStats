@@ -142,7 +142,10 @@
 			<stats23># Потерянные сумки</stats23>
 			<stats24>Сумки с общим временем загрузки</stats24>
 			<stats25>Всего на земле</stats25>
-			<stats26># Прибывающие сумки</stats26>			
+			<stats26># Прибывающие сумки</stats26>
+			<smallFlights># Малые рейсы</smallFlights>
+			<largeFlights># Большие рейсы</largeFlights>
+			<XLFlights># Очень большие рейсы</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>авиакомпания</stats0>

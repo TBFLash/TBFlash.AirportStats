@@ -14,6 +14,9 @@
         internal DailyStats<NumberStat> nGate;
         internal DailyStats<NumberStat> nExpired;
         internal DailyStats<NumberStat> nReneged;
+        internal DailyStats<NumberStat> nSmallGates;
+        internal DailyStats<NumberStat> nLargeGates;
+        internal DailyStats<NumberStat> nXLGates;
 
         internal FlightStatGroup(string name) : base(name, new ChartOptions(ChartOptions.ChartTypes.line, i18n.Get("TBFlash.AirportStats.json.flightStats"), "false", i18n.Get("TBFlash.AirportStats.json.numberFlights")))
         {
@@ -29,6 +32,9 @@
             nGate = new DailyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AirlineCompanyStats.stats9"), null);
             nExpired = new DailyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AirlineCompanyStats.stats10"), null);
             nReneged = new DailyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AirlineCompanyStats.stats11"), null);
+            nSmallGates = new DailyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AirlineCompanyStats.smallFlights"), null);
+            nLargeGates = new DailyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AirlineCompanyStats.largeFlights"), null);
+            nXLGates = new DailyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AirlineCompanyStats.XLFlights"), null);
         }
 
         internal void RemoveAirlineStats(int firstDay, int lastDay)
@@ -45,6 +51,9 @@
             nGate.RemoveStats(firstDay, lastDay);
             nExpired.RemoveStats(firstDay, lastDay);
             nReneged.RemoveStats(firstDay, lastDay);
+            nSmallGates.RemoveStats(firstDay, lastDay);
+            nLargeGates.RemoveStats(firstDay, lastDay);
+            nXLGates.RemoveStats(firstDay, lastDay);
         }
 
         internal override string ForChart(PrintOptions printOptions = null)
@@ -71,6 +80,9 @@
         {
             string str = $"<tr><th colspan=\"2\"><a class=\"loadChart\" href=\"/chartdata?dataset=flightstats{(!string.IsNullOrEmpty(printOptions.AirlineName) ? "&airline=" + printOptions.AirlineName : string.Empty)}\" rel=\"#dialog\">{name}</a></th></tr>\n";
             str += nSchedFlights.ForTable(printOptions);
+            str += nSmallGates.ForTable(printOptions);
+            str += nLargeGates.ForTable(printOptions);
+            str += nXLGates.ForTable(printOptions);
             str += nDelayedArrival.ForTable(printOptions);
             str += nRequiresCrew.ForTable(printOptions);
             str += nOntimeDeparture.ForTable(printOptions);

@@ -143,6 +143,9 @@
 			<stats24>Total Time Loading Bags</stats24>
 			<stats25>Total On Ground</stats25>
 			<stats26># Arr. Bags</stats26>
+			<smallFlights># Small Flights</smallFlights>
+			<largeFlights># Large Flights</largeFlights>
+			<XLFlights># Extra Large Flights</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Airline</stats0>

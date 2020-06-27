@@ -142,7 +142,10 @@
 			<stats23># Verloren tassen</stats23>
 			<stats24>Totale tijd voor het laden van tassen</stats24>
 			<stats25>Totaal op de grond</stats25>
-			<stats26># Aankomende tassen</stats26>		
+			<stats26># Aankomende tassen</stats26>
+			<smallFlights># Kleine vluchten</smallFlights>
+			<largeFlights># Grote vluchten</largeFlights>
+			<XLFlights># Extra grote vluchten</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Luchtvaartmaatschappij</stats0>

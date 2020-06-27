@@ -142,7 +142,10 @@
 			<stats23>＃ロストバッグ</stats23>
 			<stats24>バッグをロードする合計時間</stats24>
 			<stats25>地上での合計</stats25>
-			<stats26>＃到着バッグ</stats26>	
+			<stats26>＃到着バッグ</stats26>
+			<smallFlights>＃小便</smallFlights>
+			<largeFlights>＃大規模なフライト</largeFlights>
+			<XLFlights>＃特大フライト</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>航空会社</stats0>

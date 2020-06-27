@@ -143,6 +143,9 @@
 			<stats24>Sacs de chargement de temps total</stats24>
 			<stats25>Total au sol</stats25>
 			<stats26># Sacs d'arrivée</stats26>
+			<smallFlights># Petits vols</smallFlights>
+			<largeFlights># Grands vols</largeFlights>
+			<XLFlights># Très grand vols</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Compagnie aérienne</stats0>

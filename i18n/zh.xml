@@ -143,6 +143,9 @@
 			<stats24>总时间装载袋</stats24>
 			<stats25>地面总数</stats25>
 			<stats26>＃到达袋</stats26>
+			<smallFlights>＃小航班</smallFlights>
+			<largeFlights>＃大型航班</largeFlights>
+			<XLFlights>＃超大型航班</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>航空公司</stats0>

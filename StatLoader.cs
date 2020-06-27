@@ -55,6 +55,13 @@ namespace TBFlash.AirportStats
         {
             AirportStatUtils.AirportStatsLogger(Log.FromPool($"start: {start}; end: {end}").WithCodepoint());
             airportData.RemoveAirlineDataStats(start, end);
+            Dictionary<AircraftGate.GateSize, int> gateSizes = new Dictionary<AircraftGate.GateSize, int>
+            {
+                { AircraftGate.GateSize.Small, 0 },
+                { AircraftGate.GateSize.Large, 0 },
+                { AircraftGate.GateSize.Extra_Large, 0 }
+            };
+
             foreach (Airline airline in AirlineManager.AllAirlines())
             {
                 AirlineDailyData thisAirline = airlineData.GetAirlineDailyData(airline.name);
@@ -138,6 +145,42 @@ namespace TBFlash.AirportStats
                     airportData.flightStats.nGate.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Gate)));
                     airportData.flightStats.nExpired.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Expired)));
                     airportData.flightStats.nReneged.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Reneged)));
+
+                    gateSizes[AircraftGate.GateSize.Small] = 0;
+                    gateSizes[AircraftGate.GateSize.Large] = 0;
+                    gateSizes[AircraftGate.GateSize.Extra_Large] = 0;
+                    foreach (FlightRecord fr in flightRecords)
+                    {
+                        AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
+
+                        AircraftConfig ac = AircraftConfigManager.FindByAnyName(fr.aircraft, false);
+                        if (ac != null)
+                        {
+                            AirportStatUtils.AirportStatsLogger(Log.FromPool(ac.MinGateSize.ToString()+"|"+gateSizes[ac.MinGateSize]).WithCodepoint());
+
+                            gateSizes[ac.MinGateSize]++;
+                        }
+                    }
+                    foreach (KeyValuePair<AircraftGate.GateSize, int> kvp in gateSizes)
+                    {
+                        AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
+
+                        switch (kvp.Key)
+                        {
+                            case AircraftGate.GateSize.Small:
+                                thisAirline.flightStats.nSmallGates.AddStat(i, new NumberStat(kvp.Value));
+                                airportData.flightStats.nSmallGates.AddToValue(i, new NumberStat(kvp.Value));
+                                break;
+                            case AircraftGate.GateSize.Large:
+                                thisAirline.flightStats.nLargeGates.AddStat(i, new NumberStat(kvp.Value));
+                                airportData.flightStats.nLargeGates.AddToValue(i, new NumberStat(kvp.Value));
+                                break;
+                            case AircraftGate.GateSize.Extra_Large:
+                                thisAirline.flightStats.nXLGates.AddStat(i, new NumberStat(kvp.Value));
+                                airportData.flightStats.nXLGates.AddToValue(i, new NumberStat(kvp.Value));
+                                break;
+                        }
+                    }
                 }
             }
 

@@ -143,6 +143,9 @@
 			<stats24>Gesamtzeit Laden von Taschen</stats24>
 			<stats25>Insgesamt vor Ort</stats25>
 			<stats26># Taschen ankommen</stats26>
+			<smallFlights># Kleine Flüge</smallFlights>
+			<largeFlights># Groß Flüge</largeFlights>
+			<XLFlights># Extragroß Flüge</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Fluggesellschaft</stats0>

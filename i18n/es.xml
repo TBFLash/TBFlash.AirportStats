@@ -143,6 +143,9 @@
 			<stats24>Tiempo total cargando bolsas</stats24>
 			<stats25>Total en tierra</stats25>
 			<stats26># Bolsas de llegada</stats26>
+			<smallFlights># Vuelos pequeños</smallFlights>
+			<largeFlights># Grandes vuelos</largeFlights>
+			<XLFlights># Vuelos extragrandes</XLFlights>
 		</AirlineCompanyStats>
 		<AirlineDailyStats>
 			<stats0>Aerolínea</stats0>
