@@ -77,6 +77,7 @@
 			<stats59>Kliknutí na klávesnici</stats59>
 			<stats60>Kliknutí levým tlačítkem myši</stats60>
 			<stats61>Kliknutí pravým tlačítkem myši</stats61>
+			<revPerPax>Příjmy za odlet cestujícího</revPerPax>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Název letecké společnosti</stats0>
@@ -122,12 +123,13 @@
 			<stats3>Časové odjezdy</stats3>
 			<stats4>Opožděné odjezd</stats4>
 			<stats5>Lety zrušeny</stats5>
-			<stats6>Zrušeno pro: Letiště Neplatné</stats6>
-			<stats7>--Počasí</stats7>
-			<stats8>--Přistávací dráha</stats8>
-			<stats9>--Brána</stats9>
-			<stats10>--Platnost vypršela</stats10>
-			<stats11>--Odmítnout</stats11>
+			<canceledFor>Zrušeno pro</canceledFor>
+			<stats6>Letiště Neplatné</stats6>
+			<stats7>Počasí</stats7>
+			<stats8>Přistávací dráha</stats8>
+			<stats9>Brána</stats9>
+			<stats10>Platnost vypršela</stats10>
+			<stats11>Odmítnout</stats11>
 			<stats12># Příchozí cestující</stats12>
 			<stats13># Plánovaný odlet cestujících</stats13>
 			<stats14># Odbavení cestujících</stats14>
@@ -170,6 +172,11 @@
 			<stats19>Palivo dodáno</stats19>
 			<stats20>Stavy</stats20>
 			<stats21>Důvod zrušení</stats21>
+			<ontimeDepartPer>Čas odletu%</ontimeDepartPer>
+			<arrPaxPerFlt>Průměrný příchozí cestující / let</arrPaxPerFlt>
+			<departPaxPerFlt>Průměrný odlet cestujících / let</departPaxPerFlt>
+			<boardedPerFlt>% Úspěšně nastoupeno</boardedPerFlt>
+			<avgBoardTime>Průměrná doba nástupu</avgBoardTime>
 		</AirlineDailyStats>
 		<AircraftStats>
 			<stats0>Zobrazovaný název</stats0>

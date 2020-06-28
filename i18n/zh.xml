@@ -77,6 +77,7 @@
 			<stats59>键盘点击</stats59>
 			<stats60>鼠标左键单击</stats60>
 			<stats61>鼠标右键</stats61>
+			<revPerPax>每位出发旅客的收入</revPerPax>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>航空公司名称</stats0>
@@ -122,12 +123,13 @@
 			<stats3>准时出发</stats3>
 			<stats4>延迟出发</stats4>
 			<stats5>航班取消</stats5>
-			<stats6>取消原因：机场无效</stats6>
-			<stats7>--天气</stats7>
-			<stats8>--跑道</stats8>
-			<stats9>--门</stats9>
-			<stats10>--已过期</stats10>
-			<stats11>--背叛</stats11>
+			<canceledFor>取消原因</canceledFor>
+			<stats6>机场无效</stats6>
+			<stats7>天气</stats7>
+			<stats8>跑道</stats8>
+			<stats9>门</stats9>
+			<stats10>已过期</stats10>
+			<stats11>背叛</stats11>
 			<stats12>＃到达旅客</stats12>
 			<stats13>＃预定出发乘客</stats13>
 			<stats14>＃签入乘客</stats14>
@@ -170,6 +172,11 @@
 			<stats19>运送燃料</stats19>
 			<stats20>状态</stats20>
 			<stats21>取消原因</stats21>
+			<ontimeDepartPer>准点出发百分比</ontimeDepartPer>
+			<arrPaxPerFlt>平均到达旅客/航班</arrPaxPerFlt>
+			<departPaxPerFlt>平均出发旅客/航班</departPaxPerFlt>
+			<boardedPerFlt>成功登机的百分比</boardedPerFlt>
+			<avgBoardTime>平均登机时间</avgBoardTime>
 		</AirlineDailyStats>
 		<AircraftStats>
 			<stats0>显示名称</stats0>

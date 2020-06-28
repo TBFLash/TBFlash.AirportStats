@@ -50,9 +50,9 @@ namespace TBFlash.AirportStats
             return stats.TryGetValue(printOptions.AirlineName, out value) ? $"\t<td class=\"{value.GetInfoLevel()}\">{value.ForTable()}</td>\n" : "\t<td></td>\n";
         }
 
-        internal string ForTable(IOrderedEnumerable<string> airlineList, bool isAirlineName = false)
+        internal string ForTable(IOrderedEnumerable<string> airlineList, bool oddRow = false, bool isAirlineName = false)
         {
-            string str = "<tr>\n";
+            string str = $"<tr{(oddRow ? " class=\"oddRow\"" : string.Empty)}>\n";
             str +=$"\t<td>{statName}</td>\n";
             foreach (string airline in airlineList)
             {

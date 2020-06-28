@@ -77,6 +77,7 @@
 			<stats59>キーボードのクリック</stats59>
 			<stats60>左マウスクリック</stats60>
 			<stats61>マウスの右クリック</stats61>
+			<revPerPax>出発旅客あたりの収入</revPerPax>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>航空会社名</stats0>
@@ -122,12 +123,13 @@
 			<stats3>定刻出発</stats3>
 			<stats4>出発遅延</stats4>
 			<stats5>キャンセルされたフライト</stats5>
-			<stats6>キャンセル：空港が無効です</stats6>
-			<stats7>--天気</stats7>
-			<stats8>--滑走路</stats8>
-			<stats9>--ゲート</stats9>
-			<stats10>--期限切れ</stats10>
-			<stats11>--負けた</stats11>
+			<canceledFor>キャンセル</canceledFor>
+			<stats6>空港が無効です</stats6>
+			<stats7>天気</stats7>
+			<stats8>滑走路</stats8>
+			<stats9>ゲート</stats9>
+			<stats10>期限切れ</stats10>
+			<stats11>負けた</stats11>
 			<stats12>＃到着した乗客</stats12>
 			<stats13>＃出発予定の乗客</stats13>
 			<stats14>＃乗客にチェックイン済み</stats14>
@@ -170,6 +172,11 @@
 			<stats19>配送された燃料</stats19>
 			<stats20>ステータス</stats20>
 			<stats21>キャンセル理由</stats21>
+			<ontimeDepartPer>定刻出発％</ontimeDepartPer>
+			<arrPaxPerFlt>平均到着客/フライト</arrPaxPerFlt>
+			<departPaxPerFlt>平均出発旅客/フライト</departPaxPerFlt>
+			<boardedPerFlt>搭乗成功率</boardedPerFlt>
+			<avgBoardTime>平均搭乗時間</avgBoardTime>
 		</AirlineDailyStats>
 		<AircraftStats>
 			<stats0>表示名</stats0>

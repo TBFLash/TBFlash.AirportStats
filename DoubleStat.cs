@@ -1,10 +1,10 @@
 ﻿namespace TBFlash.AirportStats
 {
-    internal class NumberStat : Stat
+    internal class DoubleStat : Stat
     {
-        private int value;
+        private double value;
 
-        internal NumberStat(int value, AirportStatUtils.InfoLevels infoLevel = AirportStatUtils.InfoLevels.None)
+        internal DoubleStat(double value, AirportStatUtils.InfoLevels infoLevel = AirportStatUtils.InfoLevels.None)
         {
             this.value = value;
             this.infoLevel = infoLevel;
@@ -12,7 +12,7 @@
 
         internal override void AddToValue(Stat stat)
         {
-            value += ((NumberStat)stat).value;
+            value += ((DoubleStat)stat).value;
             if((int)stat.GetInfoLevel() > (int)infoLevel)
             {
                 infoLevel = stat.GetInfoLevel();
@@ -21,12 +21,12 @@
 
         internal override string ForChart()
         {
-            return value.ToString("F0");
+            return value.ToString("F2");
         }
 
         internal override string ForTable()
         {
-            return value.ToString("#,#");
+            return value.ToString("#,#.##");
         }
 
         internal override bool HasNonZeroValue()

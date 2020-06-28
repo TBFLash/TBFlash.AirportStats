@@ -21,12 +21,12 @@ namespace TBFlash.AirportStats
 
         internal override string ForTable(PrintOptions printOptions = null)
         {
-            string str = $"<tr><th colspan=\"2\">{name}</th></tr>\n";
-            str += tPaused.ForTable();
+            string str = $"<tr class=\"statGroup\"><th colspan=\"2\">{name}</th></tr>\n";
+            str += tPaused.ForTable(true);
             str += tSpeed1.ForTable();
-            str += tSpeed2.ForTable();
+            str += tSpeed2.ForTable(true);
             str += tSpeed3.ForTable();
-            str += tInactive.ForTable();
+            str += tInactive.ForTable(true);
             return str;
         }
 

@@ -6,7 +6,7 @@ namespace TBFlash.AirportStats
 {
     internal class DailyStats<TStat> where TStat : Stat
     {
-        private readonly string statName;
+        internal readonly string statName;
         private readonly Dictionary<int, Stat> stats;
         internal SeriesData SeriesData { get; }
         internal bool HasData => stats.Count > 0 && stats.Count(x=> x.Value.HasNonZeroValue()) > 0;
@@ -67,9 +67,9 @@ namespace TBFlash.AirportStats
             return stats.TryGetValue(day, out Stat value) ? $"\t<td class=\"{value.GetInfoLevel()}\">{value.ForTable()}</td>\n" : "\t<td></td>\n";
         }
 
-        internal string ForTable(PrintOptions printOptions = null)
+        internal string ForTable(PrintOptions printOptions = null, bool oddRow = false)
         {
-            string str = $"<tr><td>{statName}</td>\n";
+            string str = $"<tr{(oddRow ? " class=\"oddRow\"" : string.Empty)}><td>{statName}</td>\n";
             if (printOptions.IncludeLifetime)
             {
                 str += ForTable(0);

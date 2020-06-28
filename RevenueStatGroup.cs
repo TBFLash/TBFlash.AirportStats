@@ -7,6 +7,7 @@ namespace TBFlash.AirportStats
     internal class RevenueStatGroup : StatGroup
     {
         internal Dictionary<string, DailyStats<MoneyStat>> StatGroups { get; }
+        internal DailyStats<AverageStat> RevPerPax { get; }
 
         internal RevenueStatGroup(string name) : base(name, null)
         {
@@ -31,8 +32,10 @@ namespace TBFlash.AirportStats
                 [nameof(GamedayReportingData.MoneyCategory.Taxes)] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats46"), null),
                 [nameof(GamedayReportingData.MoneyCategory.Transportation)] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats49"), new SeriesData(i18n.Get("TBFlash.AirportStats.json.parkRev"), "revPark", "limegreen", "0", null, "1")),
                 [nameof(GamedayReportingData.MoneyCategory.Undefined)] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats33"), new SeriesData(i18n.Get("TBFlash.AirportStats.json.undefRev"), "refUndef", "green", "0", null, "1")),
-                ["total"] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats34"), null)
+                ["total"] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats34"), null),
+
             };
+            RevPerPax = new DailyStats<AverageStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.revPerPax"), null);
         }
 
         internal void RemoveAirlineStats(int firstDay, int lastDay)
@@ -41,6 +44,7 @@ namespace TBFlash.AirportStats
             {
                 statGroup.RemoveStats(firstDay, lastDay);
             }
+            RevPerPax.RemoveStats(firstDay, lastDay);
         }
 
         internal void AddStat(string statGroup, int day, MoneyStat stat)
@@ -99,11 +103,14 @@ namespace TBFlash.AirportStats
 
         internal override string ForTable(PrintOptions printOptions = null)
         {
-            string str = $"<tr><th colspan=\"2\"><a class=\"loadChart\" href=\"/chartdata?dataset=profits{(!string.IsNullOrEmpty(printOptions.AirlineName) ? "&airline=" + printOptions.AirlineName : string.Empty)}\" rel=\"#dialog\">{name}</a></th></tr>\n";
+            string str = $"<tr class=\"statGroup\"><th colspan=\"2\"><a class=\"loadChart\" href=\"/chartdata?dataset=profits{(!string.IsNullOrEmpty(printOptions.AirlineName) ? "&airline=" + printOptions.AirlineName : string.Empty)}\" rel=\"#dialog\">{name}</a></th></tr>\n";
+            bool oddRow = true;
             foreach (DailyStats<MoneyStat> statGroup in StatGroups.Values.Where(x => x.HasData))
             {
-                str += statGroup.ForTable(printOptions);
+                str += statGroup.ForTable(printOptions, oddRow);
+                oddRow = !oddRow;
             }
+            str += RevPerPax.ForTable(printOptions, oddRow);
             return str;
         }
     }

@@ -77,6 +77,7 @@
 			<stats59>Tastaturklicks</stats59>
 			<stats60>Linke Mausklicks</stats60>
 			<stats61>Rechte Mausklicks</stats61>
+			<revPerPax>Einnahmen pro abfliegendem Passagier</revPerPax>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Name der Fluggesellschaft</stats0>
@@ -122,12 +123,13 @@
 			<stats3>Pünktliche Abfahrten</stats3>
 			<stats4>Verspätete Abreise</stats4>
 			<stats5>Flüge abgesagt</stats5>
-			<stats6>Storniert für: Flughafen ungültig</stats6>
-			<stats7>--Wetter</stats7>
-			<stats8>--Runway</stats8>
-			<stats9>--Tor</stats9>
-			<stats10>--Abgelaufen</stats10>
-			<stats11>--Renegiert</stats11>
+			<canceledFor>Storniert für</canceledFor>
+			<stats6>Flughafen ungültig</stats6>
+			<stats7>Wetter</stats7>
+			<stats8>Runway</stats8>
+			<stats9>Tor</stats9>
+			<stats10>Abgelaufen</stats10>
+			<stats11>Renegiert</stats11>
 			<stats12># Ankommende Passagiere</stats12>
 			<stats13># Geplante abfliegende Passagiere</stats13>
 			<stats14># Eingecheckte Passagiere</stats14>
@@ -170,6 +172,11 @@
 			<stats19>Kraftstoff geliefert</stats19>
 			<stats20>Status</stats20>
 			<stats21>Stornierungsgrund</stats21>
+			<ontimeDepartPer>Pünktliche Abreise%</ontimeDepartPer>
+			<arrPaxPerFlt>Durchschnittlich ankommende Passagiere / Flug</arrPaxPerFlt>
+			<departPaxPerFlt>Durchschnittlich abfliegende Passagiere / Flug</departPaxPerFlt>
+			<boardedPerFlt>% Erfolgreich bestiegen</boardedPerFlt>
+			<avgBoardTime>Durchschnittliche Boarding-Zeit</avgBoardTime>
 		</AirlineDailyStats>
 		<AircraftStats>
 			<stats0>Anzeigename</stats0>

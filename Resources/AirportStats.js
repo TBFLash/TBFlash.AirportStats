@@ -58,6 +58,7 @@ $(function() {
 			Chart.defaults.global.datasets.backgroundColor = "#223747";
 			Chart.defaults.global.elements.point.backgroundColor = "#223747";
 			Chart.defaults.scale.gridLines.color = "#CCC";
+			Chart.defaults.scale.gridLines.zeroLineColor = "#CCC";
 			var arr = []; 
 			if(rawChartOptions.type == "stackedBar"){ 
 				for(var i=0; i<rawSeriesConfig.seriesLabels.length; i++) {

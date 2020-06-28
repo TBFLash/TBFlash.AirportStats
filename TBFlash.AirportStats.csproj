@@ -61,7 +61,9 @@
     <Compile Include="BoolStat.cs" />
     <Compile Include="AircraftData.cs" />
     <Compile Include="ChartOptions.cs" />
+    <Compile Include="AverageStat.cs" />
     <Compile Include="FuelFutures.cs" />
+    <Compile Include="DoubleStat.cs" />
     <Compile Include="RevenueStatGroup.cs" />
     <Compile Include="ExpenseStatGroup.cs" />
     <Compile Include="SeriesData.cs" />
@@ -84,7 +86,7 @@
     <Compile Include="PercentageStat.cs" />
     <Compile Include="StringStat.cs" />
     <Compile Include="TimeStat.cs" />
-    <Compile Include="NumberStat.cs" />
+    <Compile Include="IntStat.cs" />
     <Compile Include="MoneyStat.cs" />
     <Compile Include="Stat.cs" />
     <Compile Include="Resource1.Designer.cs">

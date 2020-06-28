@@ -73,111 +73,127 @@ namespace TBFlash.AirportStats
                     {
                         continue;
                     }
-                    thisAirline.passengerStats.nArriving.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nArriving)));
-                    thisAirline.passengerStats.nBoarded.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nBoarded)));
-                    thisAirline.passengerStats.nCheckedIn.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nCheckedIn)));
-                    thisAirline.passengerStats.nSchedDep.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nDeparting)));
+
+                    // Load Flight Stats
+                    int nSchedFlights = flightRecords.Count();
+                    int ontimeDepart = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) && !AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedDeparture));
+                    int delDep = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedDeparture));
+                    int canx = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Canceled));
+                    thisAirline.flightStats.nSchedFlights.AddStat(i, new IntStat(nSchedFlights));
+                    thisAirline.flightStats.nDelayedArrival.AddStat(i, new IntStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedArrival))));
+                    thisAirline.flightStats.nRequiresCrew.AddStat(i, new IntStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.RequiresCrew))));
+                    thisAirline.flightStats.nOntimeDeparture.AddStat(i, new IntStat(ontimeDepart));
+                    thisAirline.flightStats.nDelayedDeparture.AddStat(i, new IntStat(delDep, delDep > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
+                    thisAirline.flightStats.nCancelled.AddStat(i, new IntStat(canx, canx > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
+                    thisAirline.flightStats.nAirportInvalid.AddStat(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.AirportInvalid)));
+                    thisAirline.flightStats.nWeather.AddStat(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Weather)));
+                    thisAirline.flightStats.nRunway.AddStat(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Runway)));
+                    thisAirline.flightStats.nGate.AddStat(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Gate)));
+                    thisAirline.flightStats.nExpired.AddStat(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Expired)));
+                    thisAirline.flightStats.nReneged.AddStat(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Reneged)));
+                    thisAirline.flightStats.ontimeDeparturePer.AddStat(i, new AverageStat(ontimeDepart, ontimeDepart + delDep + canx, typeof(PercentageStat)));
+
+                    airportData.flightStats.nSchedFlights.AddToValue(i, new IntStat(nSchedFlights));
+                    airportData.flightStats.nDelayedArrival.AddToValue(i, new IntStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedArrival))));
+                    airportData.flightStats.nRequiresCrew.AddToValue(i, new IntStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.RequiresCrew))));
+                    airportData.flightStats.nOntimeDeparture.AddToValue(i, new IntStat(ontimeDepart));
+                    airportData.flightStats.nDelayedDeparture.AddToValue(i, new IntStat(delDep, delDep > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
+                    airportData.flightStats.nCancelled.AddToValue(i, new IntStat(canx, canx > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
+                    airportData.flightStats.nAirportInvalid.AddToValue(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.AirportInvalid)));
+                    airportData.flightStats.nWeather.AddToValue(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Weather)));
+                    airportData.flightStats.nRunway.AddToValue(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Runway)));
+                    airportData.flightStats.nGate.AddToValue(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Gate)));
+                    airportData.flightStats.nExpired.AddToValue(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Expired)));
+                    airportData.flightStats.nReneged.AddToValue(i, new IntStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Reneged)));
+                    airportData.flightStats.ontimeDeparturePer.AddToValue(i, new AverageStat(ontimeDepart, ontimeDepart + delDep + canx, typeof(PercentageStat)));
+
+                    //Load Passenger Stats
+                    int arrivingPax = flightRecords.Sum(x => x.nArriving);
+                    int boardedPax = flightRecords.Sum(x => x.nBoarded);
+                    int schedDepartingPax = flightRecords.Sum(x => x.nDeparting);
                     int missed = flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) || AirportStatUtils.HasStatus(x.status, Flight.Status.Canceled) ? x.nDeparting - x.nBoarded : 0);
-                    thisAirline.passengerStats.nMissed.AddStat(i, new NumberStat(missed > 0 ? missed : 0, missed > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
-                    thisAirline.passengerStats.timeBoarding.AddStat(i, new TimeStat(flightRecords.Sum(x => x.nBoarded > 0 ? x.time_boarding : 0) * 60f));
+                    double timeBoarding = flightRecords.Sum(x => x.nBoarded > 0 ? x.time_boarding : 0) * 60f;
+                    thisAirline.passengerStats.nArriving.AddStat(i, new IntStat(arrivingPax));
+                    thisAirline.passengerStats.nBoarded.AddStat(i, new IntStat(boardedPax));
+                    thisAirline.passengerStats.nCheckedIn.AddStat(i, new IntStat(flightRecords.Sum(x => x.nCheckedIn)));
+                    thisAirline.passengerStats.nSchedDep.AddStat(i, new IntStat(schedDepartingPax));                    
+                    thisAirline.passengerStats.nMissed.AddStat(i, new IntStat(missed > 0 ? missed : 0, missed > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
+                    thisAirline.passengerStats.timeBoarding.AddStat(i, new TimeStat(timeBoarding));
                     thisAirline.passengerStats.timeDeplaning.AddStat(i, new TimeStat(flightRecords.Sum(x => x.time_deplaning) * 60f));
+                    thisAirline.passengerStats.arrPaxPerFlt.AddStat(i, new AverageStat(arrivingPax, nSchedFlights, typeof(IntStat)));
+                    thisAirline.passengerStats.departPaxPerFlt.AddStat(i, new AverageStat(schedDepartingPax, nSchedFlights, typeof(IntStat)));
+                    thisAirline.passengerStats.avgBoardTime.AddStat(i, new AverageStat(timeBoarding, nSchedFlights, typeof(TimeStat)));
+                    thisAirline.passengerStats.boardedPerFlt.AddStat(i, new AverageStat(boardedPax, boardedPax + missed, typeof(PercentageStat)));
 
-                    airportData.passengerStats.nArriving.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nArriving)));
-                    airportData.passengerStats.nBoarded.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nBoarded)));
-                    airportData.passengerStats.nCheckedIn.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nCheckedIn)));
-                    airportData.passengerStats.nSchedDep.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nDeparting)));
-                    airportData.passengerStats.nMissed.AddToValue(i, new NumberStat(missed > 0 ? missed : 0, missed > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
-                    airportData.passengerStats.timeBoarding.AddToValue(i, new TimeStat(flightRecords.Sum(x => x.nBoarded > 0 ? x.time_boarding : 0) * 60f));
+                    airportData.passengerStats.nArriving.AddToValue(i, new IntStat(arrivingPax));
+                    airportData.passengerStats.nBoarded.AddToValue(i, new IntStat(boardedPax));
+                    airportData.passengerStats.nCheckedIn.AddToValue(i, new IntStat(flightRecords.Sum(x => x.nCheckedIn)));
+                    airportData.passengerStats.nSchedDep.AddToValue(i, new IntStat(schedDepartingPax));
+                    airportData.passengerStats.nMissed.AddToValue(i, new IntStat(missed > 0 ? missed : 0, missed > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
+                    airportData.passengerStats.timeBoarding.AddToValue(i, new TimeStat(timeBoarding));
                     airportData.passengerStats.timeDeplaning.AddToValue(i, new TimeStat(flightRecords.Sum(x => x.time_deplaning) * 60f));
+                    airportData.passengerStats.arrPaxPerFlt.AddToValue(i, new AverageStat(arrivingPax, nSchedFlights, typeof(IntStat)));
+                    airportData.passengerStats.departPaxPerFlt.AddToValue(i, new AverageStat(schedDepartingPax, nSchedFlights, typeof(IntStat)));
+                    airportData.passengerStats.avgBoardTime.AddToValue(i, new AverageStat(timeBoarding, nSchedFlights, typeof(TimeStat)));
+                    airportData.passengerStats.boardedPerFlt.AddToValue(i, new AverageStat(boardedPax, boardedPax + missed, typeof(PercentageStat)));
 
+                    //Load Fuel Stats
                     int fuelDel = Convert.ToInt32(flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) ? x.nFuelRefueled : 0) / 1000);
                     int fuelReq = Convert.ToInt32(flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) ? x.nFuelRequested : 0) / 1000);
-                    thisAirline.fuelStats.fuelDelivered.AddStat(i, new NumberStat(fuelDel, fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
-                    thisAirline.fuelStats.fuelRequested.AddStat(i, new NumberStat(fuelReq));
                     int fuelFailures = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) && x.nFuelRequested > 0 && x.nFuelRefueled == 0);
-                    thisAirline.fuelStats.fuelingFailures.AddStat(i, new NumberStat(fuelFailures, fuelFailures > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
-                    thisAirline.fuelStats.planesRefueled.AddStat(i, new NumberStat(flightRecords.Count(x => x.nFuelRefueled > 0)));
+                    thisAirline.fuelStats.fuelDelivered.AddStat(i, new IntStat(fuelDel, fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    thisAirline.fuelStats.fuelRequested.AddStat(i, new IntStat(fuelReq));
+                    thisAirline.fuelStats.fuelingFailures.AddStat(i, new IntStat(fuelFailures, fuelFailures > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    thisAirline.fuelStats.planesRefueled.AddStat(i, new IntStat(flightRecords.Count(x => x.nFuelRefueled > 0)));
 
-                    airportData.fuelStats.fuelDelivered.AddToValue(i, new NumberStat(fuelDel, fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
-                    airportData.fuelStats.fuelRequested.AddToValue(i, new NumberStat(fuelReq));
-                    airportData.fuelStats.fuelingFailures.AddToValue(i, new NumberStat(fuelFailures, fuelFailures > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
-                    airportData.fuelStats.planesRefueled.AddToValue(i, new NumberStat(flightRecords.Count(x => x.nFuelRefueled > 0)));
+                    airportData.fuelStats.fuelDelivered.AddToValue(i, new IntStat(fuelDel, fuelDel < fuelReq ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    airportData.fuelStats.fuelRequested.AddToValue(i, new IntStat(fuelReq));
+                    airportData.fuelStats.fuelingFailures.AddToValue(i, new IntStat(fuelFailures, fuelFailures > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    airportData.fuelStats.planesRefueled.AddToValue(i, new IntStat(flightRecords.Count(x => x.nFuelRefueled > 0)));
 
-                    thisAirline.luggageStats.arrivingBags.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nArrivalBags)));
-                    thisAirline.luggageStats.bagsLoaded.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nBagsLoaded)));
-                    thisAirline.luggageStats.bagsUnloaded.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nBagsUnloaded)));
-                    thisAirline.luggageStats.departingBags.AddStat(i, new NumberStat(flightRecords.Sum(x => x.nDepartingBags)));
+                    // Load Luggage Stats
                     int lostBaggage = flightRecords.Sum(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) ? x.nDepartingBags - x.nBagsLoaded : 0);
-                    thisAirline.luggageStats.lostBags.AddStat(i, new NumberStat(lostBaggage, lostBaggage > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    thisAirline.luggageStats.arrivingBags.AddStat(i, new IntStat(flightRecords.Sum(x => x.nArrivalBags)));
+                    thisAirline.luggageStats.bagsLoaded.AddStat(i, new IntStat(flightRecords.Sum(x => x.nBagsLoaded)));
+                    thisAirline.luggageStats.bagsUnloaded.AddStat(i, new IntStat(flightRecords.Sum(x => x.nBagsUnloaded)));
+                    thisAirline.luggageStats.departingBags.AddStat(i, new IntStat(flightRecords.Sum(x => x.nDepartingBags)));
+                    thisAirline.luggageStats.lostBags.AddStat(i, new IntStat(lostBaggage, lostBaggage > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
                     thisAirline.luggageStats.timeLoadingBags.AddStat(i, new TimeStat(flightRecords.Sum(x => x.nBagsLoaded > 0 ? x.time_bag_load : 0) * 60f));
 
-                    airportData.luggageStats.arrivingBags.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nArrivalBags)));
-                    airportData.luggageStats.bagsLoaded.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nBagsLoaded)));
-                    airportData.luggageStats.bagsUnloaded.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nBagsUnloaded)));
-                    airportData.luggageStats.departingBags.AddToValue(i, new NumberStat(flightRecords.Sum(x => x.nDepartingBags)));
-                    airportData.luggageStats.lostBags.AddToValue(i, new NumberStat(lostBaggage, lostBaggage > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
+                    airportData.luggageStats.arrivingBags.AddToValue(i, new IntStat(flightRecords.Sum(x => x.nArrivalBags)));
+                    airportData.luggageStats.bagsLoaded.AddToValue(i, new IntStat(flightRecords.Sum(x => x.nBagsLoaded)));
+                    airportData.luggageStats.bagsUnloaded.AddToValue(i, new IntStat(flightRecords.Sum(x => x.nBagsUnloaded)));
+                    airportData.luggageStats.departingBags.AddToValue(i, new IntStat(flightRecords.Sum(x => x.nDepartingBags)));
+                    airportData.luggageStats.lostBags.AddToValue(i, new IntStat(lostBaggage, lostBaggage > 0 ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None));
                     airportData.luggageStats.timeLoadingBags.AddToValue(i, new TimeStat(flightRecords.Sum(x => x.nBagsLoaded > 0 ? x.time_bag_load : 0) * 60f));
 
-                    thisAirline.flightStats.nSchedFlights.AddStat(i, new NumberStat(flightRecords.Count()));
-                    thisAirline.flightStats.nDelayedArrival.AddStat(i, new NumberStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedArrival))));
-                    thisAirline.flightStats.nRequiresCrew.AddStat(i, new NumberStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.RequiresCrew))));
-                    thisAirline.flightStats.nOntimeDeparture.AddStat(i, new NumberStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) && !AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedDeparture))));
-                    int delDep = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedDeparture));
-                    thisAirline.flightStats.nDelayedDeparture.AddStat(i, new NumberStat(delDep, delDep > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
-                    int canx = flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Canceled));
-                    thisAirline.flightStats.nCancelled.AddStat(i, new NumberStat(canx, canx > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
-                    thisAirline.flightStats.nAirportInvalid.AddStat(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.AirportInvalid)));
-                    thisAirline.flightStats.nWeather.AddStat(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Weather)));
-                    thisAirline.flightStats.nRunway.AddStat(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Runway)));
-                    thisAirline.flightStats.nGate.AddStat(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Gate)));
-                    thisAirline.flightStats.nExpired.AddStat(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Expired)));
-                    thisAirline.flightStats.nReneged.AddStat(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Reneged)));
-
-                    airportData.flightStats.nSchedFlights.AddToValue(i, new NumberStat(flightRecords.Count()));
-                    airportData.flightStats.nDelayedArrival.AddToValue(i, new NumberStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedArrival))));
-                    airportData.flightStats.nRequiresCrew.AddToValue(i, new NumberStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.RequiresCrew))));
-                    airportData.flightStats.nOntimeDeparture.AddToValue(i, new NumberStat(flightRecords.Count(x => AirportStatUtils.HasStatus(x.status, Flight.Status.Departed) && !AirportStatUtils.HasStatus(x.status, Flight.Status.DelayedDeparture))));
-                    airportData.flightStats.nDelayedDeparture.AddToValue(i, new NumberStat(delDep, delDep > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
-                    airportData.flightStats.nCancelled.AddToValue(i, new NumberStat(canx, canx > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
-                    airportData.flightStats.nAirportInvalid.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.AirportInvalid)));
-                    airportData.flightStats.nWeather.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Weather)));
-                    airportData.flightStats.nRunway.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Runway)));
-                    airportData.flightStats.nGate.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Gate)));
-                    airportData.flightStats.nExpired.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Expired)));
-                    airportData.flightStats.nReneged.AddToValue(i, new NumberStat(flightRecords.Count(x => x.reason == Flight.StatusReason.Reneged)));
-
+                    //Load Gate Stats (into FlightStats)
                     gateSizes[AircraftGate.GateSize.Small] = 0;
                     gateSizes[AircraftGate.GateSize.Large] = 0;
                     gateSizes[AircraftGate.GateSize.Extra_Large] = 0;
                     foreach (FlightRecord fr in flightRecords)
                     {
-                        AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
-
                         AircraftConfig ac = AircraftConfigManager.FindByAnyName(fr.aircraft, false);
                         if (ac != null)
                         {
-                            AirportStatUtils.AirportStatsLogger(Log.FromPool(ac.MinGateSize.ToString()+"|"+gateSizes[ac.MinGateSize]).WithCodepoint());
-
                             gateSizes[ac.MinGateSize]++;
                         }
                     }
                     foreach (KeyValuePair<AircraftGate.GateSize, int> kvp in gateSizes)
                     {
-                        AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
-
                         switch (kvp.Key)
                         {
                             case AircraftGate.GateSize.Small:
-                                thisAirline.flightStats.nSmallGates.AddStat(i, new NumberStat(kvp.Value));
-                                airportData.flightStats.nSmallGates.AddToValue(i, new NumberStat(kvp.Value));
+                                thisAirline.flightStats.nSmallGates.AddStat(i, new IntStat(kvp.Value));
+                                airportData.flightStats.nSmallGates.AddToValue(i, new IntStat(kvp.Value));
                                 break;
                             case AircraftGate.GateSize.Large:
-                                thisAirline.flightStats.nLargeGates.AddStat(i, new NumberStat(kvp.Value));
-                                airportData.flightStats.nLargeGates.AddToValue(i, new NumberStat(kvp.Value));
+                                thisAirline.flightStats.nLargeGates.AddStat(i, new IntStat(kvp.Value));
+                                airportData.flightStats.nLargeGates.AddToValue(i, new IntStat(kvp.Value));
                                 break;
                             case AircraftGate.GateSize.Extra_Large:
-                                thisAirline.flightStats.nXLGates.AddStat(i, new NumberStat(kvp.Value));
-                                airportData.flightStats.nXLGates.AddToValue(i, new NumberStat(kvp.Value));
+                                thisAirline.flightStats.nXLGates.AddStat(i, new IntStat(kvp.Value));
+                                airportData.flightStats.nXLGates.AddToValue(i, new IntStat(kvp.Value));
                                 break;
                         }
                     }
@@ -191,7 +207,7 @@ namespace TBFlash.AirportStats
                 {
                     continue;
                 }
-                airportData.passengerStats.nConnecting.AddStat(i, new NumberStat(gamedayData.NumConnectPax));
+                airportData.passengerStats.nConnecting.AddStat(i, new IntStat(gamedayData.NumConnectPax));
                 airportData.fuelStats.avgFuelPrice.AddStat(i, new MoneyStat(GetAverageFuelCost(i), 2));
                 GamedayReportingData.MoneyCategory category;
                 float val;
@@ -210,6 +226,7 @@ namespace TBFlash.AirportStats
                 if ((val = GetDailyMoneyTotal(gamedayData, true)) != 0)
                 {
                     airportData.revAndExpStats.revenueStats.AddStat("total", i, new MoneyStat(val));
+                    airportData.revAndExpStats.revenueStats.RevPerPax.AddStat(i, new AverageStat(val, ((IntStat)airportData.passengerStats.nSchedDep.GetStat(i))?.GetValue() ?? 0, typeof(MoneyStat)));
                 }
                 if ((val = GetDailyMoneyTotal(gamedayData, false)) != 0)
                 {
@@ -237,12 +254,12 @@ namespace TBFlash.AirportStats
                 airportData.airlineStats.reliability.AddStat(airline.name, new PercentageStat((airline.Needs?.AllNeeds.TryGetValue("Reliability", out need) == true) ? 1f - need.AttenuatedScore : 0f));
                 airportData.airlineStats.trust.AddStat(airline.name, new PercentageStat((airline.Needs?.AllNeeds.TryGetValue("Trust", out need) == true) ? 1f - need.AttenuatedScore : 0f));
                 airportData.airlineStats.facilityQuality.AddStat(airline.name, new PercentageStat((airline.Needs?.AllNeeds.TryGetValue("FacilityQuality", out need) == true) ? 1f - need.AttenuatedScore : 0f));
-                airportData.airlineStats.nAcceptedOffers.AddStat(airline.name, new NumberStat(airline.nAcceptedOffers));
+                airportData.airlineStats.nAcceptedOffers.AddStat(airline.name, new IntStat(airline.nAcceptedOffers));
                 airportData.airlineStats.baseRefuelPercentage.AddStat(airline.name, new PercentageStat(airline.BaseRefuelPercentage));
                 airportData.airlineStats.firstClassPercentage.AddStat(airline.name, new PercentageStat(airline.FirstClassPercentage));
                 airportData.airlineStats.newFlightBonus.AddStat(airline.name, new MoneyStat((float)airline.Income_NewFlightBonus_PerFlight));
-                airportData.airlineStats.peakFlightCount.AddStat(airline.name, new NumberStat(airline.PeakFlightsCount));
-                airportData.airlineStats.nReps.AddStat(airline.name, new NumberStat(airline.Reps?.Count ?? 0));
+                airportData.airlineStats.peakFlightCount.AddStat(airline.name, new IntStat(airline.PeakFlightsCount));
+                airportData.airlineStats.nReps.AddStat(airline.name, new IntStat(airline.Reps?.Count ?? 0));
                 airportData.airlineStats.hasDeal.AddStat(airline.name, new BoolStat(airline.Needs?.HasDeal ?? false));
 
                 if (airline.Needs?.HasDeal ?? false)
@@ -252,17 +269,17 @@ namespace TBFlash.AirportStats
                     airportData.airlineStats.dailyFees.AddStat(airline.name, new MoneyStat(airline.Needs.NegotiatedDailyFees));
                     airportData.airlineStats.fuelSatisfactionNegotiated.AddStat(airline.name, new PercentageStat(airline.Needs.AllNeeds.TryGetValue("NegotiatedFuelSatisfaction", out need) ? 1f - ((double)need.target / 100) : 0f));
                     airportData.airlineStats.reliabilityNegotiated.AddStat(airline.name, new PercentageStat(airline.Needs.AllNeeds.TryGetValue("NegotiatedReliabilty", out need) ? 1f - ((double)need.target / 100) : 0f));
-                    airportData.airlineStats.offices.AddStat(airline.name, new NumberStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Office)));
+                    airportData.airlineStats.offices.AddStat(airline.name, new IntStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Office)));
                     airportData.airlineStats.conferenceRoom.AddStat(airline.name, new BoolStat(airline.Needs.Conference != null));
-                    airportData.airlineStats.stores.AddStat(airline.name, new NumberStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Store)));
+                    airportData.airlineStats.stores.AddStat(airline.name, new IntStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Store)));
                     airportData.airlineStats.storeShare.AddStat(airline.name, new PercentageStat(airline.Needs.NegotiatedStoreShare / 100f));
-                    airportData.airlineStats.cafes.AddStat(airline.name, new NumberStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Cafe)));
+                    airportData.airlineStats.cafes.AddStat(airline.name, new IntStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Cafe)));
                     airportData.airlineStats.cafeShare.AddStat(airline.name, new PercentageStat(airline.Needs.NegotiatedCafeShare / 100f));
-                    airportData.airlineStats.firstClassLounges.AddStat(airline.name, new NumberStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.First_Class_Lounge)));
-                    airportData.airlineStats.flightCrewLounges.AddStat(airline.name, new NumberStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Flight_Crew_Lounge)));
-                    airportData.airlineStats.smallGates.AddStat(airline.name, new NumberStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Small)));
-                    airportData.airlineStats.largeGates.AddStat(airline.name, new NumberStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Large)));
-                    airportData.airlineStats.XLGates.AddStat(airline.name, new NumberStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Extra_Large)));
+                    airportData.airlineStats.firstClassLounges.AddStat(airline.name, new IntStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.First_Class_Lounge)));
+                    airportData.airlineStats.flightCrewLounges.AddStat(airline.name, new IntStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Flight_Crew_Lounge)));
+                    airportData.airlineStats.smallGates.AddStat(airline.name, new IntStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Small)));
+                    airportData.airlineStats.largeGates.AddStat(airline.name, new IntStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Large)));
+                    airportData.airlineStats.XLGates.AddStat(airline.name, new IntStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Extra_Large)));
                     airportData.airlineStats.paxPercent.AddStat(airline.name, new PercentageStat(airline.Needs.NegotiatedPaxPercent / 100));
                     airportData.airlineStats.penalty.AddStat(airline.name, new MoneyStat(airline.Needs.NegotiatedPenalty));
                 }
@@ -274,33 +291,37 @@ namespace TBFlash.AirportStats
             airportData.ResetLifetimeStats();
             GameLifetimeStats GLS = Game.current.lifetimeStats;
 
-            airportData.flightStats.nSchedFlights.AddStat(0, new NumberStat((int)GLS.Takeoffs));
+            airportData.flightStats.nSchedFlights.AddStat(0, new IntStat((int)GLS.Takeoffs));
             //airportData.flightStats.nOntimeDeparture.AddStat(0, new NumberStat((int)GLS.flOnTime));
             //airportData.flightStats.nDelayedDeparture.AddStat(0, new NumberStat((int)GLS.flDelays));
-            airportData.flightStats.nCancelled.AddStat(0, new NumberStat((int)GLS.flCancels));
-            airportData.flightStats.nReneged.AddStat(0, new NumberStat((int)GLS.flReneges));
-                airportData.flightStats.nCancelled.AddToValue(0, new NumberStat((int)GLS.flReneges));
+            airportData.flightStats.nCancelled.AddStat(0, new IntStat((int)GLS.flCancels));
+            airportData.flightStats.nReneged.AddStat(0, new IntStat((int)GLS.flReneges));
+                airportData.flightStats.nCancelled.AddToValue(0, new IntStat((int)GLS.flReneges));
             //airportData.flightStats..AddStat(0, new NumberStat((int)GLS.Landings));
-            airportData.passengerStats.nBoarded.AddStat(0, new NumberStat((int)GLS.pBoarded));
-            airportData.passengerStats.nMissed.AddStat(0, new NumberStat((int)GLS.pMissed));
+            airportData.passengerStats.nSchedDep.AddStat(0, new IntStat((int)(GLS.pBoarded + GLS.pMissed)));
+            airportData.passengerStats.nBoarded.AddStat(0, new IntStat((int)GLS.pBoarded));
+            airportData.passengerStats.departPaxPerFlt.AddStat(0, new AverageStat((int)(GLS.pBoarded + GLS.pMissed), (int)GLS.Takeoffs, typeof(IntStat)));
+            airportData.passengerStats.nMissed.AddStat(0, new IntStat((int)GLS.pMissed));
+            airportData.passengerStats.boardedPerFlt.AddStat(0, new AverageStat((int)GLS.pBoarded, (int)(GLS.pBoarded + GLS.pMissed), typeof(PercentageStat)));
+
             airportData.fuelStats.avgFuelPrice.AddStat(0, new MoneyStat(GetAverageFuelCost(0),2));
-            airportData.fuelStats.fuelRequested.AddStat(0, new NumberStat((int)(GLS.fuelRequested / 1000)));
-            airportData.fuelStats.fuelDelivered.AddStat(0, new NumberStat((int)(GLS.fuelfRefueled / 1000)));
-            airportData.fuelStats.planesRefueled.AddStat(0, new NumberStat((int)GLS.planesServedFuel));
-            airportData.luggageStats.bagsLoaded.AddStat(0, new NumberStat((int)GLS.pBagsLoaded));
-            airportData.luggageStats.bagsUnloaded.AddStat(0, new NumberStat((int)GLS.pBagsUnloaded));
-            airportData.luggageStats.lostBags.AddStat(0, new NumberStat((int)GLS.pBagFail));
+            airportData.fuelStats.fuelRequested.AddStat(0, new IntStat((int)(GLS.fuelRequested / 1000)));
+            airportData.fuelStats.fuelDelivered.AddStat(0, new IntStat((int)(GLS.fuelfRefueled / 1000)));
+            airportData.fuelStats.planesRefueled.AddStat(0, new IntStat((int)GLS.planesServedFuel));
+            airportData.luggageStats.bagsLoaded.AddStat(0, new IntStat((int)GLS.pBagsLoaded));
+            airportData.luggageStats.bagsUnloaded.AddStat(0, new IntStat((int)GLS.pBagsUnloaded));
+            airportData.luggageStats.lostBags.AddStat(0, new IntStat((int)GLS.pBagFail));
             //airportData.luggageStats..AddStat(0, new NumberStat((int)GLS.pBagSuccess));
-            airportData.staffStats.nHires.AddStat(new NumberStat((int)GLS.sHires));
-            airportData.staffStats.nFires.AddStat(new NumberStat((int)GLS.sFires));
+            airportData.staffStats.nHires.AddStat(new IntStat((int)GLS.sHires));
+            airportData.staffStats.nFires.AddStat(new IntStat((int)GLS.sFires));
             airportData.timeStats.tPaused.AddStat(new TimeStat((int)GLS.tPaused));
             airportData.timeStats.tSpeed1.AddStat(new TimeStat((int)GLS.tSpeed1));
             airportData.timeStats.tSpeed2.AddStat(new TimeStat((int)GLS.tSpeed2));
             airportData.timeStats.tSpeed3.AddStat(new TimeStat((int)GLS.tSpeed3));
             airportData.timeStats.tInactive.AddStat(new TimeStat((int)GLS.tInactive));
-            airportData.interactions.keyboardInteractions.AddStat(new NumberStat((int)GLS.tInteractions));
-            airportData.interactions.mouseClicks.AddStat(new NumberStat((int)GLS.tClicks));
-            airportData.interactions.altMouseClicks.AddStat(new NumberStat((int)GLS.tClicksAlt));
+            airportData.interactions.keyboardInteractions.AddStat(new IntStat((int)GLS.tInteractions));
+            airportData.interactions.mouseClicks.AddStat(new IntStat((int)GLS.tClicks));
+            airportData.interactions.altMouseClicks.AddStat(new IntStat((int)GLS.tClicksAlt));
 
             airportData.revAndExpStats.revenueStats.AddStat(nameof(GamedayReportingData.MoneyCategory.Advertising), 0, new MoneyStat((float)GLS.mAdvertising));
             airportData.revAndExpStats.revenueStats.AddStat(nameof(GamedayReportingData.MoneyCategory.Bank), 0, new MoneyStat((float)GLS.mLoans));
@@ -309,6 +330,7 @@ namespace TBFlash.AirportStats
             airportData.revAndExpStats.revenueStats.AddStat(nameof(GamedayReportingData.MoneyCategory.Runway_Fees), 0, new MoneyStat((float)GLS.mRwyUsageRev));
             airportData.revAndExpStats.revenueStats.AddStat(nameof(GamedayReportingData.MoneyCategory.Terminal_Fees), 0, new MoneyStat((float)GLS.mTerminalUsageRev));
             airportData.revAndExpStats.revenueStats.AddStat("total", 0, new MoneyStat((float)GLS.mRev));
+            airportData.revAndExpStats.revenueStats.RevPerPax.AddStat(0, new AverageStat(GLS.mRev, (int)(GLS.pBoarded + GLS.pMissed), typeof(MoneyStat)));
 
             airportData.revAndExpStats.expenseStats.AddStat(nameof(GamedayReportingData.MoneyCategory.Bank), 0, new MoneyStat((float)GLS.mInterest));
             airportData.revAndExpStats.expenseStats.AddStat(nameof(GamedayReportingData.MoneyCategory.Retail), 0, new MoneyStat((float)GLS.mRetailExpense));

@@ -4,8 +4,8 @@ namespace TBFlash.AirportStats
 {
     internal class StaffStatGroup : StatGroup
     {
-        internal LifetimeOnlyStats<NumberStat> nHires = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats52"));
-        internal LifetimeOnlyStats<NumberStat> nFires = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats53"));
+        internal LifetimeOnlyStats<IntStat> nHires = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats52"));
+        internal LifetimeOnlyStats<IntStat> nFires = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats53"));
 
         internal StaffStatGroup(string name) : base(name, null)
         {
@@ -18,8 +18,8 @@ namespace TBFlash.AirportStats
 
         internal override string ForTable(PrintOptions printOptions = null)
         {
-            string str = $"<tr><th colspan=\"2\">{name}</th></tr>\n";
-            str += nHires.ForTable();
+            string str = $"<tr class=\"statGroup\"><th colspan=\"2\">{name}</th></tr>\n";
+            str += nHires.ForTable(true);
             str += nFires.ForTable();
             return str;
         }

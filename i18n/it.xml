@@ -77,6 +77,7 @@
 			<stats59>Clic sulla tastiera</stats59>
 			<stats60>Clic sinistro del mouse</stats60>
 			<stats61>Clic con il tasto destro del mouse</stats61>
+			<revPerPax>Entrate per passeggero in partenza</revPerPax>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Nome della compagnia aerea</stats0>
@@ -122,12 +123,13 @@
 			<stats3>Partenze in orario</stats3>
 			<stats4>Partenza ritardata</stats4>
 			<stats5>Voli annullati</stats5>
-			<stats6>Annullato per: Aeroporto non valido</stats6>
-			<stats7>--Tempo metereologico</stats7>
-			<stats8>--Pista di decollo</stats8>
-			<stats9>--cancello</stats9>
-			<stats10>--Scaduto</stats10>
-			<stats11>--rinnegato</stats11>			
+			<canceledFor>Annullato per</canceledFor>
+			<stats6>Aeroporto non valido</stats6>
+			<stats7>Tempo metereologico</stats7>
+			<stats8>Pista di decollo</stats8>
+			<stats9>Cancello</stats9>
+			<stats10>Scaduto</stats10>
+			<stats11>Rinnegato</stats11>			
 			<stats12># Passeggeri in arrivo</stats12>
 			<stats13># Passeggeri in partenza programmati</stats13>
 			<stats14># Passeggeri registrati</stats14>
@@ -170,6 +172,11 @@
 			<stats19>Carburante consegnato</stats19>
 			<stats20>Gli stati</stats20>
 			<stats21>Motivo della cancellazione</stats21>
+			<ontimeDepartPer>In orario Partenza%</ontimeDepartPer>
+			<arrPaxPerFlt>Passeggeri / volo in arrivo medi</arrPaxPerFlt>
+			<departPaxPerFlt>Passeggeri / volo medi in partenza</departPaxPerFlt>
+			<boardedPerFlt>% Imbarcato con successo</boardedPerFlt>
+			<avgBoardTime>Tempo medio di imbarco</avgBoardTime>
 		</AirlineDailyStats>
 		<AircraftStats>
 			<stats0>Nome da visualizzare</stats0>

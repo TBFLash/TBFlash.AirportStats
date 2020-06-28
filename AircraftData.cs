@@ -6,14 +6,14 @@ namespace TBFlash.AirportStats
     internal class AircraftData
     {
         internal LifetimeOnlyStats<StringStat> aircraftName = new LifetimeOnlyStats<StringStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats0"));
-        internal LifetimeOnlyStats<NumberStat> nFlights = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats1"));
+        internal LifetimeOnlyStats<IntStat> nFlights = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats1"));
         internal LifetimeOnlyStats<BoolStat> isMod = new LifetimeOnlyStats<BoolStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats2"));
-        internal LifetimeOnlyStats<NumberStat> paxCapacity = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats3"));
-        internal LifetimeOnlyStats<NumberStat> nFlightAttendants = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats4"));
-        internal LifetimeOnlyStats<NumberStat> nPilots = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats5"));
+        internal LifetimeOnlyStats<IntStat> paxCapacity = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats3"));
+        internal LifetimeOnlyStats<IntStat> nFlightAttendants = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats4"));
+        internal LifetimeOnlyStats<IntStat> nPilots = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats5"));
         internal LifetimeOnlyStats<PercentageStat> crewChangeModifier = new LifetimeOnlyStats<PercentageStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats6"));
-        internal LifetimeOnlyStats<NumberStat> fuelCapacity = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats7"));
-        internal LifetimeOnlyStats<NumberStat> minRunwaySize = new LifetimeOnlyStats<NumberStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats8"));
+        internal LifetimeOnlyStats<IntStat> fuelCapacity = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats7"));
+        internal LifetimeOnlyStats<IntStat> minRunwaySize = new LifetimeOnlyStats<IntStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats8"));
         internal LifetimeOnlyStats<StringStat> minGateSize = new LifetimeOnlyStats<StringStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats9"));
         internal LifetimeOnlyStats<StringStat> airlinesUsing = new LifetimeOnlyStats<StringStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats10"));
         internal LifetimeOnlyStats<StringStat> shortName = new LifetimeOnlyStats<StringStat>(i18n.Get("TBFlash.AirportStats.AircraftStats.stats11"));
@@ -22,14 +22,14 @@ namespace TBFlash.AirportStats
         {
             AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
             aircraftName.AddStat(new StringStat(ac.DisplayName));
-            nFlights.AddStat(new NumberStat(Game.current.flightScheduler.Today.Count(x => ac.DisplayName.Equals(x.flightSchema.aircraftConfig.DisplayName))));
+            nFlights.AddStat(new IntStat(Game.current.flightScheduler.Today.Count(x => ac.DisplayName.Equals(x.flightSchema.aircraftConfig.DisplayName))));
             isMod.AddStat(new BoolStat(ac.isDefault));
-            paxCapacity.AddStat(new NumberStat(ac.Capacity));
-            nFlightAttendants.AddStat(new NumberStat(ac.nFlightAttendants));
-            nPilots.AddStat(new NumberStat(ac.nPilots));
+            paxCapacity.AddStat(new IntStat(ac.Capacity));
+            nFlightAttendants.AddStat(new IntStat(ac.nFlightAttendants));
+            nPilots.AddStat(new IntStat(ac.nPilots));
             crewChangeModifier.AddStat(new PercentageStat(ac.CrewChangeChanceModifier));
-            fuelCapacity.AddStat(new NumberStat(ac.FuelCapacity / 1000));
-            minRunwaySize.AddStat(new NumberStat(ac.MinRunwaySize));
+            fuelCapacity.AddStat(new IntStat(ac.FuelCapacity / 1000));
+            minRunwaySize.AddStat(new IntStat(ac.MinRunwaySize));
             minGateSize.AddStat(new StringStat(ac.MinGateSize.ToString()));
             string airlineString = string.Empty;
             foreach (Airline airline in Game.current.airlines)

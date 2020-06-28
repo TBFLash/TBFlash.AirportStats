@@ -7,7 +7,7 @@ namespace TBFlash.AirportStats
 {
     internal static class AirportStatUtils
     {
-        private const bool airportStatsDebug = true;
+        private const bool airportStatsDebug = false;
         private const string version = "2.2";
 
         internal enum PageTitles

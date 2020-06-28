@@ -77,6 +77,7 @@
 			<stats59>Keyboard Clicks</stats59>
 			<stats60>Left Mouse Clicks</stats60>
 			<stats61>Right Mouse Clicks</stats61>
+			<revPerPax>Revenue per Departing Passenger</revPerPax>
 		</LifetimeStats>
 		<AllAirlineStats>
 			<stats0>Airline Name</stats0>
@@ -122,12 +123,13 @@
 			<stats3>On Time Departures</stats3>
 			<stats4>Delayed Departure</stats4>
 			<stats5>Flights Canceled</stats5>
-			<stats6>Canceled for: Airport Invalid</stats6>
-			<stats7>--Weather</stats7>
-			<stats8>--Runway</stats8>
-			<stats9>--Gate</stats9>
-			<stats10>--Expired</stats10>
-			<stats11>--Reneged</stats11>
+			<canceledFor>Canceled For</canceledFor>
+			<stats6>Airport Invalid</stats6>
+			<stats7>Weather</stats7>
+			<stats8>Runway</stats8>
+			<stats9>Gate</stats9>
+			<stats10>Expired</stats10>
+			<stats11>Reneged</stats11>
 			<stats12># Arr. Pax</stats12>
 			<stats13># Sched. Dep. Pax</stats13>
 			<stats14># Checked In Pax</stats14>
@@ -170,6 +172,11 @@
 			<stats19>Fuel Delivered</stats19>
 			<stats20>Statuses</stats20>
 			<stats21>Cancellation Reason</stats21>
+			<ontimeDepartPer>On Time Departure %</ontimeDepartPer>
+			<arrPaxPerFlt>Average Arriving Passengers / Flight</arrPaxPerFlt>
+			<departPaxPerFlt>Average Departing Passengers / Flight</departPaxPerFlt>
+			<boardedPerFlt>% Successfully Boarded</boardedPerFlt>
+			<avgBoardTime>Average Boarding Time</avgBoardTime>
 		</AirlineDailyStats>
 		<AircraftStats>
 			<stats0>Display Name</stats0>

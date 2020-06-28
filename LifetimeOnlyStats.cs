@@ -18,9 +18,9 @@
             }
         }
 
-        internal string ForTable()
+        internal string ForTable(bool oddRow = false)
         {
-            string str = "<tr>\n";
+            string str = $"<tr{(oddRow ? " class=\"oddRow\"" : string.Empty)}>\n";
             str += $"\t<td>{statName}</td>\n";
             str += $"\t<td>{stat.ForTable()}</td>\n";
             str += "</tr>\n";

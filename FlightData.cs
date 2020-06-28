@@ -35,9 +35,10 @@ namespace TBFlash.AirportStats
                 return str;
             }
             str += "<tbody>";
+            bool oddRow = false;
             foreach (FlightRecord fr in flightRecords)
             {
-                str += "<tr>\n";
+                str += $"<tr{(oddRow ? " class=\"oddRow\"" : string.Empty)}>\n";
                 if (string.IsNullOrWhiteSpace(printOptions.AirlineName))
                 {
                     str += $"<td><a href=\"/{fr.airline}?Day={printOptions.Day}\">{fr.airline}</a></td>\n";
@@ -72,6 +73,7 @@ namespace TBFlash.AirportStats
                 str += $"<td class=\"None\">{st}</td>\n";
                 str += $"<td class=\"{(fr.reason.ToString().Length > 5 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None)}\">{i18n.Get("UI.strings.flightstatusreason.") + fr.reason.ToString()}</td>\n";
                 str += "</tr>\n";
+                oddRow = !oddRow;
             }
             str += "</tbody>";
             return str;
