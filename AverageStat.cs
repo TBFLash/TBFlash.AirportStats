@@ -50,5 +50,10 @@ namespace TBFlash.AirportStats
         {
             return count > 0;
         }
+
+        internal override float GetFloatValue()
+        {
+            return (float)totalValue;
+        }
     }
 }

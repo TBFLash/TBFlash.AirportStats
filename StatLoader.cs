@@ -68,7 +68,8 @@ namespace TBFlash.AirportStats
                 thisAirline.RemoveStats(start, end);
                 for (int i = end; i >= start; i--)
                 {
-                    IEnumerable<FlightRecord> flightRecords = Game.current.flightRecords.GetForDay(i - 1).Where(x => x.airline == airline.name);
+                    IEnumerable<FlightRecord> flightRecords = Game.current.flightRecords.GetForDay(i).Where(x => x.airline == airline.name);
+
                     if (flightRecords?.Any() != true)
                     {
                         continue;
@@ -122,7 +123,7 @@ namespace TBFlash.AirportStats
                     thisAirline.passengerStats.timeDeplaning.AddStat(i, new TimeStat(flightRecords.Sum(x => x.time_deplaning) * 60f));
                     thisAirline.passengerStats.arrPaxPerFlt.AddStat(i, new AverageStat(arrivingPax, nSchedFlights, typeof(IntStat)));
                     thisAirline.passengerStats.departPaxPerFlt.AddStat(i, new AverageStat(schedDepartingPax, nSchedFlights, typeof(IntStat)));
-                    thisAirline.passengerStats.avgBoardTime.AddStat(i, new AverageStat(timeBoarding, nSchedFlights, typeof(TimeStat)));
+                    thisAirline.passengerStats.avgBoardTime.AddStat(i, new AverageStat(timeBoarding, ontimeDepart + delDep + canx, typeof(TimeStat)));
                     thisAirline.passengerStats.boardedPerFlt.AddStat(i, new AverageStat(boardedPax, boardedPax + missed, typeof(PercentageStat)));
 
                     airportData.passengerStats.nArriving.AddToValue(i, new IntStat(arrivingPax));
@@ -134,7 +135,7 @@ namespace TBFlash.AirportStats
                     airportData.passengerStats.timeDeplaning.AddToValue(i, new TimeStat(flightRecords.Sum(x => x.time_deplaning) * 60f));
                     airportData.passengerStats.arrPaxPerFlt.AddToValue(i, new AverageStat(arrivingPax, nSchedFlights, typeof(IntStat)));
                     airportData.passengerStats.departPaxPerFlt.AddToValue(i, new AverageStat(schedDepartingPax, nSchedFlights, typeof(IntStat)));
-                    airportData.passengerStats.avgBoardTime.AddToValue(i, new AverageStat(timeBoarding, nSchedFlights, typeof(TimeStat)));
+                    airportData.passengerStats.avgBoardTime.AddToValue(i, new AverageStat(timeBoarding, ontimeDepart + delDep + canx, typeof(TimeStat)));
                     airportData.passengerStats.boardedPerFlt.AddToValue(i, new AverageStat(boardedPax, boardedPax + missed, typeof(PercentageStat)));
 
                     //Load Fuel Stats
@@ -226,12 +227,44 @@ namespace TBFlash.AirportStats
                 if ((val = GetDailyMoneyTotal(gamedayData, true)) != 0)
                 {
                     airportData.revAndExpStats.revenueStats.AddStat("total", i, new MoneyStat(val));
-                    airportData.revAndExpStats.revenueStats.RevPerPax.AddStat(i, new AverageStat(val, ((IntStat)airportData.passengerStats.nSchedDep.GetStat(i))?.GetValue() ?? 0, typeof(MoneyStat)));
+                    int boarded = ((IntStat)airportData.passengerStats.nBoarded.GetStat(i))?.GetValue() ?? 0;
+                    int missed = ((IntStat)airportData.passengerStats.nMissed.GetStat(i))?.GetValue() ?? 0;
+                    airportData.revAndExpStats.revenueStats.RevPerPax.AddStat(i, new AverageStat(val, boarded + missed, typeof(MoneyStat)));
                 }
                 if ((val = GetDailyMoneyTotal(gamedayData, false)) != 0)
                 {
                     airportData.revAndExpStats.expenseStats.AddStat("total", i, new MoneyStat(val));
                 }
+                //set profits
+                AirportStatUtils.AirportStatsLogger(Log.FromPool("Loading Profits").WithCodepoint());
+
+                val = ((MoneyStat)airportData.revAndExpStats.revenueStats.StatGroups["total"].GetStat(i))?.GetFloatValue() ?? 0;
+                float netCost = -((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups["total"].GetStat(i))?.GetFloatValue() ?? 0;
+
+                float operatingCost = netCost + ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Taxes)].GetStat(i))?.GetFloatValue() ?? 0 - 
+                    ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Bank)].GetStat(i))?.GetFloatValue() ?? 0;
+                float grossCost = - (((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Fuel)].GetStat(i))?.GetFloatValue() ?? 0 +
+                    ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Infrastructure)].GetStat(i))?.GetFloatValue() ?? 0 +
+                    ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Land_Purchase)].GetStat(i))?.GetFloatValue() ?? 0 +
+                    ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Materials)].GetStat(i))?.GetFloatValue() ?? 0 +
+                    ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Retail)].GetStat(i))?.GetFloatValue() ?? 0 +
+                    ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Staff)].GetStat(i))?.GetFloatValue() ?? 0 +
+                    ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Maintenance)].GetStat(i))?.GetFloatValue() ?? 0);
+                AirportStatUtils.AirportStatsLogger(Log.FromPool($"Revenue: {val}; NetCost: {netCost}; Operating: {operatingCost}; Gross: {grossCost}").WithCodepoint());
+
+                airportData.profitStats.GrossProfit.AddStat(i, new MoneyStat(val - grossCost));
+                airportData.profitStats.OperatingProfit.AddStat(i, new MoneyStat(val - operatingCost));
+                airportData.profitStats.NetProfit.AddStat(i, new MoneyStat(val - netCost));
+                if (val != 0)
+                {
+                    if(val > grossCost)
+                        airportData.profitStats.GrossMargin.AddStat(i, new PercentageStat((val - grossCost) / val));
+                    if(val > operatingCost)
+                        airportData.profitStats.OperatingMargin.AddStat(i, new PercentageStat((val - operatingCost) / val));
+                    if (val > netCost)
+                        airportData.profitStats.NetMargin.AddStat(i, new PercentageStat((val - netCost) / val));
+                }
+                AirportStatUtils.AirportStatsLogger(Log.FromPool("Completed Loading Profits").WithCodepoint());
             }
         }
 
@@ -267,8 +300,8 @@ namespace TBFlash.AirportStats
                     airportData.airlineStats.runwayFees.AddStat(airline.name, new MoneyStat(airline.Needs.NegotiatedRunwayFees));
                     airportData.airlineStats.terminalFees.AddStat(airline.name, new MoneyStat(airline.Needs.NegotiatedTerminalFees));
                     airportData.airlineStats.dailyFees.AddStat(airline.name, new MoneyStat(airline.Needs.NegotiatedDailyFees));
-                    airportData.airlineStats.fuelSatisfactionNegotiated.AddStat(airline.name, new PercentageStat(airline.Needs.AllNeeds.TryGetValue("NegotiatedFuelSatisfaction", out need) ? 1f - ((double)need.target / 100) : 0f));
-                    airportData.airlineStats.reliabilityNegotiated.AddStat(airline.name, new PercentageStat(airline.Needs.AllNeeds.TryGetValue("NegotiatedReliabilty", out need) ? 1f - ((double)need.target / 100) : 0f));
+                    airportData.airlineStats.fuelSatisfactionNegotiated.AddStat(airline.name, new PercentageStat(airline.Needs.AllNeeds.TryGetValue("NegotiatedFuelSatisfaction", out need) ? 1f - ((double)need.target / 100f) : 0f));
+                    airportData.airlineStats.reliabilityNegotiated.AddStat(airline.name, new PercentageStat(airline.Needs.AllNeeds.TryGetValue("NegotiatedReliability", out need) ? 1f - ((double)need.target / 100f) : 0f));
                     airportData.airlineStats.offices.AddStat(airline.name, new IntStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Office)));
                     airportData.airlineStats.conferenceRoom.AddStat(airline.name, new BoolStat(airline.Needs.Conference != null));
                     airportData.airlineStats.stores.AddStat(airline.name, new IntStat(airline.Needs.AssignedZones.Count(x => x.type == Zone.ZoneType.Store)));
@@ -280,7 +313,7 @@ namespace TBFlash.AirportStats
                     airportData.airlineStats.smallGates.AddStat(airline.name, new IntStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Small)));
                     airportData.airlineStats.largeGates.AddStat(airline.name, new IntStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Large)));
                     airportData.airlineStats.XLGates.AddStat(airline.name, new IntStat(Game.current.objectCache.AircraftGate_All.All().Count(x => x.Owner == airline && x.Size == AircraftGate.GateSize.Extra_Large)));
-                    airportData.airlineStats.paxPercent.AddStat(airline.name, new PercentageStat(airline.Needs.NegotiatedPaxPercent / 100));
+                    airportData.airlineStats.paxPercent.AddStat(airline.name, new PercentageStat(airline.Needs.NegotiatedPaxPercent / 100f));
                     airportData.airlineStats.penalty.AddStat(airline.name, new MoneyStat(airline.Needs.NegotiatedPenalty));
                 }
             }

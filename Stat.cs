@@ -16,5 +16,6 @@
         internal abstract string ForChart();
 
         internal abstract string ForTable();
+        internal abstract float GetFloatValue();
     }
 }

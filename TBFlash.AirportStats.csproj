@@ -62,6 +62,7 @@
     <Compile Include="AircraftData.cs" />
     <Compile Include="ChartOptions.cs" />
     <Compile Include="AverageStat.cs" />
+    <Compile Include="ProfitStatGroup.cs" />
     <Compile Include="FuelFutures.cs" />
     <Compile Include="DoubleStat.cs" />
     <Compile Include="RevenueStatGroup.cs" />

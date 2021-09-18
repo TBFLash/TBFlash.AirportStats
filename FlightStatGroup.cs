@@ -91,8 +91,8 @@
             str += nOntimeDeparture.ForTable(printOptions, true);
             str += ontimeDeparturePer.ForTable(printOptions);
             str += nDelayedDeparture.ForTable(printOptions, true);
-            str += nCancelled.ForTable(printOptions);
-            str += CanceledFor(printOptions, true);
+            //str += nCancelled.ForTable(printOptions);
+            //str += CanceledFor(printOptions, true);
             //str += nAirportInvalid.ForTable(printOptions, true);
             //str += nWeather.ForTable(printOptions);
             //str += nRunway.ForTable(printOptions, true);

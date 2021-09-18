@@ -120,8 +120,10 @@ namespace TBFlash.AirportStats
                     if (!string.IsNullOrWhiteSpace(airlineName))
                         return StatLoader.airlineData.GetAirlineDailyData(airlineName).passengerStats;
                     return StatLoader.airportData.passengerStats;
-                case "PROFITS":
+                case "REVEXP":
                     return StatLoader.airportData.revAndExpStats;
+                case "PROFITS":
+                    return StatLoader.airportData.profitStats;
                 default:
                     return null;
             }

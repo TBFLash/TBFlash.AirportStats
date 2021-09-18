@@ -294,6 +294,16 @@
 			<highestCost>最高の燃料費</highestCost>
 			<time>時間</time>
 			<chart>グラフを表示</chart>
+			<profitStats>利益統計</profitStats>
+			<profits>利益</profits>
+			<profitMargins>利益率</profitMargins>
+			<grossProfit>粗利益</grossProfit>
+			<operatingProfit>営業利益</operatingProfit>
+			<netProfit>純利益</netProfit>
+			<grossMargin>粗利益</grossMargin>
+			<operatingMargin>営業利益</operatingMargin>
+			<netMargin>売上純利益率</netMargin>
+			<marginLabel>マージン（％）</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>ピックアップした到着クルー</ArrivalCrewPickedUp>

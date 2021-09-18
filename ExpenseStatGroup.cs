@@ -99,7 +99,7 @@ namespace TBFlash.AirportStats
 
         internal override string ForTable(PrintOptions printOptions = null)
         {
-            string str = $"<tr class=\"statGroup\"><th colspan=\"2\"><a class=\"loadChart\" href=\"/chartdata?dataset=profits{(!string.IsNullOrEmpty(printOptions.AirlineName) ? "&airline=" + printOptions.AirlineName : string.Empty)}\" rel=\"#dialog\">{name}</a></th></tr>\n";
+            string str = $"<tr class=\"statGroup\"><th colspan=\"2\"><a class=\"loadChart\" href=\"/chartdata?dataset=revexp{(!string.IsNullOrEmpty(printOptions.AirlineName) ? "&airline=" + printOptions.AirlineName : string.Empty)}\" rel=\"#dialog\">{name}</a></th></tr>\n";
             bool oddRow = true;
             foreach (DailyStats<MoneyStat> statGroup in StatGroups.Values.Where(x => x.HasData))
             {

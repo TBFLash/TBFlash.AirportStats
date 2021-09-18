@@ -294,6 +294,16 @@
 			<highestCost>最高燃油成本</highestCost>
 			<time>时间</time>
 			<chart>显示图表</chart>
+			<profitStats>利润统计</profitStats>
+			<profits>利润</profits>
+			<profitMargins>利润率</profitMargins>
+			<grossProfit>毛利</grossProfit>
+			<operatingProfit>营业利润</operatingProfit>
+			<netProfit>净利</netProfit>
+			<grossMargin>毛利率</grossMargin>
+			<operatingMargin>营业利润率</operatingMargin>
+			<netMargin>净利率</netMargin>
+			<marginLabel>保证金（百分比）</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>到达人员接起</ArrivalCrewPickedUp>

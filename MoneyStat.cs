@@ -25,7 +25,7 @@ namespace TBFlash.AirportStats
 
         internal override string ForChart()
         {
-            return value !=0.0f ? Math.Abs(value).ToString($"F{numDigits}") : string.Empty;
+            return value !=0.0f ? /*Math.Abs(value)*/value.ToString($"F{numDigits}") : string.Empty;
         }
 
         internal override string ForTable()
@@ -36,6 +36,11 @@ namespace TBFlash.AirportStats
         internal override bool HasNonZeroValue()
         {
             return value != 0;
+        }
+
+        internal override float GetFloatValue()
+        {
+            return (float)value;
         }
     }
 }

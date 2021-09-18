@@ -294,6 +294,16 @@
 			<highestCost>Hoogste brandstofkosten</highestCost>
 			<time>Tijd</time>
 			<chart>Diagram weergeven</chart>
+			<profitStats>Winststatistieken</profitStats>
+			<profits>winst</profits>
+			<profitMargins>Winstmarges</profitMargins>
+			<grossProfit>Brutowinst</grossProfit>
+			<operatingProfit>Bedrijfswinst</operatingProfit>
+			<netProfit>Netto winst</netProfit>
+			<grossMargin>Bruto winstmarge</grossMargin>
+			<operatingMargin>Operationele marge</operatingMargin>
+			<netMargin>Nettomarge</netMargin>
+			<marginLabel>Marge (in %)</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Aankomst bemanning opgehaald</ArrivalCrewPickedUp>

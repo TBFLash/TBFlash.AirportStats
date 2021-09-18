@@ -33,5 +33,10 @@
         {
             return value != 0;
         }
+
+        internal override float GetFloatValue()
+        {
+            return (float)value;
+        }
     }
 }

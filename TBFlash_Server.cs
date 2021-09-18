@@ -39,6 +39,7 @@ namespace TBFlash.AirportStats
         public void Stop()
         {
             Listener?.Close();
+            Listener?.Stop();
             Listener = null;
             isStarted = false;
             AirportStatUtils.AirportStatsLogger(Log.FromPool("Listener Stopped").WithCodepoint());

@@ -294,6 +294,16 @@
 			<highestCost>Höchste Kraftstoffkosten</highestCost>
 			<time>Zeit</time>
 			<chart>Diagramm anzeigen</chart>
+			<profitStats>Gewinnstatistik</profitStats>
+			<profits>Profite</profits>
+			<profitMargins>Gewinnmargen</profitMargins>
+			<grossProfit>Bruttoertrag</grossProfit>
+			<operatingProfit>Betriebsergebnis</operatingProfit>
+			<netProfit>Reingewinn</netProfit>
+			<grossMargin>Bruttomarge</grossMargin>
+			<operatingMargin>Betriebsmarge</operatingMargin>
+			<netMargin>Nettomarge</netMargin>
+			<marginLabel>Marge (in %)</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Ankunftsmannschaft abgeholt</ArrivalCrewPickedUp>

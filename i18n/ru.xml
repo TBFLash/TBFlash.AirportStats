@@ -294,6 +294,16 @@
 			<highestCost>Самая высокая стоимость топлива</highestCost>
 			<time>Время</time>
 			<chart>Показать диаграмму</chart>
+			<profitStats>Статистика прибыли</profitStats>
+			<profits>Прибыль</profits>
+			<profitMargins>Прибыли</profitMargins>
+			<grossProfit>Валовая прибыль</grossProfit>
+			<operatingProfit>Операционный доход</operatingProfit>
+			<netProfit>Чистая прибыль</netProfit>
+			<grossMargin>Валовая прибыль</grossMargin>
+			<operatingMargin>Маржа операционной прибыли</operatingMargin>
+			<netMargin>Чистая маржа</netMargin>
+			<marginLabel>Маржа (в%)</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Экипаж прибытия подобрали</ArrivalCrewPickedUp>

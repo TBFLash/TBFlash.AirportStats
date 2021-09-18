@@ -294,6 +294,16 @@
 			<highestCost>Mayor costo de combustible</highestCost>
 			<time>Hora</time>
 			<chart>Mostrar gráfico</chart>
+			<profitStats>Estadísticas de ganancias</profitStats>
+			<profits>Beneficios</profits>
+			<profitMargins>Márgenes de beneficio</profitMargins>
+			<grossProfit>Beneficio bruto</grossProfit>
+			<operatingProfit>Beneficio operativo</operatingProfit>
+			<netProfit>Beneficio neto</netProfit>
+			<grossMargin>Margen bruto</grossMargin>
+			<operatingMargin>Margen operativo</operatingMargin>
+			<netMargin>Margen neto</netMargin>
+			<marginLabel>Margen (en%)</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Equipo de llegada recogido</ArrivalCrewPickedUp>

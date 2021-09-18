@@ -294,6 +294,16 @@
 			<highestCost>Highest Fuel Cost</highestCost>
 			<time>Time</time>
 			<chart>Display Chart</chart>
+			<profitStats>Profit Stats</profitStats>
+			<profits>Profits</profits>
+			<profitMargins>Profit Margins</profitMargins>
+			<grossProfit>Gross Profit</grossProfit>
+			<operatingProfit>Operating Profit</operatingProfit>
+			<netProfit>Net Profit</netProfit>
+			<grossMargin>Gross Margin</grossMargin>
+			<operatingMargin>Operating Margin</operatingMargin>
+			<netMargin>Net Margin</netMargin>
+			<marginLabel>Margin (in %)</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Arrival Crew Picked Up</ArrivalCrewPickedUp>

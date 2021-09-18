@@ -38,5 +38,9 @@
         {
             return true;
         }
+        internal override float GetFloatValue()
+        {
+            return (float) (value ? 1 : 0);
+        }
     }
 }

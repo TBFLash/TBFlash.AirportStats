@@ -294,6 +294,16 @@
 			<highestCost>Nejvyšší náklady na palivo</highestCost>
 			<time>Čas</time>
 			<chart>Zobrazit graf</chart>
+			<profitStats>Statistiky zisku</profitStats>
+			<profits>Zisky</profits>
+			<profitMargins>Ziskové marže</profitMargins>
+			<grossProfit>Hrubý zisk</grossProfit>
+			<operatingProfit>Provozní zisk</operatingProfit>
+			<netProfit>Čistý zisk</netProfit>
+			<grossMargin>Hrubá marže</grossMargin>
+			<operatingMargin>Provozní marže</operatingMargin>
+			<netMargin>Čistá marže</netMargin>
+			<marginLabel>Marže (v %)</marginLabel>
 		</json>
 		<flightstatus>
 			<ArrivalCrewPickedUp>Příjezdová posádka vyzvednuta</ArrivalCrewPickedUp>

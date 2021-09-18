@@ -12,6 +12,7 @@ namespace TBFlash.AirportStats
         internal StaffStatGroup staffStats = new StaffStatGroup(i18n.Get("TBFlash.AirportStats.LifetimeStats.header6"));
         internal TimeStatGroup timeStats = new TimeStatGroup(i18n.Get("TBFlash.AirportStats.LifetimeStats.header7"));
         internal InteractionsStatGroup interactions = new InteractionsStatGroup(i18n.Get("TBFlash.AirportStats.LifetimeStats.header8"));
+        internal ProfitStatGroup profitStats = new ProfitStatGroup(i18n.Get("TBFlash.AirportStats.json.profitStats"));
 
         internal AirlineStatGroup airlineStats = new AirlineStatGroup();
         internal FuelFutures fuelFutures = new FuelFutures("FuelFutures");
@@ -23,6 +24,7 @@ namespace TBFlash.AirportStats
             luggageStats.RemoveAirlineStats(firstDay, lastDay);
             passengerStats.RemoveAirlineStats(firstDay, lastDay);
             revAndExpStats.RemoveAirlineStats(firstDay, lastDay);
+            profitStats.RemoveAirlineStats(firstDay, lastDay);
         }
 
         internal void ResetLifetimeStats()
@@ -35,10 +37,11 @@ namespace TBFlash.AirportStats
 
         internal void ResetAirlineStats()
         {
-            if (airlineStats.airlineName.stats.Count > 0)
-            {
-                airlineStats = new AirlineStatGroup();
-            }
+            AirportStatUtils.AirportStatsLogger(Log.FromPool("").WithCodepoint());
+            //if (airlineStats.airlineName.stats.Count > 0)
+            //{
+            airlineStats = new AirlineStatGroup();
+            //}
         }
 
         internal string ForTable(PrintOptions printOptions = null)
@@ -49,6 +52,7 @@ namespace TBFlash.AirportStats
             str += fuelStats.ForTable(printOptions);
             str += luggageStats.ForTable(printOptions);
             str += revAndExpStats.ForTable(printOptions);
+            str += profitStats.ForTable(printOptions);
             str += staffStats.ForTable(printOptions);
             str += timeStats.ForTable(printOptions);
             str += interactions.ForTable(printOptions);

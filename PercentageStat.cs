@@ -21,7 +21,7 @@
 
         internal override string ForChart()
         {
-            return value.ToString("F1");
+            return (value*100).ToString("F1");
         }
 
         internal override string ForTable()
@@ -32,6 +32,10 @@
         internal override bool HasNonZeroValue()
         {
             return value != 0;
+        }
+        internal override float GetFloatValue()
+        {
+            return (float)value;
         }
     }
 }

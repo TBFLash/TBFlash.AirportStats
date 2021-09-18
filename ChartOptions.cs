@@ -15,6 +15,7 @@ namespace TBFlash.AirportStats
             scatter,
             stackedBar,
             multiAxisLine,
+            multiAxisLine2,
             none
         }
         internal enum YAxisTypes
@@ -84,7 +85,7 @@ namespace TBFlash.AirportStats
                             "\"fontSize\": 12 " +
                         "}";
             Options += chartType == ChartTypes.stackedBar ? ", \"stacked\": true" : string.Empty;
-            if (chartType == ChartTypes.multiAxisLine)
+            if (chartType == ChartTypes.multiAxisLine || chartType == ChartTypes.multiAxisLine2)
             {
                 Options += $", \"id\": \"{nameof(YAxisTypes.yAxisLeft)}\", \"type\": \"linear\", \"position\": \"left\"}}"; //end of the first yAxis
                 Options += ", {" +
@@ -98,19 +99,22 @@ namespace TBFlash.AirportStats
                             $"\"labelString\":\"{yAxisLabel2}\", " +
                             "\"fontSize\": 12 " +
                         "}";
-                Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight)}\", \"type\": \"linear\", \"position\": \"right\"}}"; //end of the second yAxis
-                Options += ", {" +
-                        "\"ticks\": {" +
-                            "\"beginAtZero\": true" +
-                        "}, " +
-                        "\"gridLines\":{" +
-                        "}, " +
-                        "\"scaleLabel\":{" +
-                            "\"display\": true, " +
-                            $"\"labelString\":\"{yAxisLabel3}\", " +
-                            "\"fontSize\": 12 " +
-                        "}";
-                Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight2)}\", \"type\": \"linear\", \"position\": \"right\""; //end of the third yAxis
+                Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight)}\", \"type\": \"linear\", \"position\": \"right\""; //end of the second yAxis
+                if (chartType == ChartTypes.multiAxisLine)
+                {
+                    Options += "}, {" +
+                            "\"ticks\": {" +
+                                "\"beginAtZero\": true" +
+                            "}, " +
+                            "\"gridLines\":{" +
+                            "}, " +
+                            "\"scaleLabel\":{" +
+                                "\"display\": true, " +
+                                $"\"labelString\":\"{yAxisLabel3}\", " +
+                                "\"fontSize\": 12 " +
+                            "}";
+                    Options += $", \"id\": \"{nameof(YAxisTypes.yAxisRight2)}\", \"type\": \"linear\", \"position\": \"right\""; //end of the third yAxis
+                }
             }
             Options += "}]" + //end yAxes
                 "}, " + //end scales
