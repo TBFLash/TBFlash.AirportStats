@@ -172,6 +172,7 @@
 			<stats19>Combustible entregado</stats19>
 			<stats20>Estados</stats20>
 			<stats21>Razon de cancelacion</stats21>
+			<stats22>Puerta programada</stats22>
 			<ontimeDepartPer>A tiempo salida%</ontimeDepartPer>
 			<arrPaxPerFlt>Promedio de pasajeros que llegan / vuelo</arrPaxPerFlt>
 			<departPaxPerFlt>Promedio de pasajeros / vuelo de salida</departPaxPerFlt>

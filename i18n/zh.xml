@@ -172,6 +172,7 @@
 			<stats19>运送燃料</stats19>
 			<stats20>状态</stats20>
 			<stats21>取消原因</stats21>
+			<stats22>预定门</stats22>
 			<ontimeDepartPer>准点出发百分比</ontimeDepartPer>
 			<arrPaxPerFlt>平均到达旅客/航班</arrPaxPerFlt>
 			<departPaxPerFlt>平均出发旅客/航班</departPaxPerFlt>

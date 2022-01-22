@@ -117,7 +117,7 @@ namespace TBFlash.AirportStats
                     thisAirline.passengerStats.nArriving.AddStat(i, new IntStat(arrivingPax));
                     thisAirline.passengerStats.nBoarded.AddStat(i, new IntStat(boardedPax));
                     thisAirline.passengerStats.nCheckedIn.AddStat(i, new IntStat(flightRecords.Sum(x => x.nCheckedIn)));
-                    thisAirline.passengerStats.nSchedDep.AddStat(i, new IntStat(schedDepartingPax));                    
+                    thisAirline.passengerStats.nSchedDep.AddStat(i, new IntStat(schedDepartingPax));
                     thisAirline.passengerStats.nMissed.AddStat(i, new IntStat(missed > 0 ? missed : 0, missed > 0 ? AirportStatUtils.InfoLevels.Warning : AirportStatUtils.InfoLevels.None));
                     thisAirline.passengerStats.timeBoarding.AddStat(i, new TimeStat(timeBoarding));
                     thisAirline.passengerStats.timeDeplaning.AddStat(i, new TimeStat(flightRecords.Sum(x => x.time_deplaning) * 60f));
@@ -241,7 +241,7 @@ namespace TBFlash.AirportStats
                 val = ((MoneyStat)airportData.revAndExpStats.revenueStats.StatGroups["total"].GetStat(i))?.GetFloatValue() ?? 0;
                 float netCost = -((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups["total"].GetStat(i))?.GetFloatValue() ?? 0;
 
-                float operatingCost = netCost + ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Taxes)].GetStat(i))?.GetFloatValue() ?? 0 - 
+                float operatingCost = netCost + ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Taxes)].GetStat(i))?.GetFloatValue() ?? 0 -
                     ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Bank)].GetStat(i))?.GetFloatValue() ?? 0;
                 float grossCost = - (((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Fuel)].GetStat(i))?.GetFloatValue() ?? 0 +
                     ((MoneyStat)airportData.revAndExpStats.expenseStats.StatGroups[nameof(GamedayReportingData.MoneyCategory.Infrastructure)].GetStat(i))?.GetFloatValue() ?? 0 +

@@ -78,10 +78,10 @@ namespace TBFlash.AirportStats
             str += nSchedDep.ForTable(printOptions, true);
             str += departPaxPerFlt.ForTable(printOptions);
             str += nCheckedIn.ForTable(printOptions, true);
-            str += nBoarded.ForTable(printOptions);
-            str += nMissed.ForTable(printOptions, true);
-            str += boardedPerFlt.ForTable(printOptions);
-            str += nConnecting.ForTable(printOptions, true);
+            str += nConnecting.ForTable(printOptions);
+            str += nBoarded.ForTable(printOptions, true);
+            str += nMissed.ForTable(printOptions);
+            str += boardedPerFlt.ForTable(printOptions, true);
             str += timeDeplaning.ForTable(printOptions);
             str += timeBoarding.ForTable(printOptions, true);
             str += avgBoardTime.ForTable(printOptions);

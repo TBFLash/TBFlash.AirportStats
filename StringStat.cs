@@ -36,6 +36,5 @@
         {
             return (float) 0;
         }
-
     }
 }

@@ -172,6 +172,7 @@
 			<stats19>Carburant livré</stats19>
 			<stats20>Statuts</stats20>
 			<stats21>Motif d'annulation</stats21>
+			<stats22>Porte programmée</stats22>
 			<ontimeDepartPer>Départ à l'heure%</ontimeDepartPer>
 			<arrPaxPerFlt>Nombre moyen de passagers / vol à l'arrivée</arrPaxPerFlt>
 			<departPaxPerFlt>Passagers au départ moyens / vol</departPaxPerFlt>

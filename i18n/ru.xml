@@ -172,6 +172,7 @@
 			<stats19>Топливо доставлено</stats19>
 			<stats20>Статусы</stats20>
 			<stats21>Причина отмены</stats21>
+			<stats22>Запланированные ворота</stats22>
 			<ontimeDepartPer>По времени отправления%</ontimeDepartPer>
 			<arrPaxPerFlt>Среднее число прибывающих пассажиров / рейс</arrPaxPerFlt>
 			<departPaxPerFlt>Среднее количество вылетающих пассажиров / рейс</departPaxPerFlt>

@@ -12,7 +12,45 @@ namespace TBFlash.AirportStats
         internal void AddFlights(int day)
         {
             flights.Remove(day);
-            flights.Add(day, Game.current.flightRecords.GetForDay(day-1));
+            // current day flightrecords are not accurate; not until the flight has departed and flight record is archived. Need to load the flights for today.
+            //game.current.flightScheduler.Today
+            //question: do I go through Today and create flightRecords and add the enumeration to this.flights? Makes it easier to deal with later. Makes sense.
+            if (day == GameTimer.Day && Game.current.flightScheduler.Today.Count > 0)
+            {
+                List<FlightRecord> frs = new List<FlightRecord>();
+                foreach (Flight flt in Game.current.flightScheduler.Today)
+                {
+                    FlightRecord fr = new FlightRecord(flt)
+                    {
+                        actual_arrivalTime = flt.record.actual_arrivalTime,
+                        actual_departureTime = flt.record.actual_departureTime,
+                        nCheckedIn = flt.nDepartingCheckedIn,
+                        nBoarded = flt.record.nBoarded,
+                        nArrivalBags = flt.nArrivalBags,
+                        nDepartingBags = flt.nDepartingBags,
+                        nBagsUnloaded = flt.record.nBagsUnloaded,
+                        nBagsLoaded = flt.record.nBagsLoaded,
+                        time_boarding = flt.record.time_boarding,
+                        time_deplaning = flt.record.time_deplaning,
+                        time_bag_unload = flt.record.time_bag_unload,
+                        time_bag_load = flt.record.time_bag_load,
+                        nFuelRequested = flt.record.nFuelRequested,
+                        nFuelRefueled = flt.record.nFuelRefueled,
+                        status = flt.status,
+                        reason = flt.reason
+                    };
+                    if (flt.gate != flt.flightSchema.gate)
+                    {
+                        fr.alternateGate = flt.gate.Name;
+                    }
+                    frs.Add(fr);
+                }
+                flights.Add(day, frs.AsEnumerable<FlightRecord>());
+            }
+            else
+            {
+                flights.Add(day, Game.current.flightRecords.GetForDay(day));
+            }
         }
 
         internal string ForTable(PrintOptions printOptions = null)
@@ -44,6 +82,7 @@ namespace TBFlash.AirportStats
                     str += $"<td><a href=\"/{fr.airline}?Day={printOptions.Day}\">{fr.airline}</a></td>\n";
                 }
                 str += $"<td class=\"None\"><a class=\"ajax-dialog\" href=\"/aircraftstats?aircraft={fr.aircraft}\" rel=\"#dialog\">{fr.aircraft}</a></td>\n";
+                str += $"<td class=\"None\">{fr.originalGate}</td>\n";
                 str += $"<td class=\"None\">{DateTime.MinValue.AddSeconds(fr.arrivalTime * 60):t}</td>\n";
                 str += $"<td class=\"{(fr.actual_arrivalTime <= 0 ? AirportStatUtils.InfoLevels.None : fr.actual_arrivalTime > fr.arrivalTime ? AirportStatUtils.InfoLevels.Info : AirportStatUtils.InfoLevels.None)}\">{(fr.actual_arrivalTime > 0 ? DateTime.MinValue.AddSeconds(fr.actual_arrivalTime * 60).ToString("t") : string.Empty)}</td>\n";
                 str += $"<td class=\"None\">{DateTime.MinValue.AddSeconds(fr.departureTime * 60):t}</td>\n";
@@ -89,6 +128,7 @@ namespace TBFlash.AirportStats
                 str += $"<th>{i18n.Get("TBFlash.AirportStats.AirlineDailyStats.stats0")}</th>\n";
             }
             str += $"<th>{i18n.Get("TBFlash.AirportStats.AirlineDailyStats.stats1")}</th>\n";
+            str += $"<th>{i18n.Get("TBFlash.AirportStats.AirlineDailyStats.stats22")}</th>\n";
             str += $"<th>{i18n.Get("TBFlash.AirportStats.AirlineDailyStats.stats2")}</th>\n";
             str += $"<th>{i18n.Get("TBFlash.AirportStats.AirlineDailyStats.stats3")}</th>\n";
             str += $"<th>{i18n.Get("TBFlash.AirportStats.AirlineDailyStats.stats4")}</th>\n";

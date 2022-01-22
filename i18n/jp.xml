@@ -172,6 +172,7 @@
 			<stats19>配送された燃料</stats19>
 			<stats20>ステータス</stats20>
 			<stats21>キャンセル理由</stats21>
+			<stats22>スケジュールされたゲート</stats22>
 			<ontimeDepartPer>定刻出発％</ontimeDepartPer>
 			<arrPaxPerFlt>平均到着客/フライト</arrPaxPerFlt>
 			<departPaxPerFlt>平均出発旅客/フライト</departPaxPerFlt>

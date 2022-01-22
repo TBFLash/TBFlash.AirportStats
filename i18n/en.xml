@@ -172,6 +172,7 @@
 			<stats19>Fuel Delivered</stats19>
 			<stats20>Statuses</stats20>
 			<stats21>Cancellation Reason</stats21>
+			<stats22>Sched. Gate</stats22>
 			<ontimeDepartPer>On Time Departure %</ontimeDepartPer>
 			<arrPaxPerFlt>Average Arriving Passengers / Flight</arrPaxPerFlt>
 			<departPaxPerFlt>Average Departing Passengers / Flight</departPaxPerFlt>

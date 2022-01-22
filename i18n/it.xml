@@ -172,6 +172,7 @@
 			<stats19>Carburante consegnato</stats19>
 			<stats20>Gli stati</stats20>
 			<stats21>Motivo della cancellazione</stats21>
+			<stats22>Cancello programmato</stats22>
 			<ontimeDepartPer>In orario Partenza%</ontimeDepartPer>
 			<arrPaxPerFlt>Passeggeri / volo in arrivo medi</arrPaxPerFlt>
 			<departPaxPerFlt>Passeggeri / volo medi in partenza</departPaxPerFlt>

@@ -172,6 +172,7 @@
 			<stats19>Kraftstoff geliefert</stats19>
 			<stats20>Status</stats20>
 			<stats21>Stornierungsgrund</stats21>
+			<stats22>Geplantes Tor</stats22>
 			<ontimeDepartPer>Pünktliche Abreise%</ontimeDepartPer>
 			<arrPaxPerFlt>Durchschnittlich ankommende Passagiere / Flug</arrPaxPerFlt>
 			<departPaxPerFlt>Durchschnittlich abfliegende Passagiere / Flug</departPaxPerFlt>

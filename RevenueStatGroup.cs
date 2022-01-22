@@ -33,7 +33,6 @@ namespace TBFlash.AirportStats
                 [nameof(GamedayReportingData.MoneyCategory.Transportation)] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats49"), new SeriesData(i18n.Get("TBFlash.AirportStats.json.parkRev"), "revPark", "limegreen", "0", null, "1")),
                 [nameof(GamedayReportingData.MoneyCategory.Undefined)] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats33"), new SeriesData(i18n.Get("TBFlash.AirportStats.json.undefRev"), "refUndef", "green", "0", null, "1")),
                 ["total"] = new DailyStats<MoneyStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.stats34"), null),
-
             };
             RevPerPax = new DailyStats<AverageStat>(i18n.Get("TBFlash.AirportStats.LifetimeStats.revPerPax"), null);
         }
